@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Discovery Engine — SongScout | Musical Influence Family Tree</title>
-<meta name="description" content="Pick an artist you love and trace the musical family tree of influences that shaped them. Follow any branch back through the decades — from Foo Fighters to Nirvana to the Pixies.">
+<meta name="description" content="Pick an artist you love and trace the musical family tree of influences that shaped them. 75+ artists across every rock genre — follow any branch back through the decades from Arctic Monkeys to Robert Johnson.">
 <meta name="keywords" content="music influence tree, who influenced Nirvana, Led Zeppelin influences, music family tree, discover classic rock, artist influences explained, musical roots">
 <link rel="canonical" href="https://songscout.uk/discovery-engine/">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -452,10 +452,378 @@ const ARTISTS = {
     influencedBy:['radiohead','the-national','wilco','interpol'],
   },
 
+  'the-smiths':{
+    name:'The Smiths', era:'1982–1987', genre:'Indie Rock / Post-Punk',
+    bio:'Morrissey and Johnny Marr created the defining sound of British indie rock in five short years. Marr\'s jangly, melodic guitar style and Morrissey\'s literate, melancholic lyrics were utterly unlike anything else. The Queen Is Dead is one of the greatest albums ever made.',
+    tags:['British indie founders','Morrissey','Johnny Marr','Jangle pop'],
+    influences:['the-byrds','velvet-underground','new-york-dolls','sandie-shaw'],
+    influencedBy:['oasis','radiohead','the-libertines','interpol','the-national','johnny-marr-solo'],
+  },
+
+  'the-cure':{
+    name:'The Cure', era:'1976–present', genre:'Post-Punk / Gothic Rock / New Wave',
+    bio:'Robert Smith led one of post-punk\'s most versatile bands — from the stark minimalism of Seventeen Seconds to the pop hooks of Friday I\'m in Love. The Cure could be terrifying, joyful or heartbreaking, sometimes all in the same album.',
+    tags:['Post-punk','Gothic rock','Robert Smith','Disintegration'],
+    influences:['siouxsie-and-the-banshees','joy-division','david-bowie','wire'],
+    influencedBy:['placebo','interpol','the-national','beach-house','lorde'],
+  },
+
+  'joy-division':{
+    name:'Joy Division', era:'1976–1980', genre:'Post-Punk / Gothic Rock',
+    bio:'Ian Curtis, Bernard Sumner, Peter Hook and Stephen Morris created one of the most influential bodies of work in rock — despite Curtis dying at 23 before their second album was released. They immediately reformed as New Order. Atmosphere and Love Will Tear Us Apart remain two of the greatest songs ever recorded.',
+    tags:['Post-punk','Ian Curtis','Love Will Tear Us Apart','Tragically brief'],
+    influences:['david-bowie','iggy-pop','velvet-underground','wire','sex-pistols'],
+    influencedBy:['new-order','the-cure','interpol','she-wants-revenge','editors'],
+  },
+
+  'new-order':{
+    name:'New Order', era:'1980–present', genre:'New Wave / Electronic / Dance Rock',
+    bio:'Bernard Sumner, Peter Hook, Stephen Morris and Gillian Gilbert emerged from the ashes of Joy Division and invented a new kind of music — synthesiser-driven dance tracks with rock sensibilities. Blue Monday is the best-selling 12-inch single of all time.',
+    tags:['Electronic rock pioneers','Blue Monday','Joy Division reborn','Dance rock'],
+    influences:['joy-division','kraftwerk','giorgio-moroder','disco-tradition'],
+    influencedBy:['the-killers','bloc-party','LCD-soundsystem','the-national'],
+  },
+
+  'talking-heads':{
+    name:'Talking Heads', era:'1975–1991', genre:'New Wave / Art Rock / Funk Rock',
+    bio:'David Byrne, Chris Frantz, Tina Weymouth and Jerry Harrison created some of the most intellectually adventurous pop music of the 1980s. Remain in Light — recorded with Brian Eno using African polyrhythms — is one of the most genuinely innovative albums in rock history.',
+    tags:['Art rock','David Byrne','Brian Eno collaboration','Remain in Light'],
+    influences:['velvet-underground','african-music','funk-tradition','krautrock'],
+    influencedBy:['radiohead','arcade-fire','vampire-weekend','LCD-soundsystem','tv-on-the-radio'],
+  },
+
+  'the-police':{
+    name:'The Police', era:'1977–1986', genre:'New Wave / Reggae Rock / Post-Punk',
+    bio:'Sting, Andy Summers and Stewart Copeland fused punk energy with reggae rhythms and jazz sophistication to create something completely new. Roxanne was rejected by their label. Every Breath You Take became one of the most played songs in radio history.',
+    tags:['New wave','Reggae rock','Sting','Every Breath You Take'],
+    influences:['reggae-tradition','jazz-tradition','the-clash','jimi-hendrix'],
+    influencedBy:['the-edge-u2','sting-solo','no-doubt','311'],
+  },
+
+  'u2':{
+    name:'U2', era:'1976–present', genre:'Rock / Post-Punk / Alternative Rock',
+    bio:'Bono, The Edge, Adam Clayton and Larry Mullen Jr grew from Dublin post-punk teenagers into the biggest rock band in the world. The Edge\'s delay-drenched guitar sound — distinctive from the first note — influenced an entire generation of guitarists. The Joshua Tree is one of rock\'s great albums.',
+    tags:['Biggest band of the 80s','The Edge','The Joshua Tree','Bono'],
+    influences:['the-clash','the-beatles','neil-young','joy-division'],
+    influencedBy:['coldplay','keane','snow-patrol','editors'],
+  },
+
+  'depeche-mode':{
+    name:'Depeche Mode', era:'1980–present', genre:'Synth-Pop / Electronic Rock',
+    bio:'Dave Gahan, Martin Gore, Andrew Fletcher and Vince Clarke (later just the first three) took synthesiser pop somewhere darker and more industrial than anyone expected. Personal Jesus is one of the most covered songs in rock history. Their influence on electronic and alternative music is enormous.',
+    tags:['Synth-pop','Electronic rock','Martin Gore','Personal Jesus'],
+    influences:['kraftwerk','new-order','electronic-tradition'],
+    influencedBy:['nine-inch-nails','marilyn-manson','placebo','the-kills'],
+  },
+
+  'the-jam':{
+    name:'The Jam', era:'1972–1982', genre:'Punk / New Wave / Mod Revival',
+    bio:'Paul Weller, Bruce Foxton and Rick Buckler were the most British of all the punk bands — deeply rooted in mod, The Kinks and The Who. Going Underground was the first record to go straight to number one in the UK on first week of release.',
+    tags:['Mod revival','Paul Weller','British punk','Going Underground'],
+    influences:['the-who','the-kinks','the-beatles','sex-pistols'],
+    influencedBy:['the-style-council','blur','the-libertines','paul-weller-solo'],
+  },
+
+  'blondie':{
+    name:'Blondie', era:'1974–present', genre:'New Wave / Pop Rock / Punk',
+    bio:'Debbie Harry and Chris Stein led one of the most musically versatile acts of the new wave era — absorbing disco, reggae, rap and pure pop into their punk foundations. Heart of Glass brought disco to punk audiences. Rapture was among the first rap-influenced songs to reach number one.',
+    tags:['New wave','Debbie Harry','Heart of Glass','Genre-crossing'],
+    influences:['velvet-underground','patty-smith','disco-tradition','punk-tradition'],
+    influencedBy:['no-doubt','paramore','the-raveonettes','yeah-yeah-yeahs'],
+  },
+
+  'the-stooges':{
+    name:'The Stooges / Iggy Pop', era:'1967–present', genre:'Proto-Punk / Hard Rock',
+    bio:'Iggy Pop and the Stooges invented punk rock in 1969 — seven years before the Sex Pistols. Raw Power remains one of the most visceral rock albums ever recorded. Iggy\'s stage performances — self-harm, crowd-surfing, confrontation — defined what rock performance could be.',
+    tags:['Proto-punk','Punk godfather','Raw Power','Stage confrontation'],
+    influences:['the-doors','the-rolling-stones','blues-tradition','jim-morrison'],
+    influencedBy:['david-bowie','the-clash','nirvana','green-day','the-strokes'],
+  },
+
+  'bruce-springsteen':{
+    name:'Bruce Springsteen', era:'1972–present', genre:'Rock / Heartland Rock',
+    bio:'The Boss and the E Street Band built one of rock\'s great careers on the promise of American working-class life — its hopes, its failures and its moments of grace. Born to Run is one of the greatest rock albums ever made. His live shows, often exceeding four hours, are legendary.',
+    tags:['The Boss','Born to Run','E Street Band','Heartland rock'],
+    influences:['bob-dylan','van-morrison','phil-spector','soul-tradition'],
+    influencedBy:['john-mellencamp','the-gaslight-anthem','lucinda-williams'],
+  },
+
+  'bob-dylan':{
+    name:'Bob Dylan', era:'1961–present', genre:'Folk Rock / Rock / Country',
+    bio:'Robert Zimmerman changed his name and changed popular music. Dylan invented the idea of the rock songwriter as poet and prophet. His mid-60s electric period — Highway 61 Revisited, Blonde on Blonde — is the most celebrated run of albums in rock history. He won the Nobel Prize for Literature in 2016.',
+    tags:['Nobel laureate','Most influential songwriter','Electric folk','Highway 61'],
+    influences:['woody-guthrie','folk-tradition','robert-johnson','hank-williams'],
+    influencedBy:['the-beatles','neil-young','bruce-springsteen','the-byrds','patti-smith'],
+  },
+
+  'tom-waits':{
+    name:'Tom Waits', era:'1971–present', genre:'Rock / Blues / Avant-Garde',
+    bio:'Tom Waits invented his own genre — a world of seedy bars, carnival freakshows and broken hearts, rendered in a voice that sounds like gravel and bourbon. Swordfishtrombones marked his transformation from barroom balladeer to avant-garde experimentalist. Nobody sounds like him.',
+    tags:['Singular voice','Avant-garde','Rain Dogs','One of a kind'],
+    influences:['howlin-wolf','harry-partch','brecht-weill','blues-tradition'],
+    influencedBy:['nick-cave','PJ-harvey','the-waifs','system-of-a-down'],
+  },
+
+  'nick-cave':{
+    name:'Nick Cave & The Bad Seeds', era:'1984–present', genre:'Post-Punk / Gothic Rock / Alternative',
+    bio:'Nick Cave, Mick Harvey and Warren Ellis built one of the most distinctive voices in rock. From the confrontational fury of Birthday Party to the heartbreaking beauty of The Ship Song and Into My Arms, Cave has consistently produced music of extraordinary emotional intelligence.',
+    tags:['Gothic rock','Post-punk','Extraordinary lyricist','The Bad Seeds'],
+    influences:['tom-waits','the-velvet-underground','iggy-pop','blues-tradition'],
+    influencedBy:['PJ-harvey','the-national','interpol','scott-walker'],
+  },
+
+  'pj-harvey':{
+    name:'PJ Harvey', era:'1991–present', genre:'Alternative Rock / Art Rock',
+    bio:'Polly Jean Harvey has made eleven albums that share almost nothing except complete artistic commitment and one of the most powerful voices in rock. From the raw blues-rock of Dry to the orchestral grandeur of Let England Shake, she has never made the same record twice.',
+    tags:['Mercury Prize winner','Polly Jean Harvey','Let England Shake','Artistically fearless'],
+    influences:['robert-johnson','jimi-hendrix','patti-smith','nick-cave'],
+    influencedBy:['anna-calvi','st-vincent','torres'],
+  },
+
+  'patti-smith':{
+    name:'Patti Smith', era:'1973–present', genre:'Punk / Art Rock / Poetry',
+    bio:'The punk poet laureate. Patti Smith fused rock and roll with Rimbaud, horses with Jesus, desire with transcendence. Horses — produced by John Cale — is one of the great debut albums in rock history. Her influence on every female artist who followed is immeasurable.',
+    tags:['Punk poet laureate','Horses','CBGB pioneer','Art rock'],
+    influences:['bob-dylan','velvet-underground','rimbaud','jimi-hendrix'],
+    influencedBy:['r-e-m','sonic-youth','PJ-harvey','hozier'],
+  },
+
+  'sonic-youth':{
+    name:'Sonic Youth', era:'1981–2011', genre:'Noise Rock / Alternative Rock / No Wave',
+    bio:'Thurston Moore, Kim Gordon, Lee Ranaldo and Steve Shelley tuned their guitars to non-standard tunings and created chord shapes that don\'t exist in conventional playing. Daydream Nation is the most important underground album of the 1980s. Their influence on alternative rock is second only to The Velvet Underground.',
+    tags:['Noise rock','Daydream Nation','Alternative rock founders','Kim Gordon'],
+    influences:['velvet-underground','television','no-wave-tradition','neil-young'],
+    influencedBy:['nirvana','pavement','hole','smashing-pumpkins','courtney-barnett'],
+  },
+
+  'smashing-pumpkins':{
+    name:'Smashing Pumpkins', era:'1988–present', genre:'Alternative Rock / Grunge / Dream Pop',
+    bio:'Billy Corgan, James Iha, D\'Arcy Wretzky and Jimmy Chamberlin created Siamese Dream and Mellon Collie and the Infinite Sadness — two of the defining alternative rock albums of the 1990s. Corgan layered dozens of guitar tracks to create a massive, fuzzed-out sound unlike anything else.',
+    tags:['Siamese Dream','Billy Corgan','Alternative rock','Mellon Collie'],
+    influences:['sonic-youth','pixies','neil-young','new-wave'],
+    influencedBy:['placebo','muse','tonight-alive','bullet-for-my-valentine'],
+  },
+
+  'green-day':{
+    name:'Green Day', era:'1987–present', genre:'Punk Rock / Pop Punk',
+    bio:'Billie Joe Armstrong, Mike Dirnt and Tré Cool turned California punk into one of rock\'s great commercial success stories. Dookie sold 10 million copies. American Idiot — a concept album about the Bush era — proved punk could be political and popular simultaneously.',
+    tags:['Pop punk','Dookie','American Idiot','Billie Joe Armstrong'],
+    influences:['the-clash','ramones','the-who','husker-du'],
+    influencedBy:['paramore','fall-out-boy','blink-182','mcfly'],
+  },
+
+  'weezer':{
+    name:'Weezer', era:'1992–present', genre:'Alternative Rock / Power Pop',
+    bio:'Rivers Cuomo and Weezer made the Blue Album and Pinkerton — two of the defining alternative rock records of the 1990s. Pinkerton, initially dismissed as a critical and commercial failure, was reassessed as one of the most emotionally raw records of the decade.',
+    tags:['Blue Album','Pinkerton','Power pop','Rivers Cuomo'],
+    influences:['pixies','kiss','the-beach-boys','cheap-trick'],
+    influencedBy:['paramore','best-coast','modern-baseball','tiger-trap'],
+  },
+
+  'the-white-stripes':{
+    name:'The White Stripes', era:'1997–2011', genre:'Alternative Rock / Blues Rock / Garage Rock',
+    bio:'Jack and Meg White stripped rock to two people — guitar and drums, no bass — and created some of the most powerful music of the 2000s. Seven Nation Army\'s bass riff (actually guitar through an octave pedal) became one of the most recognised musical figures of the decade.',
+    tags:['Seven Nation Army','Garage rock revival','Jack White','Two pieces'],
+    influences:['robert-johnson','the-stooges','led-zeppelin','son-house'],
+    influencedBy:['the-black-keys','royal-blood','death-from-above-1979','cage-the-elephant'],
+  },
+
+  'the-black-keys':{
+    name:'The Black Keys', era:'2001–present', genre:'Blues Rock / Garage Rock',
+    bio:'Dan Auerbach and Patrick Carney built a careers from the Delta blues and garage rock, recording their early albums in a basement for almost nothing. Brothers and El Camino broke them into the mainstream without sacrificing the grit that made them great.',
+    tags:['Blues rock revival','Dan Auerbach','Brothers','Garage rock'],
+    influences:['robert-johnson','muddy-waters','the-white-stripes','junior-kimbrough'],
+    influencedBy:['greta-van-fleet','the-sheepdogs','vintage-trouble'],
+  },
+
+  'muse':{
+    name:'Muse', era:'1994–present', genre:'Alternative Rock / Progressive Rock / Space Rock',
+    bio:'Matt Bellamy, Chris Wolstenholme and Dominic Howard took Radiohead\'s post-rock grandeur, Queen\'s theatrical ambition and classical music\'s structural complexity and built one of Britain\'s biggest rock bands. Origin of Symmetry and Absolution are two of the great British rock albums of the 2000s.',
+    tags:['Space rock','Matt Bellamy','Origin of Symmetry','Theatrical rock'],
+    influences:['radiohead','queen','pink-floyd','jeff-buckley'],
+    influencedBy:['30-seconds-to-mars','biffy-clyro','young-the-giant'],
+  },
+
+  'the-killers':{
+    name:'The Killers', era:'2001–present', genre:'Indie Rock / New Wave / Alternative',
+    bio:'Brandon Flowers, Dave Keuning, Mark Stoermer and Ronnie Vannucci drew on New Order, David Bowie and Bruce Springsteen to create Hot Fuss — one of the best-selling debut albums of the 2000s. Mr. Brightside has never left the UK charts since its release.',
+    tags:['Hot Fuss','Mr. Brightside','Las Vegas indie','Brandon Flowers'],
+    influences:['new-order','david-bowie','the-strokes','bruce-springsteen'],
+    influencedBy:['the-national','imagine-dragons','grouplove'],
+  },
+
+  'arcade-fire':{
+    name:'Arcade Fire', era:'2001–present', genre:'Indie Rock / Art Rock',
+    bio:'Win Butler, Régine Chassagne and a rotating cast of collaborators made Funeral — recorded following multiple bereavements in their families — and created one of the most critically acclaimed debut albums of the decade. The Suburbs won the Album of the Year Grammy in 2011.',
+    tags:['Funeral','The Suburbs','Grammy winner','Collective rock'],
+    influences:['talking-heads','david-bowie','neil-young','bruce-springsteen'],
+    influencedBy:['the-national','lord-huron','fleet-foxes','father-john-misty'],
+  },
+
+  'interpol':{
+    name:'Interpol', era:'1997–present', genre:'Post-Punk Revival / Indie Rock',
+    bio:'Paul Banks, Daniel Kessler, Carlos Dengler and Sam Fogarino arrived in 2002 with Turn on the Bright Lights — a record so stylistically assured and emotionally powerful that it immediately became a landmark of the NYC indie revival. Banks\'s baritone is one of rock\'s most distinctive voices.',
+    tags:['Post-punk revival','Turn on the Bright Lights','NYC indie','Paul Banks baritone'],
+    influences:['joy-division','the-cure','the-smiths','television'],
+    influencedBy:['editors','white-lies','she-wants-revenge'],
+  },
+
+  'the-national':{
+    name:'The National', era:'1999–present', genre:'Indie Rock / Art Rock',
+    bio:'Matt Berninger, Aaron Dessner, Bryce Dessner, Scott Devendorf and Bryan Devendorf make music for adults in crisis — beautiful, literate, slightly drunk. Berninger\'s baritone over the Dessner brothers\' intricate guitar arrangements creates a sound uniquely their own. Boxer is one of the great indie rock albums.',
+    tags:['Boxer','Matt Berninger','Literate indie rock','Adult rock'],
+    influences:['r-e-m','joy-division','the-smiths','leonard-cohen'],
+    influencedBy:['bon-iver','lord-huron','the-war-on-drugs'],
+  },
+
+  'lcd-soundsystem':{
+    name:'LCD Soundsystem', era:'2002–present', genre:'Dance Punk / Electronic Rock',
+    bio:'James Murphy\'s project distilled punk, disco, Krautrock and new wave into something brilliant and self-aware. Sound of Silver is one of the great records of the 2000s. All My Friends — a meditation on ageing that builds from a single piano note to a cathartic climax — is one of the decade\'s great songs.',
+    tags:['Dance punk','Sound of Silver','James Murphy','All My Friends'],
+    influences:['talking-heads','new-order','david-bowie','kraftwerk'],
+    influencedBy:['these-new-puritans','hot-chip','dfa-records'],
+  },
+
+  'rage-against-the-machine':{
+    name:'Rage Against the Machine', era:'1991–present', genre:'Alternative Metal / Funk Metal / Rap Metal',
+    bio:'Zack de la Rocha, Tom Morello, Tim Commerford and Brad Wilk fused political fury with musical innovation. Morello\'s guitar technique — using a whammy bar, toggle switch and his guitar as a turntable — created sounds nobody had heard before. Their debut album is a landmark of 90s rock.',
+    tags:['Political rock','Tom Morello','Killing in the Name','Funk metal'],
+    influences:['public-enemy','black-flag','led-zeppelin','parliament-funkadelic'],
+    influencedBy:['system-of-a-down','audioslave','prophets-of-rage','rise-against'],
+  },
+
+  'tool':{
+    name:'Tool', era:'1990–present', genre:'Progressive Metal / Alternative Metal',
+    bio:'Maynard James Keenan, Adam Jones, Danny Carey and Justin Chancellor built one of heavy music\'s most devoted fanbases through progressive complexity, unusual time signatures and one of rock\'s longest gaps between albums. Lateralus — built on Fibonacci sequence time signatures — is their masterpiece.',
+    tags:['Progressive metal','Lateralus','Danny Carey drumming','Fibonacci sequences'],
+    influences:['black-sabbath','king-crimson','pink-floyd','led-zeppelin'],
+    influencedBy:['a-perfect-circle','porcupine-tree','mastodon','deftones'],
+  },
+
+  'system-of-a-down':{
+    name:'System of a Down', era:'1994–present', genre:'Alternative Metal / Nu-Metal / Progressive Rock',
+    bio:'Serj Tankian, Daron Malakian, Shavo Odadjian and John Dolmayan brought Armenian heritage, political fury and musical unpredictability to metal. Toxicity sold seven million copies. Their songs shift tempo, mood and time signature with a recklessness that sounds chaotic but is precisely controlled.',
+    tags:['Armenian heritage','Toxicity','Political metal','Unpredictable'],
+    influences:['metallica','black-sabbath','rage-against-the-machine','frank-zappa'],
+    influencedBy:['bring-me-the-horizon','bad-omens','spiritbox'],
+  },
+
+  'nine-inch-nails':{
+    name:'Nine Inch Nails', era:'1988–present', genre:'Industrial Rock / Electronic Rock',
+    bio:'Trent Reznor is essentially Nine Inch Nails — one of rock\'s most controlling and meticulous auteurs. The Downward Spiral is a landmark of 90s industrial rock. Reznor later won an Academy Award for the Social Network score. His influence on electronic and alternative music is pervasive.',
+    tags:['Industrial rock','Trent Reznor','The Downward Spiral','Academy Award winner'],
+    influences:['david-bowie','depeche-mode','public-image-ltd','einsturzende-neubauten'],
+    influencedBy:['marilyn-manson','placebo','bring-me-the-horizon','ghostemane'],
+  },
+
+  'eric-clapton':{
+    name:'Eric Clapton', era:'1963–present', genre:'Blues Rock / Rock',
+    bio:'"Clapton is God" — the London graffiti that appeared in 1967 when he was twenty-two. Clapton brought American blues to British audiences with an authenticity and technical brilliance that made him the most celebrated guitarist of his generation. His work with Cream, Derek and the Dominos and as a solo artist spans six decades.',
+    tags:['Clapton is God','Cream','Slowhand','Blues virtuoso'],
+    influences:['robert-johnson','muddy-waters','bb-king','freddie-king'],
+    influencedBy:['led-zeppelin','jimi-hendrix','duane-allman','gary-moore'],
+  },
+
+  'fleetwood-mac':{
+    name:'Fleetwood Mac', era:'1967–present', genre:'Rock / Soft Rock / Blues Rock',
+    bio:'Mick Fleetwood, John McVie and Christine McVie — later joined by Stevie Nicks and Lindsey Buckingham — created one of rock\'s great soap operas and one of its great albums. Rumours, recorded while the band\'s relationships collapsed around them, is the seventh best-selling album of all time.',
+    tags:['Rumours','Stevie Nicks','Lindsey Buckingham','Legendary tensions'],
+    influences:['blues-tradition','the-beatles','bob-dylan','joni-mitchell'],
+    influencedBy:['haim','the-dixie-chicks','sheryl-crow','courtney-love'],
+  },
+
+  'the-doors':{
+    name:'The Doors', era:'1965–1973', genre:'Psychedelic Rock / Blues Rock',
+    bio:'Jim Morrison, Ray Manzarek, Robby Krieger and John Densmore created a sound unique in rock — keyboards instead of bass, jazz-influenced rhythms and Morrison\'s theatrical, literary vocal delivery. Light My Fire brought darkness into pop. Morrison died at 27 in Paris in 1971.',
+    tags:['Jim Morrison','Light My Fire','Psychedelic rock','27 club'],
+    influences:['jimi-hendrix','blues-tradition','french-symbolism','william-blake'],
+    influencedBy:['the-stooges','bauhaus','the-cult','echo-and-the-bunnymen'],
+  },
+
+  'cream':{
+    name:'Cream', era:'1966–1968', genre:'Blues Rock / Hard Rock / Psychedelic Rock',
+    bio:'Eric Clapton, Jack Bruce and Ginger Baker were three virtuosos who invented the power trio format and the concept of the supergroup. Their two-year run produced Disraeli Gears and Wheels of Fire — two albums that directly shaped Led Zeppelin, Black Sabbath and every hard rock band that followed.',
+    tags:['Power trio inventors','Supergroup template','Disraeli Gears','Two years of brilliance'],
+    influences:['robert-johnson','muddy-waters','blues-tradition','john-coltrane'],
+    influencedBy:['led-zeppelin','black-sabbath','rush','the-jimi-hendrix-experience'],
+  },
+
+  'the-yardbirds':{
+    name:'The Yardbirds', era:'1963–1968', genre:'Blues Rock / Psychedelic Rock',
+    bio:'The Yardbirds launched three of the greatest guitarists in rock history — Eric Clapton, Jeff Beck and Jimmy Page each played in the band. When the Yardbirds dissolved, Page recruited Robert Plant, John Bonham and John Paul Jones and formed Led Zeppelin.',
+    tags:['Three legendary guitarists','Led Zeppelin origin','Clapton Beck Page','Blues rock'],
+    influences:['muddy-waters','howlin-wolf','blues-tradition','chuck-berry'],
+    influencedBy:['led-zeppelin','aerosmith','the-rolling-stones','whitesnake'],
+  },
+
+  'judas-priest':{
+    name:'Judas Priest', era:'1969–present', genre:'Heavy Metal',
+    bio:'Rob Halford, Glenn Tipton and K.K. Downing codified heavy metal\'s visual and sonic identity — the black leather, the studs, the twin guitar attack and Halford\'s extraordinary six-octave range. Breaking the Law and Living After Midnight brought metal to the mainstream. Painkiller is the greatest metal album of the 1990s.',
+    tags:['Metal gods','Rob Halford','Painkiller','Leather and studs'],
+    influences:['black-sabbath','led-zeppelin','deep-purple','thin-lizzy'],
+    influencedBy:['metallica','iron-maiden','pantera','trivium'],
+  },
+
+  'iron-maiden':{
+    name:'Iron Maiden', era:'1975–present', genre:'Heavy Metal / New Wave of British Heavy Metal',
+    bio:'Steve Harris, Bruce Dickinson, Dave Murray, Adrian Smith and Janick Gers built a global metal empire on Steve Harris\'s galloping bass lines and Bruce Dickinson\'s operatic tenor. Eddie — their skeletal mascot — is one of rock\'s great visual icons. The Number of the Beast launched their commercial peak.',
+    tags:['NWOBHM','Steve Harris gallop','Bruce Dickinson','Eddie'],
+    influences:['led-zeppelin','judas-priest','deep-purple','thin-lizzy'],
+    influencedBy:['metallica','megadeth','opeth','trivium'],
+  },
+
+  'deep-purple':{
+    name:'Deep Purple', era:'1968–present', genre:'Hard Rock / Heavy Metal',
+    bio:'Ritchie Blackmore, Ian Gillan, Roger Glover, Jon Lord and Ian Paice created Smoke on the Water and Highway Star — two of rock\'s most recognisable tracks. Machine Head is one of the great hard rock albums. Their influence on every hard rock and metal band that followed is incalculable.',
+    tags:['Smoke on the Water','Machine Head','Hard rock founders','Jon Lord organ'],
+    influences:['led-zeppelin','the-beatles','classical-music','blues-tradition'],
+    influencedBy:['rainbow','whitesnake','black-sabbath','dio'],
+  },
+
+  'thin-lizzy':{
+    name:'Thin Lizzy', era:'1969–1983', genre:'Hard Rock / Blues Rock',
+    bio:'Phil Lynott, Scott Gorham, Brian Robertson and Brian Downey created the twin lead guitar format that defined hard rock for a generation. The Boys Are Back in Town is one of the great rock singles. Lynott — Irish, Black and impossibly cool — was a genuinely original rock star.',
+    tags:['Twin lead guitar','Phil Lynott','The Boys Are Back in Town','Irish hard rock'],
+    influences:['led-zeppelin','the-rolling-stones','jimi-hendrix','blues-tradition'],
+    influencedBy:['metallica','iron-maiden','guns-n-roses','the-darkness'],
+  },
+
+  'van-halen':{
+    name:'Van Halen', era:'1974–2020', genre:'Hard Rock / Heavy Metal',
+    bio:'Eddie Van Halen was simply the greatest rock guitarist of his generation — his two-handed tapping technique, demonstrated on Eruption, made guitarists across the world question whether to quit. With David Lee Roth\'s showmanship, Van Halen became the definitive American rock band of the 1980s.',
+    tags:['Eddie Van Halen','Eruption','Two-hand tapping','Roth era'],
+    influences:['eric-clapton','cream','the-rolling-stones','blues-tradition'],
+    influencedBy:['guns-n-roses','extreme','mr-big','joe-satriani'],
+  },
+
+  'the-byrds':{
+    name:'The Byrds', era:'1964–1973', genre:'Folk Rock / Psychedelic Rock / Country Rock',
+    bio:'Roger McGuinn, David Crosby, Chris Hillman and Gene Clark invented folk rock with their jangly twelve-string Rickenbacker guitar sound. Mr. Tambourine Man showed Dylan\'s folk songs could be played with a rock band. They also invented country rock on Sweetheart of the Rodeo.',
+    tags:['Folk rock inventors','12-string Rickenbacker','Mr. Tambourine Man','Country rock'],
+    influences:['bob-dylan','the-beatles','folk-tradition'],
+    influencedBy:['r-e-m','the-smiths','tom-petty','flying-burrito-brothers'],
+  },
+
+  'television':{
+    name:'Television', era:'1973–present', genre:'Post-Punk / Art Rock / Punk',
+    bio:'Tom Verlaine and Richard Lloyd created a guitar interplay unlike anything in rock — intricate, melodic and completely original. Marquee Moon is one of the great guitar albums, a 77-minute record of crystalline post-punk that influenced virtually every indie band of the next four decades.',
+    tags:['Marquee Moon','Tom Verlaine','CBGB pioneer','Guitar interplay'],
+    influences:['velvet-underground','blues-tradition','modern-jazz'],
+    influencedBy:['r-e-m','the-strokes','interpol','television-personalities'],
+  },
+
+  'iggy-pop':{
+    name:'Iggy Pop', era:'1967–present', genre:'Proto-Punk / Punk / Rock',
+    bio:'James Newell Osterberg Jr — Iggy Pop — invented punk confrontation, invented stage diving, invented the idea of the rock singer as physical spectacle. His collaboration with David Bowie in Berlin produced The Idiot and Lust for Life — two of the most important records of the 1970s.',
+    tags:['Proto-punk','Lust for Life','Bowie collaborator','Raw power'],
+    influences:['the-rolling-stones','the-doors','james-brown','blues-tradition'],
+    influencedBy:['david-bowie','the-clash','nirvana','the-strokes','lcd-soundsystem'],
+  },
+
 };
 
 // Quick-start artists shown as buttons
-const QUICK_STARTS = ['nirvana','led-zeppelin','queen','metallica','foo-fighters','arctic-monkeys','radiohead','the-rolling-stones'];
+const QUICK_STARTS = ['nirvana','led-zeppelin','queen','metallica','the-beatles','arctic-monkeys','radiohead','the-smiths','david-bowie','the-white-stripes','joy-division','the-clash'];
 
 // Navigation history
 let history = [];
