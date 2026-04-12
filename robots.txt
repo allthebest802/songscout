@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://songscout.uk/sitemap.xml
