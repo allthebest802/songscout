@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discovery Engine — SongScout</title>
+<meta name="description" content="Pick an artist you already love and trace the musical family tree of influences that shaped them. Follow any branch as deep as you want — from Foo Fighters back to Led Zeppelin back to Robert Johnson.">
+<meta name="keywords" content="music influence tree, who influenced Nirvana, Led Zeppelin influences, music family tree, discover classic rock, artist influences explained">
+<link rel="canonical" href="https://songscout.netlify.app/discovery-engine/">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0A0A0A;--dark:#111318;--dark2:#1A1D24;--dark3:#242830;
+  --panel:#1E2128;--panel2:#252930;
+  --gold:#F0A830;--gold-d:#C88020;--gold-l:#F8D080;
+  --red:#E83A2A;
+  --white:#F8F6F0;--off:#C8C0B0;--muted:#787060;
+  --border:#2E3240;--border2:#3A3E50;
+  --radius:10px;--radius-lg:16px;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--white);min-height:100vh;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:'DM Sans',sans-serif;border:none;background:none}
+
+/* HEADER */
+.site-header{padding:0 24px;border-bottom:1px solid var(--border);background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:16px 0}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{width:42px;height:42px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--black)}
+.logo-text{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--white);letter-spacing:2px;line-height:1}
+.logo-sub{font-size:0.65rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:1px}
+.nav{margin-left:auto;display:flex;gap:6px}
+.nav-link{padding:8px 14px;border-radius:var(--radius);font-size:0.82rem;font-weight:600;color:var(--muted);transition:all 0.15s}
+.nav-link:hover{color:var(--white);background:var(--dark3)}
+.nav-link.active{color:var(--gold);background:rgba(240,168,48,0.1)}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;padding:56px 24px 44px;background:var(--dark);border-bottom:1px solid var(--border)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 80% 50%,rgba(240,168,48,0.07),transparent 65%),radial-gradient(ellipse 400px 300px at 0% 80%,rgba(232,58,42,0.05),transparent 60%);pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.eyebrow{font-size:0.72rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:24px;height:2px;background:var(--gold);display:block}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,8vw,5rem);line-height:0.92;letter-spacing:3px;color:var(--white);margin-bottom:16px}
+.hero-title span{color:var(--gold)}
+.hero-desc{font-size:1rem;color:var(--off);line-height:1.7;max-width:580px;font-weight:300}
+
+/* SEARCH */
+.search-section{max-width:1100px;margin:0 auto;padding:28px 24px 0}
+.search-label{font-size:0.68rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.search-row{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.search-input{
+  flex:1;min-width:200px;
+  border:1.5px solid var(--border2);border-radius:var(--radius-lg);
+  padding:12px 18px;font-family:'DM Sans',sans-serif;font-size:0.95rem;
+  color:var(--white);background:var(--panel);outline:none;
+  transition:border-color 0.15s;
+}
+.search-input:focus{border-color:var(--gold-d)}
+.search-input::placeholder{color:var(--muted)}
+.quick-picks{display:flex;gap:8px;flex-wrap:wrap}
+.quick-btn{
+  padding:8px 14px;border-radius:100px;
+  font-size:0.78rem;font-weight:600;
+  border:1.5px solid var(--border2);color:var(--muted);background:var(--panel);
+  transition:all 0.15s;
+}
+.quick-btn:hover{border-color:var(--gold-d);color:var(--gold-l);background:rgba(240,168,48,0.08)}
+
+/* MAIN */
+.main{max-width:1100px;margin:0 auto;padding:24px 24px 80px}
+
+/* BREADCRUMB */
+.breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.bc-item{
+  padding:6px 12px;border-radius:100px;font-size:0.78rem;font-weight:600;
+  background:var(--panel);border:1px solid var(--border2);color:var(--off);
+  cursor:pointer;transition:all 0.15s;
+}
+.bc-item:hover{border-color:var(--gold-d);color:var(--gold-l)}
+.bc-item.current{background:var(--gold);border-color:var(--gold);color:var(--black);cursor:default}
+.bc-sep{color:var(--border2);font-size:0.8rem}
+
+/* ARTIST CARD — CENTRAL */
+.artist-spotlight{
+  background:var(--panel);border:1.5px solid var(--gold-d);border-radius:var(--radius-lg);
+  padding:24px;margin-bottom:28px;
+  display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;
+}
+.spotlight-era{
+  background:var(--gold);color:var(--black);
+  font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:2px;
+  padding:8px 14px;border-radius:var(--radius);text-align:center;white-space:nowrap;
+}
+.spotlight-name{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;letter-spacing:2px;color:var(--gold);line-height:1;margin-bottom:6px}
+.spotlight-genre{font-size:0.78rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.spotlight-bio{font-size:0.88rem;color:var(--off);line-height:1.7;font-weight:300;margin-bottom:12px;max-width:640px}
+.spotlight-tags{display:flex;gap:6px;flex-wrap:wrap}
+.s-tag{font-size:0.65rem;font-weight:600;padding:3px 9px;border-radius:100px;text-transform:uppercase;letter-spacing:0.5px;background:var(--dark3);border:1px solid var(--border2);color:var(--muted)}
+.s-tag.essential{background:rgba(240,168,48,0.1);border-color:rgba(240,168,48,0.3);color:var(--gold-l)}
+
+/* TREE SECTIONS */
+.tree-section{margin-bottom:32px}
+.tree-section-header{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border);
+}
+.tree-direction{
+  font-family:'Bebas Neue',sans-serif;font-size:0.75rem;letter-spacing:2px;
+  padding:5px 12px;border-radius:100px;text-transform:uppercase;
+}
+.dir-up{background:rgba(80,200,120,0.12);color:#80D8A0;border:1px solid rgba(80,200,120,0.3)}
+.dir-down{background:rgba(240,168,48,0.12);color:var(--gold-l);border:1px solid rgba(240,168,48,0.3)}
+.tree-section-title{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:1.5px;color:var(--white)}
+.tree-section-sub{font-size:0.78rem;color:var(--muted);margin-left:auto}
+
+.influence-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+
+/* INFLUENCE CARD */
+.influence-card{
+  background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:16px;cursor:pointer;transition:all 0.2s;
+  display:flex;flex-direction:column;gap:8px;
+}
+.influence-card:hover{border-color:var(--gold-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.4)}
+.ic-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.ic-name{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:1.5px;color:var(--white);line-height:1}
+.ic-era{font-size:0.65rem;font-weight:600;padding:3px 8px;border-radius:100px;letter-spacing:0.5px;background:var(--dark3);border:1px solid var(--border2);color:var(--muted);white-space:nowrap}
+.ic-genre{font-size:0.72rem;color:var(--gold);font-weight:600;letter-spacing:0.5px}
+.ic-link{font-size:0.72rem;color:var(--muted);margin-top:2px}
+.ic-desc{font-size:0.8rem;color:var(--muted);line-height:1.6;font-weight:300}
+.ic-explore{
+  display:inline-flex;align-items:center;gap:5px;margin-top:4px;
+  font-size:0.72rem;font-weight:600;color:var(--gold);
+  opacity:0;transition:opacity 0.15s;
+}
+.influence-card:hover .ic-explore{opacity:1}
+
+/* EMPTY / PROMPT */
+.start-prompt{
+  text-align:center;padding:64px 20px;
+  background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-lg);
+}
+.sp-icon{font-size:3.5rem;display:block;margin-bottom:16px;opacity:0.4}
+.sp-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:2px;color:var(--off);margin-bottom:8px}
+.sp-desc{font-size:0.88rem;color:var(--muted);line-height:1.6;max-width:400px;margin:0 auto}
+
+/* FOOTER */
+.site-footer{background:var(--dark);border-top:1px solid var(--border);padding:20px 24px;text-align:center;font-size:0.78rem;color:var(--muted)}
+
+@media(max-width:640px){
+  .artist-spotlight{grid-template-columns:1fr}
+  .nav{display:none}
+  .influence-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="/">
+      <div class="logo-mark">SS</div>
+      <div>
+        <div class="logo-text">SongScout</div>
+        <div class="logo-sub">Music Discovery</div>
+      </div>
+    </a>
+    <nav class="nav">
+      <a class="nav-link" href="/era-explorer/">Era Explorer</a>
+      <a class="nav-link active" href="/discovery-engine/">Discovery Engine</a>
+      <a class="nav-link" href="/reaction-kit/">Reaction Kit</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">SongScout</div>
+    <h1 class="hero-title">Discovery<br><span>Engine</span></h1>
+    <p class="hero-desc">Pick an artist you already love. Follow the musical family tree of influences that shaped them — back through the decades to the roots of their sound. Every node is a doorway into more music.</p>
+  </div>
+</section>
+
+<div class="search-section">
+  <div class="search-label">Search for an artist</div>
+  <div class="search-row">
+    <input type="text" class="search-input" id="searchInput" placeholder="e.g. Nirvana, Foo Fighters, Arctic Monkeys…" autocomplete="off">
+  </div>
+  <div class="search-label" style="margin-bottom:8px">Or start here</div>
+  <div class="quick-picks" id="quickPicks"></div>
+</div>
+
+<main class="main">
+  <div id="breadcrumb" class="breadcrumb" style="display:none"></div>
+  <div id="content">
+    <div class="start-prompt">
+      <span class="sp-icon">🌳</span>
+      <div class="sp-title">Choose your starting point</div>
+      <p class="sp-desc">Search for any artist above, or pick one of the quick-start options to begin exploring the musical family tree.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <a href="/" style="color:var(--muted)">Home</a> &nbsp;·&nbsp;
+  <a href="/era-explorer/" style="color:var(--muted)">Era Explorer</a> &nbsp;·&nbsp;
+  <a href="/reaction-kit/" style="color:var(--muted)">Reaction Kit</a>
+  <br><br>SongScout — Free music discovery — No login, no ads, no nonsense
+</footer>
+
+<script>
+// ── ARTIST DATABASE ───────────────────────────────────────────────────────────
+// Each artist: id, name, era, genre, bio, tags[], influences[], influencedBy[]
+// influences = artists who influenced them (roots)
+// influencedBy = artists they went on to influence (legacy)
+
+const ARTISTS = {
+
+  'nirvana':{
+    name:'Nirvana', era:'1987–1994', genre:'Grunge / Alternative Rock',
+    bio:'Kurt Cobain, Krist Novoselic and Dave Grohl changed rock music overnight with Nevermind in 1991. The quiet-loud dynamic, the confessional lyrics and the raw production became the template for a decade. Their influence continues to reverberate through every guitar band that followed.',
+    tags:['Essential','Gateway artist','Grunge founders','Seattle scene'],
+    influences:['pixies','the-beatles','neil-young','black-flag','leadbelly','meat-puppets','sonic-youth'],
+    influencedBy:['foo-fighters','arctic-monkeys','green-day','radiohead','muse','the-strokes','paramore'],
+  },
+
+  'led-zeppelin':{
+    name:'Led Zeppelin', era:'1968–1980', genre:'Hard Rock / Blues Rock',
+    bio:'Jimmy Page, Robert Plant, John Paul Jones and John Bonham created a body of work that still sounds unlike anything else. They drew on blues, folk, Eastern music and pure rock power to build something that shaped every hard rock and metal band that followed.',
+    tags:['Essential','Most influential rock band','Blues-rock','70s rock'],
+    influences:['robert-johnson','muddy-waters','buddy-guy','the-yardbirds','folk-tradition','john-lee-hooker'],
+    influencedBy:['aerosmith','heart','whitesnake','the-black-keys','jack-white','wolfmother','rival-sons'],
+  },
+
+  'queen':{
+    name:'Queen', era:'1970–1991', genre:'Rock / Glam Rock / Arena Rock',
+    bio:'Freddie Mercury, Brian May, Roger Taylor and John Deacon were each individually exceptional. Together they made music that defied genre — operatic rock, glam, pop, metal, disco — and did all of it brilliantly. Their Live Aid performance in 1985 is the greatest live rock moment ever filmed.',
+    tags:['Essential','Arena rock','Operatic rock','Freddie Mercury'],
+    influences:['david-bowie','jimi-hendrix','the-beatles','opera-tradition','led-zeppelin'],
+    influencedBy:['muse','adam-lambert','panic-at-the-disco','keane','arcade-fire'],
+  },
+
+  'the-beatles':{
+    name:'The Beatles', era:'1960–1970', genre:'Rock / Pop / Psychedelic',
+    bio:'John Lennon, Paul McCartney, George Harrison and Ringo Starr are the most influential band in history — full stop. They invented modern pop song structure, pushed studio recording into art, and moved through more musical phases in ten years than most bands explore in a lifetime.',
+    tags:['Essential','Most important band ever','British Invasion','Studio innovation'],
+    influences:['chuck-berry','little-richard','elvis-presley','buddy-holly','carl-perkins','skiffle-tradition'],
+    influencedBy:['nirvana','oasis','the-strokes','radiohead','blur','queen','paul-mccartney'],
+  },
+
+  'foo-fighters':{
+    name:'Foo Fighters', era:'1994–present', genre:'Alternative Rock / Post-Grunge',
+    bio:'Dave Grohl formed Foo Fighters the year Nirvana ended — as a solo project he played every instrument on the debut album. The band that emerged became one of the last great mainstream rock acts, carrying the spirit of 90s alternative into the 2000s and beyond.',
+    tags:['Gateway artist','Post-grunge','Dave Grohl','90s–2000s rock'],
+    influences:['nirvana','pixies','the-beatles','cheap-trick','husker-du'],
+    influencedBy:['biffy-clyro','the-killers','muse','nickelback','paramore'],
+  },
+
+  'metallica':{
+    name:'Metallica', era:'1981–present', genre:'Heavy Metal / Thrash Metal',
+    bio:'James Hetfield, Lars Ulrich, Kirk Hammett and Cliff Burton (later Jason Newsted, then Robert Trujillo) built thrash metal from the ground up. Master of Puppets is the greatest heavy metal album ever made. The Black Album crossed over to mainstream audiences without sacrificing any of what made them great.',
+    tags:['Essential','Thrash metal','Heavy metal pioneers','Master of Puppets'],
+    influences:['black-sabbath','judas-priest','diamond-head','motorhead','ac-dc'],
+    influencedBy:['slayer','megadeth','pantera','tool','system-of-a-down','lamb-of-god'],
+  },
+
+  'jimi-hendrix':{
+    name:'Jimi Hendrix', era:'1963–1970', genre:'Psychedelic Rock / Blues Rock',
+    bio:'The greatest rock guitarist who ever lived — by the near-universal consensus of every guitarist who came after him. Hendrix redefined what the electric guitar could do. He died at 27, leaving a body of work that still sounds ahead of its time.',
+    tags:['Essential','Greatest guitarist','Blues-rock','Psychedelic'],
+    influences:['robert-johnson','muddy-waters','bb-king','buddy-guy','little-richard'],
+    influencedBy:['stevie-ray-vaughan','slash','eddie-van-halen','prince','lenny-kravitz','gary-clark-jr'],
+  },
+
+  'black-sabbath':{
+    name:'Black Sabbath', era:'1968–2017', genre:'Heavy Metal / Hard Rock',
+    bio:'Tony Iommi lost the tips of two fingers in a factory accident and invented a new guitar tuning to compensate. That accident created heavy metal. Ozzy Osbourne, Geezer Butler and Bill Ward completed the lineup that would change rock music forever. Every metal band that followed owes them a debt.',
+    tags:['Essential','Metal founders','Tony Iommi','Ozzy Osbourne'],
+    influences:['led-zeppelin','cream','blue-cheer','the-beatles','blues-tradition'],
+    influencedBy:['metallica','judas-priest','dio','ozzy-osbourne','sleep','electric-wizard'],
+  },
+
+  'pink-floyd':{
+    name:'Pink Floyd', era:'1965–1995', genre:'Progressive Rock / Psychedelic Rock',
+    bio:'Roger Waters, David Gilmour, Nick Mason and Richard Wright created album-length musical experiences that had no precedent and no real successors. The Wall, Dark Side of the Moon and Wish You Were Here are three of the greatest albums ever made.',
+    tags:['Essential','Progressive rock','Albums over singles','Gilmour guitar'],
+    influences:['syd-barrett','the-beatles','psychedelic-tradition','classical-music'],
+    influencedBy:['radiohead','muse','porcupine-tree','the-mars-volta','tool'],
+  },
+
+  'radiohead':{
+    name:'Radiohead', era:'1985–present', genre:'Alternative Rock / Art Rock',
+    bio:'Thom Yorke, Jonny Greenwood, Ed O\'Brien, Colin Greenwood and Philip Selway have spent thirty years making music that refuses to stay in one place. From Creep to OK Computer to Kid A, each album has been a reinvention. Jonny Greenwood is one of the most gifted musicians in rock.',
+    tags:['Essential','Art rock','Critical darlings','OK Computer'],
+    influences:['pink-floyd','the-beatles','r-e-m','talking-heads','bjork'],
+    influencedBy:['bon-iver','the-national','alt-j','james-blake','sigur-ros'],
+  },
+
+  'david-bowie':{
+    name:'David Bowie', era:'1964–2016', genre:'Glam Rock / Art Rock / New Wave',
+    bio:'David Bowie reinvented himself more times than any other artist in rock history — Ziggy Stardust, Aladdin Sane, the Thin White Duke, the Berlin period — and each reinvention was genuinely different and genuinely great. He influenced fashion, visual art and music simultaneously.',
+    tags:['Essential','Reinvention','Berlin Trilogy','Glam rock'],
+    influences:['little-richard','iggy-pop','velvet-underground','anthony-newley','mime-tradition'],
+    influencedBy:['queen','suede','placebo','the-killers','lady-gaga','arctic-monkeys'],
+  },
+
+  'the-rolling-stones':{
+    name:'The Rolling Stones', era:'1962–present', genre:'Rock / Blues Rock / Hard Rock',
+    bio:'Mick Jagger, Keith Richards, Charlie Watts, Bill Wyman and Brian Jones brought American blues to British audiences and created something new in the process. Richards\' open-G guitar tuning became the blueprint for rhythm guitar. They are the world\'s greatest rock and roll band.',
+    tags:['Essential','Blues-rock','British Invasion','Rolling Stones'],
+    influences:['robert-johnson','muddy-waters','chuck-berry','howlin-wolf','little-richard'],
+    influencedBy:['the-faces','aerosmith','guns-n-roses','black-crowes','the-black-keys'],
+  },
+
+  'arctic-monkeys':{
+    name:'Arctic Monkeys', era:'2002–present', genre:'Indie Rock / Alternative Rock',
+    bio:'Alex Turner, Jamie Cook, Nick O\'Malley and Matt Helders emerged from Sheffield with a debut album built on demo CDs given away at gigs — before streaming existed. Whatever People Say I Am, That\'s What I\'m Not is the fastest-selling debut album in UK chart history.',
+    tags:['Gateway artist','British indie','Alex Turner','Fastest-selling UK debut'],
+    influences:['the-beatles','nirvana','the-strokes','david-bowie','the-rolling-stones'],
+    influencedBy:['two-door-cinema-club','the-1975','the-wombats','miles-kane'],
+  },
+
+  'oasis':{
+    name:'Oasis', era:'1991–2009', genre:'Britpop / Rock',
+    bio:'Liam and Noel Gallagher led the definitive Britpop band — brash, melodic, confident to the point of arrogance. Definitely Maybe is one of the greatest debut albums in rock history. Their rivalry with Blur defined British music in the mid-90s.',
+    tags:['Britpop','Liam & Noel Gallagher','90s British rock','Landmark debut'],
+    influences:['the-beatles','the-rolling-stones','the-who','t-rex','the-smiths'],
+    influencedBy:['the-libertines','arctic-monkeys','kasabian','miles-kane'],
+  },
+
+  'guns-n-roses':{
+    name:'Guns N\' Roses', era:'1985–present', genre:'Hard Rock / Heavy Metal',
+    bio:'Axl Rose, Slash, Duff McKagan, Izzy Stradlin and Steven Adler brought real danger back to rock music in 1987. Appetite for Destruction is the best-selling debut album of all time. Use Your Illusion expanded the vision to operatic ambition.',
+    tags:['Essential','Hard rock','Appetite for Destruction','Slash'],
+    influences:['aerosmith','the-rolling-stones','led-zeppelin','ac-dc','rose-tattoo'],
+    influencedBy:['velvet-revolver','slash-solo','buckcherry','the-darkness'],
+  },
+
+  'aerosmith':{
+    name:'Aerosmith', era:'1970–present', genre:'Hard Rock / Blues Rock',
+    bio:'Steven Tyler and Joe Perry created the American Rolling Stones — blues-rooted hard rock played with swagger and genuine musical ability. They burned out in the 70s, reinvented themselves in the 80s and produced the second great chapter of their career.',
+    tags:['American hard rock','Blues-rock','Tyler & Perry','Two careers'],
+    influences:['the-rolling-stones','led-zeppelin','yardbirds','blues-tradition'],
+    influencedBy:['guns-n-roses','bon-jovi','the-darkness'],
+  },
+
+  'the-who':{
+    name:'The Who', era:'1964–present', genre:'Rock / Hard Rock / Mod',
+    bio:'Roger Daltrey, Pete Townshend, John Entwistle and Keith Moon were the loudest, most violent and most theatrical rock band of the 1960s. Townshend invented power chords. Moon invented a style of drumming that influenced everyone from Bonham to Grohl. Tommy was rock\'s first concept album.',
+    tags:['Essential','Power chords invented','Keith Moon','Rock opera'],
+    influences:['the-beatles','chuck-berry','r-b-tradition','james-brown'],
+    influencedBy:['the-clash','the-jam','green-day','pearl-jam','foo-fighters'],
+  },
+
+  'ac-dc':{
+    name:'AC/DC', era:'1973–present', genre:'Hard Rock / Blues Rock',
+    bio:'Malcolm and Angus Young, with a succession of vocalists (Bon Scott, then Brian Johnson), built one of the great rock catalogues from the simplest possible ingredients. Three chords, a riff, Malcolm\'s rhythm guitar, and Angus\'s lead. Back in Black is the second best-selling album of all time.',
+    tags:['Essential','Simple but perfect','Malcolm Young','Back in Black'],
+    influences:['chuck-berry','little-richard','the-rolling-stones','free','status-quo'],
+    influencedBy:['metallica','guns-n-roses','the-darkness','airbourne'],
+  },
+
+  'pearl-jam':{
+    name:'Pearl Jam', era:'1990–present', genre:'Grunge / Alternative Rock',
+    bio:'Eddie Vedder, Stone Gossard, Jeff Ament, Mike McCready and Dave Krusen (later Matt Cameron) emerged from Seattle alongside Nirvana but pursued a more classic rock-influenced direction. Ten is one of the most emotionally powerful debut albums in rock history.',
+    tags:['Grunge','Seattle scene','Eddie Vedder','Ten'],
+    influences:['neil-young','the-who','the-doors','vedder-solo-influence'],
+    influencedBy:['temple-of-the-dog','stone-temple-pilots','live'],
+  },
+
+  'soundgarden':{
+    name:'Soundgarden', era:'1984–1997', genre:'Grunge / Alternative Metal',
+    bio:'Chris Cornell, Kim Thayil, Ben Shepherd and Matt Cameron were the most musically sophisticated of the grunge bands. Cornell\'s four-octave voice and Thayil\'s unusual tunings created something heavier and stranger than most of their peers.',
+    tags:['Grunge','Chris Cornell','Superunknown','Musically adventurous'],
+    influences:['led-zeppelin','black-sabbath','the-beatles','bad-brains'],
+    influencedBy:['audioslave','chris-cornell-solo','alice-in-chains'],
+  },
+
+  'the-clash':{
+    name:'The Clash', era:'1976–1986', genre:'Punk / New Wave / Reggae Rock',
+    bio:'Joe Strummer, Mick Jones, Paul Simonon and Topper Headon were the only punk band that mattered as a political and musical force. They absorbed reggae, ska, rockabilly and hip-hop into their punk and made something that still sounds vital.',
+    tags:['Punk','Political','London Calling','The only band that mattered'],
+    influences:['sex-pistols','reggae-tradition','eddie-cochran','mick-jones-kinks'],
+    influencedBy:['green-day','rancid','the-gaslight-anthem','joe-strummer-solo'],
+  },
+
+  'the-strokes':{
+    name:'The Strokes', era:'2001–present', genre:'Indie Rock / Post-Punk Revival',
+    bio:'Julian Casablancas, Nick Valensi, Albert Hammond Jr, Nikolai Fraiture and Fabrizio Moretti arrived in 2001 with Is This It and announced the revival of guitar music. Their sound — compressed, fuzzy guitars, Casablancas\'s laconic vocal — became the most imitated in indie rock.',
+    tags:['Indie rock revival','Is This It','New York indie','Influential debut'],
+    influences:['television','velvet-underground','the-stooges','ramones'],
+    influencedBy:['arctic-monkeys','the-libertines','bloc-party','foals'],
+  },
+
+  'chuck-berry':{
+    name:'Chuck Berry', era:'1955–2017', genre:'Rock and Roll / Blues',
+    bio:'Chuck Berry invented rock guitar. Every riff Keith Richards, Jimmy Page, Angus Young and every other rock guitarist ever played has Berry\'s DNA in it. Johnny B. Goode is the DNA of rock music in three minutes.',
+    tags:['The original','Rock and roll founder','Guitar pioneer','Johnny B. Goode'],
+    influences:['t-bone-walker','muddy-waters','blues-tradition','country-tradition'],
+    influencedBy:['the-beatles','the-rolling-stones','the-beach-boys','led-zeppelin','ac-dc'],
+  },
+
+  'robert-johnson':{
+    name:'Robert Johnson', era:'1936–1938', genre:'Delta Blues',
+    bio:'Robert Johnson recorded 29 songs in two sessions in 1936 and 1937. He died at 27. Those recordings are the foundation of blues, rock, and virtually every genre that descended from them. The myth that he sold his soul to the devil at a crossroads grew from the otherworldly quality of his playing.',
+    tags:['The foundation','Delta blues','29 songs','27 club'],
+    influences:['son-house','charlie-patton','blues-tradition'],
+    influencedBy:['muddy-waters','led-zeppelin','the-rolling-stones','jimi-hendrix','eric-clapton'],
+  },
+
+  'muddy-waters':{
+    name:'Muddy Waters', era:'1941–1983', genre:'Chicago Blues / Electric Blues',
+    bio:'McKinley Morganfield — Muddy Waters — brought the Delta blues north to Chicago and plugged it in. The amplified blues he created directly inspired British bands like the Stones, Zeppelin and Clapton, who took it back to America as rock music.',
+    tags:['Chicago blues','Electric blues pioneer','Rolling Stones influence'],
+    influences:['robert-johnson','son-house','delta-blues-tradition'],
+    influencedBy:['the-rolling-stones','led-zeppelin','jimi-hendrix','eric-clapton','the-yardbirds'],
+  },
+
+  'neil-young':{
+    name:'Neil Young', era:'1966–present', genre:'Folk Rock / Grunge (proto)',
+    bio:'Neil Young has been called "the godfather of grunge" — Kurt Cobain quoted him in his suicide note. His guitar style — loose, feedback-drenched, emotionally raw — was a direct influence on the Seattle scene. He has also made some of the most beautiful acoustic music in the rock canon.',
+    tags:['Godfather of grunge','Harvest','Old Man','Kurt Cobain influence'],
+    influences:['bob-dylan','folk-tradition','bluegrass-tradition'],
+    influencedBy:['nirvana','pearl-jam','dinosaur-jr','crazy-horse'],
+  },
+
+  'pixies':{
+    name:'Pixies', era:'1986–present', genre:'Alternative Rock / Indie Rock',
+    bio:'Black Francis, Kim Deal, Joey Santiago and David Lovering pioneered the quiet-loud dynamic that Nirvana acknowledged as the direct inspiration for Smells Like Teen Spirit. Their influence on 90s rock is almost impossible to overstate.',
+    tags:['Quiet-loud pioneers','Nirvana influence','Alternative rock','Kim Deal'],
+    influences:['husker-du','the-beatles','surf-music','60s-pop'],
+    influencedBy:['nirvana','radiohead','weezer','the-breeders'],
+  },
+
+  'velvet-underground':{
+    name:'The Velvet Underground', era:'1964–1973', genre:'Art Rock / Proto-Punk',
+    bio:'Lou Reed, John Cale, Sterling Morrison and Moe Tucker — produced by Andy Warhol — made music so far ahead of its time that almost nobody bought it. Brian Eno\'s famous quote: "The first Velvet Underground album only sold 10,000 copies, but everyone who bought one started a band."',
+    tags:['Ahead of their time','Brian Eno quote','Andy Warhol','Proto-punk'],
+    influences:['la-monte-young','avant-garde-tradition','folk-tradition','amphetamine'],
+    influencedBy:['david-bowie','the-strokes','television','sonic-youth','r-e-m'],
+  },
+
+  'r-e-m':{
+    name:'R.E.M.', era:'1980–2011', genre:'Alternative Rock / Post-Punk',
+    bio:'Michael Stipe, Peter Buck, Mike Mills and Bill Berry created the template for indie rock — critically revered, commercially successful, artistically honest throughout a 30-year career. Losing My Religion is still one of the most played songs on global radio.',
+    tags:['Indie rock template','Michael Stipe','Losing My Religion','Athens Georgia'],
+    influences:['the-byrds','patti-smith','television','velvet-underground'],
+    influencedBy:['radiohead','the-national','wilco','interpol'],
+  },
+
+};
+
+// Quick-start artists shown as buttons
+const QUICK_STARTS = ['nirvana','led-zeppelin','queen','metallica','foo-fighters','arctic-monkeys','radiohead','the-rolling-stones'];
+
+// Navigation history
+let history = [];
+
+function getArtist(id) {
+  return ARTISTS[id] || null;
+}
+
+function init() {
+  // Quick picks
+  const qp = document.getElementById('quickPicks');
+  QUICK_STARTS.forEach(id => {
+    const a = getArtist(id);
+    if (!a) return;
+    const btn = document.createElement('button');
+    btn.className = 'quick-btn';
+    btn.textContent = a.name;
+    btn.addEventListener('click', () => navigate(id));
+    qp.appendChild(btn);
+  });
+
+  // Search
+  const input = document.getElementById('searchInput');
+  let debounce;
+  input.addEventListener('input', () => {
+    clearTimeout(debounce);
+    debounce = setTimeout(() => {
+      const q = input.value.trim().toLowerCase();
+      if (q.length < 2) return;
+      const match = Object.entries(ARTISTS).find(([id, a]) =>
+        a.name.toLowerCase().includes(q) || id.includes(q)
+      );
+      if (match) {
+        navigate(match[0]);
+        input.value = '';
+      }
+    }, 400);
+  });
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      const q = input.value.trim().toLowerCase();
+      const match = Object.entries(ARTISTS).find(([id, a]) =>
+        a.name.toLowerCase().includes(q) || id.includes(q)
+      );
+      if (match) {
+        navigate(match[0]);
+        input.value = '';
+      }
+    }
+  });
+}
+
+function navigate(id) {
+  const artist = getArtist(id);
+  if (!artist) return;
+
+  // Add to history if not already current
+  if (history[history.length - 1] !== id) {
+    history.push(id);
+  }
+
+  renderArtist(id);
+  document.getElementById('content').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function renderBreadcrumb() {
+  const bc = document.getElementById('breadcrumb');
+  if (history.length <= 1) {
+    bc.style.display = 'none';
+    return;
+  }
+  bc.style.display = 'flex';
+  bc.innerHTML = '';
+  history.forEach((id, i) => {
+    const a = getArtist(id);
+    if (!a) return;
+    if (i > 0) {
+      const sep = document.createElement('span');
+      sep.className = 'bc-sep';
+      sep.textContent = '→';
+      bc.appendChild(sep);
+    }
+    const item = document.createElement('button');
+    item.className = 'bc-item' + (i === history.length - 1 ? ' current' : '');
+    item.textContent = a.name;
+    if (i < history.length - 1) {
+      item.addEventListener('click', () => {
+        history = history.slice(0, i + 1);
+        renderArtist(id);
+      });
+    }
+    bc.appendChild(item);
+  });
+}
+
+function renderArtist(id) {
+  const artist = getArtist(id);
+  if (!artist) return;
+
+  renderBreadcrumb();
+
+  const content = document.getElementById('content');
+
+  // Build influences section
+  const influenceCards = artist.influences
+    .map(inf => {
+      const a = getArtist(inf);
+      const name = a ? a.name : inf.split('-').map(w => w.charAt(0).toUpperCase()+w.slice(1)).join(' ');
+      const era = a ? a.era : '';
+      const genre = a ? a.genre : '';
+      const clickable = !!a;
+      return `<div class="influence-card${clickable ? '' : ' no-data'}" ${clickable ? `onclick="navigate('${inf}')"` : ''} style="opacity:${clickable ? 1 : 0.6}">
+        <div class="ic-top">
+          <div class="ic-name">${name}</div>
+          ${era ? `<span class="ic-era">${era.split('–')[0]}s</span>` : ''}
+        </div>
+        ${genre ? `<div class="ic-genre">${genre}</div>` : ''}
+        ${a ? `<div class="ic-desc">${a.bio.split('.')[0]}.</div>` : '<div class="ic-desc">Explore this artist to learn more about their music and influences.</div>'}
+        ${clickable ? '<div class="ic-explore">Explore their tree →</div>' : ''}
+      </div>`;
+    }).join('');
+
+  // Build influenced-by section
+  const influencedCards = artist.influencedBy
+    .map(inf => {
+      const a = getArtist(inf);
+      const name = a ? a.name : inf.split('-').map(w => w.charAt(0).toUpperCase()+w.slice(1)).join(' ');
+      const era = a ? a.era : '';
+      const genre = a ? a.genre : '';
+      const clickable = !!a;
+      return `<div class="influence-card${clickable ? '' : ' no-data'}" ${clickable ? `onclick="navigate('${inf}')"` : ''} style="opacity:${clickable ? 1 : 0.6}">
+        <div class="ic-top">
+          <div class="ic-name">${name}</div>
+          ${era ? `<span class="ic-era">${era.split('–')[0]}s</span>` : ''}
+        </div>
+        ${genre ? `<div class="ic-genre">${genre}</div>` : ''}
+        ${a ? `<div class="ic-desc">${a.bio.split('.')[0]}.</div>` : '<div class="ic-desc">This artist was shaped by ' + artist.name + '\'s sound and approach.</div>'}
+        ${clickable ? '<div class="ic-explore">Explore their tree →</div>' : ''}
+      </div>`;
+    }).join('');
+
+  content.innerHTML = `
+    <div class="artist-spotlight">
+      <div class="spotlight-era">${artist.era}</div>
+      <div>
+        <div class="spotlight-name">${artist.name}</div>
+        <div class="spotlight-genre">${artist.genre}</div>
+        <div class="spotlight-bio">${artist.bio}</div>
+        <div class="spotlight-tags">
+          ${artist.tags.map(t => `<span class="s-tag${t === 'Essential' ? ' essential' : ''}">${t}</span>`).join('')}
+        </div>
+      </div>
+    </div>
+
+    <div class="tree-section">
+      <div class="tree-section-header">
+        <span class="tree-direction dir-up">↑ Roots</span>
+        <div class="tree-section-title">Who shaped ${artist.name}</div>
+        <span class="tree-section-sub">${artist.influences.length} influences</span>
+      </div>
+      <div class="influence-grid">${influenceCards}</div>
+    </div>
+
+    <div class="tree-section">
+      <div class="tree-section-header">
+        <span class="tree-direction dir-down">↓ Legacy</span>
+        <div class="tree-section-title">Who ${artist.name} shaped</div>
+        <span class="tree-section-sub">${artist.influencedBy.length} artists</span>
+      </div>
+      <div class="influence-grid">${influencedCards}</div>
+    </div>
+  `;
+}
+
+init();
+</script>
+</body>
+</html>
