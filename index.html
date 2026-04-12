@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SongScout — Discover the Music That Started It All</title>
+<meta name="description" content="Free music discovery tools for every generation. Trace artist influences, explore essential tracks by decade and genre, and find the perfect songs for reaction videos. No login, no ads.">
+<meta name="keywords" content="music discovery, classic rock for beginners, 80s music guide, 90s grunge starter pack, best songs for reaction videos, artist influence tracker">
+<link rel="canonical" href="https://songscout.netlify.app/">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0A0A0A;--dark:#111318;--dark2:#1A1D24;--dark3:#242830;
+  --panel:#1E2128;--panel2:#252930;
+  --gold:#F0A830;--gold-d:#C88020;--gold-l:#F8D080;
+  --red:#E83A2A;
+  --white:#F8F6F0;--off:#C8C0B0;--muted:#787060;
+  --border:#2E3240;--border2:#3A3E50;
+  --radius:10px;--radius-lg:16px;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--white);min-height:100vh;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+/* HEADER */
+.site-header{padding:0 24px;border-bottom:1px solid var(--border);background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:16px 0}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{width:42px;height:42px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--black);letter-spacing:1px}
+.logo-text{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--white);letter-spacing:2px;line-height:1}
+.logo-sub{font-size:0.65rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:1px}
+.nav{margin-left:auto;display:flex;gap:6px}
+.nav-link{padding:8px 14px;border-radius:var(--radius);font-size:0.82rem;font-weight:600;color:var(--muted);transition:all 0.15s;letter-spacing:0.3px}
+.nav-link:hover{color:var(--white);background:var(--dark3)}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;padding:80px 24px 72px;background:var(--dark);border-bottom:1px solid var(--border)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 700px 500px at 70% 50%,rgba(240,168,48,0.08),transparent 65%),radial-gradient(ellipse 500px 400px at 0% 100%,rgba(232,58,42,0.06),transparent 60%);pointer-events:none}
+.hero-lines{position:absolute;inset:0;pointer-events:none;opacity:0.04;background-image:repeating-linear-gradient(0deg,transparent,transparent 40px,#F0A830 40px,#F0A830 41px)}
+.hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.eyebrow{font-size:0.72rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:32px;height:2px;background:var(--gold);display:block}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,10vw,7rem);line-height:0.92;letter-spacing:3px;color:var(--white);margin-bottom:24px}
+.hero-title .accent{color:var(--gold)}
+.hero-title .outline{-webkit-text-stroke:2px var(--off);color:transparent}
+.hero-desc{font-size:1.1rem;color:var(--off);line-height:1.7;max-width:560px;font-weight:300;margin-bottom:36px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--radius-lg);background:var(--gold);color:var(--black);font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:2px;transition:all 0.2s;box-shadow:0 4px 20px rgba(240,168,48,0.3)}
+.btn-primary:hover{background:var(--gold-l);transform:translateY(-2px);box-shadow:0 8px 32px rgba(240,168,48,0.4)}
+.btn-secondary{display:inline-flex;align-items:center;padding:14px 24px;border-radius:var(--radius-lg);background:transparent;color:var(--off);font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:2px;border:1.5px solid var(--border2);transition:all 0.2s}
+.btn-secondary:hover{border-color:var(--gold-d);color:var(--gold-l)}
+.hero-stats{display:flex;gap:32px;margin-top:48px;padding-top:32px;border-top:1px solid var(--border);flex-wrap:wrap}
+.stat{display:flex;flex-direction:column;gap:3px}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--gold);letter-spacing:2px;line-height:1}
+.stat-label{font-size:0.72rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase}
+
+/* TOOLS */
+.tools-section{max-width:1100px;margin:0 auto;padding:64px 24px}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:2px;color:var(--white);margin-bottom:8px;line-height:1}
+.section-desc{font-size:0.95rem;color:var(--muted);margin-bottom:40px;max-width:500px;line-height:1.6}
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tool-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;transition:all 0.2s}
+.tool-card:hover{border-color:var(--gold-d);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.5)}
+.tool-accent{height:3px;width:100%}
+.acc-gold{background:var(--gold)}
+.acc-red{background:var(--red)}
+.acc-blue{background:#5080E0}
+.tool-body{padding:24px;flex:1;display:flex;flex-direction:column}
+.tool-num{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:var(--border2);letter-spacing:2px;line-height:1;margin-bottom:12px;transition:color 0.2s}
+.tool-card:hover .tool-num{color:var(--gold)}
+.tool-name{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:2px;color:var(--white);margin-bottom:10px;line-height:1}
+.tool-desc{font-size:0.88rem;color:var(--muted);line-height:1.7;flex:1;font-weight:300;margin-bottom:20px}
+.tool-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
+.tool-tag{font-size:0.62rem;font-weight:600;padding:3px 9px;border-radius:100px;text-transform:uppercase;letter-spacing:0.5px;background:var(--dark3);border:1px solid var(--border2);color:var(--muted)}
+.tool-link{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:var(--radius);font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:1.5px;border:1.5px solid var(--border2);color:var(--off);transition:all 0.15s;align-self:flex-start}
+.tool-link:hover{background:var(--gold);border-color:var(--gold);color:var(--black)}
+
+/* WHY */
+.why-section{background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:64px 24px}
+.why-inner{max-width:1100px;margin:0 auto}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.why-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px}
+.why-icon{font-size:1.8rem;margin-bottom:12px;display:block}
+.why-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:1.5px;color:var(--gold);margin-bottom:8px}
+.why-text{font-size:0.85rem;color:var(--muted);line-height:1.7;font-weight:300}
+
+/* PICKS */
+.picks-section{max-width:1100px;margin:0 auto;padding:64px 24px}
+.picks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
+.pick-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;display:flex;gap:14px}
+.pick-card:hover{border-color:var(--border2);background:var(--panel2)}
+.pick-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--border2);letter-spacing:1px;line-height:1;flex-shrink:0;width:32px}
+.pick-title{font-size:0.95rem;font-weight:600;color:var(--white);margin-bottom:3px}
+.pick-artist{font-size:0.82rem;color:var(--gold);font-weight:600;margin-bottom:4px}
+.pick-reason{font-size:0.75rem;color:var(--muted);line-height:1.5;font-weight:300}
+
+/* ABOUT */
+.about-section{background:var(--dark);border-top:1px solid var(--border);padding:64px 24px}
+.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.about-text h2{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:2px;color:var(--white);margin-bottom:16px;line-height:1}
+.about-text h2 span{color:var(--gold)}
+.about-text p{font-size:0.95rem;color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:14px}
+.about-quote{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;border-left:3px solid var(--gold)}
+.about-quote p{font-style:italic;font-size:1rem;color:var(--off);line-height:1.8;margin-bottom:16px}
+.about-quote cite{font-size:0.78rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;font-style:normal}
+
+/* FOOTER */
+.site-footer{background:var(--dark);border-top:1px solid var(--border);padding:32px 24px 24px}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-top{display:flex;align-items:flex-start;gap:48px;margin-bottom:32px;flex-wrap:wrap}
+.footer-brand{flex:1;min-width:200px}
+.footer-brand p{font-size:0.82rem;color:var(--muted);margin-top:10px;line-height:1.6;max-width:260px}
+.footer-links h4{font-size:0.68rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.footer-links a{display:block;font-size:0.85rem;color:var(--off);margin-bottom:8px;transition:color 0.15s}
+.footer-links a:hover{color:var(--gold)}
+.footer-bottom{padding-top:20px;border-top:1px solid var(--border);font-size:0.75rem;color:var(--muted)}
+
+@media(max-width:768px){
+  .tools-grid,.why-grid,.picks-grid{grid-template-columns:1fr}
+  .about-inner{grid-template-columns:1fr}
+  .hero-title{font-size:3.5rem}
+  .nav{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="/">
+      <div class="logo-mark">SS</div>
+      <div>
+        <div class="logo-text">SongScout</div>
+        <div class="logo-sub">Music Discovery</div>
+      </div>
+    </a>
+    <nav class="nav">
+      <a class="nav-link" href="/era-explorer/">Era Explorer</a>
+      <a class="nav-link" href="/discovery-engine/">Discovery Engine</a>
+      <a class="nav-link" href="/reaction-kit/">Reaction Kit</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-lines"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">Free music discovery</div>
+    <h1 class="hero-title">Discover the<br>music that<br><span class="accent">started</span> <span class="outline">it all</span></h1>
+    <p class="hero-desc">Three free tools to help younger generations discover the classic rock, metal and alternative music that shaped everything they love today. No login. No ads. Just music.</p>
+    <div class="cta-row">
+      <a class="btn-primary" href="/era-explorer/">Start Exploring</a>
+      <a class="btn-secondary" href="#tools">See all tools</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">8+</span><span class="stat-label">Era packs</span></div>
+      <div class="stat"><span class="stat-num">80+</span><span class="stat-label">Essential tracks</span></div>
+      <div class="stat"><span class="stat-num">6</span><span class="stat-label">Decades covered</span></div>
+      <div class="stat"><span class="stat-num">Free</span><span class="stat-label">Always</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="tools-section" id="tools">
+  <div class="eyebrow">The tools</div>
+  <h2 class="section-title">Three ways to discover</h2>
+  <p class="section-desc">Each tool takes a different angle on music discovery — pick where you want to start.</p>
+  <div class="tools-grid">
+
+    <div class="tool-card">
+      <div class="tool-accent acc-gold"></div>
+      <div class="tool-body">
+        <div class="tool-num">01</div>
+        <div class="tool-name">Era Explorer</div>
+        <div class="tool-desc">Pick a decade and a genre. Get the 10 essential tracks you need to hear first — why they mattered, what made them special, and exactly where to go next.</div>
+        <div class="tool-tags">
+          <span class="tool-tag">60s – 2010s</span>
+          <span class="tool-tag">10 genres</span>
+          <span class="tool-tag">80+ tracks</span>
+        </div>
+        <a class="tool-link" href="/era-explorer/">Open tool →</a>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-accent acc-red"></div>
+      <div class="tool-body">
+        <div class="tool-num">02</div>
+        <div class="tool-name">Discovery Engine</div>
+        <div class="tool-desc">Pick an artist you already love. See the visual family tree of influences that shaped them — going back through the decades to the roots of their sound.</div>
+        <div class="tool-tags">
+          <span class="tool-tag">50+ artists</span>
+          <span class="tool-tag">Visual tree</span>
+          <span class="tool-tag">Deep dives</span>
+        </div>
+        <a class="tool-link" href="/discovery-engine/">Open tool →</a>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-accent acc-blue"></div>
+      <div class="tool-body">
+        <div class="tool-num">03</div>
+        <div class="tool-name">Reaction Kit</div>
+        <div class="tool-desc">The songs that floor first-time listeners every time. Curated by the moment that gets people — the guitar solo, the key change, the drum fill that nobody sees coming.</div>
+        <div class="tool-tags">
+          <span class="tool-tag">Guitar solos</span>
+          <span class="tool-tag">Key changes</span>
+          <span class="tool-tag">First listens</span>
+        </div>
+        <a class="tool-link" href="/reaction-kit/">Open tool →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="why-section">
+  <div class="why-inner">
+    <div class="eyebrow">Why SongScout</div>
+    <h2 class="section-title">Built for music discovery</h2>
+    <div class="why-grid">
+      <div class="why-card"><span class="why-icon">🎸</span><div class="why-title">Not an algorithm</div><div class="why-text">Spotify tells you what you already like. SongScout tells you what you don't know yet — but should. Every recommendation is hand-curated, not machine-generated.</div></div>
+      <div class="why-card"><span class="why-icon">📖</span><div class="why-title">Context, not just tracks</div><div class="why-text">Every track comes with the story — the moment it was recorded, what it meant, and why it still matters today. Knowing why a song is great is different from just knowing it's great.</div></div>
+      <div class="why-card"><span class="why-icon">🌳</span><div class="why-title">Music connects everything</div><div class="why-text">Every artist you love was shaped by artists who came before. SongScout traces those connections so you can follow the threads from what you know into music you've never heard.</div></div>
+      <div class="why-card"><span class="why-icon">🎬</span><div class="why-title">Built for reactions</div><div class="why-text">The reaction video community is one of music's great crossover moments. SongScout helps you find the songs that create those unforgettable first-listen reactions.</div></div>
+      <div class="why-card"><span class="why-icon">🆓</span><div class="why-title">Completely free</div><div class="why-text">No subscription, no premium tier, no account required. Every tool on SongScout is free to use. Music discovery shouldn't cost anything.</div></div>
+      <div class="why-card"><span class="why-icon">🎯</span><div class="why-title">Focused on rock & alternative</div><div class="why-text">SongScout is built by someone who loves rock, metal and alternative music. It's not trying to cover everything — it's trying to be the best possible guide to the music it knows deeply.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="picks-section">
+  <div class="eyebrow">Editor's picks</div>
+  <h2 class="section-title">Start here</h2>
+  <p class="section-desc">Not sure where to begin? These six tracks are the perfect first step into classic rock and metal.</p>
+  <div class="picks-grid">
+    <div class="pick-card"><div class="pick-num">01</div><div><div class="pick-title">Stairway to Heaven</div><div class="pick-artist">Led Zeppelin · 1971</div><div class="pick-reason">Eight minutes from acoustic fingerpicking to full rock apocalypse. The guitar solo is consistently voted the greatest ever recorded.</div></div></div>
+    <div class="pick-card"><div class="pick-num">02</div><div><div class="pick-title">Bohemian Rhapsody</div><div class="pick-artist">Queen · 1975</div><div class="pick-reason">Opera, ballad, hard rock — all in one song. No band before or since has attempted anything like it and pulled it off.</div></div></div>
+    <div class="pick-card"><div class="pick-num">03</div><div><div class="pick-title">Smells Like Teen Spirit</div><div class="pick-artist">Nirvana · 1991</div><div class="pick-reason">The song that changed everything overnight. Kurt Cobain accidentally ended the 80s and started the 90s in four minutes.</div></div></div>
+    <div class="pick-card"><div class="pick-num">04</div><div><div class="pick-title">Master of Puppets</div><div class="pick-artist">Metallica · 1986</div><div class="pick-reason">Eight and a half minutes of the most technically precise and emotionally intense music a band their age had ever made.</div></div></div>
+    <div class="pick-card"><div class="pick-num">05</div><div><div class="pick-title">Purple Haze</div><div class="pick-artist">Jimi Hendrix · 1967</div><div class="pick-reason">Guitar playing that seemed impossible in 1967 and still sounds alien today. Every rock guitarist since owes Hendrix everything.</div></div></div>
+    <div class="pick-card"><div class="pick-num">06</div><div><div class="pick-title">Comfortably Numb</div><div class="pick-artist">Pink Floyd · 1979</div><div class="pick-reason">Two guitar solos by David Gilmour widely considered among the greatest ever played. A meditation on disconnection that still breaks hearts.</div></div></div>
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="about-inner">
+    <div class="about-text">
+      <h2>Built by a <span>music fan</span></h2>
+      <p>SongScout was built out of a love for rock, metal and alternative music — and frustration at watching younger generations miss out on music that would genuinely change how they hear everything.</p>
+      <p>The reaction video community showed something remarkable: when younger listeners hear Led Zeppelin, Queen, Nirvana or Metallica for the first time, the response is always the same. Jaw-dropping. How did I not know this existed?</p>
+      <p>SongScout exists to make those discoveries easier — with context, curation and the connections that turn a single song into a whole new world of music.</p>
+    </div>
+    <div class="about-quote">
+      <p>"Every song you love today has ancestors you haven't heard yet. Follow the roots far enough and you'll find the music that started everything."</p>
+      <cite>— SongScout</cite>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark">SS</div>
+          <div><div class="logo-text">SongScout</div><div class="logo-sub">Music Discovery</div></div>
+        </div>
+        <p>Free music discovery tools for every generation. No login, no ads, no nonsense.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Tools</h4>
+        <a href="/era-explorer/">Era Explorer</a>
+        <a href="/discovery-engine/">Discovery Engine</a>
+        <a href="/reaction-kit/">Reaction Kit</a>
+      </div>
+      <div class="footer-links">
+        <h4>Start here</h4>
+        <a href="/era-explorer/">1970s Classic Rock</a>
+        <a href="/era-explorer/">1980s Heavy Metal</a>
+        <a href="/era-explorer/">1990s Grunge</a>
+        <a href="/era-explorer/">1980s Classic Rock</a>
+      </div>
+    </div>
+    <div class="footer-bottom">SongScout — Free music discovery — No login, no ads, no nonsense</div>
+  </div>
+</footer>
+
+</body>
+</html>
