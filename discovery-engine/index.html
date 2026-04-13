@@ -42,7 +42,7 @@ button{cursor:pointer;font-family:'DM Sans',sans-serif;border:none;background:no
 .hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
 .eyebrow{font-size:0.72rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px}
 .eyebrow::before{content:'';width:24px;height:2px;background:var(--gold);display:block}
-.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,8vw,5rem);line-height:0.92;letter-spacing:3px;color:var(--white);margin-bottom:16px}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.8rem);line-height:0.92;letter-spacing:3px;color:var(--white);margin-bottom:16px}
 .hero-title span{color:var(--gold)}
 .hero-desc{font-size:1rem;color:var(--off);line-height:1.7;max-width:580px;font-weight:300}
 
@@ -178,7 +178,7 @@ button{cursor:pointer;font-family:'DM Sans',sans-serif;border:none;background:no
 <section class="hero">
   <div class="hero-inner">
     <div class="eyebrow">SongScout</div>
-    <h1 class="hero-title">Discovery<br><span>Engine</span></h1>
+    <h1 class="hero-title">Discovery <span>Engine</span></h1>
     <p class="hero-desc">Pick an artist you already love. Follow the musical family tree of influences that shaped them — back through the decades to the roots of their sound. Every node is a doorway into more music.</p>
   </div>
 </section>
@@ -209,7 +209,8 @@ button{cursor:pointer;font-family:'DM Sans',sans-serif;border:none;background:no
   <a href="/reaction-kit/" style="color:var(--muted)">Reaction Kit</a>
   <br><br>SongScout — Free music discovery — No login, no ads, no nonsense
 
-  </footer>
+  <div style="margin-top:16px"><a href="https://buymeacoffee.com/songscout" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:100px;background:#FFDD00;color:#000;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:700;text-decoration:none;">☕ Buy me a coffee</a></div>
+</footer>
 
 <script>
 // ── ARTIST DATABASE ───────────────────────────────────────────────────────────
@@ -819,6 +820,38 @@ const ARTISTS = {
     influencedBy:['david-bowie','the-clash','nirvana','the-strokes','lcd-soundsystem'],
   },
 
+  'the-cult':{
+    name:'The Cult', era:'1983–present', genre:'Hard Rock / Gothic Rock / Post-Punk',
+    bio:'Ian Astbury and Billy Duffy built one of the 80s most distinctive bands — evolving from the gothic post-punk of Southern Death Cult through the psychedelic She Sells Sanctuary to the full hard rock attack of Electric. Duffy\'s guitar tone is one of rock\'s most recognisable. Love and Electric are two of the decade\'s essential albums.',
+    tags:['She Sells Sanctuary','Billy Duffy','Hard rock evolution','Ian Astbury'],
+    influences:['the-doors','led-zeppelin','the-stooges','siouxsie-and-the-banshees'],
+    influencedBy:['guns-n-roses','soundgarden','black-rebel-motorcycle-club','the-mission'],
+  },
+
+  'bryan-adams':{
+    name:'Bryan Adams', era:'1979–present', genre:'Rock / Hard Rock / Pop Rock',
+    bio:'Bryan Adams is one of the great rock craftsmen — a songwriter who understands melody, dynamics and emotional directness better than almost anyone of his generation. Reckless is one of the best rock albums of the 1980s. Summer of 69, Run to You and Heaven showed a writer at the peak of his powers. His ballads — Everything I Do, Have You Ever Really Loved a Woman — demonstrate the same craft applied to a different emotional register.',
+    tags:['Reckless','Summer of 69','Canadian rock','Rock craftsman'],
+    influences:['bruce-springsteen','the-rolling-stones','chuck-berry','bob-dylan'],
+    influencedBy:['nickelback','theory-of-a-deadman','default'],
+  },
+
+  'stone-temple-pilots':{
+    name:'Stone Temple Pilots', era:'1989–present', genre:'Grunge / Alternative Rock / Hard Rock',
+    bio:'Scott Weiland, Dean DeLeo, Robert DeLeo and Eric Kretz were the most musically accomplished of the post-grunge bands — a group that could write a quiet acoustic ballad and a crushing hard rock track with equal conviction. Core and Purple are two of the finest albums of the 1990s. Weiland\'s voice — rich, distinctive and unlike any of his contemporaries — is sorely missed.',
+    tags:['Plush','Scott Weiland','Post-grunge','Purple'],
+    influences:['led-zeppelin','the-rolling-stones','nirvana','aerosmith'],
+    influencedBy:['velvet-revolver','puddle-of-mudd','three-doors-down'],
+  },
+
+  'red-hot-chili-peppers':{
+    name:'Red Hot Chili Peppers', era:'1983–present', genre:'Alternative Rock / Funk Rock / Hard Rock',
+    bio:'Anthony Kiedis, Flea, Chad Smith and John Frusciante created one of rock\'s most distinctive sounds — funk basslines, melodic guitar, rapped and sung vocals all locked together in a groove unlike anything else. Blood Sugar Sex Magik and Californication are two of the great alternative rock albums. Flea\'s bass playing is one of the most influential in rock history.',
+    tags:['Blood Sugar Sex Magik','Flea','Californication','Funk rock'],
+    influences:['parliament-funkadelic','jimi-hendrix','led-zeppelin','punk-tradition'],
+    influencedBy:['incubus','311','sublime','rage-against-the-machine'],
+  },
+
 };
 
 // Quick-start artists shown as buttons
@@ -999,7 +1032,5 @@ function renderArtist(id) {
 
 init();
 </script>
-
-<a href="https://buymeacoffee.com/songscout" target="_blank" rel="noopener" style="position:fixed;bottom:24px;left:24px;z-index:9999;display:flex;align-items:center;gap:8px;background:#FFDD00;color:#000;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:700;padding:11px 18px;border-radius:100px;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,0.4);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">☕ Buy me a coffee</a>
 </body>
 </html>
