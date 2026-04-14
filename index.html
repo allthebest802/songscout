@@ -1,497 +1,421 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="copyright" content="© 2026 SongScout.uk">
+<meta name="author" content="SongScout">
+<meta name="rights" content="Copyright © 2026 SongScout.uk. All rights reserved.">
+<meta name="robots" content="index,follow">
+
+<!--
+Site created by SongScout.uk
+All design, code and content copyright © 2026 SongScout.uk
+-->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GrowGuide — Free UK Gardening Tools | Plant Planner, Pest Identifier & More</title>
-<meta name="description" content="Free UK gardening tools for every grower. What to plant this month, pest identifier, seed-to-harvest timelines, companion planting guide, frost checker and more. No login, no ads, forever free.">
-<meta name="keywords" content="UK gardening tools, what to plant this month UK, companion planting guide, garden pest identifier, seed to harvest calculator, allotment planner, free garden tools UK, vegetable garden planner, frost date checker UK, watering guide UK">
-<link rel="canonical" href="https://growguide.co.uk/">
-
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://growguide.co.uk/">
-<meta property="og:title" content="GrowGuide — Free UK Garden Tools">
-<meta property="og:description" content="Practical, no-nonsense garden tools for every UK grower — window box or full allotment. Free, forever.">
-<meta property="og:site_name" content="GrowGuide">
-
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GrowGuide — Free UK Garden Tools">
-<meta name="twitter:description" content="Practical, no-nonsense garden tools for every UK grower — window box or full allotment. Free, forever.">
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<title>SongScout — Free Classic Rock & Alternative Music Discovery Tools</title>
+<meta name="description" content="Discover classic rock, metal and alternative music with three free tools. Explore essential tracks by decade and genre, trace artist influence trees, and find the songs that always get the biggest reactions.">
+<meta name="keywords" content="music discovery, classic rock for beginners, 80s music guide, 90s grunge starter pack, best songs for reaction videos, artist influence tracker">
+<link rel="canonical" href="https://songscout.uk/">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --soil:#2C1810; --soil2:#3D2315; --bark:#6B4226;
-  --moss:#4A6741; --moss-d:#2E4228; --moss-l:#7A9E72; --moss-ll:#C8DBC4;
-  --sage:#8FAF87; --sage-l:#D4E8D0;
-  --cream:#F5F0E8; --cream2:#EDE6D8; --parchment:#FAF6EE;
-  --stone:#A89880; --amber:#C8842A; --amber-l:#F0D4A0; --amber-ll:#FDF5E4;
-  --rust:#B85C2A;
-  --text:#1E130C; --text2:#4A3020; --text3:#8A7060;
-  --border:#D8C8B0; --border2:#C0A888;
-  --radius:14px; --radius-lg:22px;
-  --shadow:0 3px 18px rgba(44,24,16,0.10);
-  --shadow-lg:0 8px 40px rgba(44,24,16,0.18);
+  --black:#0A0A0A;--dark:#111318;--dark2:#1A1D24;--dark3:#242830;
+  --panel:#1E2128;--panel2:#252930;
+  --gold:#F0A830;--gold-d:#C88020;--gold-l:#F8D080;
+  --red:#E83A2A;
+  --white:#F8F6F0;--off:#C8C0B0;--muted:#787060;
+  --border:#2E3240;--border2:#3A3E50;
+  --radius:10px;--radius-lg:16px;
 }
 html{font-size:16px;scroll-behavior:smooth}
-body{
-  font-family:'Lato',sans-serif;background:var(--parchment);color:var(--text);min-height:100vh;
-  background-image:
-    radial-gradient(ellipse 900px 500px at 0% 0%,rgba(74,103,65,0.13),transparent 60%),
-    radial-gradient(ellipse 700px 600px at 100% 100%,rgba(200,132,42,0.09),transparent 60%);
-}
-button{cursor:pointer;font-family:'Lato',sans-serif;border:none;background:none}
+body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--white);min-height:100vh;overflow-x:hidden}
 a{text-decoration:none;color:inherit}
-body::before{
-  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.45;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-}
 
-/* ── HERO ── */
-.logo-inline{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.logo-icon{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--moss),var(--moss-d));display:flex;align-items:center;justify-content:center;font-size:1.2rem;box-shadow:0 0 0 2px rgba(200,219,196,0.4);flex-shrink:0}
-.logo-text-inline{display:flex;flex-direction:column;line-height:1}
-.logo-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:white}
-.logo-sub{font-size:0.62rem;font-weight:300;color:var(--sage-l);letter-spacing:1.2px;text-transform:uppercase;margin-top:2px}
-.hero-divider{width:1px;height:28px;background:rgba(255,255,255,0.2);flex-shrink:0}
-.hero{
-  background:linear-gradient(160deg,var(--moss-d) 0%,#3A5830 50%,#2A4820 100%);
-  padding:18px 24px 16px;text-align:center;position:relative;overflow:hidden;
-}
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background-image:
-    radial-gradient(ellipse 500px 300px at 20% 80%,rgba(200,132,42,0.15),transparent),
-    radial-gradient(ellipse 400px 400px at 80% 20%,rgba(255,255,255,0.04),transparent);
-}
-.hero-leaves{position:absolute;font-size:8rem;opacity:0.05;user-select:none;line-height:1}
-.hero-leaves.l1{top:-10px;left:-20px;transform:rotate(-20deg)}
-.hero-leaves.l2{bottom:-20px;right:-10px;transform:rotate(15deg)}
-.hero-inner{position:relative;z-index:1;max-width:960px;margin:0 auto}
-.hero-single-line{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
-.hero-single-line h2{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(1.3rem,3vw,1.8rem);font-weight:700;
-  color:white;line-height:1.2;margin:0;
-}
-.hero-single-line h2 em{color:var(--amber-l);font-style:italic}
-.hero-tagline{font-size:0.88rem;color:var(--moss-ll);line-height:1.4;font-weight:300;margin:0;white-space:nowrap}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:7px;
-  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
-  border-radius:100px;padding:6px 16px;
-  font-size:0.75rem;font-weight:700;color:var(--moss-ll);letter-spacing:0.8px;text-transform:uppercase;
-  margin-bottom:12px;backdrop-filter:blur(4px);
-}
-.hero h2{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(2rem,5vw,3rem);font-weight:700;
-  color:white;line-height:1.15;margin-bottom:10px;
-}
-.hero h2 em{color:var(--amber-l);font-style:italic}
-.hero p{
-  font-size:0.95rem;color:var(--moss-ll);line-height:1.6;
-  font-weight:300;margin-bottom:0;max-width:500px;margin-left:auto;margin-right:auto;
-}
-.hero-cta{
-  display:inline-flex;align-items:center;gap:10px;
-  background:var(--amber);color:var(--soil);
-  padding:14px 30px;border-radius:100px;
-  font-size:0.95rem;font-weight:700;letter-spacing:0.3px;
-  box-shadow:0 6px 24px rgba(200,132,42,0.4);
-  transition:all 0.18s;
-}
-.hero-cta:hover{background:#DCA030;transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,132,42,0.5)}
+/* HEADER */
+.site-header{padding:0 24px;border-bottom:1px solid var(--border);background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:16px 0}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{width:42px;height:42px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--black)}
+.logo-text{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--white);letter-spacing:2px;line-height:1}
+.logo-sub{font-size:0.65rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:1px}
+.nav{margin-left:auto;display:flex;gap:6px}
+.nav-link{padding:8px 14px;border-radius:var(--radius);font-size:0.82rem;font-weight:600;color:var(--muted);transition:all 0.15s;letter-spacing:0.3px}
+.nav-link:hover{color:var(--white);background:var(--dark3)}
 
-/* ── SEASONAL TIP ── */
-.seasonal-wrap{background:var(--amber-ll);border-top:3px solid var(--amber-l);border-bottom:3px solid var(--amber-l);padding:12px 24px;position:relative;z-index:1}
-.seasonal-inner{max-width:960px;margin:0 auto;display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap}
-.seasonal-icon{font-size:2rem;flex-shrink:0;margin-top:2px}
-.seasonal-text{}
-.seasonal-label{font-size:0.68rem;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:var(--amber);margin-bottom:4px}
-.seasonal-heading{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--soil);margin-bottom:5px}
-.seasonal-body{font-size:0.88rem;color:var(--text2);line-height:1.65;font-weight:400}
-.seasonal-link{
-  margin-left:auto;align-self:center;flex-shrink:0;
-  background:var(--amber);color:white;padding:10px 20px;border-radius:100px;
-  font-size:0.82rem;font-weight:700;white-space:nowrap;
-  transition:all 0.15s;box-shadow:0 3px 12px rgba(200,132,42,0.3);
-}
-.seasonal-link:hover{background:#C07820;transform:translateY(-1px)}
+/* HERO */
+.hero{position:relative;overflow:hidden;padding:80px 24px 72px;background:var(--dark);border-bottom:1px solid var(--border)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 700px 500px at 70% 50%,rgba(240,168,48,0.08),transparent 65%),radial-gradient(ellipse 500px 400px at 0% 100%,rgba(232,58,42,0.06),transparent 60%);pointer-events:none}
+.hero-lines{position:absolute;inset:0;pointer-events:none;opacity:0.04;background-image:repeating-linear-gradient(0deg,transparent,transparent 40px,#F0A830 40px,#F0A830 41px)}
+.hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.eyebrow{font-size:0.72rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:32px;height:2px;background:var(--gold);display:block}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.8rem);line-height:0.95;letter-spacing:3px;color:var(--white);margin-bottom:20px}
+.hero-title .accent{color:var(--gold)}
+.hero-title .outline{-webkit-text-stroke:2px var(--off);color:transparent}
+.hero-desc{font-size:1.1rem;color:var(--off);line-height:1.7;max-width:560px;font-weight:300;margin-bottom:36px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--radius-lg);background:var(--gold);color:var(--black);font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:2px;transition:all 0.2s;box-shadow:0 4px 20px rgba(240,168,48,0.3)}
+.btn-primary:hover{background:var(--gold-l);transform:translateY(-2px);box-shadow:0 8px 32px rgba(240,168,48,0.4)}
+.btn-secondary{display:inline-flex;align-items:center;padding:14px 24px;border-radius:var(--radius-lg);background:transparent;color:var(--off);font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:2px;border:1.5px solid var(--border2);transition:all 0.2s}
+.btn-secondary:hover{border-color:var(--gold-d);color:var(--gold-l)}
+.hero-stats{display:flex;gap:32px;margin-top:48px;padding-top:32px;border-top:1px solid var(--border);flex-wrap:wrap}
+.stat{display:flex;flex-direction:column;gap:3px}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--gold);letter-spacing:2px;line-height:1}
+.stat-label{font-size:0.72rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase}
 
-/* ── MAIN ── */
-.main{max-width:960px;margin:0 auto;padding:28px 24px 20px;position:relative;z-index:1}
-
-/* ── SECTION TITLE ── */
-.section-title{
-  font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;
-  color:var(--text);margin-bottom:6px;
-}
-.section-sub{font-size:0.9rem;color:var(--text3);margin-bottom:24px;font-weight:300;line-height:1.5}
-
-/* ── TOOL CARDS ── */
-.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-bottom:44px}
-.tool-card{
-  background:white;border:1.5px solid var(--border);border-radius:var(--radius-lg);
-  overflow:hidden;box-shadow:var(--shadow);
-  transition:all 0.2s;display:flex;flex-direction:column;
-}
-.tool-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--border2)}
-.tool-card-top{padding:24px 24px 0}
-.tool-emoji{font-size:2.5rem;display:block;margin-bottom:14px}
-.tool-name{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.2}
-.tool-desc{font-size:0.87rem;color:var(--text3);line-height:1.65;flex:1;margin-bottom:20px}
+/* TOOLS */
+.tools-section{max-width:1100px;margin:0 auto;padding:64px 24px}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:2px;color:var(--white);margin-bottom:8px;line-height:1}
+.section-desc{font-size:0.95rem;color:var(--muted);margin-bottom:40px;max-width:500px;line-height:1.6}
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tool-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;transition:all 0.2s}
+.tool-card:hover{border-color:var(--gold-d);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.5)}
+.tool-accent{height:3px;width:100%}
+.acc-gold{background:var(--gold)}
+.acc-red{background:var(--red)}
+.acc-blue{background:#5080E0}
+.tool-body{padding:24px;flex:1;display:flex;flex-direction:column}
+.tool-num{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:var(--border2);letter-spacing:2px;line-height:1;margin-bottom:12px;transition:color 0.2s}
+.tool-card:hover .tool-num{color:var(--gold)}
+.tool-name{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:2px;color:var(--white);margin-bottom:10px;line-height:1}
+.tool-desc{font-size:0.88rem;color:var(--muted);line-height:1.7;flex:1;font-weight:300;margin-bottom:20px}
 .tool-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
-.tool-tag{font-size:0.65rem;font-weight:700;padding:3px 9px;border-radius:100px;text-transform:uppercase;letter-spacing:0.4px;background:var(--sage-l);color:var(--moss-d);border:1px solid var(--moss-ll)}
-.tool-footer{
-  padding:14px 24px;border-top:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;
-  background:var(--parchment);
-}
-.tool-link{
-  font-size:0.82rem;font-weight:700;color:var(--moss-d);
-  display:flex;align-items:center;gap:6px;transition:gap 0.15s;
-}
-.tool-card:hover .tool-link{gap:10px}
-.tool-link::after{content:'→'}
-.tool-free{font-size:0.7rem;font-weight:700;color:var(--stone);text-transform:uppercase;letter-spacing:0.5px}
+.tool-tag{font-size:0.62rem;font-weight:600;padding:3px 9px;border-radius:100px;text-transform:uppercase;letter-spacing:0.5px;background:var(--dark3);border:1px solid var(--border2);color:var(--muted)}
+.tool-link{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:var(--radius);font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:1.5px;border:1.5px solid var(--border2);color:var(--off);transition:all 0.15s;align-self:flex-start}
+.tool-link:hover{background:var(--gold);border-color:var(--gold);color:var(--black)}
 
-/* ── COMING SOON ── */
-.coming-soon{
-  background:white;border:1.5px dashed var(--border2);border-radius:var(--radius-lg);
-  padding:28px;text-align:center;color:var(--text3);
-}
-.coming-soon .cs-icon{font-size:2rem;display:block;margin-bottom:10px;opacity:0.5}
-.coming-soon h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text2);margin-bottom:6px}
-.coming-soon p{font-size:0.82rem;line-height:1.6}
-.coming-list{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:12px}
-.coming-chip{font-size:0.72rem;font-weight:700;padding:4px 12px;border-radius:100px;background:var(--cream2);color:var(--text3);border:1px solid var(--border2)}
+/* WHY */
+.why-section{background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:64px 24px}
+.why-inner{max-width:1100px;margin:0 auto}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.why-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px}
+.why-icon{font-size:1.8rem;margin-bottom:12px;display:block}
+.why-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:1.5px;color:var(--gold);margin-bottom:8px}
+.why-text{font-size:0.85rem;color:var(--muted);line-height:1.7;font-weight:300}
 
-/* ── WHY GROWGUIDE ── */
-.why-section{margin-bottom:44px}
-.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
-.why-card{
-  background:white;border:1.5px solid var(--border);border-radius:var(--radius);
-  padding:20px;box-shadow:var(--shadow);text-align:center;
-  transition:transform 0.15s,box-shadow 0.15s;
-}
-.why-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
-.why-icon{font-size:1.8rem;display:block;margin-bottom:10px}
-.why-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:5px}
-.why-text{font-size:0.8rem;color:var(--text3);line-height:1.55}
+/* PICKS */
+.picks-section{max-width:1100px;margin:0 auto;padding:64px 24px}
+.picks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
+.pick-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;display:flex;gap:14px}
+.pick-card:hover{border-color:var(--border2);background:var(--panel2)}
+.pick-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--border2);letter-spacing:1px;line-height:1;flex-shrink:0;width:32px}
+.pick-title{font-size:0.95rem;font-weight:600;color:var(--white);margin-bottom:3px}
+.pick-artist{font-size:0.82rem;color:var(--gold);font-weight:600;margin-bottom:4px}
+.pick-reason{font-size:0.75rem;color:var(--muted);line-height:1.5;font-weight:300}
 
-/* ── DONATE ── */
-.donate-section{
-  background:linear-gradient(135deg,var(--soil),var(--soil2));
-  border-radius:var(--radius-lg);padding:32px 36px;margin-bottom:44px;
-  display:flex;align-items:center;gap:24px;flex-wrap:wrap;
-  box-shadow:var(--shadow-lg);position:relative;overflow:hidden;
-}
-.donate-section::before{content:'';position:absolute;right:-30px;top:-30px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.03)}
-.donate-section::after{content:'';position:absolute;left:60%;bottom:-40px;width:150px;height:150px;border-radius:50%;background:rgba(200,132,42,0.06)}
-.donate-text{flex:1;min-width:240px;position:relative;z-index:1}
-.donate-text h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:white;margin-bottom:8px}
-.donate-text p{font-size:0.88rem;color:var(--stone);line-height:1.65;font-weight:300}
-.donate-btn{
-  display:inline-flex;align-items:center;gap:10px;
-  background:var(--amber);color:var(--soil);
-  padding:14px 26px;border-radius:100px;
-  font-size:0.92rem;font-weight:700;letter-spacing:0.2px;
-  box-shadow:0 6px 20px rgba(200,132,42,0.35);
-  transition:all 0.18s;white-space:nowrap;position:relative;z-index:1;flex-shrink:0;
-}
-.donate-btn:hover{background:#DCA030;transform:translateY(-2px);box-shadow:0 8px 28px rgba(200,132,42,0.45)}
+/* ABOUT */
+.about-section{background:var(--dark);border-top:1px solid var(--border);padding:64px 24px}
+.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.about-text h2{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:2px;color:var(--white);margin-bottom:16px;line-height:1}
+.about-text h2 span{color:var(--gold)}
+.about-text p{font-size:0.95rem;color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:14px}
+.about-quote{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;border-left:3px solid var(--gold)}
+.about-quote p{font-style:italic;font-size:1rem;color:var(--off);line-height:1.8;margin-bottom:16px}
+.about-quote cite{font-size:0.78rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;font-style:normal}
 
-/* ── FOOTER ── */
-.site-footer{background:var(--soil);padding:24px;text-align:center;position:relative;z-index:1}
-.site-footer::before{content:'';display:block;height:2px;background:linear-gradient(90deg,var(--moss),var(--amber),var(--moss-l));margin-bottom:18px}
-.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:10px}
-.footer-links a{font-size:0.8rem;color:var(--stone);font-weight:700;transition:color 0.15s}
-.footer-links a:hover{color:var(--moss-ll)}
-.footer-copy{font-size:0.75rem;color:#5A4030}
+/* FOOTER */
+.site-footer{background:var(--dark);border-top:1px solid var(--border);padding:32px 24px 24px}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-top{display:flex;align-items:flex-start;gap:48px;margin-bottom:32px;flex-wrap:wrap}
+.footer-brand{flex:1;min-width:200px}
+.footer-brand p{font-size:0.82rem;color:var(--muted);margin-top:10px;line-height:1.6;max-width:260px}
+.footer-links h4{font-size:0.68rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.footer-links a{display:block;font-size:0.85rem;color:var(--off);margin-bottom:8px;transition:color 0.15s}
+.footer-links a:hover{color:var(--gold)}
+.footer-bottom{padding-top:20px;border-top:1px solid var(--border);font-size:0.75rem;color:var(--muted)}
 
-@media(max-width:600px){
-  .hero{padding:40px 20px 36px}
-  .donate-section{padding:24px 22px}
-  .main{padding:32px 16px 16px}
-  .seasonal-link{margin-left:0}
+@media(max-width:768px){
+  .tools-grid,.why-grid,.picks-grid{grid-template-columns:1fr}
+  .about-inner{grid-template-columns:1fr}
+  .hero-title{font-size:2rem}
+  .nav{display:none}
 }
+.pick-yt{
+  display:inline-flex;align-items:center;gap:5px;margin-top:8px;
+  font-size:0.72rem;font-weight:700;color:var(--muted);text-decoration:none;
+  padding:3px 10px;border-radius:100px;
+  border:1px solid var(--border2);background:var(--dark3);
+  transition:all 0.15s;
+}
+.pick-yt:hover{color:#FF4444;border-color:#FF4444;background:rgba(255,68,68,0.08)}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"GrowGuide","url":"https://growguide.co.uk","description":"Free UK gardening tools for every grower — what to plant this month, pest identifier, seed-to-harvest timelines, companion planting and more.","potentialAction":{"@type":"SearchAction","target":"https://growguide.co.uk/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"SongScout","url":"https://songscout.uk","description":"Free music discovery tools to help you explore classic rock, metal and alternative music by decade, genre and influence."}</script>
 </head>
 <body>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-leaves l1">🌿</div>
-  <div class="hero-leaves l2">🍃</div>
-  <div class="hero-inner">
-    <div class="hero-single-line">
-      <div class="logo-inline">
-        <div class="logo-icon">🌱</div>
-        <div class="logo-text-inline"><span class="logo-name">GrowGuide</span><span class="logo-sub">Free UK Garden Tools</span></div>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="/">
+      <div class="logo-mark">&#9836;</div>
+      <div>
+        <div class="logo-text">SongScout</div>
+        <div class="logo-sub">Music Discovery</div>
       </div>
-      <div class="hero-divider"></div>
-      <span class="hero-badge">🇬🇧 Built for UK gardeners</span>
-      <h2>Grow more. <em>Worry less.</em></h2>
-      <p class="hero-tagline">Practical, no-nonsense garden tools for every UK grower — window box or full allotment. Free, forever.</p>
+    </a>
+    <nav class="nav">
+      <a class="nav-link" href="/era-explorer/">Era Explorer</a>
+      <a class="nav-link" href="/discovery-engine/">Discovery Engine</a>
+      <a class="nav-link" href="/reaction-kit/">Reaction Kit</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-lines"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">Free music discovery</div>
+    <h1 class="hero-title">Discover the music that <span class="accent">started</span> <span class="outline">it all</span></h1>
+    <p class="hero-desc">Three free tools to help younger generations discover the classic rock, metal and alternative music that shaped everything they love today. No login. No ads. Just music.</p>
+    <div class="cta-row">
+      <a class="btn-primary" href="/era-explorer/">Start Exploring</a>
+      <a class="btn-secondary" href="#tools">See all tools</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">20</span><span class="stat-label">Era packs</span></div>
+      <div class="stat"><span class="stat-num">200+</span><span class="stat-label">Essential tracks</span></div>
+      <div class="stat"><span class="stat-num">6</span><span class="stat-label">Decades covered</span></div>
+      <div class="stat"><span class="stat-num">Free</span><span class="stat-label">Always</span></div>
     </div>
   </div>
 </section>
 
-<!-- SEASONAL TIP -->
-<div class="seasonal-wrap">
-  <div class="seasonal-inner">
-    <div class="seasonal-text">
-      <div class="seasonal-label"><span id="seasIcon" style="margin-right:6px;font-size:1rem;vertical-align:middle"></span>In the garden this month — <span id="seasHeading" style="font-weight:700;color:var(--soil)"></span></div>
-      <div class="seasonal-body" id="seasBody"></div>
+<section class="tools-section" id="tools">
+  <div class="eyebrow">The tools</div>
+  <h2 class="section-title">Three ways to discover</h2>
+  <p class="section-desc">Each tool takes a different angle on music discovery — pick where you want to start.</p>
+  <div class="tools-grid">
+
+    <div class="tool-card">
+      <div class="tool-accent acc-gold"></div>
+      <div class="tool-body">
+        <div class="tool-num">01</div>
+        <div class="tool-name">Era Explorer</div>
+        <div class="tool-desc">Pick a decade and a genre. Get the 10 essential tracks you need to hear first — why they mattered, what made them special, and exactly where to go next.</div>
+        <div class="tool-tags">
+          <span class="tool-tag">60s – 2010s</span>
+          <span class="tool-tag">12 genres</span>
+          <span class="tool-tag">200+ tracks</span>
+        </div>
+        <a class="tool-link" href="/era-explorer/">Open tool →</a>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-accent acc-red"></div>
+      <div class="tool-body">
+        <div class="tool-num">02</div>
+        <div class="tool-name">Discovery Engine</div>
+        <div class="tool-desc">Pick an artist you already love. See the visual family tree of influences that shaped them — going back through the decades to the roots of their sound.</div>
+        <div class="tool-tags">
+          <span class="tool-tag">50+ artists</span>
+          <span class="tool-tag">Visual tree</span>
+          <span class="tool-tag">Deep dives</span>
+        </div>
+        <a class="tool-link" href="/discovery-engine/">Open tool →</a>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-accent acc-blue"></div>
+      <div class="tool-body">
+        <div class="tool-num">03</div>
+        <div class="tool-name">Reaction Kit</div>
+        <div class="tool-desc">The songs that floor first-time listeners every time. Curated by the moment that gets people — the guitar solo, the key change, the drum fill that nobody sees coming.</div>
+        <div class="tool-tags">
+          <span class="tool-tag">Guitar solos</span>
+          <span class="tool-tag">Key changes</span>
+          <span class="tool-tag">First listens</span>
+        </div>
+        <a class="tool-link" href="/reaction-kit/">Open tool →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="why-section">
+  <div class="why-inner">
+    <div class="eyebrow">Why SongScout</div>
+    <h2 class="section-title">Built for music discovery</h2>
+    <div class="why-grid">
+      <div class="why-card"><span class="why-icon">🎸</span><div class="why-title">Not an algorithm</div><div class="why-text">Spotify tells you what you already like. SongScout tells you what you don't know yet — but should. Every recommendation is hand-curated, not machine-generated.</div></div>
+      <div class="why-card"><span class="why-icon">📖</span><div class="why-title">Context, not just tracks</div><div class="why-text">Every track comes with the story — the moment it was recorded, what it meant, and why it still matters today. Knowing why a song is great is different from just knowing it's great.</div></div>
+      <div class="why-card"><span class="why-icon">🌳</span><div class="why-title">Music connects everything</div><div class="why-text">Every artist you love was shaped by artists who came before. SongScout traces those connections so you can follow the threads from what you know into music you've never heard.</div></div>
+      <div class="why-card"><span class="why-icon">🎬</span><div class="why-title">Built for reactions</div><div class="why-text">The reaction video community is one of music's great crossover moments. SongScout helps you find the songs that create those unforgettable first-listen reactions.</div></div>
+      <div class="why-card"><span class="why-icon">🆓</span><div class="why-title">Completely free</div><div class="why-text">No subscription, no premium tier, no account required. Every tool on SongScout is free to use. Music discovery shouldn't cost anything.</div></div>
+      <div class="why-card"><span class="why-icon">🎯</span><div class="why-title">Focused on rock & alternative</div><div class="why-text">SongScout is built by someone who loves rock, metal and alternative music. It's not trying to cover everything — it's trying to be the best possible guide to the music it knows deeply.</div></div>
     </div>
   </div>
+</section>
+
+<section class="picks-section">
+  <div class="eyebrow">Editor's picks</div>
+  <h2 class="section-title">Start here</h2>
+  <p class="section-desc">Not sure where to begin? These six tracks are the perfect first step into classic rock and metal.</p>
+  <div class="picks-grid">
+    <div class="pick-card"><div class="pick-num">01</div><div><div class="pick-title">Stairway to Heaven</div><div class="pick-artist">Led Zeppelin · 1971</div><div class="pick-reason">Eight minutes from acoustic fingerpicking to full rock apocalypse. The guitar solo is consistently voted the greatest ever recorded.</div><a class="pick-yt" href="https://www.youtube.com/results?search_query=Led%20Zeppelin%20Stairway%20to%20Heaven" target="_blank" rel="noopener">▶ YouTube</a></div></div>
+    <div class="pick-card"><div class="pick-num">02</div><div><div class="pick-title">Bohemian Rhapsody</div><div class="pick-artist">Queen · 1975</div><div class="pick-reason">Opera, ballad, hard rock — all in one song. No band before or since has attempted anything like it and pulled it off.</div><a class="pick-yt" href="https://www.youtube.com/results?search_query=Queen%20Bohemian%20Rhapsody" target="_blank" rel="noopener">▶ YouTube</a></div></div>
+    <div class="pick-card"><div class="pick-num">03</div><div><div class="pick-title">Smells Like Teen Spirit</div><div class="pick-artist">Nirvana · 1991</div><div class="pick-reason">The song that changed everything overnight. Kurt Cobain accidentally ended the 80s and started the 90s in four minutes.</div><a class="pick-yt" href="https://www.youtube.com/results?search_query=Nirvana%20Smells%20Like%20Teen%20Spirit" target="_blank" rel="noopener">▶ YouTube</a></div></div>
+    <div class="pick-card"><div class="pick-num">04</div><div><div class="pick-title">Master of Puppets</div><div class="pick-artist">Metallica · 1986</div><div class="pick-reason">Eight and a half minutes of the most technically precise and emotionally intense music a band their age had ever made.</div><a class="pick-yt" href="https://www.youtube.com/results?search_query=Metallica%20Master%20of%20Puppets" target="_blank" rel="noopener">▶ YouTube</a></div></div>
+    <div class="pick-card"><div class="pick-num">05</div><div><div class="pick-title">Purple Haze</div><div class="pick-artist">Jimi Hendrix · 1967</div><div class="pick-reason">Guitar playing that seemed impossible in 1967 and still sounds alien today. Every rock guitarist since owes Hendrix everything.</div><a class="pick-yt" href="https://www.youtube.com/results?search_query=Jimi%20Hendrix%20Purple%20Haze" target="_blank" rel="noopener">▶ YouTube</a></div></div>
+    <div class="pick-card"><div class="pick-num">06</div><div><div class="pick-title">Comfortably Numb</div><div class="pick-artist">Pink Floyd · 1979</div><div class="pick-reason">Two guitar solos by David Gilmour widely considered among the greatest ever played. A meditation on disconnection that still breaks hearts.</div><a class="pick-yt" href="https://www.youtube.com/results?search_query=Pink%20Floyd%20Comfortably%20Numb" target="_blank" rel="noopener">▶ YouTube</a></div></div>
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="about-inner">
+    <div class="about-text">
+      <h2>Built by a <span>music fan</span></h2>
+      <p>SongScout was built out of a love for rock, metal and alternative music — and frustration at watching younger generations miss out on music that would genuinely change how they hear everything.</p>
+      <p>The reaction video community showed something remarkable: when younger listeners hear Led Zeppelin, Queen, Nirvana or Metallica for the first time, the response is always the same. Jaw-dropping. How did I not know this existed?</p>
+      <p>SongScout exists to make those discoveries easier — with context, curation and the connections that turn a single song into a whole new world of music.</p>
+    </div>
+    <div class="about-quote">
+      <p>"Every song you love today has ancestors you haven't heard yet. Follow the roots far enough and you'll find the music that started everything."</p>
+      <cite>— SongScout</cite>
+    </div>
+  </div>
+</section>
+
+<section class="picks-section">
+
+<div class="eyebrow">
+Common questions
 </div>
 
-<!-- MAIN -->
-<main class="main">
+<h2 class="section-title">
+Music discovery FAQ
+</h2>
 
-  <!-- TOOLS -->
-  <div style="margin-bottom:28px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
-    <div class="section-title" style="margin-bottom:0">Our tools</div>
-    <div class="section-sub" style="margin-bottom:0">Everything is free to use, works on any device, and needs no account or login.</div>
-  </div>
+<p class="section-desc">
+Quick answers to help you explore new music and understand how SongScout works.
+</p>
 
-  <div class="tool-grid">
+<div class="picks-grid">
 
-    <div class="tool-card">
-      <div class="tool-card-top">
-        <span class="tool-emoji">🌿</span>
-        <div class="tool-name">What to Plant This Month</div>
-        <div class="tool-tags">
-          <span class="tool-tag">Veg & Fruit</span>
-          <span class="tool-tag">Flowers</span>
-          <span class="tool-tag">UK Regions</span>
-        </div>
-        <div class="tool-desc">Pick your region and month to see exactly what to sow, plant out, and harvest — with beginner tags, indoor/outdoor flags, and a practical tip for every plant.</div>
-      </div>
-      <div class="tool-footer">
-        <a class="tool-link" href="/what-to-plant/">Open tool</a>
-        <span class="tool-free">Free</span>
-      </div>
-    </div>
+<div class="pick-card">
+<div>
+<div class="pick-title">
+How can I discover new music?
+</div>
 
-    <div class="tool-card">
-      <div class="tool-card-top">
-        <span class="tool-emoji">🐛</span>
-        <div class="tool-name">Pest & Disease Identifier</div>
-        <div class="tool-tags">
-          <span class="tool-tag">All plants</span>
-          <span class="tool-tag">Organic fixes</span>
-          <span class="tool-tag">Prevention</span>
-        </div>
-        <div class="tool-desc">Select your plant type and the symptoms you can see — yellowing leaves, holes, mould, wilting — and we'll tell you what's wrong and how to fix it.</div>
-      </div>
-      <div class="tool-footer">
-        <a class="tool-link" href="/pest-identifier/">Open tool</a>
-        <span class="tool-free">Free</span>
-      </div>
-    </div>
+<div class="pick-reason">
+SongScout helps you discover new music by exploring genres, decades and artist influences. 
+Start with the Era Explorer to find essential tracks, or use the Discovery Engine to see which artists inspired the music you already enjoy.
+</div>
+</div>
+</div>
 
-    <div class="tool-card">
-      <div class="tool-card-top">
-        <span class="tool-emoji">📅</span>
-        <div class="tool-name">Seed to Harvest Timeline</div>
-        <div class="tool-tags">
-          <span class="tool-tag">35 plants</span>
-          <span class="tool-tag">Week by week</span>
-          <span class="tool-tag">Sowing calendar</span>
-        </div>
-        <div class="tool-desc">Pick any vegetable, fruit or flower to see a full visual timeline — from germination right through to harvest — with stage-by-stage durations, a month-by-month sowing calendar, and succession sowing advice.</div>
-      </div>
-      <div class="tool-footer">
-        <a class="tool-link" href="/seed-to-harvest/">Open tool</a>
-        <span class="tool-free">Free</span>
-      </div>
-    </div>
+<div class="pick-card">
+<div>
+<div class="pick-title">
+What is the best way to start listening to classic rock?
+</div>
 
-    <div class="tool-card">
-      <div class="tool-card-top">
-        <span class="tool-emoji">🤝</span>
-        <div class="tool-name">Companion Planting Checker</div>
-        <div class="tool-tags">
-          <span class="tool-tag">26 plants</span>
-          <span class="tool-tag">Friends & foes</span>
-          <span class="tool-tag">Compatibility check</span>
-        </div>
-        <div class="tool-desc">Find out which plants grow well together and which to keep apart. Select one plant to see its full companion guide, or pick two to instantly check if they're compatible.</div>
-      </div>
-      <div class="tool-footer">
-        <a class="tool-link" href="/companion-planting/">Open tool</a>
-        <span class="tool-free">Free</span>
-      </div>
-    </div>
+<div class="pick-reason">
+Start with influential songs from the 1970s and 1980s. Many modern bands were inspired by artists like Led Zeppelin, Queen and Pink Floyd. SongScout helps you find the key tracks that shaped the genre.
+</div>
+</div>
+</div>
 
-    <div class="tool-card">
-      <div class="tool-card-top">
-        <span class="tool-emoji">🪴</span>
-        <div class="tool-name">Veg Patch Planner</div>
-        <div class="tool-tags">
-          <span class="tool-tag">Drag & drop</span>
-          <span class="tool-tag">Companion warnings</span>
-          <span class="tool-tag">Printable</span>
-        </div>
-        <div class="tool-desc">Plan your raised bed or allotment row by row with a drag-and-drop grid. Colour-coded by plant type, with live companion planting warnings if bad neighbours end up next to each other.</div>
-      </div>
-      <div class="tool-footer">
-        <a class="tool-link" href="/veg-patch-planner/">Open tool</a>
-        <span class="tool-free">Free</span>
-      </div>
-    </div>
+<div class="pick-card">
+<div>
+<div class="pick-title">
+How do I find artists similar to my favourite band?
+</div>
 
+<div class="pick-reason">
+Use the Discovery Engine to explore connections between artists. Many bands are influenced by earlier musicians, creating a family tree of sound that makes discovering similar artists easier.
+</div>
+</div>
+</div>
 
-    <div class="tool-card">
-      <div class="tool-card-top">
-        <span class="tool-emoji">📋</span>
-        <div class="tool-name">Monthly Jobs Checklist</div>
-        <div class="tool-tags">
-          <span class="tool-tag">All 12 months</span>
-          <span class="tool-tag">Region-aware</span>
-          <span class="tool-tag">Tick off as you go</span>
-        </div>
-        <div class="tool-desc">A practical tick-off checklist of everything to do in your garden this month — sowing, planting, pruning, feeding and more. Tailored to your UK region.</div>
-      </div>
-      <div class="tool-footer">
-        <a class="tool-link" href="/monthly-jobs/">Open tool</a>
-        <span class="tool-free">Free</span>
-      </div>
-    </div>
+<div class="pick-card">
+<div>
+<div class="pick-title">
+Is SongScout free?
+</div>
 
+<div class="pick-reason">
+Yes. SongScout is completely free to use. No login, no subscription and no ads.
+</div>
+</div>
+</div>
 
-    <div class="tool-card">
-      <div class="tool-card-top">
-        <span class="tool-emoji">🌡️</span>
-        <div class="tool-name">Frost Date Checker</div>
-        <div class="tool-tags">
-          <span class="tool-tag">11 UK regions</span>
-          <span class="tool-tag">Last & first frost</span>
-          <span class="tool-tag">Planting guide</span>
-        </div>
-        <div class="tool-desc">Find your last spring frost and first autumn frost dates. Know exactly when it's safe to plant out tender crops — and when to bring plants in for winter.</div>
-      </div>
-      <div class="tool-footer">
-        <a class="tool-link" href="/frost-checker/">Open tool</a>
-        <span class="tool-free">Free</span>
-      </div>
-    </div>
+<div class="pick-card">
+<div>
+<div class="pick-title">
+What genres does SongScout cover?
+</div>
 
+<div class="pick-reason">
+SongScout focuses mainly on rock, metal and alternative music, helping listeners explore the most influential artists and essential tracks across multiple decades.
+</div>
+</div>
+</div>
 
-    <div class="tool-card">
-      <div class="tool-card-top">
-        <span class="tool-emoji">💧</span>
-        <div class="tool-name">Watering Guide</div>
-        <div class="tool-tags">
-          <span class="tool-tag">39 plants</span>
-          <span class="tool-tag">Seasonal advice</span>
-          <span class="tool-tag">Heatwave tips</span>
-        </div>
-        <div class="tool-desc">How often and how much to water every vegetable, fruit, herb and flower in your UK garden — with seasonal notes, heatwave advice and tips for containers and borders.</div>
-      </div>
-      <div class="tool-footer">
-        <a class="tool-link" href="/watering-guide/">Open tool</a>
-        <span class="tool-free">Free</span>
-      </div>
-    </div>
+<div class="pick-card">
+<div>
+<div class="pick-title">
+Is SongScout good for reaction videos?
+</div>
 
-  </div>
+<div class="pick-reason">
+Yes. Many tracks included are chosen because they create strong first-time reactions, making them ideal for YouTube reaction content and music exploration videos.
+</div>
+</div>
+</div>
 
-  <!-- WHY GROWGUIDE -->
-  <div class="why-section">
-    <div class="section-title">Why GrowGuide?</div>
-    <div class="section-sub">No accounts, no paywalls, no adverts. Just useful tools for gardeners.</div>
-    <div class="why-grid">
-      <div class="why-card">
-        <span class="why-icon">🆓</span>
-        <div class="why-title">Always free</div>
-        <div class="why-text">Every tool on this site is free to use. No premium tiers, no locked features.</div>
-      </div>
-      <div class="why-card">
-        <span class="why-icon">🚫</span>
-        <div class="why-title">No adverts</div>
-        <div class="why-text">We don't sell ad space or track you across the web. Just clean, fast pages.</div>
-      </div>
-      <div class="why-card">
-        <span class="why-icon">🔒</span>
-        <div class="why-title">No account needed</div>
-        <div class="why-text">Open any tool and use it straight away. We don't ask for your email address.</div>
-      </div>
-      <div class="why-card">
-        <span class="why-icon">🇬🇧</span>
-        <div class="why-title">Built for the UK</div>
-        <div class="why-text">All advice is tailored to UK seasons, regions, and growing conditions — not the US or elsewhere.</div>
-      </div>
-      <div class="why-card">
-        <span class="why-icon">📱</span>
-        <div class="why-title">Works on anything</div>
-        <div class="why-text">Phone, tablet, or desktop — every tool works on any device, in any browser.</div>
-      </div>
-      <div class="why-card">
-        <span class="why-icon">🌱</span>
-        <div class="why-title">Beginner friendly</div>
-        <div class="why-text">No jargon. Every tool is built to be clear and useful whether you're brand new or experienced.</div>
-      </div>
-    </div>
-  </div>
+</div>
 
-  <!-- DONATE -->
-  <div class="donate-section">
-    <div class="donate-text">
-      <h3>☕ Find GrowGuide useful?</h3>
-      <p>GrowGuide is free to use and always will be. If it's saved you time or helped you grow something great, a small donation keeps the site running and helps us build more tools.</p>
-    </div>
-    <a class="donate-btn" href="https://buymeacoffee.com/growguideuk" target="_blank" rel="noopener">☕ Buy us a coffee</a>
-  </div>
+</section>
 
-</main>
-
-<!-- FOOTER -->
 <footer class="site-footer">
-  <div class="footer-links">
-    <a href="/">Home</a>
-    <a href="what-to-plant/">Plant Planner</a>
-    <a href="/pest-identifier/">Pest Identifier</a>
-    <a href="/seed-to-harvest/">Seed Timelines</a>
-    <a href="/companion-planting/">Companion Planting</a>
-    <a href="/monthly-jobs/">Monthly Jobs</a>
-    <a href="/frost-checker/">Frost Checker</a>
-    <a href="/watering-guide/">Watering Guide</a>
-    <a href="/privacy/">Privacy</a>
-    <a href="/terms/">Terms</a>
-  </div>
-  <div class="footer-copy">GrowGuide &mdash; Free UK Garden Tools &mdash; No login, no ads, no nonsense</div>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark">&#9836;</div>
+          <div><div class="logo-text">SongScout</div><div class="logo-sub">Music Discovery</div></div>
+        </div>
+        <p>Free music discovery tools for every generation. No login, no ads, no nonsense.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Tools</h4>
+        <a href="/era-explorer/">Era Explorer</a>
+        <a href="/discovery-engine/">Discovery Engine</a>
+        <a href="/reaction-kit/">Reaction Kit</a>
+      </div>
+      <div class="footer-links">
+        <h4>Start here</h4>
+        <a href="/era-explorer/">1970s Classic Rock</a>
+        <a href="/era-explorer/">1980s Heavy Metal</a>
+        <a href="/era-explorer/">1990s Grunge</a>
+        <a href="/era-explorer/">1980s Classic Rock</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+
+<div>
+SongScout — Free music discovery — No login, no ads, no nonsense
+</div>
+
+<div>
+© <span id="year"></span> SongScout ·
+<a href="/privacy">Privacy</a> ·
+<a href="/terms">Terms</a>
+</div>
+
+</div>
+
+</div>
+
+</p>
+
+  
 </footer>
 
-<script>
-const MONTH_TIPS = [
-  {icon:'❄️', heading:'January — Plan and dream', body:'The garden is resting but your brain shouldn\'t be. Order seed catalogues, plan your crop rotation, and chit seed potatoes on a light windowsill. Sow broad beans indoors if you haven\'t already.'},
-  {icon:'🌱', heading:'February — First sows of the year', body:'Days are noticeably lengthening. Sow chillies and peppers indoors — they need the longest growing season. Prune apple and pear trees while still dormant. Chit potatoes now if not done in January.'},
-  {icon:'🌿', heading:'March — The growing year begins', body:'A busy month. Sow tomatoes on a warm windowsill, plant first early potatoes in the south, and start hardening off any seedlings you\'ve been growing. Watch for slugs as temperatures creep up.'},
-  {icon:'🌸', heading:'April — Spring in full swing', body:'Harden off indoor-raised seedlings before planting out. Plant onion sets and shallots. Start watering containers regularly — spring can be deceptively dry. Protect brassicas with netting.'},
-  {icon:'☀️', heading:'May — The most exciting month', body:'Plant out tender crops after your last frost date. Pinch out sweet peas for bushy growth. Check for aphids on new growth. Sow courgettes, squash and French beans if not done already.'},
-  {icon:'☀️', heading:'June — First harvests arrive', body:'Pick strawberries and salad leaves daily. Side-shoot tomatoes and feed weekly with a high-potash liquid fertiliser. Deadhead flowers constantly to keep blooms coming all summer.'},
-  {icon:'🌻', heading:'July — Midsummer abundance', body:'Harvest courgettes while small — they become marrows overnight. Water consistently; irregular watering causes blossom end rot in tomatoes. Sow French beans and spring onions for an autumn crop.'},
-  {icon:'🍂', heading:'August — Peak harvest season', body:'Lift maincrop potatoes and onions to dry. Sow kale, spring cabbage and winter salads for autumn and winter crops. Propagate strawberries by pinning runners into small pots of compost.'},
-  {icon:'🍂', heading:'September — A second spring', body:'A great month for sowing. Get sweet peas in now for earlier, stronger plants next year. Plant autumn garlic. Clear spent crops and add to the compost heap. Pot up herbs for the windowsill.'},
-  {icon:'🍁', heading:'October — Bulb-planting season', body:'Plant tulips, daffodils, and alliums for spring colour. Plant bare-root roses, trees, and hedging — far cheaper than container-grown. Collect fallen leaves for leaf mould. Lift dahlias after first frost.'},
-  {icon:'🌧️', heading:'November — Winding down', body:'Finish planting spring bulbs and bare-root plants. Mulch beds with compost or bark to protect roots over winter. Clean out the greenhouse and scrub glass to maximise winter light.'},
-  {icon:'❄️', heading:'December — Rest and reflect', body:'Plan next year\'s garden — draw a crop rotation plan and order seeds early for best variety choice. Check stored veg and tubers for rot. Prune apple and pear trees on dry days.'},
-];
-
-const m = new Date().getMonth();
-const tip = MONTH_TIPS[m];
-document.getElementById('seasIcon').textContent = tip.icon;
-// heading format is "Month — Title", extract just the title part
-const headingParts = tip.heading.split(' — ');
-document.getElementById('seasHeading').textContent = headingParts[1] || tip.heading;
-document.getElementById('seasBody').textContent = tip.body;
-</script>
-<script src="/ask-the-gardener.js"></script>
+<a href="https://buymeacoffee.com/songscout" target="_blank" rel="noopener" style="position:fixed;bottom:24px;left:24px;z-index:9999;display:flex;align-items:center;gap:8px;background:#FFDD00;color:#000;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:700;padding:11px 18px;border-radius:100px;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,0.4);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">☕ Buy me a coffee</a>
 </body>
 </html>
