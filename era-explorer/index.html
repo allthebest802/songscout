@@ -205,6 +205,17 @@ button{cursor:pointer;font-family:'DM Sans',sans-serif;border:none;background:no
   .song-tags{display:none}
   .nav{display:none}
 }
+
+.yt-link{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:0.68rem;font-weight:700;letter-spacing:0.5px;
+  color:var(--muted);text-decoration:none;
+  padding:2px 8px;border-radius:100px;
+  border:1px solid var(--border2);background:var(--dark3);
+  transition:all 0.15s;margin-top:4px;
+}
+.yt-link:hover{color:#FF4444;border-color:#FF4444;background:rgba(255,68,68,0.08)}
+.yt-link svg{width:10px;height:10px;flex-shrink:0}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Era Explorer","url":"https://songscout.uk/era-explorer/","description":"Pick a decade and genre to get 10 essential tracks with expert write-ups. 34 packs covering classic rock, metal, punk, grunge, alternative and more.","applicationCategory":"MusicApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"}}</script>
 </head>
@@ -941,6 +952,7 @@ function renderResults() {
           <div class="song-title">${s.title}</div>
           <div class="song-artist">${s.artist}</div>
           <div class="song-year">${s.year}</div>
+          <a class="yt-link" href="https://www.youtube.com/results?search_query=${encodeURIComponent(s.artist+' '+s.title)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.35a8.16 8.16 0 004.77 1.52V7.42a4.85 4.85 0 01-1-.73z"/></svg> YouTube</a>
         </div>
         <div class="song-tags">${tagHtml}</div>
         <div class="song-expand" id="expand-${i}">
