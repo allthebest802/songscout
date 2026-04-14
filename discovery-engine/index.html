@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Discovery Engine — SongScout | Musical Influence Family Tree</title>
-<meta name="description" content="Pick an artist you love and trace the musical family tree of influences that shaped them. 75+ artists across every rock genre — follow any branch back through the decades from Arctic Monkeys to Robert Johnson.">
+<title>Music Influence Family Tree — 120+ Artists | Discovery Engine — SongScout</title>
+<meta name="description" content="Pick any artist and trace the musical family tree of influences that shaped them. 120+ artists across rock history. Follow any branch from Arctic Monkeys back to Robert Johnson. Free, no login.">
 <meta name="keywords" content="music influence tree, who influenced Nirvana, Led Zeppelin influences, music family tree, discover classic rock, artist influences explained, musical roots">
 <link rel="canonical" href="https://songscout.uk/discovery-engine/">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -28,7 +28,7 @@ button{cursor:pointer;font-family:'DM Sans',sans-serif;border:none;background:no
 .site-header{padding:0 24px;border-bottom:1px solid var(--border);background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100}
 .header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:16px 0}
 .logo{display:flex;align-items:center;gap:12px}
-.logo-mark{width:42px;height:42px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--black)}
+.logo-mark{width:42px;height:42px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--black)}
 .logo-text{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--white);letter-spacing:2px;line-height:1}
 .logo-sub{font-size:0.65rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:1px}
 .nav{margin-left:auto;display:flex;gap:6px}
@@ -155,13 +155,14 @@ button{cursor:pointer;font-family:'DM Sans',sans-serif;border:none;background:no
   .influence-grid{grid-template-columns:1fr}
 }
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Discovery Engine","url":"https://songscout.uk/discovery-engine/","description":"Trace the musical family tree of 120+ artists. Pick any artist and see who influenced them and who they influenced.","applicationCategory":"MusicApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"}}</script>
 </head>
 <body>
 
 <header class="site-header">
   <div class="header-inner">
     <a class="logo" href="/">
-      <div class="logo-mark">SS</div>
+      <div class="logo-mark">&#9836;</div>
       <div>
         <div class="logo-text">SongScout</div>
         <div class="logo-sub">Music Discovery</div>
@@ -850,6 +851,342 @@ const ARTISTS = {
     tags:['Blood Sugar Sex Magik','Flea','Californication','Funk rock'],
     influences:['parliament-funkadelic','jimi-hendrix','led-zeppelin','punk-tradition'],
     influencedBy:['incubus','311','sublime','rage-against-the-machine'],
+  },
+
+  'lynyrd-skynyrd':{
+    name:'Lynyrd Skynyrd', era:'1964–present', genre:'Southern Rock / Hard Rock',
+    bio:'Ronnie Van Zant, Gary Rossington and Allen Collins created the definitive Southern rock sound — blues-rooted, guitar-heavy and utterly American. Free Bird is one of rock\'s great live moments. Sweet Home Alabama became an anthem. Their plane crash in 1977, killing Van Zant and two others, ended the classic lineup at its peak.',
+    tags:['Southern rock','Free Bird','Sweet Home Alabama','Three guitarists'],
+    influences:['the-rolling-stones','blues-tradition','country-tradition','the-allman-brothers'],
+    influencedBy:['blackfoot','38-special','drive-by-truckers','kid-rock'],
+  },
+
+  'boston':{
+    name:'Boston', era:'1976–present', genre:'Classic Rock / Hard Rock',
+    bio:'Tom Scholz built a recording studio in his basement and made an album that sounded like it cost millions. He had an engineering degree from MIT and applied systematic principles to recording. More Than a Feeling, Long Time and Peace of Mind made Boston\'s debut one of the best-selling albums of all time.',
+    tags:['More Than a Feeling','Tom Scholz','Studio perfectionist','Debut landmark'],
+    influences:['led-zeppelin','the-beatles','yes','electric-light-orchestra'],
+    influencedBy:['journey','styx','foreigner','nickelback'],
+  },
+
+  'heart':{
+    name:'Heart', era:'1970–present', genre:'Hard Rock / Classic Rock',
+    bio:'Ann and Nancy Wilson were the most important female-led hard rock band of the 1970s. Ann\'s voice — one of rock\'s great natural instruments — and Nancy\'s guitar playing gave Heart a power and sophistication that their male contemporaries respected. Crazy on You and Barracuda remain two of classic rock\'s essential tracks.',
+    tags:['Ann Wilson','Barracuda','Female-led hard rock','Crazy on You'],
+    influences:['led-zeppelin','joni-mitchell','jimi-hendrix','the-beatles'],
+    influencedBy:['the-pretenders','sheryl-crow','evanescence','taylor-swift'],
+  },
+
+  'bad-company':{
+    name:'Bad Company', era:'1973–present', genre:'Hard Rock / Classic Rock',
+    bio:'Paul Rodgers, Mick Ralphs, Simon Kirke and Boz Burrell formed the original supergroup from the ashes of Free and Mott the Hoople. Rodgers\' voice — warm, powerful and effortlessly cool — is one of rock\'s finest. Can\'t Get Enough, Feel Like Makin\' Love and Bad Company itself are hard rock at its most assured.',
+    tags:['Paul Rodgers','Can\'t Get Enough','Classic hard rock','Supergroup'],
+    influences:['free','led-zeppelin','the-rolling-stones','blues-tradition'],
+    influencedBy:['foreigner','whitesnake','bryan-adams','the-darkness'],
+  },
+
+  'foreigner':{
+    name:'Foreigner', era:'1976–present', genre:'Hard Rock / Arena Rock',
+    bio:'Mick Jones and Lou Gramm built one of the 70s and 80s most successful hard rock bands — melodic, radio-friendly and driven by Gramm\'s extraordinary voice. Cold as Ice, Hot Blooded, Urgent and I Want to Know What Love Is demonstrate a band that understood pop craft without sacrificing rock credibility.',
+    tags:['Lou Gramm','I Want to Know What Love Is','Arena rock','Hot Blooded'],
+    influences:['bad-company','the-rolling-stones','led-zeppelin','blues-tradition'],
+    influencedBy:['journey','survivor','night-ranger','bon-jovi'],
+  },
+
+  'zz-top':{
+    name:'ZZ Top', era:'1969–2023', genre:'Blues Rock / Hard Rock',
+    bio:'Billy Gibbons, Dusty Hill and Frank Beard built a career on Texas blues played with rock power and a sharp sense of humour. Gibbons\' guitar tone — achieved through vintage equipment and meticulous technique — is one of rock\'s most distinctive sounds. The Eliminator album made them MTV stars without changing a note of what they did.',
+    tags:['Billy Gibbons','Sharp Dressed Man','Texas blues','Eliminator'],
+    influences:['muddy-waters','bb-king','jimi-hendrix','blues-tradition'],
+    influencedBy:['the-black-keys','jack-white','gov-t-mule','gary-clark-jr'],
+  },
+
+  'santana':{
+    name:'Santana', era:'1966–present', genre:'Latin Rock / Blues Rock / Psychedelic Rock',
+    bio:'Carlos Santana fused Afro-Cuban rhythms, blues guitar and rock to create something entirely new. His appearance at Woodstock in 1969 — where he played a legendary set while hallucinating — announced him to the world. Supernatural in 1999 brought him back to mainstream consciousness with a Grammy-winning comeback.',
+    tags:['Woodstock 1969','Smooth','Latin rock','Carlos Santana'],
+    influences:['jimi-hendrix','bb-king','tito-puente','john-coltrane'],
+    influencedBy:['los-lobos','ozomatli','gary-clark-jr','rock-en-espanol'],
+  },
+
+  'creedence-clearwater-revival':{
+    name:'Creedence Clearwater Revival', era:'1967–1972', genre:'Swamp Rock / Rock / Roots Rock',
+    bio:'John Fogerty, Tom Fogerty, Stu Cook and Doug Clifford created a sound rooted in Delta blues and Louisiana swamp music despite being from California. Proud Mary, Bad Moon Rising and Fortunate Son have never left rock radio. One of the most commercially successful bands of the late 60s and early 70s.',
+    tags:['Proud Mary','Fortunate Son','Swamp rock','John Fogerty'],
+    influences:['robert-johnson','little-richard','elvis-presley','blues-tradition'],
+    influencedBy:['the-black-crowes','john-mellencamp','jason-isbell','drive-by-truckers'],
+  },
+
+  'bon-jovi':{
+    name:'Bon Jovi', era:'1983–present', genre:'Hard Rock / Glam Metal / Pop Rock',
+    bio:'Jon Bon Jovi and Richie Sambora built one of the 80s most successful rock bands — melodic, anthemic and built for arenas. Slippery When Wet is one of the best-selling albums of the decade. Living on a Prayer and Wanted Dead or Alive showed a band that understood the balance between rock credibility and pop accessibility.',
+    tags:['Living on a Prayer','Slippery When Wet','Arena rock','Richie Sambora'],
+    influences:['aerosmith','kiss','bruce-springsteen','the-rolling-stones'],
+    influencedBy:['nickelback','the-rasmus','simple-plan','theory-of-a-deadman'],
+  },
+
+  'def-leppard':{
+    name:'Def Leppard', era:'1977–present', genre:'Hard Rock / Glam Metal',
+    bio:'Joe Elliott, Phil Collen, Steve Clark, Rick Savage and Rick Allen created Hysteria — one of the best-selling albums of all time, recorded after drummer Rick Allen lost his arm in a car accident. Pour Some Sugar on Me and Love Bites showed a band that could combine heavy metal power with pop songwriting craft.',
+    tags:['Hysteria','Pour Some Sugar on Me','Rick Allen one arm','Sheffield'],
+    influences:['aerosmith','ac-dc','thin-lizzy','sweet'],
+    influencedBy:['warrant','ratt','poison','nickelback'],
+  },
+
+  'whitesnake':{
+    name:'Whitesnake', era:'1978–present', genre:'Hard Rock / Heavy Metal',
+    bio:'David Coverdale built Whitesnake from the ashes of Deep Purple and created one of the 80s most successful hard rock bands. Here I Go Again is one of rock\'s great anthems. Coverdale\'s voice — powerful, bluesy and immediately distinctive — is one of hard rock\'s finest instruments.',
+    tags:['Here I Go Again','David Coverdale','80s hard rock','Deep Purple connection'],
+    influences:['deep-purple','led-zeppelin','blues-tradition','bad-company'],
+    influencedBy:['the-darkness','rival-sons','black-star-riders'],
+  },
+
+  'motorhead':{
+    name:'Motörhead', era:'1975–2015', genre:'Heavy Metal / Punk / Rock and Roll',
+    bio:'Lemmy Kilmister, Phil Taylor and Fast Eddie Clarke played at a speed and volume that influenced both heavy metal and punk simultaneously. Ace of Spades is the quintessential Motörhead track. Lemmy\'s bass tone — overdriven, trebly and completely his own — is one of rock\'s most distinctive sounds.',
+    tags:['Ace of Spades','Lemmy','Metal and punk','Overkill'],
+    influences:['the-rolling-stones','chuck-berry','jimi-hendrix','sex-pistols'],
+    influencedBy:['metallica','slayer','motorpsycho','the-darkness'],
+  },
+
+  'ozzy-osbourne':{
+    name:'Ozzy Osbourne', era:'1979–present', genre:'Heavy Metal / Hard Rock',
+    bio:'After leaving Black Sabbath, Ozzy Osbourne built a solo career as successful as his band work. Randy Rhoads — his first guitarist, who died in a plane crash aged 25 — is widely considered one of metal\'s greatest. Crazy Train and Mr. Crowley remain metal essentials. Sharon Osbourne\'s management transformed him into a global brand.',
+    tags:['Crazy Train','Randy Rhoads','Black Sabbath connection','Prince of Darkness'],
+    influences:['black-sabbath','led-zeppelin','alice-cooper'],
+    influencedBy:['metallica','slayer','pantera','rob-zombie'],
+  },
+
+  'alice-in-chains':{
+    name:'Alice in Chains', era:'1987–present', genre:'Grunge / Alternative Metal / Heavy Metal',
+    bio:'Layne Staley and Jerry Cantrell created one of the most distinctive sounds in grunge — the dual vocal harmonies between them are immediately recognisable. Down in a Hole, Would? and Rooster showed a band capable of genuine emotional depth. Staley\'s death in 2002 closed a chapter; the band reformed with William DuVall in 2006.',
+    tags:['Layne Staley','Dirt','Dual harmonies','Rooster'],
+    influences:['black-sabbath','led-zeppelin','nirvana','soundgarden'],
+    influencedBy:['deftones','breaking-benjamin','three-days-grace','shinedown'],
+  },
+
+  'bush':{
+    name:'Bush', era:'1992–present', genre:'Alternative Rock / Post-Grunge',
+    bio:'Gavin Rossdale\'s British band arrived in America in 1994 and became one of post-grunge\'s most commercially successful acts. Sixteen Stone is one of the decade\'s strongest debut albums. Machinehead, Everything Zen and Glycerine showed a band that understood both the heavy and tender sides of alternative rock.',
+    tags:['Sixteen Stone','Gavin Rossdale','British post-grunge','Machinehead'],
+    influences:['nirvana','pixies','the-cure','neil-young'],
+    influencedBy:['cold','puddle-of-mudd','hinder'],
+  },
+
+  'live':{
+    name:'Live', era:'1984–present', genre:'Alternative Rock / Post-Grunge',
+    bio:'Ed Kowalczyk, Chad Taylor, Patrick Dahlheimer and Chad Gracey from Pennsylvania created Throwing Copper — one of the best-selling alternative albums of the 90s. Lightning Crashes, I Alone and Selling the Drama showed a band with genuine spiritual depth and emotional intensity that set them apart from their peers.',
+    tags:['Throwing Copper','Lightning Crashes','Ed Kowalczyk','Spiritual rock'],
+    influences:['r-e-m','u2','peter-gabriel','pearl-jam'],
+    influencedBy:['nickelback','creed','matchbox-twenty'],
+  },
+
+  'hole':{
+    name:'Hole', era:'1989–2012', genre:'Alternative Rock / Grunge / Punk',
+    bio:'Courtney Love and Eric Erlandson\'s band made Live Through This — released four days after Kurt Cobain\'s death — one of the great albums of 1994. Doll Parts, Violet and Celebrity Skin showed Love as a genuinely gifted songwriter. Her confrontational public persona often overshadowed the music\'s quality.',
+    tags:['Live Through This','Courtney Love','Doll Parts','Celebrity Skin'],
+    influences:['pixies','sonic-youth','the-stooges','patti-smith'],
+    influencedBy:['paramore','yeah-yeah-yeahs','wolf-alice','sleater-kinney'],
+  },
+
+  'garbage':{
+    name:'Garbage', era:'1993–present', genre:'Alternative Rock / New Wave / Electronic Rock',
+    bio:'Shirley Manson, Butch Vig, Steve Marker and Duke Erikson created one of the most sonically sophisticated alternative rock bands of the 90s. Vig\'s production expertise — he had produced Nirvana\'s Nevermind — combined with Manson\'s commanding voice and visual presence. Only Happy When It Rains and Stupid Girl are 90s essentials.',
+    tags:['Shirley Manson','Only Happy When It Rains','Butch Vig','Version 2.0'],
+    influences:['siouxsie-and-the-banshees','the-cure','depeche-mode','nirvana'],
+    influencedBy:['paramore','hayley-williams','wolf-alice','pvris'],
+  },
+
+  'alanis-morissette':{
+    name:'Alanis Morissette', era:'1991–present', genre:'Alternative Rock / Post-Grunge / Pop Rock',
+    bio:'Jagged Little Pill is one of the best-selling albums of all time — 33 million copies. Alanis Morissette\'s confessional rage, Ironic\'s dark humour and You Oughta Know\'s raw fury connected with an entire generation. She brought emotional directness and female anger to mainstream rock in a way that hadn\'t been done before.',
+    tags:['Jagged Little Pill','You Oughta Know','Ironic','Confessional rock'],
+    influences:['pj-harvey','tori-amos','sinead-oconnor','the-cure'],
+    influencedBy:['avril-lavigne','taylor-swift','pink','paramore'],
+  },
+
+  'bb-king':{
+    name:'B.B. King', era:'1949–2015', genre:'Blues / Electric Blues',
+    bio:'Riley B. King — B.B. King — and his guitar Lucille defined the modern electric blues vocabulary. His vibrato technique, his single-string soloing and his emotional expression influenced every blues and rock guitarist who followed. The Thrill is Gone remains the quintessential B.B. King recording.',
+    tags:['Lucille','The Thrill Is Gone','Blues king','Vibrato master'],
+    influences:['t-bone-walker','django-reinhardt','charlie-christian','delta-blues'],
+    influencedBy:['eric-clapton','jimi-hendrix','stevie-ray-vaughan','gary-moore'],
+  },
+
+  'howlin-wolf':{
+    name:'Howlin\' Wolf', era:'1948–1976', genre:'Chicago Blues / Electric Blues',
+    bio:'Chester Arthur Burnett — Howlin\' Wolf — had one of the most powerful voices in blues history. His recordings for Chess Records in the 1950s and 60s directly inspired the Rolling Stones, Led Zeppelin and Cream. Smokestack Lightning, Spoonful and Back Door Man are blues standards that shaped rock music.',
+    tags:['Smokestack Lightning','Chess Records','Powerful voice','Rolling Stones influence'],
+    influences:['robert-johnson','charley-patton','delta-blues-tradition'],
+    influencedBy:['the-rolling-stones','led-zeppelin','cream','the-doors'],
+  },
+
+  'son-house':{
+    name:'Son House', era:'1930–1974', genre:'Delta Blues',
+    bio:'Eddie James House Jr was the most important link between the earliest Delta blues and the modern era. He taught Robert Johnson and influenced Muddy Waters. His recordings — particularly Death Letter and Grinnin\' in Your Face — capture a raw, spiritual intensity that no subsequent recording has matched.',
+    tags:['Death Letter','Delta blues master','Robert Johnson teacher','Raw intensity'],
+    influences:['charley-patton','church-music-tradition'],
+    influencedBy:['robert-johnson','muddy-waters','jack-white','the-white-stripes'],
+  },
+
+  'buddy-guy':{
+    name:'Buddy Guy', era:'1957–present', genre:'Chicago Blues / Electric Blues',
+    bio:'George "Buddy" Guy was Eric Clapton\'s stated greatest influence and Jimi Hendrix\'s favourite guitarist. His aggressive, feedback-drenched style pointed directly toward rock guitar in a way that most blues players hadn\'t. Damn Right I\'ve Got the Blues brought him mainstream recognition after decades of being a musician\'s musician.',
+    tags:['Damn Right I\'ve Got the Blues','Clapton\'s hero','Chicago blues','Feedback pioneer'],
+    influences:['muddy-waters','little-walter','bb-king','Guitar-Slim'],
+    influencedBy:['eric-clapton','jimi-hendrix','stevie-ray-vaughan','john-mayer'],
+  },
+
+  'john-lee-hooker':{
+    name:'John Lee Hooker', era:'1948–2001', genre:'Delta Blues / Chicago Blues',
+    bio:'John Lee Hooker\'s one-chord boogie — hypnotic, rhythmic and completely his own — influenced every rock band that ever played a groove. Boom Boom and Boogie Chillen are two of the most important recordings in blues history. His collaborations with Van Morrison and Carlos Santana in the 80s and 90s introduced him to new generations.',
+    tags:['Boom Boom','Boogie Chillen','One-chord boogie','The Healer'],
+    influences:['delta-blues-tradition','charley-patton','church-music'],
+    influencedBy:['the-rolling-stones','the-animals','van-morrison','santana'],
+  },
+
+  'the-libertines':{
+    name:'The Libertines', era:'2001–present', genre:'Indie Rock / Post-Punk Revival',
+    bio:'Pete Doherty and Carl Barât\'s shambling, urgent guitar pop captured a specific moment in British music. Up the Bracket — produced by Mick Jones of The Clash — announced a band with genuine chemistry and genuine chaos in equal measure. The Libertines were the last great rock stars in the old sense.',
+    tags:['Pete Doherty','Up the Bracket','British indie','Carl Barât'],
+    influences:['the-clash','the-strokes','the-jam','the-rolling-stones'],
+    influencedBy:['arctic-monkeys','the-vaccines','the-view','miles-kane'],
+  },
+
+  'coldplay':{
+    name:'Coldplay', era:'1996–present', genre:'Alternative Rock / Post-Britpop / Pop Rock',
+    bio:'Chris Martin, Jonny Buckland, Guy Berryman and Will Champion grew from Britpop-adjacent beginnings to become the biggest rock band in the world. A Rush of Blood to the Head is their masterpiece. The Edge\'s influence on Buckland\'s guitar is audible; Martin\'s piano-led songwriting found an emotional register that connected with hundreds of millions.',
+    tags:['A Rush of Blood to the Head','The Scientist','Chris Martin','Biggest band of 2000s'],
+    influences:['u2','radiohead','the-beatles','neil-young'],
+    influencedBy:['snow-patrol','keane','the-fray','imagine-dragons'],
+  },
+
+  'franz-ferdinand':{
+    name:'Franz Ferdinand', era:'2002–present', genre:'Indie Rock / Post-Punk Revival / Dance Punk',
+    bio:'Alex Kapranos, Nick McCarthy, Bob Hardy and Paul Thomson arrived in 2004 with Take Me Out — a single that pivots between two completely different grooves mid-song. Franz Ferdinand were the most musically sophisticated British band of the mid-2000s indie revival, drawing on art rock, post-punk and disco simultaneously.',
+    tags:['Take Me Out','Alex Kapranos','Scottish indie','Dance punk'],
+    influences:['television','gang-of-four','david-bowie','the-strokes'],
+    influencedBy:['the-vaccines','everything-everything','alt-j'],
+  },
+
+  'kaiser-chiefs':{
+    name:'Kaiser Chiefs', era:'2000–present', genre:'Indie Rock / Post-Punk Revival',
+    bio:'Ricky Wilson, Andrew White, Simon Rix, Nick Baines and Nick Hodgson from Leeds created Employment — one of the best British debut albums of the 2000s. I Predict a Riot and Ruby showed a band with wit, energy and genuine melodic craft. They captured the mid-2000s British indie moment alongside Arctic Monkeys.',
+    tags:['I Predict a Riot','Ruby','Leeds indie','Employment'],
+    influences:['the-jam','blur','the-clash','the-who'],
+    influencedBy:['the-pigeon-detectives','the-cribs','rascals'],
+  },
+
+  'kasabian':{
+    name:'Kasabian', era:'1997–present', genre:'Indie Rock / Electronic Rock / Britrock',
+    bio:'Tom Meighan, Sergio Pizzorno and Chris Edwards from Leicester built one of Britain\'s biggest rock bands on a foundation of Oasis swagger and Chemical Brothers electronic production. Club Foot, L.S.F. and Fire showed a band that understood how to make stadium rock feel dangerous again.',
+    tags:['Club Foot','Tom Meighan','Leicester rock','Electronic indie'],
+    influences:['oasis','the-stone-roses','primal-scream','chemical-brothers'],
+    influencedBy:['the-courteeners','the-rifles','the-enemy'],
+  },
+
+  'biffy-clyro':{
+    name:'Biffy Clyro', era:'1995–present', genre:'Alternative Rock / Post-Hardcore / Arena Rock',
+    bio:'Simon Neil, James Johnston and Ben Johnston from Kilmarnock built one of Scotland\'s greatest rock bands. Many of Horror and Mountains are two of British rock\'s most emotionally direct recent songs. Their ability to move between intricate post-hardcore and arena-filling anthems is unmatched in contemporary British rock.',
+    tags:['Many of Horror','Mountains','Scottish rock','Simon Neil'],
+    influences:['foo-fighters','muse','at-the-drive-in','radiohead'],
+    influencedBy:['twin-atlantic','frightened-rabbit','young-guns'],
+  },
+
+  'royal-blood':{
+    name:'Royal Blood', era:'2011–present', genre:'Blues Rock / Garage Rock / Hard Rock',
+    bio:'Mike Kerr and Ben Thatcher make the sound of a full band from just bass guitar and drums — Kerr routes his bass through guitar effects to create a sound that fills every frequency. Their debut album is one of the most impressive in British rock of the 2010s. Figure It Out and Out of the Black are the entry points.',
+    tags:['Two pieces','Figure It Out','Mike Kerr bass guitar trick','Brighton'],
+    influences:['the-white-stripes','queens-of-the-stone-age','led-zeppelin','black-sabbath'],
+    influencedBy:['badflower','zero-9-36','grandson'],
+  },
+
+  'tame-impala':{
+    name:'Tame Impala', era:'2007–present', genre:'Psychedelic Rock / Neo-Psychedelia / Indie Pop',
+    bio:'Kevin Parker records almost everything himself in his home studio in Perth, Australia. His production technique — thick with reverb, influenced by Lennon-era Beatles — created the defining psychedelic pop sound of the 2010s. Lonerism and Currents are both landmark albums. The Less I Know the Better has become one of streaming\'s great discovered songs.',
+    tags:['Currents','Kevin Parker','Perth psychedelia','The Less I Know the Better'],
+    influences:['the-beatles','pink-floyd','j-dilla','mgmt'],
+    influencedBy:['unknown-mortal-orchestra','melody\'s-echo-chamber','pond'],
+  },
+
+  'hozier':{
+    name:'Hozier', era:'2012–present', genre:'Blues Rock / Soul Rock / Alternative',
+    bio:'Andrew Hozier-Byrne\'s debut single Take Me to Church — a blues-influenced rock track using religious imagery to celebrate human sexuality — announced one of the most striking voices in contemporary rock. His guitar playing is rooted in delta blues and gospel. Wasteland Baby! showed a songwriter of genuine depth and range.',
+    tags:['Take Me to Church','Blues-influenced','Irish','Gospel roots'],
+    influences:['robert-johnson','van-morrison','pj-harvey','bob-dylan'],
+    influencedBy:['dermot-kennedy','james-bay','george-ezra'],
+  },
+
+  'paramore':{
+    name:'Paramore', era:'2004–present', genre:'Pop Punk / Alternative Rock / Power Pop',
+    bio:'Hayley Williams, Taylor York and Zac Farro built one of the most successful pop-punk bands of the 2000s and then reinvented themselves completely on After Laughter. Williams\' voice — powerful, distinctive and emotionally expressive — is one of contemporary rock\'s great instruments. Misery Business and Decode are entry points; Paramore (2013) is the masterpiece.',
+    tags:['Hayley Williams','Misery Business','Pop punk','After Laughter reinvention'],
+    influences:['no-doubt','blondie','new-wave','green-day'],
+    influencedBy:['pvris','stand-atlantic','waterparks','the-pretty-reckless'],
+  },
+
+  'yeah-yeah-yeahs':{
+    name:'Yeah Yeah Yeahs', era:'2000–present', genre:'Indie Rock / Post-Punk Revival / Art Punk',
+    bio:'Karen O, Nick Zinner and Brian Chase created one of the most viscerally exciting live bands of the 2000s. Maps is one of the decade\'s most emotionally devastating songs. Fever to Tell is a landmark of the NYC indie revival. Karen O\'s stage presence — physically extreme, completely committed — made her one of rock\'s great performers.',
+    tags:['Maps','Karen O','NYC indie','Fever to Tell'],
+    influences:['patti-smith','the-stooges','sonic-youth','gang-of-four'],
+    influencedBy:['chvrches','wolf-alice','warpaint','the-preatures'],
+  },
+
+  'florence-and-the-machine':{
+    name:'Florence + The Machine', era:'2007–present', genre:'Indie Rock / Art Rock / Baroque Pop',
+    bio:'Florence Welch and Isabella Summers created music of extraordinary scale and emotional force. Welch\'s voice — one of the great natural voices in contemporary rock — can go from a whisper to a roar within a single phrase. Lungs, Ceremonials and How Big How Blue How Beautiful are all exceptional albums. Dog Days Are Over remains her defining statement.',
+    tags:['Dog Days Are Over','Florence Welch','Ceremonials','Orchestral indie'],
+    influences:['patti-smith','kate-bush','led-zeppelin','baroque-pop-tradition'],
+    influencedBy:['lorde','haim','maggie-rogers','big-thief'],
+  },
+
+  'skid-row':{
+    name:'Skid Row', era:'1986–present', genre:'Glam Metal / Hard Rock',
+    bio:'Sebastian Bach, Rachel Bolan, Dave Sabo, Scotti Hill and Rob Affuso arrived in 1989 with a debut album that went five times platinum. 18 and Life and I Remember You showed a band that could balance metal power with pop melodicism. Bach\'s voice — enormous range, raw power — made him one of glam metal\'s finest vocalists.',
+    tags:['18 and Life','Sebastian Bach','Glam metal','I Remember You'],
+    influences:['aerosmith','ac-dc','guns-n-roses','kiss'],
+    influencedBy:['hinder','shinedown','bvb','falling-in-reverse'],
+  },
+
+  'ratt':{
+    name:'Ratt', era:'1976–present', genre:'Glam Metal / Hard Rock',
+    bio:'Stephen Pearcy, Warren DeMartini, Robin Crosby, Juan Croucier and Bobby Blotzer were one of the Sunset Strip scene\'s most musically credible bands. Round and Round is one of glam metal\'s great singles. DeMartini\'s guitar playing had a technical sophistication that set Ratt apart from their peers.',
+    tags:['Round and Round','Warren DeMartini','Sunset Strip','Glam metal'],
+    influences:['van-halen','aerosmith','ac-dc','kiss'],
+    influencedBy:['warrant','dokken','winger','quiet-riot'],
+  },
+
+  'the-black-crowes':{
+    name:'The Black Crowes', era:'1984–present', genre:'Hard Rock / Blues Rock / Southern Rock',
+    bio:'Chris Robinson, Rich Robinson, Jeff Cease, Johnny Colt and Steve Gorman from Atlanta arrived in 1990 with Shake Your Money Maker — one of the most convincing classic rock debut albums of the era. Hard to Handle and She Talks to Angels showed a band that genuinely understood Faces and Rolling Stones DNA rather than simply copying it.',
+    tags:['Hard to Handle','She Talks to Angels','Chris Robinson','Blues rock revival'],
+    influences:['the-rolling-stones','the-faces','otis-redding','led-zeppelin'],
+    influencedBy:['rival-sons','the-answer','whiskey-myers'],
+  },
+
+  'alabama-shakes':{
+    name:'Alabama Shakes', era:'2009–present', genre:'Blues Rock / Soul Rock / Alternative',
+    bio:'Brittany Howard, Heath Fogg, Zac Cockrell and Steve Johnson from Athens, Alabama created one of the most exciting debut albums of 2012. Howard\'s voice — raw, powerful and steeped in soul and gospel — is one of contemporary rock\'s great instruments. Hold On announced them; Sound & Color confirmed them as one of the most important American rock bands of the decade.',
+    tags:['Hold On','Brittany Howard','Sound & Color','Athens Alabama'],
+    influences:['aretha-franklin','otis-redding','the-rolling-stones','jack-white'],
+    influencedBy:['brittany-howard-solo','marcus-king','celisse'],
+  },
+
+  'queens-of-the-stone-age':{
+    name:'Queens of the Stone Age', era:'1996–present', genre:'Hard Rock / Stoner Rock / Alternative Metal',
+    bio:'Josh Homme built Queens of the Stone Age from the ashes of Kyuss and created one of the most consistently excellent catalogues in modern rock. Songs for the Deaf — featuring Dave Grohl on drums — is a landmark. No One Knows and Go with the Flow are entry points into a body of work that rewards deep exploration.',
+    tags:['No One Knows','Josh Homme','Songs for the Deaf','Stoner rock'],
+    influences:['led-zeppelin','black-sabbath','the-stooges','david-bowie'],
+    influencedBy:['royal-blood','rival-sons','the-sword','mastodon'],
+  },
+
+  'the-killers':{
+    name:'The Killers', era:'2001–present', genre:'Indie Rock / New Wave / Alternative',
+    bio:'Brandon Flowers, Dave Keuning, Mark Stoermer and Ronnie Vannucci drew on New Order, David Bowie and Bruce Springsteen to create Hot Fuss — one of the best-selling debut albums of the 2000s. Mr. Brightside has never left the UK charts since its release in 2003.',
+    tags:['Hot Fuss','Mr. Brightside','Las Vegas indie','Brandon Flowers'],
+    influences:['new-order','david-bowie','the-strokes','bruce-springsteen'],
+    influencedBy:['the-national','imagine-dragons','grouplove'],
   },
 
 };
