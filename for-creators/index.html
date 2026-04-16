@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SongScout for Reaction Creators — Free Tools to Find Your Next Video</title>
+<meta name="description" content="Free tools built for reaction video creators. Find the songs that always floor first-time listeners, with exact timestamps for every key moment. No login, no cost.">
+<link rel="canonical" href="https://songscout.uk/for-creators/">
+<meta property="og:title" content="SongScout for Reaction Creators">
+<meta property="og:description" content="Free tools to find your next reaction video. 70+ songs curated by the moment that gets people — guitar solos, key changes, drum fills — with exact timestamps.">
+<meta property="og:url" content="https://songscout.uk/for-creators/">
+<meta property="og:site_name" content="SongScout">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap"></noscript>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0A0A0A;--dark:#111318;--dark2:#1A1D24;--dark3:#242830;
+  --panel:#1E2128;--panel2:#252930;
+  --gold:#F0A830;--gold-d:#C88020;--gold-l:#F8D080;
+  --red:#E83A2A;--white:#F8F6F0;--off:#C8C0B0;--muted:#787060;
+  --border:#2E3240;--border2:#3A3E50;
+  --radius:10px;--radius-lg:16px;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--black);color:var(--white);min-height:100vh}
+a{text-decoration:none;color:inherit}
+
+.site-header{padding:0 24px;border-bottom:1px solid var(--border);background:rgba(10,10,10,0.95);backdrop-filter:blur(12px)}
+.header-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:16px 0}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{width:42px;height:42px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.8rem;color:var(--black)}
+.logo-text{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.8rem;color:var(--white);letter-spacing:2px;line-height:1}
+.logo-sub{font-size:0.65rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase}
+.back-link{margin-left:auto;font-size:0.8rem;font-weight:600;color:var(--muted);padding:8px 14px;border-radius:var(--radius);border:1px solid var(--border2);transition:all 0.15s}
+.back-link:hover{color:var(--white);border-color:var(--gold-d)}
+
+.hero{padding:64px 24px 56px;background:var(--dark);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 100% 50%,rgba(240,168,48,0.08),transparent 60%);pointer-events:none}
+.hero-inner{max-width:1000px;margin:0 auto;position:relative}
+.eyebrow{font-size:0.72rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:24px;height:2px;background:var(--gold);display:block}
+.hero-title{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:clamp(2.8rem,8vw,5rem);line-height:0.92;letter-spacing:3px;color:var(--white);margin-bottom:20px}
+.hero-title span{color:var(--gold)}
+.hero-desc{font-size:1.05rem;color:var(--off);line-height:1.7;max-width:580px;font-weight:300;margin-bottom:32px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--radius-lg);background:var(--gold);color:var(--black);font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.1rem;letter-spacing:1.5px;transition:all 0.15s}
+.btn-primary:hover{background:var(--gold-l)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:var(--radius-lg);border:1.5px solid var(--border2);color:var(--off);font-size:0.88rem;font-weight:600;transition:all 0.15s}
+.btn-secondary:hover{border-color:var(--gold-d);color:var(--gold-l)}
+
+.main{max-width:1000px;margin:0 auto;padding:56px 24px 80px}
+
+.section-eyebrow{font-size:0.68rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.section-title{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:2.4rem;letter-spacing:2px;color:var(--white);margin-bottom:10px}
+.section-desc{font-size:0.95rem;color:var(--muted);line-height:1.7;max-width:560px;margin-bottom:36px}
+
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-bottom:56px}
+.tool-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;transition:all 0.2s;border-top:3px solid transparent}
+.tool-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.tool-card.featured{border-top-color:var(--gold)}
+.tool-num{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:3rem;color:var(--border2);letter-spacing:1px;line-height:1;margin-bottom:8px}
+.tool-card.featured .tool-num{color:var(--gold-d)}
+.tool-name{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.5rem;letter-spacing:2px;color:var(--white);margin-bottom:6px}
+.tool-desc{font-size:0.88rem;color:var(--muted);line-height:1.7;margin-bottom:20px;font-weight:300}
+.tool-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+.tool-tag{font-size:0.65rem;font-weight:600;padding:3px 9px;border-radius:100px;text-transform:uppercase;letter-spacing:0.5px;background:var(--dark3);border:1px solid var(--border2);color:var(--muted)}
+.tool-tag.gold{background:rgba(240,168,48,0.1);border-color:rgba(240,168,48,0.3);color:var(--gold-l)}
+.tool-link{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:var(--radius);background:var(--gold);color:var(--black);font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:0.95rem;letter-spacing:1px;transition:all 0.15s}
+.tool-link:hover{background:var(--gold-l)}
+
+.reasons-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:56px}
+.reason-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px}
+.reason-icon{font-size:1.8rem;margin-bottom:12px;display:block}
+.reason-title{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.1rem;letter-spacing:1.5px;color:var(--gold);margin-bottom:8px}
+.reason-text{font-size:0.85rem;color:var(--muted);line-height:1.7;font-weight:300}
+
+.moments-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:56px}
+.moment-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
+.moment-cat{font-size:0.65rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.moment-song{font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:2px}
+.moment-artist{font-size:0.78rem;color:var(--muted)}
+.moment-time{font-size:0.68rem;color:var(--border2);margin-top:6px;font-weight:600}
+
+.copy-box{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:var(--radius-lg);padding:28px;margin-bottom:56px}
+.copy-label{font-size:0.68rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.copy-text{font-size:0.92rem;color:var(--off);line-height:1.8;font-style:italic;margin-bottom:16px}
+.copy-note{font-size:0.78rem;color:var(--muted)}
+
+.cta-section{background:var(--panel);border:1px solid var(--gold-d);border-radius:var(--radius-lg);padding:40px;text-align:center}
+.cta-title{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:2.4rem;letter-spacing:2px;color:var(--white);margin-bottom:12px}
+.cta-desc{font-size:0.95rem;color:var(--muted);margin-bottom:28px;line-height:1.7}
+.cta-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+
+.site-footer{background:var(--dark);border-top:1px solid var(--border);padding:20px 24px;text-align:center;font-size:0.78rem;color:var(--muted)}
+.site-footer a{color:var(--muted)}
+.site-footer a:hover{color:var(--off)}
+
+@media(max-width:600px){
+  .hero-cta{flex-direction:column}
+  .btn-primary,.btn-secondary{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="/">
+      <div class="logo-mark">&#9836;</div>
+      <div><div class="logo-text">SongScout</div><div class="logo-sub">Music Discovery</div></div>
+    </a>
+    <a class="back-link" href="/">← Back to SongScout</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">For reaction creators</div>
+    <h1 class="hero-title">Find your next<br><span>reaction video</span></h1>
+    <p class="hero-desc">Free tools built for creators who react to classic rock, metal and alternative music. Stop spending hours researching — find the songs that floor people every time, with the exact moment to watch for.</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="/reaction-kit/">Go to Reaction Kit →</a>
+      <a class="btn-secondary" href="/era-explorer/">Browse Era Explorer</a>
+    </div>
+  </div>
+</section>
+
+<main class="main">
+
+  <div class="section-eyebrow">Why SongScout</div>
+  <div class="section-title">Built for your workflow</div>
+  <p class="section-desc">Everything on SongScout is free, no login required and works on any device. Here's what it gives you.</p>
+
+  <div class="reasons-grid">
+    <div class="reason-card">
+      <span class="reason-icon">⏱️</span>
+      <div class="reason-title">Exact timestamps</div>
+      <p class="reason-text">Every song in the Reaction Kit includes the exact timestamp of the key moment — the guitar solo, the key change, the drum fill. No more scrubbing through tracks to find it.</p>
+    </div>
+    <div class="reason-card">
+      <span class="reason-icon">🎯</span>
+      <div class="reason-title">Curated for reactions</div>
+      <p class="reason-text">Songs are chosen specifically because they produce strong first-time reactions. Each entry explains what the moment is and why it hits people so hard.</p>
+    </div>
+    <div class="reason-card">
+      <span class="reason-icon">📚</span>
+      <div class="reason-title">Context for every song</div>
+      <p class="reason-text">Every track has a write-up explaining why it matters — perfect for the description box or for understanding what you're reacting to before you hit play.</p>
+    </div>
+    <div class="reason-card">
+      <span class="reason-icon">🌳</span>
+      <div class="reason-title">Endless rabbit holes</div>
+      <p class="reason-text">The Discovery Engine maps 120+ artist influence trees. React to Nirvana, then follow the tree to Pixies, then to Husker Du — months of content planned in minutes.</p>
+    </div>
+  </div>
+
+  <div class="section-eyebrow">Reaction Kit</div>
+  <div class="section-title">Songs organised by moment type</div>
+  <p class="section-desc">70+ tracks across 7 categories — each one chosen because it produces a specific kind of reaction.</p>
+
+  <div class="moments-grid">
+    <div class="moment-card">
+      <div class="moment-cat">🎸 Guitar Solo</div>
+      <div class="moment-song">Comfortably Numb</div>
+      <div class="moment-artist">Pink Floyd</div>
+      <div class="moment-time">⏱ Key moment: 3:58 and 5:01</div>
+    </div>
+    <div class="moment-card">
+      <div class="moment-cat">🥁 Drum Fill</div>
+      <div class="moment-song">In the Air Tonight</div>
+      <div class="moment-artist">Phil Collins</div>
+      <div class="moment-time">⏱ Key moment: 3:40</div>
+    </div>
+    <div class="moment-card">
+      <div class="moment-cat">🎵 Key Change</div>
+      <div class="moment-song">Living on a Prayer</div>
+      <div class="moment-artist">Bon Jovi</div>
+      <div class="moment-time">⏱ Key moment: 3:21</div>
+    </div>
+    <div class="moment-card">
+      <div class="moment-cat">⚡ Iconic Opening</div>
+      <div class="moment-song">Back in Black</div>
+      <div class="moment-artist">AC/DC</div>
+      <div class="moment-time">⏱ Key moment: 0:00</div>
+    </div>
+    <div class="moment-card">
+      <div class="moment-cat">🎤 Vocal Moment</div>
+      <div class="moment-song">Somebody to Love</div>
+      <div class="moment-artist">Queen</div>
+      <div class="moment-time">⏱ Key moment: 0:00</div>
+    </div>
+    <div class="moment-card">
+      <div class="moment-cat">🌊 Epic Buildup</div>
+      <div class="moment-song">Stairway to Heaven</div>
+      <div class="moment-artist">Led Zeppelin</div>
+      <div class="moment-time">⏱ Key moment: 5:55</div>
+    </div>
+  </div>
+
+  <div class="section-eyebrow">Message template</div>
+  <div class="section-title">When you share SongScout</div>
+  <p class="section-desc">If you mention SongScout to other creators or in your community, feel free to use this or adapt it.</p>
+
+  <div class="copy-box">
+    <div class="copy-label">Copy and paste</div>
+    <p class="copy-text">"If you do reaction videos to classic rock and metal, check out songscout.uk/reaction-kit — it's a free tool with 70+ songs organised by the moment that gets people (guitar solos, key changes, drum fills) with exact timestamps for each one. Genuinely useful for planning content."</p>
+    <p class="copy-note">No affiliation needed, no login, completely free. Share it if it's useful to you.</p>
+  </div>
+
+  <div class="section-eyebrow">Era Explorer</div>
+  <div class="section-title">Ready-made series ideas</div>
+  <p class="section-desc">Each Era Explorer pack is 10 essential tracks from a specific decade and genre — perfect for a reaction video series.</p>
+
+  <div class="tools-grid" style="margin-bottom:56px">
+    <div class="tool-card featured">
+      <div class="tool-num">39</div>
+      <div class="tool-name">Era packs</div>
+      <p class="tool-desc">1960s to 2010s. Classic rock, metal, grunge, punk, new wave, blues rock and more. Each pack is 10 songs with write-ups — a complete reaction series ready to go.</p>
+      <div class="tool-tags">
+        <span class="tool-tag gold">Series ready</span>
+        <span class="tool-tag">6 decades</span>
+        <span class="tool-tag">10 genres</span>
+      </div>
+      <a class="tool-link" href="/era-explorer/">Open Era Explorer →</a>
+    </div>
+    <div class="tool-card">
+      <div class="tool-num">120+</div>
+      <div class="tool-name">Artist trees</div>
+      <p class="tool-desc">Pick any artist and see who influenced them and who they went on to influence. Follow any branch as deep as you want — months of connected content.</p>
+      <div class="tool-tags">
+        <span class="tool-tag">Influence mapping</span>
+        <span class="tool-tag">Deep dives</span>
+      </div>
+      <a class="tool-link" href="/discovery-engine/">Open Discovery Engine →</a>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <div class="cta-title">Start exploring now</div>
+    <p class="cta-desc">No login. No cost. No ads. Just music.<br>Everything works on mobile too.</p>
+    <div class="cta-btns">
+      <a class="btn-primary" href="/reaction-kit/">Reaction Kit →</a>
+      <a class="btn-secondary" href="/era-explorer/">Era Explorer</a>
+      <a class="btn-secondary" href="/discovery-engine/">Discovery Engine</a>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <a href="/">Home</a> &nbsp;·&nbsp;
+  <a href="/era-explorer/">Era Explorer</a> &nbsp;·&nbsp;
+  <a href="/discovery-engine/">Discovery Engine</a> &nbsp;·&nbsp;
+  <a href="/reaction-kit/">Reaction Kit</a>
+  <br><br>SongScout — Free music discovery — No login, no ads, no nonsense
+</footer>
+
+</body>
+</html>
