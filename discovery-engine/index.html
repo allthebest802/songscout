@@ -7,11 +7,7 @@
 <meta name="description" content="Pick an artist you love and trace the musical family tree of influences that shaped them. 75+ artists across every rock genre — follow any branch back through the decades from Arctic Monkeys to Robert Johnson.">
 <meta name="keywords" content="music influence tree, who influenced Nirvana, Led Zeppelin influences, music family tree, discover classic rock, artist influences explained, musical roots">
 <link rel="canonical" href="https://songscout.uk/discovery-engine/">
-<link rel="dns-prefetch" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap"></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -24,16 +20,16 @@
   --radius:10px;--radius-lg:16px;
 }
 html{font-size:16px;scroll-behavior:smooth}
-body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--black);color:var(--white);min-height:100vh;overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--white);min-height:100vh;overflow-x:hidden}
 a{text-decoration:none;color:inherit}
-button{cursor:pointer;font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;border:none;background:none}
+button{cursor:pointer;font-family:'DM Sans',sans-serif;border:none;background:none}
 
 /* HEADER */
 .site-header{padding:0 24px;border-bottom:1px solid var(--border);background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100}
 .header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:16px 0}
 .logo{display:flex;align-items:center;gap:12px}
-.logo-mark{width:42px;height:42px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.4rem;color:var(--black)}
-.logo-text{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.8rem;color:var(--white);letter-spacing:2px;line-height:1}
+.logo-mark{width:42px;height:42px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--black)}
+.logo-text{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--white);letter-spacing:2px;line-height:1}
 .logo-sub{font-size:0.65rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:1px}
 .nav{margin-left:auto;display:flex;gap:6px}
 .nav-link{padding:8px 14px;border-radius:var(--radius);font-size:0.82rem;font-weight:600;color:var(--muted);transition:all 0.15s}
@@ -46,7 +42,7 @@ button{cursor:pointer;font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Se
 .hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
 .eyebrow{font-size:0.72rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px}
 .eyebrow::before{content:'';width:24px;height:2px;background:var(--gold);display:block}
-.hero-title{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:clamp(2rem,5vw,3.8rem);line-height:0.92;letter-spacing:3px;color:var(--white);margin-bottom:16px}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.8rem);line-height:0.92;letter-spacing:3px;color:var(--white);margin-bottom:16px}
 .hero-title span{color:var(--gold)}
 .hero-desc{font-size:1rem;color:var(--off);line-height:1.7;max-width:580px;font-weight:300}
 
@@ -57,7 +53,7 @@ button{cursor:pointer;font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Se
 .search-input{
   flex:1;min-width:200px;
   border:1.5px solid var(--border2);border-radius:var(--radius-lg);
-  padding:12px 18px;font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:0.95rem;
+  padding:12px 18px;font-family:'DM Sans',sans-serif;font-size:0.95rem;
   color:var(--white);background:var(--panel);outline:none;
   transition:border-color 0.15s;
 }
@@ -94,10 +90,10 @@ button{cursor:pointer;font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Se
 }
 .spotlight-era{
   background:var(--gold);color:var(--black);
-  font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.2rem;letter-spacing:2px;
+  font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:2px;
   padding:8px 14px;border-radius:var(--radius);text-align:center;white-space:nowrap;
 }
-.spotlight-name{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:2.4rem;letter-spacing:2px;color:var(--gold);line-height:1;margin-bottom:6px}
+.spotlight-name{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;letter-spacing:2px;color:var(--gold);line-height:1;margin-bottom:6px}
 .spotlight-genre{font-size:0.78rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
 .spotlight-bio{font-size:0.88rem;color:var(--off);line-height:1.7;font-weight:300;margin-bottom:12px;max-width:640px}
 .spotlight-tags{display:flex;gap:6px;flex-wrap:wrap}
@@ -111,12 +107,12 @@ button{cursor:pointer;font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Se
   margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border);
 }
 .tree-direction{
-  font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:0.75rem;letter-spacing:2px;
+  font-family:'Bebas Neue',sans-serif;font-size:0.75rem;letter-spacing:2px;
   padding:5px 12px;border-radius:100px;text-transform:uppercase;
 }
 .dir-up{background:rgba(80,200,120,0.12);color:#80D8A0;border:1px solid rgba(80,200,120,0.3)}
 .dir-down{background:rgba(240,168,48,0.12);color:var(--gold-l);border:1px solid rgba(240,168,48,0.3)}
-.tree-section-title{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.4rem;letter-spacing:1.5px;color:var(--white)}
+.tree-section-title{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:1.5px;color:var(--white)}
 .tree-section-sub{font-size:0.78rem;color:var(--muted);margin-left:auto}
 
 .influence-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
@@ -129,7 +125,7 @@ button{cursor:pointer;font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Se
 }
 .influence-card:hover{border-color:var(--gold-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.4)}
 .ic-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
-.ic-name{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.3rem;letter-spacing:1.5px;color:var(--white);line-height:1}
+.ic-name{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:1.5px;color:var(--white);line-height:1}
 .ic-era{font-size:0.65rem;font-weight:600;padding:3px 8px;border-radius:100px;letter-spacing:0.5px;background:var(--dark3);border:1px solid var(--border2);color:var(--muted);white-space:nowrap}
 .ic-genre{font-size:0.72rem;color:var(--gold);font-weight:600;letter-spacing:0.5px}
 .ic-link{font-size:0.72rem;color:var(--muted);margin-top:2px}
@@ -147,7 +143,7 @@ button{cursor:pointer;font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Se
   background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-lg);
 }
 .sp-icon{font-size:3.5rem;display:block;margin-bottom:16px;opacity:0.4}
-.sp-title{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:2rem;letter-spacing:2px;color:var(--off);margin-bottom:8px}
+.sp-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:2px;color:var(--off);margin-bottom:8px}
 .sp-desc{font-size:0.88rem;color:var(--muted);line-height:1.6;max-width:400px;margin:0 auto}
 
 /* FOOTER */
@@ -165,7 +161,7 @@ button{cursor:pointer;font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Se
 <header class="site-header">
   <div class="header-inner">
     <a class="logo" href="/">
-      <div class="logo-mark">&#9836;</div>
+      <div class="logo-mark">SS</div>
       <div>
         <div class="logo-text">SongScout</div>
         <div class="logo-sub">Music Discovery</div>
@@ -213,7 +209,7 @@ button{cursor:pointer;font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Se
   <a href="/reaction-kit/" style="color:var(--muted)">Reaction Kit</a>
   <br><br>SongScout — Free music discovery — No login, no ads, no nonsense
 
-  <div style="margin-top:16px"><a href="https://buymeacoffee.com/songscout" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:100px;background:#FFDD00;color:#000;font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:0.85rem;font-weight:700;text-decoration:none;">☕ Buy me a coffee</a></div>
+  <div style="margin-top:16px"><a href="https://buymeacoffee.com/songscout" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:100px;background:#FFDD00;color:#000;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:700;text-decoration:none;">☕ Buy me a coffee</a></div>
 </footer>
 
 <script>
@@ -1198,6 +1194,70 @@ const ARTISTS = {
     tags:['Mark Knopfler fingerpicking','Sultans of Swing','Brothers in Arms','Unique guitar tone'],
     influences:['bob-dylan','the-beatles','blues-tradition','country-tradition'],
     influencedBy:['travis','david-gray','john-mayer','richard-thompson'],
+  },
+
+  'gary-moore':{
+    name:'Gary Moore', era:'1968–2011', genre:'Blues Rock / Hard Rock / Heavy Metal',
+    bio:'Gary Moore was one of the most technically gifted guitarists in rock history — a Belfast-born player who moved effortlessly between heavy metal (with Thin Lizzy), melodic hard rock and deep blues. Still Got the Blues in 1990 announced his definitive blues period and introduced a generation to the genre. His tone — achieved through his Les Paul and Marshall combination — is instantly recognisable. He died in 2011 aged 58, leaving a body of work that remains criminally underappreciated.',
+    tags:['Still Got the Blues','Thin Lizzy connection','Blues rock virtuoso','Belfast'],
+    influences:['peter-green','bb-king','jimi-hendrix','eric-clapton'],
+    influencedBy:['joe-bonamassa','john-mayer','kirk-hammett','the-answer'],
+  },
+
+  'prince':{
+    name:'Prince', era:'1978–2016', genre:'Funk / Rock / R&B / Pop',
+    bio:'Prince Rogers Nelson was one of the most gifted musicians of the twentieth century — a multi-instrumentalist who played over 20 instruments, produced almost everything himself and created a body of work spanning funk, rock, R&B, jazz and pop. Purple Rain is one of the greatest albums ever made. His guitar playing — often overlooked next to his other abilities — placed him in the conversation with Hendrix and Stevie Ray Vaughan. He died in 2016 aged 57.',
+    tags:['Purple Rain','Multi-instrumentalist','Purple Rain','Guitar genius'],
+    influences:['jimi-hendrix','sly-stone','james-brown','joni-mitchell'],
+    influencedBy:['beyonce','the-weeknd','bruno-mars','janelle-monae'],
+  },
+
+  'toto':{
+    name:'Toto', era:'1977–present', genre:'Rock / Pop Rock / Soft Rock',
+    bio:'David Paich, Steve Lukather, Jeff Porcaro and the Porcaro brothers were among the most in-demand session musicians in Los Angeles before forming Toto. Their debut single Hold the Line announced a band of extraordinary technical ability. Africa — from the 1982 Toto IV album — became one of the most beloved songs in rock history, and Jeff Porcaro\'s Rosanna shuffle is taught in every serious drum programme worldwide.',
+    tags:['Africa','Session musician pedigree','Rosanna shuffle','Jeff Porcaro'],
+    influences:['steely-dan','chicago','james-brown','soul-tradition'],
+    influencedBy:['weezer','joshua-kadison','michael-buble'],
+  },
+
+  'survivor':{
+    name:'Survivor', era:'1978–present', genre:'Hard Rock / AOR / Pop Rock',
+    bio:'Frankie Sullivan, Jim Peterik and Dave Bickler created Eye of the Tiger for the Rocky III soundtrack in 1982 after Sylvester Stallone approached them personally. It spent six weeks at number one and became one of the defining motivational anthems in popular culture. The opening riff is one of the most recognisable in rock history.',
+    tags:['Eye of the Tiger','Rocky III','Jim Peterik','AOR'],
+    influences:['journey','foreigner','bad-company','aerosmith'],
+    influencedBy:['survivor-legacy','sports-anthems-genre'],
+  },
+
+  'europe':{
+    name:'Europe', era:'1979–present', genre:'Glam Metal / Hard Rock',
+    bio:'Joey Tempest, John Norum, John Leven, Mic Michaeli and Ian Haugland from Sweden created The Final Countdown — one of the most recognisable synthesiser riffs in rock history. The song reached number one in 25 countries. Norum\'s guitar work throughout their catalogue is technically impressive and often overlooked next to the song\'s iconic keyboard line.',
+    tags:['The Final Countdown','Joey Tempest','Swedish hard rock','John Norum'],
+    influences:['van-halen','deep-purple','kiss','def-leppard'],
+    influencedBy:['h-e-a-t','eclipse','ammunition'],
+  },
+
+  'living-colour':{
+    name:'Living Colour', era:'1984–present', genre:'Hard Rock / Funk Metal / Alternative Metal',
+    bio:'Vernon Reid, Corey Glover, Muzz Skillings and Will Calhoun were one of the most musically sophisticated hard rock bands of the late 80s. Cult of Personality won the Grammy for Best Hard Rock Performance in 1989. Reid\'s guitar playing — incorporating jazz, funk and metal simultaneously — is among the most technically inventive in rock. As a Black rock band they challenged the genre\'s racial assumptions at every turn.',
+    tags:['Cult of Personality','Vernon Reid','Grammy winners','Funk metal'],
+    influences:['jimi-hendrix','parliament-funkadelic','black-sabbath','ornette-coleman'],
+    influencedBy:['rage-against-the-machine','fishbone','bad-brains','tv-on-the-radio'],
+  },
+
+  'gerry-rafferty':{
+    name:'Gerry Rafferty', era:'1969–2011', genre:'Soft Rock / Pop Rock / Folk Rock',
+    bio:'Gerry Rafferty wrote Baker Street in 1978 and Raphael Ravenscroft\'s saxophone riff became one of the most recognisable in popular music history. City to City spent 22 weeks at number one in the US. Rafferty was a gifted melodist whose work with Stealers Wheel — including Stuck in the Middle with You — demonstrated his ability across different styles.',
+    tags:['Baker Street','Saxophone riff','City to City','Stealers Wheel'],
+    influences:['the-beatles','van-morrison','paul-simon','folk-tradition'],
+    influencedBy:['travis','david-gray','del-amitri','roddy-frame'],
+  },
+
+  'motley-crue':{
+    name:'Mötley Crüe', era:'1981–present', genre:'Glam Metal / Hard Rock',
+    bio:'Vince Neil, Mick Mars, Nikki Sixx and Tommy Lee were the definitive Sunset Strip glam metal band — excess, attitude and genuinely good hard rock songs. Dr. Feelgood is the best-produced album of the glam metal era. Tommy Lee\'s drum kit innovations — including his upside-down roller-coaster solo — made him the most theatrical drummer in rock.',
+    tags:['Dr. Feelgood','Tommy Lee','Sunset Strip','Nikki Sixx'],
+    influences:['kiss','aerosmith','van-halen','ac-dc'],
+    influencedBy:['poison','warrant','ratt','buckcherry'],
   },
 
 };
