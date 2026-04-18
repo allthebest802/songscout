@@ -7,7 +7,11 @@
 <meta name="description" content="Pick a decade and genre and get the 10 essential tracks you need to hear first, why they mattered and where to go next. 34 packs from 1960s classic rock to 2010s indie folk. Free, no login.">
 <meta name="keywords" content="classic rock starter pack, essential 80s rock songs, 90s grunge essential tracks, best 70s rock songs, music discovery by decade, classic rock for beginners">
 <link rel="canonical" href="https://songscout.uk/era-explorer/">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap"></noscript>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -23,13 +27,13 @@
 }
 html{font-size:16px;scroll-behavior:smooth}
 body{
-  font-family:'DM Sans',sans-serif;background:var(--black);color:var(--white);
+  font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--black);color:var(--white);
   min-height:100vh;
   background-image:
     radial-gradient(ellipse 600px 400px at 80% 0%, rgba(240,168,48,0.06), transparent 60%),
     radial-gradient(ellipse 400px 300px at 0% 80%, rgba(232,58,42,0.05), transparent 60%);
 }
-button{cursor:pointer;font-family:'DM Sans',sans-serif;border:none;background:none}
+button{cursor:pointer;font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;border:none;background:none}
 
 /* HEADER */
 .site-header{
@@ -42,9 +46,9 @@ button{cursor:pointer;font-family:'DM Sans',sans-serif;border:none;background:no
 .logo-mark{
   width:42px;height:42px;background:var(--gold);border-radius:8px;
   display:flex;align-items:center;justify-content:center;
-  font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--black);letter-spacing:1px;
+  font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.4rem;color:var(--black);letter-spacing:1px;
 }
-.logo-text{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--white);letter-spacing:2px;line-height:1}
+.logo-text{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.8rem;color:var(--white);letter-spacing:2px;line-height:1}
 .logo-sub{font-size:0.65rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:1px}
 .nav{margin-left:auto;display:flex;gap:6px}
 .nav-link{
@@ -65,7 +69,7 @@ button{cursor:pointer;font-family:'DM Sans',sans-serif;border:none;background:no
   color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px;
 }
 .hero-eyebrow::before{content:'';width:24px;height:2px;background:var(--gold);display:block}
-.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.8rem);line-height:0.95;letter-spacing:2px;color:var(--white);margin-bottom:14px}
+.hero-title{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:clamp(2rem,5vw,3.8rem);line-height:0.95;letter-spacing:2px;color:var(--white);margin-bottom:14px}
 .hero-title span{color:var(--gold)}
 .hero-desc{font-size:1rem;color:var(--off);line-height:1.7;max-width:480px;font-weight:300}
 
@@ -88,7 +92,7 @@ button{cursor:pointer;font-family:'DM Sans',sans-serif;border:none;background:no
 .go-btn{
   width:100%;padding:16px;border-radius:var(--radius-lg);
   background:var(--gold);color:var(--black);
-  font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:2px;
+  font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.4rem;letter-spacing:2px;
   transition:all 0.2s;
   box-shadow:0 4px 20px rgba(240,168,48,0.3);
 }
@@ -103,7 +107,7 @@ button{cursor:pointer;font-family:'DM Sans',sans-serif;border:none;background:no
   margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border);
   flex-wrap:wrap;gap:12px;
 }
-.results-title{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;letter-spacing:2px;color:var(--white);line-height:1}
+.results-title{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:2.4rem;letter-spacing:2px;color:var(--white);line-height:1}
 .results-title span{color:var(--gold)}
 .results-sub{font-size:0.82rem;color:var(--muted);margin-top:4px}
 .results-meta{text-align:right}
@@ -130,7 +134,7 @@ button{cursor:pointer;font-family:'DM Sans',sans-serif;border:none;background:no
 
 .song-num{
   display:flex;align-items:center;justify-content:center;
-  font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--border2);
+  font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.6rem;color:var(--border2);
   background:var(--dark2);border-right:1px solid var(--border);
   padding:0 4px;min-height:72px;letter-spacing:1px;
   transition:all 0.15s;
@@ -179,7 +183,7 @@ button{cursor:pointer;font-family:'DM Sans',sans-serif;border:none;background:no
 }
 .wn-card{padding:16px;background:var(--dark2);border-radius:var(--radius);border:1px solid var(--border)}
 .wn-icon{font-size:1.4rem;margin-bottom:8px;display:block}
-.wn-title{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:1px;color:var(--gold);margin-bottom:6px}
+.wn-title{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.1rem;letter-spacing:1px;color:var(--gold);margin-bottom:6px}
 .wn-text{font-size:0.8rem;color:var(--muted);line-height:1.6}
 
 /* EMPTY */
@@ -188,7 +192,7 @@ button{cursor:pointer;font-family:'DM Sans',sans-serif;border:none;background:no
   background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-lg);
 }
 .pick-prompt .pp-icon{font-size:3.5rem;display:block;margin-bottom:16px;opacity:0.4}
-.pick-prompt h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:2px;color:var(--off);margin-bottom:8px}
+.pick-prompt h3{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.8rem;letter-spacing:2px;color:var(--off);margin-bottom:8px}
 .pick-prompt p{font-size:0.88rem;color:var(--muted);line-height:1.6}
 
 /* FOOTER */
@@ -272,7 +276,7 @@ button{cursor:pointer;font-family:'DM Sans',sans-serif;border:none;background:no
 <footer class="site-footer">
   SongScout &mdash; Free music discovery &mdash; No login, no ads, no nonsense
 
-  <div style="margin-top:16px"><a href="https://buymeacoffee.com/songscout" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:100px;background:#FFDD00;color:#000;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:700;text-decoration:none;">☕ Buy me a coffee</a></div>
+  
 </footer>
 
 <script>
@@ -314,7 +318,7 @@ const PACKS = {
     {title:'More Than a Feeling',artist:'Boston',year:1976,why:'Tom Scholz built a studio in his basement to make this. The production sounds like it cost millions. That guitar intro has been stopping people in their tracks since 1976.',next:['Peace of Mind','Long Time','Don\'t Look Back'],tags:['gateway','essential']},
     {title:'Comfortably Numb',artist:'Pink Floyd',year:1979,why:'Two guitar solos by David Gilmour that are widely considered the greatest ever played. The song itself is a meditation on disconnection. Roger Waters at his most poetic.',next:['Wish You Were Here','Time','Money'],tags:['essential','deep']},
     {title:'Dream On',artist:'Aerosmith',year:1973,why:'Steven Tyler wrote this at sixteen. It became one of the defining power ballads of the 70s — showing that hard rock could also break your heart. The high note at the end remains iconic.',next:['Walk This Way','Sweet Emotion','Back in the Saddle'],tags:['classic','gateway']},
-    {title:'Baker Street',artist:'Gerry Rafferty',year:1978,why:'Raphael Ravenscroft\'s saxophone riff is one of the most recognisable in popular music history. Gerry Rafferty\'s melody over it is equally strong. City to City spent 22 weeks at number one in the US — a record at the time.',next:['Right Down the Line','Whatever\'s Written in Your Heart','Night Owl'],tags:['essential','classic']},
+    {title:'Carry On Wayward Son',artist:'Kansas',year:1976,why:'Progressive rock at its most approachable. The opening riff is irresistible, the harmonies are extraordinary, and the song goes through more ideas in four minutes than most bands manage in an album.',next:['Dust in the Wind','Point of Know Return','Leftoverture'],tags:['gateway','deep']},
     {title:'Sultans of Swing',artist:'Dire Straits',year:1978,why:'Mark Knopfler plays without a pick — just his fingers. The tone is unlike anything else in rock and the outro solo has a conversational jazz-like quality that floors people who\'ve only heard shred guitar. A fully formed debut single.',next:['Romeo and Juliet','Money for Nothing','Brothers in Arms'],tags:['essential','classic']},
   ],
   next_steps:'The 80s took everything these bands built and supercharged it. Try the 1980s Hard Rock or Heavy Metal packs next.',
@@ -335,11 +339,7 @@ const PACKS = {
     {title:'Livin\' on a Prayer',artist:'Bon Jovi',year:1986,why:'The talk box effect on Tommy\'s guitar, Jon\'s storytelling, and the key change chorus — this is the perfect arena rock song. Every element works together flawlessly.',next:['Wanted Dead or Alive','You Give Love a Bad Name','Bad Medicine'],tags:['essential','classic']},
 
     {title:'Money for Nothing',artist:'Dire Straits',year:1985,why:'Mark Knopfler\'s guitar riff and Sting\'s falsetto backing vocal made this the defining MTV rock anthem. The synth intro, the building guitar and Knopfler\'s drawling vocal about watching rock stars on television is sharp, funny and musically brilliant.',next:['Sultans of Swing','Romeo and Juliet','Brothers in Arms'],tags:['essential','classic']},
-    {title:'Rockin\' in the Free World',artist:'Neil Young',year:1989,why:'Neil Young at his most politically direct — a withering commentary on Reagan\'s America delivered over one of his heaviest guitar riffs. Kurt Cobain quoted Young in his suicide note. This is why they called him the godfather of grunge.',next:['Heart of Gold','Old Man','Hey Hey My My'],tags:['essential','classic']},
-    {title:'Purple Rain',artist:'Prince',year:1984,why:'Prince\'s guitar solo on Purple Rain is one of the most emotionally devastating in rock history — played on a pink Cloud guitar at the end of a song already running on pure feeling. The live performance at the 1985 American Music Awards left the audience speechless.',next:['When Doves Cry','Little Red Corvette','Kiss'],tags:['essential','classic']},
-    {title:'Africa',artist:'Toto',year:1982,why:'David Paich and Jeff Porcaro\'s studio craftsmanship is on full display — the layered percussion, the keyboard hook and the chorus that everyone knows whether they realise it or not. Africa has become one of the most beloved songs in rock history, rediscovered by each new generation.',next:['Rosanna','Hold the Line','I\'ll Be Over You'],tags:['essential','classic']},
-    {title:'Eye of the Tiger',artist:'Survivor',year:1982,why:'Written for Rocky III after Sylvester Stallone personally contacted the band. Jim Peterik\'s opening riff spent six weeks at number one and became one of the defining motivational anthems in popular culture. Impossible to hear without wanting to do something.',next:['Burning Heart','High on You','The Search Is Over'],tags:['essential','classic']},
-    {title:'The Final Countdown',artist:'Europe',year:1986,why:'Joey Tempest\'s synthesiser riff reached number one in 25 countries. John Norum\'s guitar work and the song\'s relentless build make it one of the great arena rock moments of the decade. Still used at sporting events worldwide nearly forty years later.',next:['Rock the Night','Carrie','Cherokee'],tags:['essential','classic']},  ],
+    {title:'Rockin\' in the Free World',artist:'Neil Young',year:1989,why:'Neil Young at his most politically direct — a withering commentary on Reagan\'s America delivered over one of his heaviest guitar riffs. Kurt Cobain quoted Young in his suicide note. This is why they called him the godfather of grunge.',next:['Heart of Gold','Old Man','Hey Hey My My'],tags:['essential','classic']},  ],
   next_steps:'Loved the 80s? The early 90s is where rock got dark and honest. Try the 1990s Grunge or Alternative packs.',
 },
 
@@ -364,7 +364,7 @@ const PACKS = {
   intro:'The 80s was heavy metal\'s golden age. Bands competed to be louder, faster and more technically brilliant. These are the ten tracks that defined the decade of the riff.',
   songs:[
     {title:'Master of Puppets',artist:'Metallica',year:1986,why:'Eight and a half minutes of the most technically precise and emotionally intense music ever played by a band their age. James Hetfield\'s rhythm guitar playing alone would be enough. Add Kirk Hammett\'s solo and Lars Ulrich\'s drumming and it\'s untouchable.',next:['Battery','One','Fade to Black'],tags:['essential','classic']},
-    {title:'Dr. Feelgood',artist:'Motley Crue',year:1989,why:'The title track of their best-produced album — Bob Rock\'s production gives it a weight and clarity that most 80s metal lacked. Mick Mars\' guitar riff and Tommy Lee\'s drumming are both at their peak. The definitive Sunset Strip hard rock statement.',next:['Kickstart My Heart','Girls Girls Girls','Home Sweet Home'],tags:['gateway','classic']},
+    {title:'Iron Fist',artist:'Motörhead',year:1982,why:'Lemmy Kilmister, Fast Eddie Clarke and Phil Taylor played at a volume and speed that made everything around them seem timid. Iron Fist is Motörhead at their most direct — three minutes of pure forward momentum.',next:['Ace of Spades','Overkill','Bomber'],tags:['essential','gateway']},
     {title:'Back in Black',artist:'AC/DC',year:1980,why:'The opening bell toll and that riff — one of the most recognised guitar moments in music. Recorded as a tribute to Bon Scott who had just died. Brian Johnson announced himself to the world with a vocal that matched Scott in every way.',next:['Highway to Hell','Thunderstruck','You Shook Me All Night Long'],tags:['essential','gateway']},
     {title:'Runnin\' with the Devil',artist:'Van Halen',year:1978,why:'Eddie Van Halen\'s playing was genuinely shocking when this appeared. The solo on Eruption (the B-side) made rock guitarists question whether they should quit. This song introduced Eddie to the world.',next:['Jump','Panama','Eruption'],tags:['classic','gateway']},
     {title:'The Trooper',artist:'Iron Maiden',year:1983,why:'Steve Harris\'s galloping bass is the Iron Maiden signature. Bruce Dickinson\'s operatic vocal soars over it. Their twin guitar attack created a sound that influenced every metal band that followed.',next:['The Number of the Beast','Run to the Hills','Aces High'],tags:['essential','gateway']},
@@ -373,8 +373,7 @@ const PACKS = {
     {title:'Rock You Like a Hurricane',artist:'Scorpions',year:1984,why:'The Scorpions were Germany\'s greatest rock export. Matthias Jabs\' intro riff is immediately recognisable worldwide. Enormous, uncomplicated and absolutely unstoppable fun.',next:['Wind of Change','No One Like You','Still Loving You'],tags:['essential','classic']},
     {title:'Holy Diver',artist:'Dio',year:1983,why:'Ronnie James Dio had the greatest voice in metal — full stop. Vivian Campbell\'s guitar work is extraordinary. After leaving Black Sabbath, Dio created his own world of dragons and fantasy and it was magnificent.',next:['Rainbow in the Dark','We Rock','The Last in Line'],tags:['essential','deep']},
     {title:'Peace Sells',artist:'Megadeth',year:1986,why:'Dave Mustaine was fired from Metallica and formed a band to prove a point. The bass intro is one of metal\'s most recognisable. Thrash metal at its most politically charged and technically brilliant.',next:['Symphony of Destruction','Hangar 18','Tornado of Souls'],tags:['deep','gateway']},
-
-    {title:'Kickstart My Heart',artist:'Motley Crue',year:1989,why:'Tommy Lee\'s drum intro and Mick Mars\' riff make this the most purely exciting track in the Motley Crue catalogue. Written by Nikki Sixx after his heroin overdose and resuscitation, it has an urgency that feels completely genuine.',next:['Dr. Feelgood','Girls Girls Girls','Wild Side'],tags:['gateway','classic']},  ],
+  ],
   next_steps:'Loved the metal? Follow it into the 90s with Nirvana and grunge, or go deeper into thrash with Slayer and Anthrax.',
 },
 
@@ -485,7 +484,7 @@ const PACKS = {
     {title:'Don\'t You Want Me',artist:'Human League',year:1981,why:'Phil Oakey, Joanne Catherall and Susan Ann Sulley\'s call-and-response love story over Martin Rushent\'s electronic production was the Christmas number one of 1981 and the defining British synth-pop record.',next:['Fascination','Mirror Man','Being Boiled'],tags:['essential','classic']},
     {title:'Once in a Lifetime',artist:'Talking Heads',year:1980,why:'David Byrne\'s existential crisis delivered as an anxious monologue over Brian Eno\'s polyrhythmic production. "Same as it ever was." The most intellectually interesting hit single of the early 80s.',next:['Psycho Killer','Burning Down the House','This Must Be the Place'],tags:['essential','classic']},
     {title:'Blue Monday',artist:'New Order',year:1983,why:'The best-selling 12-inch single of all time. Bernard Sumner, Peter Hook and Stephen Morris built a dance track from synthesisers and drum machines that was cold, mechanical and completely irresistible.',next:['True Faith','Bizarre Love Triangle','Regret'],tags:['essential','classic']},
-    {title:'Call Me',artist:'Blondie',year:1980,why:'Debbie Harry\'s most commanding vocal performance over Giorgio Moroder\'s disco-influenced production. Written for the American Gigolo soundtrack, Call Me reached number one in 20 countries and became Blondie\'s biggest hit. The bridge between punk attitude and mainstream pop.',next:['Heart of Glass','Rapture','One Way or Another'],tags:['essential','classic']},
+    {title:'Girls on Film',artist:'Duran Duran',year:1981,why:'John Taylor built one of the great New Wave bass grooves. Duran Duran fused Roxy Music glamour with Chic funk into a visual and sonic package that defined the early MTV era.',next:['Hungry Like the Wolf','Rio','The Reflex'],tags:['gateway','classic']},
     {title:'Vienna',artist:'Ultravox',year:1980,why:'"This means nothing to me" — Midge Ure\'s most detached vocal delivery over the most dramatic synthesiser arrangement of the early 80s. Famously kept off the UK number one spot by Joe Dolce\'s Shaddap You Face.',next:['Reap the Wild Wind','Dancing with Tears in My Eyes','All Stood Still'],tags:['classic','deep']},
         
     {title:'The One I Love',artist:'R.E.M.',year:1987,why:'Michael Stipe\'s deceptively dark lyric over Peter Buck\'s chiming guitar. Document was R.E.M.\'s breakthrough — the moment their college radio sound connected with a mainstream audience.',next:['It\'s the End of the World','The Sidewinder Sleeps Tonite','Losing My Religion'],tags:['gateway','classic']},
@@ -525,7 +524,7 @@ const PACKS = {
     {title:'Where Is My Mind?',artist:'Pixies',year:1988,why:'The song that ends Fight Club — and the reason an entire generation knows it. The three-note guitar figure over Kim Deal\'s quiet vocal in the intro is one of the most distinctive in alternative rock.',next:['Debaser','Gigantic','Here Comes Your Man'],tags:['essential','gateway']},
     {title:'Sonic Youth — Teen Age Riot',artist:'Sonic Youth',year:1988,why:'Thurston Moore and Lee Ranaldo tune their guitars to non-standard tunings and create chord shapes that don\'t exist in conventional guitar playing. Teen Age Riot is their most accessible eight minutes.',next:['Kool Thing','Bull in the Heather','Dirty Boots'],tags:['deep','classic']},
     {title:'New Day Rising',artist:'Hüsker Dü',year:1985,why:'Bob Mould and Grant Hart\'s Minneapolis band were the bridge between hardcore punk and the melodic alternative rock that would follow. Their influence on Nirvana, Pixies and the entire 90s alternative scene is enormous.',next:['Makes No Sense at All','Celebrated Summer','Don\'t Want to Know If You Are Lonely'],tags:['deep','gateway']},
-    {title:'Cult of Personality',artist:'Living Colour',year:1988,why:'Vernon Reid\'s guitar riff and Corey Glover\'s vocal make this one of the most powerful hard rock singles of the decade. As one of the few prominent Black rock bands of the era, Living Colour challenged assumptions about who rock music belonged to.',next:['Glamour Boys','Open Letter to a Landlord','Type'],tags:['essential','classic']},
+    {title:'Under the Milky Way',artist:'The Church',year:1988,why:'Steve Kilbey and Marty Willson-Piper\'s Australian band created a psychedelic guitar sound that influenced R.E.M., U2 and the entire dream-pop movement. This remains their most beautiful song.',next:['Reptile','Metropolis','Almost With You'],tags:['deep','classic']},
   ],
   next_steps:'This underground exploded in 1991 when Nirvana took it mainstream. Try the 1990s Grunge or 1990s Alternative packs to hear what came next.',
 },
@@ -662,8 +661,7 @@ const PACKS = {
     {title:'The House Is Rockin\'',artist:'Stevie Ray Vaughan',year:1989,why:'Pure Texas shuffle played at a pace that challenges any guitarist to keep up. Vaughan\'s technical command was matched only by his feel — he never played a note that wasn\'t exactly right.',next:['Pride and Joy','Crossfire','Tightrope'],tags:['gateway','classic']},
     {title:'The Sky Is Crying',artist:'Stevie Ray Vaughan',year:1991,why:'Released posthumously after Vaughan\'s death in 1990, this album of studio outtakes shows the full range of his talent. The title track is a slow blues of heartbreaking beauty.',next:['Little Wing','Empty Arms','Life Without You'],tags:['deep','classic']},
     {title:'Feels Like Rain',artist:'Buddy Guy',year:1993,why:'From the Feels Like Rain album featuring guest appearances from Eric Clapton and Mark Knopfler. Guy\'s voice and guitar playing at their most emotionally raw — a masterclass in blues expression.',next:['Damn Right I\'ve Got the Blues','Five Long Years','Black Cat Moan'],tags:['deep','classic']},
-
-    {title:'Still Got the Blues',artist:'Gary Moore',year:1990,why:'Gary Moore\'s landmark album single-handedly revived interest in blues rock for a new generation. His Les Paul tone — warm, singing and emotionally raw — is one of the most beautiful sounds in the genre. Peter Green\'s Fleetwood Mac was the direct inspiration.',next:['Oh Pretty Woman','Too Tired','Walking by Myself'],tags:['essential','classic']},  ],
+  ],
   next_steps:'The blues is the root of everything. Try the 1970s Classic Rock or 1970s Heavy Metal packs to hear where these sounds went next.',
 },
 
@@ -915,6 +913,7 @@ const PACKS = {
     {title:'Cold Shot',artist:'Stevie Ray Vaughan',year:1984,why:'From Couldn\'t Stand the Weather — Vaughan\'s second album. Cold Shot\'s slow menacing groove and clean precise guitar demonstrate his full range beyond straight blues.',next:['Voodoo Chile','Tin Pan Alley','Couldn\'t Stand the Weather'],tags:['deep','classic']},
     {title:'The House Is Rockin\'',artist:'Stevie Ray Vaughan',year:1989,why:'Pure Texas shuffle played at a pace that challenges any guitarist. Vaughan\'s technical command was matched only by his feel — he never played a note that wasn\'t exactly right.',next:['Crossfire','Tightrope','Scratch-N-Sniff'],tags:['gateway','classic']},
     {title:'Crossroads',artist:'Eric Clapton',year:1988,why:'Clapton\'s live version from Crossroads Guitar Festival captures the Robert Johnson standard at full electric power. The blues tradition passed directly from Johnson through Waters to Clapton.',next:['Badge','Wonderful Tonight','Cocaine'],tags:['classic','deep']},
+    {title:'Cold Shot',artist:'Stevie Ray Vaughan',year:1984,why:'Couldn\'t Stand the Weather showed Vaughan expanding beyond straight blues. Cold Shot\'s slow, menacing groove demonstrates his range — this is Texas blues with rock power.',next:['Voodoo Chile','Tin Pan Alley','Couldn\'t Stand the Weather'],tags:['deep','classic']},
     {title:'Going to California',artist:'Robert Cray',year:1983,why:'Robert Cray brought a smoother, more soulful approach to blues rock that connected with the 80s mainstream. Bad Influence is the debut that made his name.',next:['Phone Booth','Too Many Cooks','Smoking Gun'],tags:['gateway','deep']},
     {title:'Smoking Gun',artist:'Robert Cray',year:1986,why:'Robert Cray brought a smoother soulful approach to blues rock that connected with the 80s mainstream. Strong Persuader won four Grammys and introduced blues to a rock audience.',next:['Phone Booth','Too Many Cooks','Right Next Door'],tags:['gateway','classic']},
   ],
@@ -1095,6 +1094,7 @@ function renderResults() {
 
 init();
 </script>
-<a href="https://buymeacoffee.com/songscout" target="_blank" rel="noopener" style="position:fixed;bottom:24px;left:24px;z-index:9999;display:flex;align-items:center;gap:8px;background:#FFDD00;color:#000;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:700;padding:11px 18px;border-radius:100px;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,0.4);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">☕ Buy me a coffee</a>
+
+<a href="https://buymeacoffee.com/songscout" target="_blank" rel="noopener" style="position:fixed;bottom:24px;left:24px;z-index:9999;display:flex;align-items:center;gap:8px;background:#FFDD00;color:#000;font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:0.82rem;font-weight:700;padding:11px 18px;border-radius:100px;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,0.4);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">☕ Buy me a coffee</a>
 </body>
 </html>
