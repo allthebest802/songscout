@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flag Explorer — Browse All 195 World Flags | FlagAtlas</title>
+<meta name="description" content="Browse every flag in the world. Tap any flag to discover its capital, population, hidden symbolism, and fascinating fun facts. Free flag explorer for kids and families.">
+<meta name="keywords" content="flag explorer, world flags, country flags, flag meanings, flag symbolism, flags of the world, capitals of the world, geography for kids">
+<meta name="author" content="FlagAtlas">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://flagatlas.co.uk/explorer.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://flagatlas.co.uk/explorer.html">
+<meta property="og:title" content="Flag Explorer — Browse All 195 World Flags | FlagAtlas">
+<meta property="og:description" content="Browse every flag in the world. Tap any flag to discover its capital, population, hidden symbolism, and fascinating fun facts.">
+<meta property="og:image" content="https://flagatlas.co.uk/og-image.png">
+<meta property="og:site_name" content="FlagAtlas">
+<meta property="og:locale" content="en_GB">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://flagatlas.co.uk/explorer.html">
+<meta name="twitter:title" content="Flag Explorer — Browse All 195 World Flags | FlagAtlas">
+<meta name="twitter:description" content="Browse every flag in the world. Tap any flag to discover its capital, population, hidden symbolism, and fascinating fun facts.">
+<meta name="twitter:image" content="https://flagatlas.co.uk/og-image.png">
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Flag Explorer",
+  "url": "https://flagatlas.co.uk/explorer.html",
+  "description": "Browse all 195 world flags with facts, symbolism, capitals and population data.",
+  "applicationCategory": "EducationalApplication",
+  "isPartOf": { "@type": "WebSite", "name": "FlagAtlas", "url": "https://flagatlas.co.uk/" },
+  "audience": { "@type": "Audience", "audienceType": "Children, Families, Students" },
+  "inLanguage": "en-GB",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --navy-mid: #162847;
+    --navy-light: #1e3460;
+    --teal: #0d9488;
+    --teal-light: #14b8a6;
+    --gold: #f59e0b;
+    --gold-light: #fbbf24;
+    --cream: #fef9f0;
+    --text-light: #e2e8f0;
+    --text-muted: #94a3b8;
+    --radius: 14px;
+    --radius-sm: 8px;
+    --panel-width: 400px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--text-light);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content:'';
+    position:fixed; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events:none; z-index:0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position:relative; z-index:10;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1rem 1.5rem;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .nav-logo {
+    display:flex; align-items:center; gap:0.5rem;
+    text-decoration:none;
+  }
+  .nav-logo-icon {
+    width:32px; height:32px; background:var(--teal);
+    border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:16px;
+  }
+  .nav-logo-text {
+    font-family:'Playfair Display',serif; font-size:1.25rem; font-weight:700;
+    color:var(--cream);
+  }
+  .nav-logo-text span { color:var(--teal-light); }
+  .nav-back {
+    font-size:0.82rem; color:var(--text-muted); text-decoration:none;
+    display:flex; align-items:center; gap:0.3rem;
+    transition:color 0.15s;
+  }
+  .nav-back:hover { color:var(--teal-light); }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    position:relative; z-index:1;
+    padding:2rem 1.5rem 1.5rem;
+    max-width:1200px; margin:0 auto;
+  }
+  .page-header h1 {
+    font-family:'Playfair Display',serif;
+    font-size:clamp(1.8rem,4vw,2.6rem);
+    font-weight:900; color:var(--cream);
+    margin-bottom:0.3rem;
+  }
+  .page-header p { font-size:0.92rem; color:var(--text-muted); }
+
+  /* ── CONTROLS ── */
+  .controls {
+    position:relative; z-index:1;
+    max-width:1200px; margin:0 auto;
+    padding:0 1.5rem 1.5rem;
+    display:flex; flex-direction:column; gap:1rem;
+  }
+
+  .search-wrap {
+    position:relative;
+  }
+  .search-icon {
+    position:absolute; left:1rem; top:50%; transform:translateY(-50%);
+    color:var(--text-muted); pointer-events:none; font-size:1rem;
+  }
+  #search {
+    width:100%; padding:0.75rem 1rem 0.75rem 2.8rem;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:var(--radius-sm);
+    color:var(--text-light); font-family:'DM Sans',sans-serif; font-size:0.95rem;
+    outline:none; transition:border-color 0.2s;
+  }
+  #search::placeholder { color:var(--text-muted); }
+  #search:focus { border-color:var(--teal-light); }
+
+  .filter-row {
+    display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;
+  }
+  .filter-label {
+    font-size:0.75rem; font-weight:600; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--text-muted); margin-right:0.3rem;
+  }
+  .filter-btn {
+    padding:0.4rem 0.9rem;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:100px; color:var(--text-muted);
+    font-family:'DM Sans',sans-serif; font-size:0.82rem; font-weight:500;
+    cursor:pointer; transition:all 0.15s; white-space:nowrap;
+  }
+  .filter-btn:hover { border-color:rgba(255,255,255,0.2); color:var(--text-light); }
+  .filter-btn.active {
+    background:var(--teal); border-color:var(--teal);
+    color:#fff; font-weight:600;
+  }
+
+  .results-count {
+    font-size:0.8rem; color:var(--text-muted);
+    margin-left:auto; white-space:nowrap;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .main {
+    position:relative; z-index:1;
+    max-width:1200px; margin:0 auto;
+    padding:0 1.5rem 4rem;
+    display:flex; gap:1.5rem; align-items:flex-start;
+  }
+
+  /* ── FLAG GRID ── */
+  .grid-wrap { flex:1; min-width:0; }
+
+  .flags-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap:0.9rem;
+  }
+
+  .flag-card {
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:var(--radius);
+    overflow:hidden; cursor:pointer;
+    transition:transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    animation: pop-in 0.3s ease both;
+  }
+  .flag-card:hover {
+    transform:translateY(-3px) scale(1.02);
+    border-color:rgba(20,184,166,0.4);
+    background:rgba(255,255,255,0.08);
+  }
+  .flag-card.active {
+    border-color:var(--teal-light);
+    box-shadow:0 0 0 2px rgba(20,184,166,0.25);
+  }
+
+  @keyframes pop-in {
+    from { opacity:0; transform:scale(0.92); }
+    to   { opacity:1; transform:scale(1); }
+  }
+
+  .flag-img-wrap {
+    width:100%; aspect-ratio:3/2; overflow:hidden;
+    background:rgba(255,255,255,0.03);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .flag-img-wrap img {
+    width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform 0.3s ease;
+  }
+  .flag-card:hover .flag-img-wrap img { transform:scale(1.05); }
+
+  .flag-card-label {
+    padding:0.55rem 0.65rem;
+  }
+  .flag-card-name {
+    font-size:0.78rem; font-weight:600; color:var(--text-light);
+    line-height:1.2; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .flag-card-capital {
+    font-size:0.68rem; color:var(--text-muted); margin-top:0.15rem;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+
+  .no-results {
+    grid-column:1/-1; text-align:center; padding:3rem 1rem;
+    color:var(--text-muted); font-size:0.95rem;
+  }
+  .no-results span { display:block; font-size:2.5rem; margin-bottom:0.7rem; }
+
+  /* ── DETAIL PANEL ── */
+  .detail-panel {
+    width:var(--panel-width);
+    background:var(--navy-mid);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:var(--radius);
+    position:sticky; top:1.5rem;
+    overflow:hidden;
+    opacity:0; pointer-events:none;
+    transform:translateX(20px);
+    transition:opacity 0.25s ease, transform 0.25s ease;
+    flex-shrink:0;
+  }
+  .detail-panel.visible {
+    opacity:1; pointer-events:all;
+    transform:translateX(0);
+  }
+
+  .panel-flag-wrap {
+    width:100%; aspect-ratio:3/2; overflow:hidden;
+    background:rgba(0,0,0,0.3);
+    position:relative;
+  }
+  .panel-flag-wrap img {
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  .panel-close {
+    position:absolute; top:0.75rem; right:0.75rem;
+    width:32px; height:32px; border-radius:50%;
+    background:rgba(0,0,0,0.5); border:none; color:#fff;
+    font-size:1rem; cursor:pointer; display:flex;
+    align-items:center; justify-content:center;
+    transition:background 0.15s;
+  }
+  .panel-close:hover { background:rgba(0,0,0,0.8); }
+
+  .panel-body { padding:1.4rem; }
+
+  .panel-continent {
+    font-size:0.7rem; font-weight:600; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--teal-light); margin-bottom:0.3rem;
+  }
+  .panel-name {
+    font-family:'Playfair Display',serif;
+    font-size:1.7rem; font-weight:900; color:var(--cream);
+    line-height:1.1; margin-bottom:0.25rem;
+  }
+  .panel-capital {
+    font-size:0.85rem; color:var(--text-muted); margin-bottom:1.2rem;
+    display:flex; align-items:center; gap:0.3rem;
+  }
+
+  .panel-section { margin-bottom:1.2rem; }
+  .panel-section-label {
+    font-size:0.7rem; font-weight:600; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--text-muted);
+    margin-bottom:0.4rem; display:flex; align-items:center; gap:0.4rem;
+  }
+  .panel-section-label::after {
+    content:''; flex:1; height:1px;
+    background:rgba(255,255,255,0.08);
+  }
+  .panel-text {
+    font-size:0.88rem; color:var(--text-light); line-height:1.65;
+  }
+
+  .panel-tags {
+    display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:1rem;
+  }
+  .panel-tag {
+    font-size:0.7rem; padding:0.2rem 0.6rem;
+    background:rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:100px; color:var(--text-muted);
+  }
+
+  .panel-pop {
+    display:flex; align-items:baseline; gap:0.4rem; margin-bottom:1.2rem;
+  }
+  .panel-pop-num {
+    font-family:'Playfair Display',serif;
+    font-size:1.3rem; font-weight:700; color:var(--gold);
+  }
+  .panel-pop-label { font-size:0.78rem; color:var(--text-muted); }
+
+  /* ── MOBILE DRAWER ── */
+  @media (max-width:900px) {
+    .detail-panel {
+      position:fixed; bottom:0; left:0; right:0; top:auto;
+      width:100%; max-height:85vh; overflow-y:auto;
+      border-radius:var(--radius) var(--radius) 0 0;
+      transform:translateY(100%);
+      z-index:100;
+    }
+    .detail-panel.visible { transform:translateY(0); }
+
+    .panel-overlay {
+      display:block;
+      position:fixed; inset:0;
+      background:rgba(0,0,0,0.6);
+      z-index:99;
+      opacity:0; pointer-events:none;
+      transition:opacity 0.25s;
+    }
+    .panel-overlay.visible { opacity:1; pointer-events:all; }
+  }
+
+  @media (min-width:901px) {
+    .panel-overlay { display:none; }
+  }
+  footer { position:relative; z-index:1; text-align:center; padding:1.5rem; border-top:1px solid rgba(255,255,255,0.06); color:var(--text-muted); font-size:0.8rem; margin-top:2rem; }
+  footer a { color:var(--teal-light); text-decoration:none; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/index.html">
+    <div class="nav-logo-icon">🌍</div>
+    <span class="nav-logo-text">Flag<span>Atlas</span></span>
+  </a>
+  
+</nav>
+
+<div class="page-header">
+  <h1>🌐 Flag Explorer</h1>
+  <p>Browse all 195 countries — tap any flag to discover its story</p>
+</div>
+
+<div class="controls">
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search" placeholder="Search by country name or capital…" autocomplete="off">
+  </div>
+  <div class="filter-row">
+    <span class="filter-label">Continent</span>
+    <button class="filter-btn active" data-continent="All">🌍 All</button>
+    <button class="filter-btn" data-continent="Africa">Africa</button>
+    <button class="filter-btn" data-continent="Americas">Americas</button>
+    <button class="filter-btn" data-continent="Asia">Asia</button>
+    <button class="filter-btn" data-continent="Europe">Europe</button>
+    <button class="filter-btn" data-continent="Oceania">Oceania</button>
+    <span class="results-count" id="resultsCount"></span>
+  </div>
+</div>
+
+<div class="main">
+  <div class="grid-wrap">
+    <div class="flags-grid" id="flagsGrid"></div>
+  </div>
+  <aside class="detail-panel" id="detailPanel">
+    <div class="panel-flag-wrap">
+      <img id="panelFlagImg" src="" alt="">
+      <button class="panel-close" id="panelClose" aria-label="Close">✕</button>
+    </div>
+    <div class="panel-body">
+      <div class="panel-continent" id="panelContinent"></div>
+      <div class="panel-name" id="panelName"></div>
+      <div class="panel-capital" id="panelCapital"></div>
+      <div class="panel-pop" id="panelPop"></div>
+      <div class="panel-section">
+        <div class="panel-section-label">Flag symbolism</div>
+        <p class="panel-text" id="panelSymbolism"></p>
+      </div>
+      <div class="panel-section">
+        <div class="panel-section-label">Did you know?</div>
+        <p class="panel-text" id="panelFact"></p>
+      </div>
+      <div class="panel-tags" id="panelTags"></div>
+    </div>
+  </aside>
+</div>
+
+<div class="panel-overlay" id="panelOverlay"></div>
+
+<script>
+const COUNTRIES = [
+  { code:"gb", name:"United Kingdom", capital:"London", continent:"Europe", population:67000000, funFact:"The UK drives on the left side of the road, a tradition dating back to the days of sword-carrying travellers.", symbolism:"The Union Jack combines the crosses of St George (England), St Andrew (Scotland), and St Patrick (Ireland).", tags:["island", "monarchy"] },
+  { code:"fr", name:"France", capital:"Paris", continent:"Europe", population:68000000, funFact:"France is the most visited country in the world, welcoming over 90 million tourists a year.", symbolism:"The tricolore's blue represents freedom, white stands for equality, and red symbolises brotherhood.", tags:["tricolore", "monarchy"] },
+  { code:"de", name:"Germany", capital:"Berlin", continent:"Europe", population:84000000, funFact:"Germany has over 1,500 different types of beer and around 1,300 breweries.", symbolism:"Black, red, and gold are the colours of the German democratic movement dating from the early 19th century.", tags:["tricolore"] },
+  { code:"it", name:"Italy", capital:"Rome", continent:"Europe", population:60000000, funFact:"Italy has more UNESCO World Heritage Sites than any other country in the world.", symbolism:"The green, white, and red tricolore was inspired by the French flag during Napoleon's Italian campaign.", tags:["tricolore"] },
+  { code:"es", name:"Spain", capital:"Madrid", continent:"Europe", population:47000000, funFact:"Spain is home to La Tomatina, a festival where thousands of people throw tomatoes at each other.", symbolism:"The red and yellow colours date back to the old kingdoms of Castile and Aragon. The coat of arms shows Spain's history.", tags:["coat of arms", "monarchy"] },
+  { code:"pt", name:"Portugal", capital:"Lisbon", continent:"Europe", population:10000000, funFact:"Portugal is the oldest country in Europe with unchanged borders, established in 1139.", symbolism:"Green represents hope and the future, red symbolises the blood of those who died for the country. The armillary sphere reflects Portugal's age of exploration.", tags:["coat of arms"] },
+  { code:"nl", name:"Netherlands", capital:"Amsterdam", continent:"Europe", population:17000000, funFact:"The Netherlands has more bicycles than people — about 23 million bikes for 17 million people!", symbolism:"Orange was originally used but faded to red over time. The flag inspired many others, including France's tricolore.", tags:["tricolore"] },
+  { code:"be", name:"Belgium", capital:"Brussels", continent:"Europe", population:11000000, funFact:"Belgium invented French fries — despite the name, they originated in Belgium in the late 17th century.", symbolism:"Black, yellow, and red come from the coat of arms of the Duchy of Brabant.", tags:["tricolore"] },
+  { code:"ch", name:"Switzerland", capital:"Bern", continent:"Europe", population:8700000, funFact:"Switzerland has four official languages: German, French, Italian, and Romansh.", symbolism:"One of only two square national flags in the world. The white cross on red has been used since the 14th century.", tags:["cross", "square"] },
+  { code:"at", name:"Austria", capital:"Vienna", continent:"Europe", population:9000000, funFact:"Austria is the birthplace of Mozart, Freud, and the croissant.", symbolism:"Legend says the red-white-red design came from a duke's blood-soaked tunic after battle, with a clean strip where his belt had been.", tags:["tricolore"] },
+  { code:"se", name:"Sweden", capital:"Stockholm", continent:"Europe", population:10000000, funFact:"Sweden has around 221,800 islands, making it one of the most island-rich countries in the world.", symbolism:"The Nordic cross design represents Christianity. The blue and yellow come from the Swedish coat of arms.", tags:["nordic cross"] },
+  { code:"no", name:"Norway", capital:"Oslo", continent:"Europe", population:5400000, funFact:"Norway has the midnight sun — in summer, the sun never fully sets above the Arctic Circle.", symbolism:"The red, white, and blue Nordic cross reflects Norway's ties to Denmark and Sweden.", tags:["nordic cross"] },
+  { code:"dk", name:"Denmark", capital:"Copenhagen", continent:"Europe", population:5900000, funFact:"Denmark is considered the happiest country in the world in many surveys.", symbolism:"The Dannebrog is the oldest national flag in the world, supposedly fallen from the sky in 1219 during a battle in Estonia.", tags:["nordic cross", "oldest flag"] },
+  { code:"fi", name:"Finland", capital:"Helsinki", continent:"Europe", population:5500000, funFact:"Finland has more saunas than cars — about 3 million saunas for a population of 5.5 million.", symbolism:"The blue Nordic cross represents the country's many lakes and the sky. White symbolises the snow-covered landscape.", tags:["nordic cross"] },
+  { code:"is", name:"Iceland", capital:"Reykjavik", continent:"Europe", population:370000, funFact:"Iceland has no mosquitoes — the climate is too cold for them to survive.", symbolism:"The blue represents the mountains, white is for the ice and snow, and red stands for the volcanic fires beneath the surface.", tags:["nordic cross"] },
+  { code:"ie", name:"Ireland", capital:"Dublin", continent:"Europe", population:5000000, funFact:"Halloween originated in Ireland from the ancient Celtic festival of Samhain.", symbolism:"Green represents the Catholic Irish, orange represents the Protestant Irish, and white in the middle symbolises peace between them.", tags:["tricolore"] },
+  { code:"pl", name:"Poland", capital:"Warsaw", continent:"Europe", population:38000000, funFact:"Poland has 17 Nobel Prize winners, including Marie Curie who won it twice.", symbolism:"White represents the white eagle of Polish heraldry, and red stands for the blood of those who fought for the nation.", tags:["bicolour"] },
+  { code:"cz", name:"Czech Republic", capital:"Prague", continent:"Europe", population:10800000, funFact:"The Czech Republic has the highest beer consumption per capita in the world.", symbolism:"Blue was added to distinguish the flag from Poland's. The triangle points toward Bohemia in the west.", tags:[] },
+  { code:"sk", name:"Slovakia", capital:"Bratislava", continent:"Europe", population:5500000, funFact:"Slovakia has more castles per square kilometre than almost any other country.", symbolism:"The double cross on three hills is a Christian symbol representing the mountains Tatra, Matra, and Fatra.", tags:["cross"] },
+  { code:"hu", name:"Hungary", capital:"Budapest", continent:"Europe", population:10000000, funFact:"Hungary invented the Rubik's Cube, the ballpoint pen, and the hologram.", symbolism:"Red stands for strength, white for faithfulness, and green for hope. The colours have been used since the 9th century.", tags:["tricolore"] },
+  { code:"ro", name:"Romania", capital:"Bucharest", continent:"Europe", population:19000000, funFact:"Romania's flag is almost identical to Chad's — the only difference is a tiny shade variation in the blue.", symbolism:"Blue represents liberty, yellow symbolises justice, and red stands for fraternity — inspired by the French Revolution.", tags:["tricolore"] },
+  { code:"bg", name:"Bulgaria", capital:"Sofia", continent:"Europe", population:7000000, funFact:"Bulgaria is the oldest country in Europe that has never changed its name since it was founded in 681 AD.", symbolism:"White represents peace and love, green stands for agriculture and forests, red symbolises the bravery of soldiers.", tags:["tricolore"] },
+  { code:"hr", name:"Croatia", capital:"Zagreb", continent:"Europe", population:4000000, funFact:"The necktie (cravat) originated in Croatia — Croatian soldiers wore them in the 17th century.", symbolism:"Red, white, and blue are traditional Pan-Slavic colours. The coat of arms shows a chequered shield and five crowns representing Croatian regions.", tags:["coat of arms"] },
+  { code:"rs", name:"Serbia", capital:"Belgrade", continent:"Europe", population:7000000, funFact:"Serbia is the world's largest exporter of raspberries, producing about 30% of the global supply.", symbolism:"Pan-Slavic colours of red, blue, and white. The coat of arms features a double-headed eagle from medieval Serbia.", tags:["coat of arms"] },
+  { code:"gr", name:"Greece", capital:"Athens", continent:"Europe", population:10700000, funFact:"Greece has more archaeological museums than any other country in the world.", symbolism:"Blue and white represent the sea and sky. The nine stripes stand for the nine syllables of the Greek motto 'Freedom or Death'. The cross represents the Greek Orthodox Church.", tags:["cross", "stripes"] },
+  { code:"tr", name:"Turkey", capital:"Ankara", continent:"Europe", population:84000000, funFact:"Turkey is the world's largest producer of hazelnuts, providing about 75% of the global supply.", symbolism:"The crescent moon and star are symbols of Islam. Legend says the crescent reflected in pools of blood after a battle.", tags:["crescent", "star"] },
+  { code:"ua", name:"Ukraine", capital:"Kyiv", continent:"Europe", population:44000000, funFact:"Ukraine is the largest country entirely within Europe.", symbolism:"Blue represents the sky and peaceful rivers; yellow symbolises the golden wheat fields that cover much of the country.", tags:["bicolour"] },
+  { code:"by", name:"Belarus", capital:"Minsk", continent:"Europe", population:9400000, funFact:"Belarus is one of the few countries in Europe still largely covered by ancient primeval forest.", symbolism:"Red and green are traditional Belarusian colours. The decorative pattern on the left side is a traditional folk design called rushnik.", tags:["pattern"] },
+  { code:"md", name:"Moldova", capital:"Chișinău", continent:"Europe", population:2600000, funFact:"Moldova has the largest wine cellar in the world — Mileștii Mici stretches over 200 km underground.", symbolism:"The tricolour matches Romania's. The coat of arms shows an eagle holding a shield with a bull's head — symbol of the medieval Principality of Moldavia.", tags:["coat of arms"] },
+  { code:"al", name:"Albania", capital:"Tirana", continent:"Europe", population:2800000, funFact:"Albania has over 170,000 bunkers built by its former communist government — more per square km than any other country.", symbolism:"The black double-headed eagle on red is one of the oldest heraldic symbols in Europe, dating back to the 15th-century hero Skanderbeg.", tags:["eagle"] },
+  { code:"mk", name:"North Macedonia", capital:"Skopje", continent:"Europe", population:2100000, funFact:"North Macedonia is the birthplace of Mother Teresa, who was born in Skopje in 1910.", symbolism:"The sun with eight rays represents the 'new sun of liberty' that appears in a famous Macedonian revolutionary song.", tags:["sun"] },
+  { code:"si", name:"Slovenia", capital:"Ljubljana", continent:"Europe", population:2100000, funFact:"Slovenia has over 10,000 caves, including the famous Postojna Cave system.", symbolism:"Pan-Slavic colours with the coat of arms showing Mount Triglav, the country's highest peak, with three stars and wavy blue lines for rivers and the sea.", tags:["coat of arms"] },
+  { code:"ba", name:"Bosnia and Herzegovina", capital:"Sarajevo", continent:"Europe", population:3500000, funFact:"Sarajevo was the first city in Europe to have a full-time electric tram network.", symbolism:"The blue and yellow represent the Council of Europe's colours. The stars represent Europe; the triangle represents the shape of the country and its three main ethnic groups.", tags:["stars", "triangle"] },
+  { code:"me", name:"Montenegro", capital:"Podgorica", continent:"Europe", population:620000, funFact:"Montenegro means 'Black Mountain' in Venetian Italian — named after the dark forests of Mount Lovćen.", symbolism:"The golden border and red field come from the old royal standard. The coat of arms shows a golden eagle holding a lion — representing both state power and bravery.", tags:["coat of arms", "eagle"] },
+  { code:"xk", name:"Kosovo", capital:"Pristina", continent:"Europe", population:1800000, funFact:"Kosovo declared independence in 2008 and is one of the world's newest countries.", symbolism:"Blue and gold are the EU colours, reflecting Kosovo's European aspirations. The map shows Kosovo's territory and the six stars represent its six major ethnic groups.", tags:["map"] },
+  { code:"lu", name:"Luxembourg", capital:"Luxembourg City", continent:"Europe", population:640000, funFact:"Luxembourg is the richest country in the world by GDP per capita.", symbolism:"Very similar to the Netherlands flag but with a lighter blue. The tricolour dates from the 19th century.", tags:["tricolore"] },
+  { code:"mc", name:"Monaco", capital:"Monaco", continent:"Europe", population:39000, funFact:"Monaco is the second-smallest country in the world but has the most millionaires per capita.", symbolism:"The red and white come from the colours of the House of Grimaldi, who have ruled Monaco since 1297.", tags:["bicolour"] },
+  { code:"li", name:"Liechtenstein", capital:"Vaduz", continent:"Europe", population:38000, funFact:"Liechtenstein is one of only two doubly-landlocked countries in the world — surrounded by landlocked countries.", symbolism:"Blue and red come from the colours used in the early 19th century. The golden crown was added after the 1936 Olympics when Liechtenstein and Haiti had identical flags.", tags:["crown"] },
+  { code:"ad", name:"Andorra", capital:"Andorra la Vella", continent:"Europe", population:77000, funFact:"Andorra has no airport, no army, and is technically a co-principality ruled jointly by France and Spain.", symbolism:"Blue and red come from France, yellow and red from Spain — reflecting Andorra's position between the two countries.", tags:["coat of arms"] },
+  { code:"sm", name:"San Marino", capital:"San Marino", continent:"Europe", population:34000, funFact:"San Marino claims to be the world's oldest republic, founded in 301 AD.", symbolism:"White and pale blue represent peace. The coat of arms shows three towers on Mount Titano with a wreath and the motto 'Liberty'.", tags:["coat of arms"] },
+  { code:"va", name:"Vatican City", capital:"Vatican City", continent:"Europe", population:800, funFact:"Vatican City is the smallest country in the world — it could fit inside Central Park in New York.", symbolism:"One of only two square national flags. Yellow and white represent the Pope's spiritual and earthly power. The coat of arms shows the papal tiara and crossed keys of Saint Peter.", tags:["square", "coat of arms"] },
+  { code:"mt", name:"Malta", capital:"Valletta", continent:"Europe", population:520000, funFact:"Valletta is the smallest capital city in the European Union.", symbolism:"White and red have been Malta's colours since the Knights of St John. The George Cross in the corner was awarded by King George VI for bravery in World War II.", tags:["cross"] },
+  { code:"cy", name:"Cyprus", capital:"Nicosia", continent:"Europe", population:1200000, funFact:"Cyprus is one of the few countries whose flag shows a map of the country itself.", symbolism:"The copper-coloured map of the island reflects that Cyprus means 'copper' — the island was a major source of copper in ancient times. Olive branches represent peace.", tags:["map"] },
+  { code:"ee", name:"Estonia", capital:"Tallinn", continent:"Europe", population:1300000, funFact:"Estonia was the first country to hold national elections online, in 2005.", symbolism:"Blue represents the sky, sea, and loyalty. Black symbolises the dark past and the soil of Estonia. White stands for purity and the bright future.", tags:["tricolore"] },
+  { code:"lv", name:"Latvia", capital:"Riga", continent:"Europe", population:1850000, funFact:"Latvia is home to the world's first decorated Christmas tree, in Riga in 1510.", symbolism:"The dark red (carmine) stripes represent Latvian identity. Legend says a wounded Latvian chief was carried on a white sheet, leaving red stains on both sides.", tags:["tricolore"] },
+  { code:"lt", name:"Lithuania", capital:"Vilnius", continent:"Europe", population:2800000, funFact:"Lithuania was the last country in Europe to adopt Christianity, only in 1387.", symbolism:"Yellow represents wheat fields and the rising sun, green symbolises the forests, and red stands for the blood shed for freedom.", tags:["tricolore"] },
+  { code:"cn", name:"China", capital:"Beijing", continent:"Asia", population:1400000000, funFact:"China invented paper, printing, gunpowder, and the compass — four of the most important inventions in history.", symbolism:"Red represents the communist revolution. The large star stands for the Communist Party, and the four small stars represent the four social classes united under it.", tags:["stars"] },
+  { code:"jp", name:"Japan", capital:"Tokyo", continent:"Asia", population:125000000, funFact:"Japan has the world's oldest company — Kongō Gumi, a construction firm founded in 578 AD.", symbolism:"The white background represents honesty and purity. The red disc is the sun — Japan's name literally means 'origin of the sun'.", tags:["circle", "sun"] },
+  { code:"in", name:"India", capital:"New Delhi", continent:"Asia", population:1400000000, funFact:"India invented the number zero and the decimal system.", symbolism:"Saffron represents courage and sacrifice, white stands for peace and truth, green symbolises faith and chivalry. The blue Ashoka Chakra (wheel) represents dharma and the cycle of life.", tags:["wheel"] },
+  { code:"kr", name:"South Korea", capital:"Seoul", continent:"Asia", population:52000000, funFact:"South Korea has the fastest average internet connection speed in the world.", symbolism:"White represents peace and purity. The red/blue yin-yang symbol (Taegeuk) represents the balance of opposing forces. The four black trigrams at the corners represent sky, water, earth, and fire.", tags:["symbol"] },
+  { code:"kp", name:"North Korea", capital:"Pyongyang", continent:"Asia", population:25700000, funFact:"North Korea uses a unique calendar system starting from the birth year of its founder, Kim Il-sung in 1912.", symbolism:"Red represents revolutionary spirit. Blue stands for peace. White represents purity. The red star on white circle symbolises communism.", tags:["star"] },
+  { code:"id", name:"Indonesia", capital:"Jakarta", continent:"Asia", population:277000000, funFact:"Indonesia has the fourth largest population in the world and is made up of over 17,000 islands.", symbolism:"Red and white have been used since the 13th century Majapahit Empire. Red represents human life, white represents spiritual life.", tags:["bicolour"] },
+  { code:"my", name:"Malaysia", capital:"Kuala Lumpur", continent:"Asia", population:33000000, funFact:"Malaysia has the world's oldest tropical rainforest — estimated to be 130 million years old.", symbolism:"The 14 stripes and 14-pointed star represent Malaysia's 13 states plus the federal government. Blue stands for unity, yellow represents the royal family, and the crescent is a symbol of Islam.", tags:["crescent", "star", "stripes"] },
+  { code:"ph", name:"Philippines", capital:"Manila", continent:"Asia", population:113000000, funFact:"The Philippines is made up of 7,641 islands and has over 170 languages.", symbolism:"Blue represents peace and justice, red stands for courage. The white triangle represents equality and the revolutionary Katipunan movement. The sun and three stars represent the main island groups.", tags:["sun", "stars"] },
+  { code:"vn", name:"Vietnam", capital:"Hanoi", continent:"Asia", population:97000000, funFact:"Vietnam is the world's largest exporter of cashew nuts and the second-largest exporter of coffee.", symbolism:"Red represents the revolution and the blood of those who died fighting for independence. The yellow star represents the five main social classes: workers, peasants, intellectuals, traders, and military.", tags:["star"] },
+  { code:"th", name:"Thailand", capital:"Bangkok", continent:"Asia", population:70000000, funFact:"Thailand is the world's largest exporter of rice.", symbolism:"Red represents the nation and the blood of those who defended it. White stands for the purity of Buddhism. Blue represents the monarchy — King Vajiravudh changed the flag to show solidarity with World War I allies.", tags:[] },
+  { code:"sg", name:"Singapore", capital:"Singapore", continent:"Asia", population:5900000, funFact:"Singapore is one of only three city-states in the world.", symbolism:"Red stands for brotherhood and equality, white for purity. The crescent moon represents a young, rising nation. The five stars stand for democracy, peace, progress, justice, and equality.", tags:["crescent", "stars"] },
+  { code:"mm", name:"Myanmar", capital:"Naypyidaw", continent:"Asia", population:54000000, funFact:"Myanmar has the world's largest known ruby — called the Sunrise Ruby — found in its mines.", symbolism:"Yellow represents solidarity, green symbolises peace and tranquillity, red stands for courage. The white star represents the union of the country.", tags:["star"] },
+  { code:"kh", name:"Cambodia", capital:"Phnom Penh", continent:"Asia", population:17000000, funFact:"The Angkor Wat temple complex in Cambodia is the largest religious monument in the world.", symbolism:"Red and blue are traditional Khmer colours. The white image in the centre is Angkor Wat — one of the few national flags to feature a building.", tags:["building"] },
+  { code:"la", name:"Laos", capital:"Vientiane", continent:"Asia", population:7300000, funFact:"Laos is the most heavily bombed country per capita in history, from the Vietnam War era.", symbolism:"Red represents the blood of the people, blue stands for the Mekong River. The white circle represents the full moon over the Mekong and national unity.", tags:["circle"] },
+  { code:"bn", name:"Brunei", capital:"Bandar Seri Begawan", continent:"Asia", population:437000, funFact:"Brunei is one of the few absolute monarchies in the world and has free healthcare and education for all citizens.", symbolism:"Yellow represents the Sultan, black and white stripes the two chief ministers. The red crest features a parasol (symbol of royalty), two hands, a crescent, and the national motto.", tags:["crescent", "coat of arms"] },
+  { code:"tl", name:"East Timor", capital:"Dili", continent:"Asia", population:1300000, funFact:"East Timor (Timor-Leste) is one of the newest countries in the world, gaining independence in 2002.", symbolism:"Red represents the struggle for liberation, black symbolises the dark colonial past, yellow represents the wealth of the nation, and white represents peace.", tags:["star", "triangle"] },
+  { code:"pk", name:"Pakistan", capital:"Islamabad", continent:"Asia", population:231000000, funFact:"Pakistan has the second-largest salt mine in the world — the Khewra Salt Mine.", symbolism:"Green represents Islam and the Muslim majority. White stands for peace and the religious minorities. The crescent and star are symbols of Islam.", tags:["crescent", "star"] },
+  { code:"bd", name:"Bangladesh", capital:"Dhaka", continent:"Asia", population:169000000, funFact:"Bangladesh is home to the Sundarbans — the world's largest mangrove forest.", symbolism:"Green represents the lushness of the land and Islam. The red disc represents the rising sun and the blood shed during the independence war.", tags:["circle", "sun"] },
+  { code:"lk", name:"Sri Lanka", capital:"Colombo", continent:"Asia", population:22000000, funFact:"Sri Lanka is the world's largest exporter of cinnamon.", symbolism:"The lion with a sword represents the Sinhalese people and bravery. The sword represents authority. Green stands for Islam, orange for Hinduism, and the gold border for Buddhism.", tags:["lion"] },
+  { code:"np", name:"Nepal", capital:"Kathmandu", continent:"Asia", population:30000000, funFact:"Nepal's flag is the only national flag in the world that is not rectangular — it's made of two stacked triangles.", symbolism:"The only non-rectangular national flag. Red is the national colour; blue borders represent peace. The moon and sun represent hope that Nepal will last as long as these celestial bodies.", tags:["unique shape", "sun", "moon"] },
+  { code:"bt", name:"Bhutan", capital:"Thimphu", continent:"Asia", population:780000, funFact:"Bhutan is the only country in the world that measures its success using 'Gross National Happiness' instead of GDP.", symbolism:"Orange represents Buddhist spiritual power, red symbolises temporal power. The white dragon (Druk) holding jewels represents the country's name — Druk Yul, 'Land of the Thunder Dragon'.", tags:["dragon"] },
+  { code:"mv", name:"Maldives", capital:"Malé", continent:"Asia", population:540000, funFact:"The Maldives is the lowest-lying country in the world — its highest point is just 2.4 metres above sea level.", symbolism:"Green represents peace and prosperity and the palm trees. Red stands for the blood of heroes. The crescent is a symbol of Islam.", tags:["crescent"] },
+  { code:"af", name:"Afghanistan", capital:"Kabul", continent:"Asia", population:40000000, funFact:"Afghanistan produces about 90% of the world's opium and is the origin of the first cultivated grapes.", symbolism:"Black represents the dark past, red represents blood shed for independence, and green represents hope for the future. The central emblem features a mosque.", tags:["mosque"] },
+  { code:"ir", name:"Iran", capital:"Tehran", continent:"Asia", population:85000000, funFact:"Iran (ancient Persia) is considered the birthplace of chess.", symbolism:"Green represents growth and Islam, white stands for peace, and red symbolises courage and the blood of martyrs. The emblem is a stylised 'Allah' in the shape of a tulip.", tags:["emblem"] },
+  { code:"iq", name:"Iraq", capital:"Baghdad", continent:"Asia", population:40000000, funFact:"Iraq is home to ancient Mesopotamia — the 'cradle of civilisation' where writing was invented.", symbolism:"Red represents courage, white stands for peace, and black symbolises the Islamic Caliphate. The takbir ('God is Greatest') is written in green Kufic script.", tags:["text", "pan-arab"] },
+  { code:"sy", name:"Syria", capital:"Damascus", continent:"Asia", population:22000000, funFact:"Damascus is one of the oldest continuously inhabited cities in the world, dating back at least 11,000 years.", symbolism:"Red represents the Hashimite dynasty, white stands for the Umayyad Caliphate, black symbolises the Abbasid Caliphate. Two green stars represent Syria and Egypt from when they were once united.", tags:["stars", "pan-arab"] },
+  { code:"lb", name:"Lebanon", capital:"Beirut", continent:"Asia", population:6800000, funFact:"Lebanon is one of the most ancient wine-producing regions in the world, dating back 5,000 years.", symbolism:"Red represents sacrifice, white stands for peace. The green Cedar of Lebanon is a symbol of immortality, holiness, and peace — it appears in the Bible and Epic of Gilgamesh.", tags:["tree"] },
+  { code:"jo", name:"Jordan", capital:"Amman", continent:"Asia", population:10300000, funFact:"Jordan's Petra, carved entirely from rose-red rock, is one of the New Seven Wonders of the World.", symbolism:"Black, white, and green represent the three Arab dynasties. Red stands for the Hashemite Dynasty. The white star has seven points representing faith, humanity, national spirit, humility, virtue, social justice, and aspirations.", tags:["star", "pan-arab"] },
+  { code:"il", name:"Israel", capital:"Jerusalem", continent:"Asia", population:9300000, funFact:"Israel has the highest concentration of tech startups in the world outside of Silicon Valley.", symbolism:"The blue and white stripes resemble a tallit (Jewish prayer shawl). The Star of David (Magen David) is a traditional Jewish symbol.", tags:["star"] },
+  { code:"sa", name:"Saudi Arabia", capital:"Riyadh", continent:"Asia", population:35000000, funFact:"Saudi Arabia is the largest country in the world without a river.", symbolism:"Green and white are traditional colours of Islam. The sword represents the House of Saud. The shahada (Islamic declaration of faith) is written in white — out of respect, the flag is never flown at half-mast.", tags:["sword", "text"] },
+  { code:"ae", name:"United Arab Emirates", capital:"Abu Dhabi", continent:"Asia", population:9900000, funFact:"The UAE is home to the world's tallest building — the Burj Khalifa at 828 metres.", symbolism:"Green represents fertility, white stands for neutrality and peace, black symbolises oil, and red is the colour of the UAE and other Arab nations.", tags:["pan-arab"] },
+  { code:"qa", name:"Qatar", capital:"Doha", continent:"Asia", population:2900000, funFact:"Qatar is the richest country in the world by GDP per capita when adjusted for population.", symbolism:"Maroon represents blood shed in the many wars Qatar fought. White stands for peace. Qatar is one of the few countries whose flag is taller than it is wide.", tags:[] },
+  { code:"kw", name:"Kuwait", capital:"Kuwait City", continent:"Asia", population:4300000, funFact:"Kuwait City has one of the world's most futuristic skylines and was heavily rebuilt after the Gulf War.", symbolism:"Green represents fertile land, white stands for pure deeds, red symbolises blood on Kuwaiti swords, and black represents the enemy being defeated.", tags:["pan-arab"] },
+  { code:"bh", name:"Bahrain", capital:"Manama", continent:"Asia", population:1700000, funFact:"Bahrain is the smallest country in Asia.", symbolism:"Red is traditional for Arab countries. White represents peace. The five points of the jagged edge represent the Five Pillars of Islam.", tags:[] },
+  { code:"om", name:"Oman", capital:"Muscat", continent:"Asia", population:4500000, funFact:"Oman is the oldest independent state in the Arab world.", symbolism:"Red is traditional in Oman, white represents peace, and green symbolises the fertile Green Mountain. The national emblem shows two crossed swords and a khanjar (ceremonial dagger).", tags:["emblem"] },
+  { code:"ye", name:"Yemen", capital:"Sana'a", continent:"Asia", population:33000000, funFact:"Yemen's Socotra island has such unique wildlife that it's nicknamed the 'Galápagos of the Indian Ocean'.", symbolism:"Red, white, and black are Pan-Arab colours. Red represents bloodshed for unity, white for a bright future, and black for the dark past of colonialism.", tags:["pan-arab"] },
+  { code:"uz", name:"Uzbekistan", capital:"Tashkent", continent:"Asia", population:35000000, funFact:"Uzbekistan is one of only two doubly-landlocked countries — surrounded entirely by landlocked countries.", symbolism:"Blue represents sky and water (and honours Timurid rulers). White stands for peace. Green symbolises nature and fertility. The crescent and 12 stars represent the 12 months of the year.", tags:["crescent", "stars"] },
+  { code:"kz", name:"Kazakhstan", capital:"Astana", continent:"Asia", population:19000000, funFact:"Kazakhstan is the world's largest landlocked country.", symbolism:"Light blue represents the sky and the Turkic people. Yellow stands for the sun and prosperity. The steppe eagle (berkut) is a symbol of freedom, power, and foresight.", tags:["sun", "eagle"] },
+  { code:"tm", name:"Turkmenistan", capital:"Ashgabat", continent:"Asia", population:6000000, funFact:"Turkmenistan has one of the world's largest natural gas reserves and gives free gas to its citizens.", symbolism:"Green is the sacred colour of Islam. The stripe on the left contains five carpet guls (traditional patterns) representing the five main Turkmen tribes, making it one of the most complex flag designs.", tags:["crescent", "stars", "pattern"] },
+  { code:"tj", name:"Tajikistan", capital:"Dushanbe", continent:"Asia", population:9900000, funFact:"More than 90% of Tajikistan is covered by mountains.", symbolism:"Red represents sovereignty, white symbolises cotton and mountain snow, green stands for Islam and fertile valleys. The crown and seven stars represent unity of the nation's workers.", tags:["crown"] },
+  { code:"kg", name:"Kyrgyzstan", capital:"Bishkek", continent:"Asia", population:6600000, funFact:"Kyrgyzstan has so many mountains that only 7% of its land is flat enough for farming.", symbolism:"Red represents the bravery of Kyrgyz soldiers. The sun with 40 rays represents the 40 Kyrgyz tribes united by the hero Manas. Inside the sun is the tunduk — the crown of a traditional yurt.", tags:["sun", "geometric"] },
+  { code:"mn", name:"Mongolia", capital:"Ulaanbaatar", continent:"Asia", population:3300000, funFact:"Mongolia has the lowest population density of any country in the world.", symbolism:"Red symbolises prosperity and progress, blue represents the sky (Mongols call themselves 'the people of the blue sky'). The soyombo symbol is a complex emblem representing fire, sun, moon, earth, water, and the Taoist yin-yang.", tags:["symbol"] },
+  { code:"ge", name:"Georgia", capital:"Tbilisi", continent:"Asia", population:3700000, funFact:"Georgia is where wine was first made — wine-making there dates back at least 8,000 years.", symbolism:"White represents purity and innocence. The five red crosses — one large and four small — are known as the 'Five Cross Flag'. The design dates to medieval times and represents Jesus Christ and the four evangelists.", tags:["cross"] },
+  { code:"am", name:"Armenia", capital:"Yerevan", continent:"Asia", population:3000000, funFact:"Armenia was the first country in the world to adopt Christianity as its state religion, in 301 AD.", symbolism:"Red represents the Armenian blood shed over centuries, blue symbolises the sky and the Armenian people living under it, orange represents the creative talent and hard-working nature of Armenians.", tags:["tricolore"] },
+  { code:"az", name:"Azerbaijan", capital:"Baku", continent:"Asia", population:10000000, funFact:"Azerbaijan means 'Land of Fire' — it has been a major oil producer since ancient times.", symbolism:"Blue represents the Turkic heritage, red stands for progress, and green symbolises Islam. The crescent and eight-pointed star represent the eight letters of 'Azerbaijan' in Arabic script.", tags:["crescent", "star"] },
+  { code:"za", name:"South Africa", capital:"Pretoria", continent:"Africa", population:60000000, funFact:"South Africa is the only country to have voluntarily dismantled its nuclear weapons programme.", symbolism:"The Y-shape represents the convergence of diverse elements in South African society coming together in unity. Each of the six colours — black, gold, green, white, red, and blue — comes from South Africa's political parties and represents the diverse people.", tags:["unique"] },
+  { code:"eg", name:"Egypt", capital:"Cairo", continent:"Africa", population:103000000, funFact:"Egypt has more Facebook users than any other country in Africa.", symbolism:"Red represents the time before the 1952 revolution, white stands for the peaceful revolution, black for the end of oppression. The Eagle of Saladin is an ancient symbol of strength.", tags:["eagle", "pan-arab"] },
+  { code:"ng", name:"Nigeria", capital:"Abuja", continent:"Africa", population:218000000, funFact:"Nigeria is Africa's most populous country and has the continent's largest economy.", symbolism:"Green represents agriculture and the forests. White stands for peace and unity. The design was chosen in a 1959 competition won by a student, Michael Taiwo Akinkunmi.", tags:["simple"] },
+  { code:"et", name:"Ethiopia", capital:"Addis Ababa", continent:"Africa", population:120000000, funFact:"Ethiopia is the only African country that was never colonised by a European power.", symbolism:"Green, yellow, and red are Pan-African colours, first used by Ethiopia. The blue circle and star represent unity and progress. These colours inspired many other African nation's flags after independence.", tags:["pan-african", "star"] },
+  { code:"ke", name:"Kenya", capital:"Nairobi", continent:"Africa", population:54000000, funFact:"Kenya is the birthplace of marathon running — Kenyan athletes have won more Olympic marathon medals than any other country.", symbolism:"Black represents the people, red stands for the blood shed for independence, and green symbolises the natural landscape. The Maasai shield and crossed spears represent the defence of freedom.", tags:["shield"] },
+  { code:"tz", name:"Tanzania", capital:"Dodoma", continent:"Africa", population:63000000, funFact:"Tanzania has the highest number of albino people in the world.", symbolism:"Green represents the land, black stands for the Swahili people, blue represents the sea (from Zanzibar's flag), and yellow symbolises the mineral wealth. The diagonal stripe is a distinctive design element.", tags:["diagonal"] },
+  { code:"ug", name:"Uganda", capital:"Kampala", continent:"Africa", population:47000000, funFact:"The source of the Nile — the world's longest river — is found in Uganda at Lake Victoria.", symbolism:"Black, yellow, and red are the colours of the Uganda People's Congress party that led independence. The grey crowned crane in the centre is Uganda's national bird, known for its gentle nature.", tags:["bird"] },
+  { code:"gh", name:"Ghana", capital:"Accra", continent:"Africa", population:32000000, funFact:"Ghana was the first sub-Saharan African country to gain independence from colonial rule, in 1957.", symbolism:"Red represents the blood of independence fighters, gold stands for the mineral wealth, and green symbolises the forests. The black star represents African freedom — it inspired Jamaica's flag star.", tags:["star", "pan-african"] },
+  { code:"sn", name:"Senegal", capital:"Dakar", continent:"Africa", population:17000000, funFact:"Senegal is the westernmost country on the African mainland.", symbolism:"Pan-African colours. Green represents Islam and hope, yellow symbolises wealth, and red stands for sacrifice. The green star represents unity.", tags:["star", "pan-african"] },
+  { code:"ci", name:"Côte d'Ivoire", capital:"Yamoussoukro", continent:"Africa", population:27000000, funFact:"Côte d'Ivoire is the world's largest producer of cocoa, supplying about 40% of global supply.", symbolism:"Exactly the same colours as Ireland but reversed. Orange represents the savannah, white stands for peace, and green symbolises the southern forests.", tags:["tricolore"] },
+  { code:"cm", name:"Cameroon", capital:"Yaoundé", continent:"Africa", population:27000000, funFact:"Cameroon is called 'Africa in miniature' because it has every climate and geographical zone found across the continent.", symbolism:"Pan-African colours. Green represents the forests, red stands for sovereignty, and yellow symbolises the savannahs. The central star represents unity.", tags:["star", "pan-african"] },
+  { code:"ma", name:"Morocco", capital:"Rabat", continent:"Africa", population:37000000, funFact:"Morocco has the world's oldest university — the University of al-Qarawiyyin, founded in 859 AD.", symbolism:"Red is the colour of the ruling Alaouite dynasty. The green pentagram (five-pointed star) is known as the Seal of Solomon, representing the link between God and the nation.", tags:["star"] },
+  { code:"dz", name:"Algeria", capital:"Algiers", continent:"Africa", population:44000000, funFact:"Algeria is the largest country in Africa.", symbolism:"Green represents Islam and the hope for the future. White stands for purity and peace. The crescent and star are symbols of Islam.", tags:["crescent", "star"] },
+  { code:"tn", name:"Tunisia", capital:"Tunis", continent:"Africa", population:12000000, funFact:"Tunisia is the smallest country in North Africa and gave its name to the continent of Africa.", symbolism:"Red and white have been Tunisia's colours for centuries. The crescent and star inside the white circle represent Islam.", tags:["crescent", "star"] },
+  { code:"ly", name:"Libya", capital:"Tripoli", continent:"Africa", population:7000000, funFact:"Libya has the largest proven oil reserves in Africa.", symbolism:"Black represents the Senussi dynasty, red symbolises blood shed in the struggle against colonisation, and green stands for prosperity. The crescent and star represent Islam.", tags:["crescent", "star"] },
+  { code:"sd", name:"Sudan", capital:"Khartoum", continent:"Africa", population:44000000, funFact:"Sudan has more ancient pyramids than Egypt — over 200 of them.", symbolism:"Pan-Arab and Pan-African colours. Red represents socialism and revolution, white stands for peace, black symbolises Sudan, and green represents Islam and prosperity.", tags:["pan-arab"] },
+  { code:"ss", name:"South Sudan", capital:"Juba", continent:"Africa", population:11000000, funFact:"South Sudan is the world's youngest country, having gained independence from Sudan in 2011.", symbolism:"Black represents the people, red stands for the blood shed for freedom, green symbolises the land. Blue represents the Nile river. The gold star represents unity.", tags:["star"] },
+  { code:"ao", name:"Angola", capital:"Luanda", continent:"Africa", population:34000000, funFact:"Angola is the world's seventh largest country by area in Africa.", symbolism:"Red represents the blood shed during the independence struggle, black represents Africa. The machete and cogwheel in the centre represent workers and peasants (similar to communist symbols). The star represents international solidarity.", tags:["emblem"] },
+  { code:"mz", name:"Mozambique", capital:"Maputo", continent:"Africa", population:32000000, funFact:"Mozambique is the only country in the world with a flag featuring a modern weapon — an AK-47 rifle.", symbolism:"Green represents the land, black stands for Africa, yellow symbolises mineral wealth, and white represents peace. The AK-47 on the coat of arms represents defence and vigilance — very controversial and unique.", tags:["unique", "weapon"] },
+  { code:"zw", name:"Zimbabwe", capital:"Harare", continent:"Africa", population:15000000, funFact:"Zimbabwe's Victoria Falls is the world's largest curtain of falling water.", symbolism:"Green represents agriculture, yellow stands for mineral wealth, red symbolises the blood shed for freedom, black represents the majority population. The Zimbabwe Bird is a famous stone carving from Great Zimbabwe. The red star represents socialism.", tags:["bird", "star"] },
+  { code:"zm", name:"Zambia", capital:"Lusaka", continent:"Africa", population:19000000, funFact:"Zambia and Zimbabwe share the Victoria Falls — the world's largest waterfall.", symbolism:"Green represents the land, red stands for the struggle for freedom, black represents the people, and orange symbolises the country's copper wealth. The eagle represents the ability to rise above problems.", tags:["eagle"] },
+  { code:"bw", name:"Botswana", capital:"Gaborone", continent:"Africa", population:2600000, funFact:"Botswana transformed from one of the world's poorest countries at independence to an upper-middle income economy, largely through diamond mining.", symbolism:"Blue represents water — extremely precious in this dry country. Black and white represent the racial harmony of Botswana's people and also the zebra, the national animal.", tags:["simple"] },
+  { code:"na", name:"Namibia", capital:"Windhoek", continent:"Africa", population:2600000, funFact:"Namibia has one of the world's oldest deserts — the Namib Desert is over 55 million years old.", symbolism:"Red represents the people and their heroism, green stands for vegetation and agricultural wealth, blue symbolises the sky and Atlantic Ocean. The golden sun represents life and energy.", tags:["sun", "diagonal"] },
+  { code:"rw", name:"Rwanda", capital:"Kigali", continent:"Africa", population:13000000, funFact:"Rwanda has more women in parliament than any other country in the world.", symbolism:"Blue represents happiness and peace, yellow stands for economic development, green represents hope and prosperity. The sun symbolises enlightenment.", tags:["sun"] },
+  { code:"bi", name:"Burundi", capital:"Gitega", continent:"Africa", population:12000000, funFact:"Burundi is one of the smallest and most densely populated countries in Africa.", symbolism:"Red represents independence, white stands for peace, and green represents hope. The three stars represent the three ethnic groups — Hutu, Tutsi, and Twa — who make up Burundi's people.", tags:["stars"] },
+  { code:"so", name:"Somalia", capital:"Mogadishu", continent:"Africa", population:17000000, funFact:"Somalia has the longest coastline of any country in mainland Africa.", symbolism:"Light blue represents the sky and the Indian Ocean, and was chosen to honour the United Nations (which helped Somalia gain independence). The five-pointed star represents the five Somali territories.", tags:["star"] },
+  { code:"dj", name:"Djibouti", capital:"Djibouti City", continent:"Africa", population:1000000, funFact:"Djibouti is home to the lowest point in Africa — Lake Assal at 155 metres below sea level.", symbolism:"Light blue represents the sky and the Issa people, green stands for the earth and the Afar people, and white represents peace. The red star represents unity.", tags:["star", "triangle"] },
+  { code:"er", name:"Eritrea", capital:"Asmara", continent:"Africa", population:3500000, funFact:"Eritrea has one of the world's most unique railway lines — an old Italian-built railway that winds through dramatic mountain scenery.", symbolism:"Green represents agriculture, red stands for the blood shed for independence, and blue symbolises the sea. The olive branch represents the peace and prosperity Eritreans hoped for after independence.", tags:["olive branch", "triangle"] },
+  { code:"ml", name:"Mali", capital:"Bamako", continent:"Africa", population:22000000, funFact:"Mali was home to Mansa Musa, who is considered the wealthiest person in history.", symbolism:"Pan-African colours. Green represents nature and hope, gold stands for purity and mineral wealth, and red symbolises the blood of those who died for independence.", tags:["pan-african", "tricolore"] },
+  { code:"ne", name:"Niger", capital:"Niamey", continent:"Africa", population:25000000, funFact:"Niger is home to one of the largest uranium reserves in the world.", symbolism:"Orange represents the Sahara Desert, white stands for purity, and green symbolises the grasslands. The orange circle in the centre represents the sun.", tags:["circle", "sun"] },
+  { code:"td", name:"Chad", capital:"N'Djamena", continent:"Africa", population:17000000, funFact:"Chad's flag is almost identical to Romania's — the only difference is a very slight shade variation in the blue.", symbolism:"Blue represents the sky and hope, yellow symbolises the sun and desert, and red stands for the blood shed for independence.", tags:["tricolore"] },
+  { code:"cf", name:"Central African Republic", capital:"Bangui", continent:"Africa", population:5000000, funFact:"The Central African Republic has some of the world's largest diamond and uranium deposits.", symbolism:"The four horizontal bands show blue for sky, white for peace, green for forests, and yellow for deserts. The red vertical strip represents the blood of the nation's martyrs and unity. The star represents national dignity.", tags:["star"] },
+  { code:"cd", name:"DR Congo", capital:"Kinshasa", continent:"Africa", population:100000000, funFact:"The DR Congo has the second-largest tropical rainforest in the world after the Amazon.", symbolism:"Blue represents peace, red symbolises the blood of the country's martyrs, and yellow stands for the country's mineral wealth. The star represents unity.", tags:["star", "diagonal"] },
+  { code:"cg", name:"Republic of Congo", capital:"Brazzaville", continent:"Africa", population:5700000, funFact:"Brazzaville and Kinshasa (DR Congo) are the closest pair of capital cities in the world, facing each other across the Congo River.", symbolism:"Green represents the forests, yellow symbolises friendship and the country's wealth, and red stands for the sacrifice of the country's people.", tags:["diagonal"] },
+  { code:"ga", name:"Gabon", capital:"Libreville", continent:"Africa", population:2300000, funFact:"Over 80% of Gabon is covered by tropical rainforest.", symbolism:"Green represents the forests, yellow stands for the equator which passes through Gabon, and blue represents the Atlantic Ocean.", tags:["tricolore"] },
+  { code:"gq", name:"Equatorial Guinea", capital:"Malabo", continent:"Africa", population:1400000, funFact:"Equatorial Guinea is the only Spanish-speaking country in Africa.", symbolism:"Green represents the forests, white stands for peace, red symbolises the blood shed for independence, and blue represents the sea. The coat of arms shows a silk-cotton tree.", tags:["coat of arms", "tree"] },
+  { code:"st", name:"São Tomé and Príncipe", capital:"São Tomé", continent:"Africa", population:220000, funFact:"São Tomé and Príncipe is the second-smallest African country and was uninhabited when Portuguese explorers arrived.", symbolism:"Pan-African colours. Green represents vegetation, yellow stands for the sun, and red symbolises independence. The two black stars represent the two islands.", tags:["stars"] },
+  { code:"cv", name:"Cape Verde", capital:"Praia", continent:"Africa", population:560000, funFact:"Cape Verde is so volcanic that its highest peak, Pico do Fogo, is still an active volcano.", symbolism:"Blue represents the ocean and sky. The white and red stripes stand for the road to building the nation. The ten stars represent the ten main islands of Cape Verde.", tags:["stars", "circle"] },
+  { code:"gw", name:"Guinea-Bissau", capital:"Bissau", continent:"Africa", population:2000000, funFact:"Guinea-Bissau has one of the world's largest mangrove ecosystems.", symbolism:"Pan-African colours — green, yellow, and red. The black star represents Africa and the people. The vertical stripe makes this flag distinct from Guinea's.", tags:["star", "pan-african"] },
+  { code:"gn", name:"Guinea", capital:"Conakry", continent:"Africa", population:13000000, funFact:"Guinea has the world's largest reserves of bauxite, the ore used to make aluminium.", symbolism:"Pan-African colours. Red represents the blood of those who died for independence, yellow symbolises the gold and the sun, and green stands for the forests.", tags:["pan-african", "tricolore"] },
+  { code:"sl", name:"Sierra Leone", capital:"Freetown", continent:"Africa", population:8000000, funFact:"Sierra Leone is known as the 'Athens of West Africa' for its history of education and as the home of the first university in West Africa.", symbolism:"Green represents the mountains and agriculture, white stands for peace and unity, and blue represents the Atlantic Ocean and the natural harbour of Freetown.", tags:["tricolore"] },
+  { code:"lr", name:"Liberia", capital:"Monrovia", continent:"Africa", population:5300000, funFact:"Liberia was founded in 1822 by freed American slaves, making it one of Africa's oldest republics.", symbolism:"Deliberately modelled on the American flag — red and white stripes represent the 11 signatories of Liberia's declaration of independence. The white star represents freedom, on a blue field representing the African continent.", tags:["star", "stripes"] },
+  { code:"bj", name:"Benin", capital:"Porto-Novo", continent:"Africa", population:13000000, funFact:"Benin was the centre of the ancient kingdom of Dahomey, famous for its highly skilled army of women warriors called the Agojie.", symbolism:"Green represents hope and revival, red stands for the courage of ancestors, and yellow symbolises the country's wealth. The design was changed from a communist flag after democracy was restored.", tags:["pan-african"] },
+  { code:"tg", name:"Togo", capital:"Lomé", continent:"Africa", population:8600000, funFact:"Togo is one of the world's largest producers of phosphate.", symbolism:"Green represents hope and agriculture, yellow stands for faith and the country's mineral wealth, and red symbolises charity and the blood of those who died for independence. The star represents purity.", tags:["star", "pan-african"] },
+  { code:"bf", name:"Burkina Faso", capital:"Ouagadougou", continent:"Africa", population:22000000, funFact:"Burkina Faso means 'Land of Honest People' — it changed its name from Upper Volta in 1984.", symbolism:"Pan-African colours. Red represents the revolution, green stands for hope and agriculture. The yellow star represents the guiding light of the revolution.", tags:["star", "pan-african"] },
+  { code:"mw", name:"Malawi", capital:"Lilongwe", continent:"Africa", population:19000000, funFact:"Lake Malawi contains more species of fish than any other lake in the world.", symbolism:"Black represents the people of Africa, red stands for the blood of martyrs, and green symbolises nature. The rising sun represents the dawn of hope for Africa.", tags:["sun"] },
+  { code:"mg", name:"Madagascar", capital:"Antananarivo", continent:"Africa", population:27000000, funFact:"Madagascar is home to 90% of the world's lemur species and many unique plants and animals found nowhere else.", symbolism:"White and red are traditional Malagasy colours used by the Merina kingdom for centuries. Green represents the coastal peoples of the island.", tags:[] },
+  { code:"km", name:"Comoros", capital:"Moroni", continent:"Africa", population:900000, funFact:"The Comoros produces more perfume essence per square km than any other country in the world.", symbolism:"Green represents Islam, white stands for purity, red symbolises the martyrs, and blue represents the sea. The four stars and stripes represent the four main islands.", tags:["crescent", "stars"] },
+  { code:"sc", name:"Seychelles", capital:"Victoria", continent:"Africa", population:98000, funFact:"Victoria in the Seychelles is the smallest capital city in the world.", symbolism:"Five rays burst from the lower left, representing the five main political parties at independence. Blue represents the sky and sea, yellow stands for the sun, red symbolises the people, white stands for harmony, and green represents the land.", tags:["rays", "unique"] },
+  { code:"mu", name:"Mauritius", capital:"Port Louis", continent:"Africa", population:1300000, funFact:"Mauritius was the only known home of the dodo bird, which went extinct in the late 17th century.", symbolism:"Red represents the struggle for independence, blue stands for the Indian Ocean, yellow symbolises the bright future, and green represents the lush vegetation.", tags:["quadricolour"] },
+  { code:"mr", name:"Mauritania", capital:"Nouakchott", continent:"Africa", population:4600000, funFact:"Two thirds of Mauritania is covered by the Sahara Desert.", symbolism:"Green and gold are traditional Islamic colours. The crescent and star represent Islam. The red stripes added in 2017 represent the blood of those who defended the country.", tags:["crescent", "star"] },
+  { code:"eh", name:"Western Sahara", capital:"Laayoune", continent:"Africa", population:600000, funFact:"Western Sahara is a disputed territory — one of the last unresolved colonial issues in the world.", symbolism:"Pan-Arab colours. Black represents the 'dark past', white stands for peace, green symbolises Islam, and red represents the blood of martyrs. The crescent and star are symbols of Islam.", tags:["crescent", "star", "pan-arab"] },
+  { code:"ls", name:"Lesotho", capital:"Maseru", continent:"Africa", population:2100000, funFact:"Lesotho is one of only three countries in the world completely surrounded by another single country — South Africa.", symbolism:"Blue represents rain, white stands for peace, and green represents prosperity. The Basotho hat (mokorotlo) in the centre is a traditional hat worn by the Basotho people.", tags:["hat"] },
+  { code:"sz", name:"Eswatini", capital:"Mbabane", continent:"Africa", population:1200000, funFact:"Eswatini (formerly Swaziland) is one of the last absolute monarchies in the world.", symbolism:"Blue represents peace, yellow stands for resources, and red symbolises battles. The shield and spears represent protection. The shield is a Nguni ox-hide warrior's shield.", tags:["shield"] },
+  { code:"gm", name:"Gambia", capital:"Banjul", continent:"Africa", population:2400000, funFact:"The Gambia is the smallest country in mainland Africa, a thin strip of land surrounding the Gambia River.", symbolism:"Red represents the sun and the savannah, blue stands for the Gambia River, and green symbolises the forests. White stripes represent unity and peace.", tags:[] },
+  { code:"us", name:"United States", capital:"Washington D.C.", continent:"Americas", population:333000000, funFact:"The US has the world's largest economy and invented the internet, the airplane, and the iPhone.", symbolism:"13 stripes represent the original 13 colonies. 50 stars represent the 50 states. Red symbolises hardiness and valour, white stands for purity, and blue represents vigilance and justice.", tags:["stars", "stripes"] },
+  { code:"ca", name:"Canada", capital:"Ottawa", continent:"Americas", population:38000000, funFact:"Canada has the world's longest coastline — over 202,000 km.", symbolism:"Red and white are Canada's official colours. The maple leaf has been a symbol of Canada since the 1700s — it represents nature and the country's stunning landscapes.", tags:["leaf"] },
+  { code:"mx", name:"Mexico", capital:"Mexico City", continent:"Americas", population:130000000, funFact:"Mexico City is built on a dried-up lake bed and sinks about 10 centimetres every year.", symbolism:"Green represents hope, white stands for purity of religion, and red symbolises the blood of Mexican heroes. The eagle eating a serpent comes from an Aztec legend about where to build their city — now Mexico City.", tags:["eagle", "coat of arms"] },
+  { code:"br", name:"Brazil", capital:"Brasília", continent:"Americas", population:215000000, funFact:"Brazil is the only country in South America where Portuguese is the official language.", symbolism:"Green represents the forests, yellow stands for gold, and blue represents the sky. The globe shows a sky view of Brazil on November 15, 1889 (independence day). The white band says 'Order and Progress'.", tags:["stars", "globe", "text"] },
+  { code:"ar", name:"Argentina", capital:"Buenos Aires", continent:"Americas", population:46000000, funFact:"Argentina is the birthplace of tango, Messi, and the dulce de leche.", symbolism:"Light blue and white are Argentina's traditional colours. The Sun of May represents the Inca sun god Inti and also commemorates the May Revolution of 1810.", tags:["sun"] },
+  { code:"cl", name:"Chile", capital:"Santiago", continent:"Americas", population:19000000, funFact:"Chile is the world's longest country from north to south — stretching 4,300 km.", symbolism:"Red represents the blood spilled to achieve independence, white stands for the snow-capped Andes, and blue symbolises the sky and the Pacific Ocean. The star represents a guide to progress and honour.", tags:["star"] },
+  { code:"co", name:"Colombia", capital:"Bogotá", continent:"Americas", population:51000000, funFact:"Colombia is the only country in South America with coastlines on both the Pacific Ocean and the Caribbean Sea.", symbolism:"Yellow represents the gold of the New World, blue stands for the oceans that separate Colombia from Spain, and red symbolises the blood of those who fought for independence.", tags:["tricolore"] },
+  { code:"ve", name:"Venezuela", capital:"Caracas", continent:"Americas", population:29000000, funFact:"Venezuela has the world's largest proven oil reserves.", symbolism:"Yellow represents the wealth of Venezuela, blue stands for the sea separating it from Spain, and red symbolises the blood of those who died for independence. Eight stars represent the original eight provinces.", tags:["stars", "arc"] },
+  { code:"pe", name:"Peru", capital:"Lima", continent:"Americas", population:33000000, funFact:"Peru is home to Machu Picchu, the lost city of the Incas, and the world's highest navigable lake, Lake Titicaca.", symbolism:"Red and white were the colours of Inca warriors. Legend says General San Martín saw a flock of red and white flamingos when he arrived to liberate Peru.", tags:["simple"] },
+  { code:"bo", name:"Bolivia", capital:"Sucre", continent:"Americas", population:12000000, funFact:"Bolivia has two capitals — Sucre (constitutional) and La Paz (seat of government).", symbolism:"Red represents the brave soldiers who fought for independence, yellow stands for the nation's mineral deposits, and green symbolises fertility.", tags:["tricolore"] },
+  { code:"ec", name:"Ecuador", capital:"Quito", continent:"Americas", population:18000000, funFact:"Ecuador is the first country in the world to give constitutional rights to nature.", symbolism:"Same colours as Colombia and Venezuela — yellow, blue, and red — as they were all once part of Gran Colombia. The coat of arms shows Mount Chimborazo and the Guayas River.", tags:["coat of arms"] },
+  { code:"py", name:"Paraguay", capital:"Asunción", continent:"Americas", population:7400000, funFact:"Paraguay is one of only two landlocked countries in South America.", symbolism:"The only flag in the world with different symbols on each side! The front shows the national coat of arms, the back shows the treasury seal. Red, white, and blue were inspired by France.", tags:["unique", "coat of arms"] },
+  { code:"uy", name:"Uruguay", capital:"Montevideo", continent:"Americas", population:3500000, funFact:"Uruguay was the first country in the world to fully legalise cannabis.", symbolism:"Nine horizontal stripes represent the nine departments when the flag was created. The Sun of May matches Argentina's — representing shared history. The stripes are inspired by the US flag.", tags:["sun", "stripes"] },
+  { code:"gy", name:"Guyana", capital:"Georgetown", continent:"Americas", population:800000, funFact:"Guyana is the only English-speaking country in South America.", symbolism:"Green represents the forests, white stands for rivers, the golden arrowhead represents mineral resources, black symbolises perseverance, and red represents the people's zeal.", tags:["arrow", "triangle"] },
+  { code:"sr", name:"Suriname", capital:"Paramaribo", continent:"Americas", population:600000, funFact:"Suriname is the smallest sovereign country in South America.", symbolism:"Green represents the forests and fields, white stands for freedom and justice, and red symbolises progress and love. The yellow star represents unity and a golden future.", tags:["star"] },
+  { code:"cu", name:"Cuba", capital:"Havana", continent:"Americas", population:11000000, funFact:"Cuba has the highest literacy rate in the Americas — over 99%.", symbolism:"Three blue stripes represent the three military provinces. Two white stripes stand for the purity of the independence cause. The red triangle symbolises equality, fraternity, and liberty. The star represents independence.", tags:["star", "triangle"] },
+  { code:"jm", name:"Jamaica", capital:"Kingston", continent:"Americas", population:3000000, funFact:"Jamaica is the birthplace of reggae music and Usain Bolt, the world's fastest human.", symbolism:"One of only two national flags that doesn't use red, white, or blue. Black represents the strength and creativity of the people, gold stands for natural resources, and green symbolises the land.", tags:["cross", "unique"] },
+  { code:"ht", name:"Haiti", capital:"Port-au-Prince", continent:"Americas", population:11400000, funFact:"Haiti was the first Black republic in the world and the first Caribbean state to gain independence, in 1804.", symbolism:"Blue and red come from France's tricolore — Haitian revolutionaries tore out the white stripe (representing white colonisers) and sewed the other two together. The coat of arms shows a trophy of weapons under a palm tree.", tags:["coat of arms"] },
+  { code:"do", name:"Dominican Republic", capital:"Santo Domingo", continent:"Americas", population:11000000, funFact:"Santo Domingo in the Dominican Republic is the oldest permanently inhabited European settlement in the Americas, founded in 1498.", symbolism:"The unique design has a white cross dividing the flag into quarters. Blue stands for liberty, red symbolises the fire and blood of the independence struggle. The coat of arms features a Bible, a cross, and flags.", tags:["cross", "coat of arms"] },
+  { code:"pr", name:"Puerto Rico", capital:"San Juan", continent:"Americas", population:3200000, funFact:"Puerto Rico is a US territory and all Puerto Ricans are US citizens, but the island cannot vote in US presidential elections.", symbolism:"Similar to Cuba's but with reversed colours. Red stripes represent the blood of brave warriors, white stands for peace. The blue triangle represents the Republican Government and the star represents the island.", tags:["star", "triangle"] },
+  { code:"tt", name:"Trinidad and Tobago", capital:"Port of Spain", continent:"Americas", population:1400000, funFact:"Trinidad and Tobago is the birthplace of the steelpan — the only acoustic musical instrument invented in the 20th century.", symbolism:"Red represents the sun and the vitality of the people, black stands for the strength and dedication of the people, and white symbolises the sea and purity.", tags:["diagonal"] },
+  { code:"bb", name:"Barbados", capital:"Bridgetown", continent:"Americas", population:288000, funFact:"Barbados became a republic in 2021, removing the British monarch as head of state.", symbolism:"Blue represents the sea and sky, gold stands for the sand. The black trident is the Broken Trident — the handle is missing, symbolising the break from Britain and colonial rule.", tags:["trident"] },
+  { code:"bs", name:"Bahamas", capital:"Nassau", continent:"Americas", population:400000, funFact:"The Bahamas is the only country in the Americas to be entirely composed of islands — over 700 of them.", symbolism:"Aquamarine represents the sea, gold stands for the sandy beaches, and black symbolises the unity and strength of the Bahamian people.", tags:["triangle"] },
+  { code:"bz", name:"Belize", capital:"Belmopan", continent:"Americas", population:400000, funFact:"Belize has the second-largest barrier reef in the world — the Mesoamerican Barrier Reef.", symbolism:"Blue and red are the colours of the two main political parties. The coat of arms shows two woodcutters holding tools, a ship, and a mahogany tree — representing the logging industry.", tags:["coat of arms", "circle"] },
+  { code:"gt", name:"Guatemala", capital:"Guatemala City", continent:"Americas", population:17000000, funFact:"Guatemala is the home of chocolate — the Mayan people there were the first to cultivate cacao.", symbolism:"Blue represents the sky and the Pacific and Atlantic Oceans. White stands for peace and purity. The quetzal bird in the coat of arms is the national bird — symbol of liberty — and also the country's currency.", tags:["coat of arms", "bird"] },
+  { code:"hn", name:"Honduras", capital:"Tegucigalpa", continent:"Americas", population:10300000, funFact:"Honduras hosted the world's first football war — a conflict sparked by a qualifying match for the 1970 World Cup.", symbolism:"Blue and white reflect Central American unity. Five blue stars represent the five Central American nations. The flag was designed when Honduras, Guatemala, El Salvador, Costa Rica, and Nicaragua formed the Central American Federation.", tags:["stars"] },
+  { code:"sv", name:"El Salvador", capital:"San Salvador", continent:"Americas", population:6500000, funFact:"El Salvador is the smallest country in Central America but the most densely populated.", symbolism:"Blue represents the sky and the Pacific and Atlantic Oceans. White stands for peace. The coat of arms includes five volcanoes representing the Central American nations and a rainbow symbolising peace.", tags:["coat of arms"] },
+  { code:"ni", name:"Nicaragua", capital:"Managua", continent:"Americas", population:6700000, funFact:"Nicaragua is home to the only freshwater lake in the world with sharks — Lake Nicaragua.", symbolism:"Blue and white reflect Central American unity and the original flag of the Federal Republic of Central America. The rainbow and triangle in the coat of arms represent equality and the bright future.", tags:["coat of arms"] },
+  { code:"cr", name:"Costa Rica", capital:"San José", continent:"Americas", population:5100000, funFact:"Costa Rica abolished its army in 1948 — it has been at peace ever since and invests heavily in education.", symbolism:"Blue represents the sky and the Pacific and Atlantic Oceans, white stands for peace and wisdom, and red symbolises the warmth of the people. The coat of arms was inspired by a visit from the President of the United States.", tags:["coat of arms"] },
+  { code:"pa", name:"Panama", capital:"Panama City", continent:"Americas", population:4300000, funFact:"Panama is the only place in the world where you can see the sun rise over the Pacific and set over the Atlantic.", symbolism:"White represents peace, blue stands for the Conservative Party, and red symbolises the Liberal Party. The stars represent purity and law.", tags:["stars"] },
+  { code:"ag", name:"Antigua and Barbuda", capital:"St. John's", continent:"Americas", population:100000, funFact:"Antigua has 365 beaches — one for every day of the year.", symbolism:"Black represents African heritage, blue stands for the Caribbean Sea, white symbolises the sand, and red represents the energy of the people. The sun has golden rising rays representing the dawn of a new era.", tags:["sun"] },
+  { code:"dm", name:"Dominica", capital:"Roseau", continent:"Americas", population:72000, funFact:"Dominica is known as the 'Nature Isle of the Caribbean' and has the second-largest boiling lake in the world.", symbolism:"Green represents the lush vegetation. The cross represents the Trinity and Christianity. The sisserou parrot in the centre is Dominica's national bird, found only in Dominica. It is the only flag in the world featuring a purple parrot.", tags:["bird", "cross", "unique"] },
+  { code:"lc", name:"Saint Lucia", capital:"Castries", continent:"Americas", population:184000, funFact:"Saint Lucia has produced more Nobel Prize winners per capita than any other country.", symbolism:"Blue represents the Caribbean Sea and Atlantic Ocean. The yellow and black triangle represent the two Pitons — Saint Lucia's iconic twin volcanic peaks — with the white standing for their snow-white peaks.", tags:["triangle"] },
+  { code:"vc", name:"St. Vincent and the Grenadines", capital:"Kingstown", continent:"Americas", population:111000, funFact:"St. Vincent is known as the filming location for Pirates of the Caribbean.", symbolism:"Blue represents the sky and sea, gold stands for the sunshine, and green symbolises the lush vegetation. The three diamonds in the centre form the letter 'V' for Vincent and are known as the 'gems of the Antilles'.", tags:["diamonds"] },
+  { code:"gd", name:"Grenada", capital:"St. George's", continent:"Americas", population:113000, funFact:"Grenada is known as the 'Spice Isle' — it is the world's second-largest producer of nutmeg.", symbolism:"Red represents courage and vitality, gold stands for wisdom and warmth, and green symbolises vegetation and agriculture. The nutmeg on the left reflects Grenada's nickname as the Spice Isle.", tags:["nutmeg", "star"] },
+  { code:"kn", name:"Saint Kitts and Nevis", capital:"Basseterre", continent:"Americas", population:53000, funFact:"Saint Kitts and Nevis was the first British colony in the Caribbean, settled in 1623.", symbolism:"Green represents the fertile land, red stands for the African heritage struggle against slavery, yellow symbolises year-round sunshine, black represents the African heritage, and the two white stars stand for the two islands.", tags:["stars", "diagonal"] },
+  { code:"au", name:"Australia", capital:"Canberra", continent:"Oceania", population:26000000, funFact:"Australia has the world's largest cattle station — Anna Creek Station is bigger than Israel.", symbolism:"The Union Jack represents historical ties with Britain. The Commonwealth Star has seven points representing the six states and territories. The Southern Cross constellation is visible from the Southern Hemisphere.", tags:["southern cross", "union jack", "stars"] },
+  { code:"nz", name:"New Zealand", capital:"Wellington", continent:"Oceania", population:5100000, funFact:"New Zealand was the first country to give women the right to vote in national elections, in 1893.", symbolism:"The Union Jack represents New Zealand's British heritage. The four red stars of the Southern Cross represent New Zealand's location in the South Pacific.", tags:["southern cross", "union jack", "stars"] },
+  { code:"pg", name:"Papua New Guinea", capital:"Port Moresby", continent:"Oceania", population:10000000, funFact:"Papua New Guinea has over 800 languages — more than any other country in the world.", symbolism:"Red and black are traditional Papuan colours. The Bird of Paradise (raggiana) represents the country's extraordinary wildlife. The Southern Cross represents the country's location in the Pacific.", tags:["bird", "southern cross", "stars"] },
+  { code:"fj", name:"Fiji", capital:"Suva", continent:"Oceania", population:920000, funFact:"Fiji has over 300 islands, of which only about 110 are inhabited.", symbolism:"Light blue represents the Pacific Ocean. The Union Jack reflects British colonial history. The shield shows sugarcane, a dove, a British lion, and a British ship — representing Fiji's history and culture.", tags:["union jack", "coat of arms"] },
+  { code:"sb", name:"Solomon Islands", capital:"Honiara", continent:"Oceania", population:720000, funFact:"The Solomon Islands were the site of some of the most intense fighting in the Pacific during World War II.", symbolism:"Blue represents the ocean, green symbolises the land, and yellow stands for the sunshine. The five stars represent the five main island groups.", tags:["stars", "diagonal"] },
+  { code:"vu", name:"Vanuatu", capital:"Port Vila", continent:"Oceania", population:320000, funFact:"Vanuatu was voted the happiest country in the world by the Happy Planet Index.", symbolism:"Red represents the blood of the boar (used in traditional ceremonies), green stands for the islands' richness, black is the colour of the ni-Vanuatu people, and yellow represents the light of Christianity. The boar's tusk represents prosperity.", tags:["boar tusk"] },
+  { code:"ws", name:"Samoa", capital:"Apia", continent:"Oceania", population:220000, funFact:"Samoa was the first country in the world to welcome the new millennium — it's one of the first to see each new day.", symbolism:"Red represents courage, white stands for purity. The Southern Cross constellation represents Samoa's location in the Pacific Ocean.", tags:["southern cross", "stars"] },
+  { code:"to", name:"Tonga", capital:"Nuku'alofa", continent:"Oceania", population:100000, funFact:"Tonga is the only monarchy in the Pacific and has never been fully colonised.", symbolism:"Red represents the blood of Christ. White stands for purity. The red cross represents Christianity — given by King George Tupou I who converted to Christianity.", tags:["cross"] },
+  { code:"ki", name:"Kiribati", capital:"South Tarawa", continent:"Oceania", population:120000, funFact:"Kiribati is the only country in the world to span all four hemispheres — north, south, east, and west.", symbolism:"Blue and white waves represent the Pacific Ocean. The yellow frigate bird in flight and the rising sun represent Kiribati's islands at the edge of the world where the sun first rises.", tags:["sun", "bird"] },
+  { code:"tv", name:"Tuvalu", capital:"Funafuti", continent:"Oceania", population:11000, funFact:"Tuvalu is one of the most remote countries in the world and may be the first to be completely submerged by rising sea levels.", symbolism:"Light blue represents the Pacific Ocean. The nine stars represent the nine atolls and island groups of Tuvalu. The Union Jack reflects historical British influence.", tags:["stars", "union jack"] },
+  { code:"nr", name:"Nauru", capital:"Yaren", continent:"Oceania", population:10000, funFact:"Nauru is the smallest island nation in the world and the smallest republic.", symbolism:"Blue represents the Pacific Ocean. The gold stripe represents the equator, which runs just south of Nauru. The white star represents Nauru itself, with its 12 points for the 12 original tribes.", tags:["star"] },
+  { code:"pw", name:"Palau", capital:"Ngerulmud", continent:"Oceania", population:18000, funFact:"Palau established the world's first shark sanctuary in 2009.", symbolism:"Light blue represents the ocean and Palau's transition to self-governance. The golden disc represents the full moon, which is when many traditional activities like fishing and planting are done.", tags:["circle", "moon"] },
+  { code:"fm", name:"Micronesia", capital:"Palikir", continent:"Oceania", population:115000, funFact:"Micronesia's Yap island used to use enormous stone discs as currency — some weighing up to 4 tonnes.", symbolism:"Light blue represents the Pacific Ocean. The four stars represent the four island states: Chuuk, Pohnpei, Kosrae, and Yap.", tags:["stars"] },
+  { code:"mh", name:"Marshall Islands", capital:"Majuro", continent:"Oceania", population:42000, funFact:"The Marshall Islands was the site of US nuclear testing — 67 nuclear bombs were detonated there between 1946 and 1958.", symbolism:"Blue represents the Pacific Ocean. The two diagonal stripes represent the Ratak ('Sunrise') and Ralik ('Sunset') island chains. The white star's 24 points represent the 24 municipalities.", tags:["star", "diagonal"] },];
+
+function getFlagUrl(code) {
+  return `https://flagcdn.com/w320/${code}.png`;
+}
+
+function formatPop(n) {
+  if (n >= 1000000000) return (n/1000000000).toFixed(1) + 'B';
+  if (n >= 1000000)    return (n/1000000).toFixed(1)    + 'M';
+  if (n >= 1000)       return (n/1000).toFixed(0)       + 'K';
+  return n.toString();
+}
+
+const grid       = document.getElementById('flagsGrid');
+const panel      = document.getElementById('detailPanel');
+const overlay    = document.getElementById('panelOverlay');
+const countEl    = document.getElementById('resultsCount');
+const searchEl   = document.getElementById('search');
+const filterBtns = document.querySelectorAll('.filter-btn');
+
+let activeContinent = 'All';
+let activeCode      = null;
+let searchQuery     = '';
+
+function getFiltered() {
+  return COUNTRIES.filter(c => {
+    const matchContinent = activeContinent === 'All' || c.continent === activeContinent;
+    const q = searchQuery.toLowerCase();
+    const matchSearch = !q
+      || c.name.toLowerCase().includes(q)
+      || c.capital.toLowerCase().includes(q)
+      || c.continent.toLowerCase().includes(q);
+    return matchContinent && matchSearch;
+  });
+}
+
+function renderGrid() {
+  const filtered = getFiltered();
+  countEl.textContent = filtered.length + ' countr' + (filtered.length === 1 ? 'y' : 'ies');
+  grid.innerHTML = '';
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div class="no-results"><span>🏳️</span>No flags match your search</div>';
+    return;
+  }
+
+  filtered.forEach((c, i) => {
+    const card = document.createElement('div');
+    card.className = 'flag-card' + (c.code === activeCode ? ' active' : '');
+    card.style.animationDelay = Math.min(i * 0.02, 0.4) + 's';
+    card.innerHTML = `
+      <div class="flag-img-wrap">
+        <img src="${getFlagUrl(c.code)}" alt="${c.name} flag" loading="lazy">
+      </div>
+      <div class="flag-card-label">
+        <div class="flag-card-name">${c.name}</div>
+        <div class="flag-card-capital">${c.capital}</div>
+      </div>`;
+    card.addEventListener('click', () => openPanel(c));
+    grid.appendChild(card);
+  });
+}
+
+function openPanel(c) {
+  activeCode = c.code;
+
+  document.getElementById('panelFlagImg').src    = getFlagUrl(c.code);
+  document.getElementById('panelFlagImg').alt    = c.name + ' flag';
+  document.getElementById('panelContinent').textContent  = c.continent;
+  document.getElementById('panelName').textContent       = c.name;
+  document.getElementById('panelCapital').innerHTML      = `📍 Capital: <strong>${c.capital}</strong>`;
+
+  const popEl = document.getElementById('panelPop');
+  popEl.innerHTML = `<span class="panel-pop-num">${formatPop(c.population)}</span><span class="panel-pop-label">people</span>`;
+
+  document.getElementById('panelSymbolism').textContent = c.symbolism;
+  document.getElementById('panelFact').textContent      = c.funFact;
+
+  const tagsEl = document.getElementById('panelTags');
+  tagsEl.innerHTML = '';
+  if (c.tags && c.tags.length) {
+    c.tags.forEach(t => {
+      const span = document.createElement('span');
+      span.className = 'panel-tag';
+      span.textContent = t;
+      tagsEl.appendChild(span);
+    });
+  }
+
+  panel.classList.add('visible');
+  overlay.classList.add('visible');
+
+  // highlight active card
+  document.querySelectorAll('.flag-card').forEach(el => el.classList.remove('active'));
+  const cards = document.querySelectorAll('.flag-card');
+  const filtered = getFiltered();
+  const idx = filtered.findIndex(x => x.code === c.code);
+  if (cards[idx]) cards[idx].classList.add('active');
+}
+
+function closePanel() {
+  panel.classList.remove('visible');
+  overlay.classList.remove('visible');
+  activeCode = null;
+  document.querySelectorAll('.flag-card').forEach(el => el.classList.remove('active'));
+}
+
+document.getElementById('panelClose').addEventListener('click', closePanel);
+overlay.addEventListener('click', closePanel);
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeContinent = btn.dataset.continent;
+    closePanel();
+    renderGrid();
+  });
+});
+
+let searchTimer;
+searchEl.addEventListener('input', () => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => {
+    searchQuery = searchEl.value;
+    renderGrid();
+  }, 150);
+});
+
+// init
+renderGrid();
+</script>
+<footer><p>FlagAtlas — free educational tools for everyone &nbsp;·&nbsp; <a href="/index.html">Home</a> &nbsp;·&nbsp; <a href="/privacy.html">Privacy &amp; Terms</a></p></footer>
+</body>
+</html>
