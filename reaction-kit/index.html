@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reaction Kit — SongScout | Songs That Floor First-Time Listeners</title>
-<meta name="description" content="The songs that floor first-time listeners every time. Curated lists of classic rock and metal tracks organised by the moment that gets people — guitar solos, key changes, drum fills and epic buildups.">
-<meta name="keywords" content="best songs for reaction videos, classic rock reaction videos, songs that always get a reaction, best guitar solos first listen, most shocking key changes rock, In the Air Tonight drum fill">
+<meta name="description" content="The songs that floor first-time listeners every time — including hidden gems most reactors have never touched. Curated by the moment that gets people: guitar solos, key changes, drum fills and epic buildups.">
+<meta name="keywords" content="best songs for reaction videos, hidden gem reaction songs, underrated classic rock songs, deep cuts for reaction videos, lesser-known classic rock, songs reactors haven't done, classic rock reaction videos, In the Air Tonight drum fill">
 <link rel="canonical" href="https://songscout.uk/reaction-kit/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://songscout.uk/reaction-kit/">
@@ -170,6 +170,71 @@ button{cursor:pointer;font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Se
   transition:all 0.15s;margin-top:6px;
 }
 .yt-link:hover{color:#FF4444;border-color:#FF4444;background:rgba(255,68,68,0.08)}
+
+/* HIDDEN GEMS TOGGLE */
+.gems-toggle-section{
+  max-width:1100px;margin:0 auto;padding:20px 24px 0;
+}
+.gems-toggle-wrap{
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:14px 18px;border-radius:var(--radius-lg);
+  background:linear-gradient(135deg,rgba(128,64,192,0.08),rgba(240,168,48,0.05));
+  border:1px solid rgba(128,64,192,0.25);
+}
+.gems-toggle-label{display:flex;align-items:flex-start;gap:10px;flex:1;min-width:220px}
+.gems-icon{font-size:1.6rem;flex-shrink:0;line-height:1;margin-top:2px}
+.gems-text{display:flex;flex-direction:column;gap:2px}
+.gems-title{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.15rem;letter-spacing:1.5px;color:var(--white);line-height:1.1}
+.gems-sub{font-size:0.75rem;color:var(--muted);line-height:1.5;font-weight:400}
+
+.gems-switch{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 16px;border-radius:100px;
+  background:var(--dark3);border:1.5px solid var(--border2);
+  font-size:0.78rem;font-weight:700;letter-spacing:0.5px;
+  color:var(--muted);transition:all 0.2s;flex-shrink:0;
+  text-transform:uppercase;
+}
+.gems-switch:hover{border-color:var(--purple);color:var(--white)}
+.gems-switch.active{
+  background:linear-gradient(135deg,var(--purple),#9050D0);
+  border-color:var(--purple);color:var(--white);
+  box-shadow:0 0 0 3px rgba(128,64,192,0.15);
+}
+.gems-switch-dot{
+  width:9px;height:9px;border-radius:50%;
+  background:var(--muted);transition:background 0.2s;
+}
+.gems-switch.active .gems-switch-dot{background:var(--gold);box-shadow:0 0 8px var(--gold)}
+
+/* GEM BADGE ON CARDS */
+.reaction-card.gem .rc-num{color:var(--purple)}
+.reaction-card.gem{border-left-color:var(--purple)}
+
+.gem-badge{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:0.62rem;font-weight:700;letter-spacing:0.8px;
+  padding:2px 7px;border-radius:100px;
+  background:linear-gradient(135deg,rgba(128,64,192,0.2),rgba(192,152,240,0.15));
+  border:1px solid rgba(128,64,192,0.4);
+  color:var(--purple-l);
+  text-transform:uppercase;margin-left:6px;
+  vertical-align:middle;
+}
+
+/* Empty state when no gems in a category */
+.gems-empty{
+  padding:32px 20px;text-align:center;
+  background:var(--panel);border:1px dashed var(--border2);border-radius:var(--radius-lg);
+  color:var(--muted);font-size:0.85rem;line-height:1.6;
+}
+.gems-empty strong{color:var(--off);font-weight:600;display:block;margin-bottom:4px}
+
+/* Count pill for gems-only mode */
+.hero-meta .meta-pill.gems-active{
+  background:linear-gradient(135deg,rgba(128,64,192,0.2),rgba(128,64,192,0.05));
+  border-color:var(--purple);color:var(--purple-l);
+}
 </style>
 </head>
 <body>
@@ -204,6 +269,22 @@ button{cursor:pointer;font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Se
     </div>
   </div>
 </section>
+
+<div class="gems-toggle-section">
+  <div class="gems-toggle-wrap">
+    <div class="gems-toggle-label">
+      <span class="gems-icon">💎</span>
+      <div class="gems-text">
+        <div class="gems-title">Hidden Gems Mode</div>
+        <div class="gems-sub">Show only deep cuts — tracks most reactors skip but that floor first-time listeners just as hard. Perfect for fresh reaction material.</div>
+      </div>
+    </div>
+    <button class="gems-switch" id="gemsSwitch" onclick="toggleGems()" aria-pressed="false">
+      <span class="gems-switch-dot"></span>
+      <span id="gemsSwitchLabel">Off</span>
+    </button>
+  </div>
+</div>
 
 <div class="filter-section">
   <div class="filter-label">Filter by moment type</div>
@@ -243,11 +324,11 @@ const CATEGORIES = [
       {title:'Stairway to Heaven',artist:'Led Zeppelin',year:1971,moment:'Guitar solo',timestamp:'5:55',reaction:'After five minutes of delicate acoustic beauty, Jimmy Page\'s solo arrives like something from another dimension. First-time listeners rarely see it coming.',why:'Page plays his Les Paul through a cheap transistor amp specifically to get that singing, almost vocal tone. The solo builds from a simple motif to a screaming climax in just over a minute. It\'s been voted the greatest guitar solo ever recorded more times than any other.'},
       {title:'Free Bird',artist:'Lynyrd Skynyrd',year:1973,moment:'Extended guitar solo',timestamp:'4:55',reaction:'The solo section runs for nearly five minutes. First-time listeners start wondering when it will end — then start hoping it never does.',why:'Three guitarists (Gary Rossington, Allen Collins, Ed King) trade solos over a relentlessly accelerating backing. The tempo keeps rising until the whole thing becomes almost chaotic — in the best possible way.'},
       {title:'Eruption',artist:'Van Halen',year:1978,moment:'Full track',timestamp:'0:00',reaction:'One minute and 42 seconds of solo guitar that made rock guitarists worldwide question whether to quit. Nobody had heard two-handed tapping like this before.',why:'Eddie Van Halen recorded this as a showcase piece — just him, one guitar, and techniques nobody in rock music had ever heard. When the album came out, guitarists across the world tried to figure out how he was making those sounds.'},
-      {title:'Sultans of Swing',artist:'Dire Straits',year:1978,moment:'Outro guitar solo',timestamp:'5:07',reaction:'Mark Knopfler plays without a pick — just his fingers. The tone is unlike anything else in rock and the solo has a conversational, almost jazz-like quality that floors people who\'ve only heard shred guitar.',why:'Knopfler built his unique fingerpicking style from a blend of country, blues and jazz. The solo on Sultans is the perfect showcase — melodic, inventive, and completely sui generis.'},
+      {title:'Sultans of Swing',artist:'Dire Straits',year:1978,moment:'Outro guitar solo',timestamp:'5:07',hiddenGem:true,reaction:'Mark Knopfler plays without a pick — just his fingers. The tone is unlike anything else in rock and the solo has a conversational, almost jazz-like quality that floors people who\'ve only heard shred guitar.',why:'Knopfler built his unique fingerpicking style from a blend of country, blues and jazz. The solo on Sultans is the perfect showcase — melodic, inventive, and completely sui generis.'},
       {title:'November Rain',artist:'Guns N\' Roses',year:1991,moment:'Slash outdoor solo',timestamp:'4:03',reaction:'Slash walking out of a church into the desert sun, wearing a top hat, and playing what might be the most cinematic guitar solo ever filmed. First-time listeners usually gasp.',why:'There are actually two solos — one mid-song and one that accompanies the iconic music video scene. The second solo, played against the sweeping orchestral arrangement, is the moment that seals the song\'s status as an epic.'},
-      {title:'Layla',artist:'Derek & the Dominos',year:1970,moment:'Outro piano & guitar',timestamp:'2:43',reaction:'The song appears to end — then a completely different piece of music begins. First-time listeners always look confused, then transfixed.',why:'The first half is a ferocious rock track featuring Duane Allman and Eric Clapton trading guitar lines. Then at 2:43 it transforms into a seven-minute piano-and-guitar coda written by Jim Gordon. It\'s one of the most remarkable structural choices in rock.'},
+      {title:'Layla',artist:'Derek & the Dominos',year:1970,moment:'Outro piano & guitar',timestamp:'2:43',hiddenGem:true,reaction:'The song appears to end — then a completely different piece of music begins. First-time listeners always look confused, then transfixed.',why:'The first half is a ferocious rock track featuring Duane Allman and Eric Clapton trading guitar lines. Then at 2:43 it transforms into a seven-minute piano-and-guitar coda written by Jim Gordon. It\'s one of the most remarkable structural choices in rock.'},
       {title:'All Along the Watchtower',artist:'Jimi Hendrix',year:1968,moment:'Final guitar solo',timestamp:'3:40',reaction:'Hendrix treats Dylan\'s folk song as a canvas for three guitar solos that get progressively more intense. The final one is genuinely shocking in its intensity.',why:'Bob Dylan heard Hendrix\'s version and said it was so much better than his own that he adopted Hendrix\'s arrangement for live performances. The guitar tones Hendrix gets here were impossible to replicate for years.'},
-      {title:'Shine On You Crazy Diamond',artist:'Pink Floyd',year:1975,moment:'Opening guitar solo',timestamp:'0:00',reaction:'The song opens with four minutes of guitar — no drums, no bass, just David Gilmour\'s most emotionally raw playing. Written as a tribute to Syd Barrett, it\'s impossible to hear cold without being affected.',why:'Gilmour plays a nine-note theme that becomes one of rock\'s most recognisable guitar motifs. The restraint and space in the playing is as important as the notes themselves.'},
+      {title:'Shine On You Crazy Diamond',artist:'Pink Floyd',year:1975,moment:'Opening guitar solo',timestamp:'0:00',hiddenGem:true,reaction:'The song opens with four minutes of guitar — no drums, no bass, just David Gilmour\'s most emotionally raw playing. Written as a tribute to Syd Barrett, it\'s impossible to hear cold without being affected.',why:'Gilmour plays a nine-note theme that becomes one of rock\'s most recognisable guitar motifs. The restraint and space in the playing is as important as the notes themselves.'},
     ]
   },
   {
@@ -264,9 +345,9 @@ const CATEGORIES = [
       {title:'Somebody That I Used to Know',artist:'Gotye',year:2011,moment:'Kimbra verse entry',timestamp:'2:00',reaction:'A completely different vocal tone and perspective arrives midway through. Not a traditional key change but a tonal shift that recontextualises everything before it.',why:'Kimbra\'s verse reframes the entire song from a different perspective. Modern audiences know this one but the reaction to the midpoint shift is always strong with fresh ears.'},
       {title:'Total Eclipse of the Heart',artist:'Bonnie Tyler',year:1983,moment:'Chorus eruption',timestamp:'1:06',reaction:'Jim Steinman\'s production goes from quiet piano to a wall of sound in seconds. Tyler\'s voice goes from whisper to full power at the same moment.',why:'Steinman was the master of emotional escalation — every element is calibrated to maximise impact. The contrast between the quiet verse and the exploding chorus is as extreme as anything in pop music.'},
       {title:'With or Without You',artist:'U2',year:1987,moment:'Final chorus',timestamp:'3:45',reaction:'The song has been building on a loop for three minutes. When Bono finally lets go vocally in the final section, it\'s like a dam breaking.',why:'The song is built on a repeated four-chord loop — deliberately hypnotic. The emotional release comes not from a key change but from Bono\'s vocal suddenly escaping its restraint. One of rock\'s great slow builds.'},
-      {title:'A Change Is Gonna Come',artist:'Sam Cooke',year:1964,moment:'Bridge modulation',timestamp:'1:58',reaction:'The orchestral arrangement lifts the song into something almost unbearably emotional. Not strictly a rock track but the influence on every rock vocalist who followed is incalculable.',why:'Sam Cooke wrote this after being turned away from a whites-only motel. The pain in his voice is real and the orchestral arrangement — which modulates mid-song — amplifies it to devastating effect.'},
+      {title:'A Change Is Gonna Come',artist:'Sam Cooke',year:1964,moment:'Bridge modulation',timestamp:'1:58',hiddenGem:true,reaction:'The orchestral arrangement lifts the song into something almost unbearably emotional. Not strictly a rock track but the influence on every rock vocalist who followed is incalculable.',why:'Sam Cooke wrote this after being turned away from a whites-only motel. The pain in his voice is real and the orchestral arrangement — which modulates mid-song — amplifies it to devastating effect.'},
       {title:'November Rain',artist:'Guns N\' Roses',year:1991,moment:'Orchestral shift',timestamp:'6:20',reaction:'The song has already been epic for six minutes. The orchestral section that follows completely reframes everything before it.',why:'Axl Rose spent years developing this song. The late-song orchestral passage — borrowed from a classical composition — gives the nine-minute track its sense of genuine grandeur.'},
-      {title:'Heroes',artist:'David Bowie',year:1977,moment:'Dynamic build',timestamp:'2:00',reaction:'The song starts with Bowie at a whisper and builds over six minutes until he\'s singing at full power. First-time listeners often don\'t notice the shift happening — they just feel progressively more emotional.',why:'Bowie and producer Tony Visconti used three microphones at increasing distances to capture the vocal — close for whispers, middle-distance for normal, far for full-power. The resulting dynamic range is extraordinary.'},
+      {title:'Heroes',artist:'David Bowie',year:1977,moment:'Dynamic build',timestamp:'2:00',hiddenGem:true,reaction:'The song starts with Bowie at a whisper and builds over six minutes until he\'s singing at full power. First-time listeners often don\'t notice the shift happening — they just feel progressively more emotional.',why:'Bowie and producer Tony Visconti used three microphones at increasing distances to capture the vocal — close for whispers, middle-distance for normal, far for full-power. The resulting dynamic range is extraordinary.'},
     ]
   },
   {
@@ -278,12 +359,12 @@ const CATEGORIES = [
     songs:[
       {title:'In the Air Tonight',artist:'Phil Collins',year:1981,moment:'Drum fill',timestamp:'3:40',reaction:'Arguably the most famous drum fill in music history. First-time listeners who don\'t know it\'s coming will physically jump.',why:'Collins plays brushes for the first three and a half minutes. The silence before the fill is crucial — and then the full kit crashes in with one of the most dramatic single moments in pop history.'},
       {title:'When the Levee Breaks',artist:'Led Zeppelin',year:1971,moment:'Opening drum sound',timestamp:'0:00',reaction:'The first thing you hear is John Bonham\'s drums — recorded in a stairwell at Headley Grange with two microphones at the top. The sound is like nothing else in rock.',why:'Bonham set his kit up at the bottom of a three-storey stone staircase. Producer Jimmy Page put the mics at the top. The resulting reverb has never been replicated and has been sampled hundreds of times.'},
-      {title:'Good Times Bad Times',artist:'Led Zeppelin',year:1969,moment:'Bass drum pattern',timestamp:'0:00',reaction:'John Bonham plays triplets on the bass drum — a technique virtually nobody was using in 1969. First-time listeners who play drums go very quiet when they process what they\'re hearing.',why:'Most drummers of the era played the bass drum on beats one and three. Bonham plays three bass drum hits for every two counts — a technique borrowed from jazz that nobody in rock had attempted.'},
+      {title:'Good Times Bad Times',artist:'Led Zeppelin',year:1969,moment:'Bass drum pattern',timestamp:'0:00',hiddenGem:true,reaction:'John Bonham plays triplets on the bass drum — a technique virtually nobody was using in 1969. First-time listeners who play drums go very quiet when they process what they\'re hearing.',why:'Most drummers of the era played the bass drum on beats one and three. Bonham plays three bass drum hits for every two counts — a technique borrowed from jazz that nobody in rock had attempted.'},
       {title:'Tom Sawyer',artist:'Rush',year:1981,moment:'Drum pattern',timestamp:'0:00',reaction:'Neil Peart\'s drum part on this song is widely considered the most technically complex in mainstream rock music. Watching drummers listen to it for the first time is extraordinary.',why:'Peart plays in 7/8 and other odd time signatures while maintaining a groove that feels completely natural. His kit had 40+ pieces and he used every one. This song is a rite of passage for rock drummers.'},
-      {title:'Fool in the Rain',artist:'Led Zeppelin',year:1979,moment:'Half-time shuffle',timestamp:'0:00',reaction:'Bonham plays a half-time shuffle — a groove that sounds deceptively simple and is notoriously difficult to execute. Drummers who try to play along with this track usually give up.',why:'The groove has a floating, conversational quality that makes every other drummer sound rigid by comparison. Jeff Porcaro of Toto studied it obsessively — his own shuffle on Rosanna was a direct tribute.'},
+      {title:'Fool in the Rain',artist:'Led Zeppelin',year:1979,moment:'Half-time shuffle',timestamp:'0:00',hiddenGem:true,reaction:'Bonham plays a half-time shuffle — a groove that sounds deceptively simple and is notoriously difficult to execute. Drummers who try to play along with this track usually give up.',why:'The groove has a floating, conversational quality that makes every other drummer sound rigid by comparison. Jeff Porcaro of Toto studied it obsessively — his own shuffle on Rosanna was a direct tribute.'},
       {title:'Moby Dick',artist:'Led Zeppelin',year:1969,moment:'Extended drum solo',timestamp:'2:50',reaction:'Live versions of this ran to 30 minutes. Even the studio version demonstrates what Bonham could do when given space. Drummers watching reaction videos of this song go quiet very quickly.',why:'Bonham eventually played the drum solo with his bare hands — he found he could get more expression from his palms and fingers than from sticks.'},
-      {title:'YYZ',artist:'Rush',year:1981,moment:'Opening rhythmic figure',timestamp:'0:00',reaction:'The opening is in 5/4 time and spells out the Morse code for YYZ (Toronto Pearson Airport). Musicians hear this and understand immediately what they\'re dealing with.',why:'The entire song is a showcase for three musicians of extraordinary technical ability playing as a band. Peart, Geddy Lee and Alex Lifeson are all doing things that shouldn\'t be possible simultaneously.'},
-      {title:'Rosanna',artist:'Toto',year:1982,moment:'Half-time shuffle',timestamp:'0:00',reaction:'Jeff Porcaro\'s shuffle groove on this track is as influential as any guitar solo in rock. The "Rosanna shuffle" is taught in every serious drum programme worldwide.',why:'Porcaro combined John Bonham\'s feel with Bernard Purdie\'s technique. The result is a groove so perfect that it became the standard against which all other shuffles are measured.'},
+      {title:'YYZ',artist:'Rush',year:1981,moment:'Opening rhythmic figure',timestamp:'0:00',hiddenGem:true,reaction:'The opening is in 5/4 time and spells out the Morse code for YYZ (Toronto Pearson Airport). Musicians hear this and understand immediately what they\'re dealing with.',why:'The entire song is a showcase for three musicians of extraordinary technical ability playing as a band. Peart, Geddy Lee and Alex Lifeson are all doing things that shouldn\'t be possible simultaneously.'},
+      {title:'Rosanna',artist:'Toto',year:1982,moment:'Half-time shuffle',timestamp:'0:00',hiddenGem:true,reaction:'Jeff Porcaro\'s shuffle groove on this track is as influential as any guitar solo in rock. The "Rosanna shuffle" is taught in every serious drum programme worldwide.',why:'Porcaro combined John Bonham\'s feel with Bernard Purdie\'s technique. The result is a groove so perfect that it became the standard against which all other shuffles are measured.'},
       {title:'Hot for Teacher',artist:'Van Halen',year:1984,moment:'Opening drum intro',timestamp:'0:00',reaction:'Alex Van Halen plays a full minute of drums before the rest of the band enters. It\'s one of the most exciting drum intros in rock history.',why:'The intro sounds chaotic but is precisely calibrated — building tension and excitement before Eddie\'s riff arrives. It\'s a masterclass in using dynamics to create anticipation.'},
       {title:'2112 Overture',artist:'Rush',year:1976,moment:'Full composition',timestamp:'0:00',reaction:'Twenty minutes of progressive rock with time signatures that shift constantly. Neil Peart\'s drumming throughout is widely considered the high-water mark of rock drumming.',why:'Rush were three people making the sound of six. Everything Peart plays is in service of the composition — technically extraordinary but never for its own sake.'},
     ]
@@ -305,8 +386,8 @@ const CATEGORIES = [
       {title:'Welcome to the Jungle',artist:'Guns N\' Roses',year:1987,moment:'Opening sequence',timestamp:'0:00',reaction:'The isolated guitar squeal, then the riff, then Axl Rose\'s "do you know where you are?" The opening minute is one of the great scene-setting sequences in rock.',why:'The song announces itself with menace. Axl Rose sounds genuinely dangerous — which in 1987, after years of polished arena rock, was genuinely shocking.'},
       {title:'Master of Puppets',artist:'Metallica',year:1986,moment:'Opening riff',timestamp:'0:00',reaction:'The clean intro is followed by one of the most ferocious riffs in metal history. The shift in dynamic is so extreme that first-time listeners always visibly react.',why:'James Hetfield\'s rhythm guitar playing is often overlooked next to the solos and drums, but his precision and power on this riff are what make the song possible.'},
       {title:'Bohemian Rhapsody',artist:'Queen',year:1975,moment:'A cappella opening',timestamp:'0:00',reaction:'A rock band opening with four voices and nothing else. First-time listeners always lean in, uncertain what they\'re hearing.',why:'Freddie Mercury, Roger Taylor and Brian May recorded the vocal parts over and over until they had the layered, almost operatic sound they wanted. The a cappella opening signals immediately that this is not a normal pop song.'},
-            {title:'She Sells Sanctuary',artist:'The Cult',year:1985,moment:'Opening riff',timestamp:'0:00',reaction:'Billy Duffy\'s guitar riff is one of the most immediately recognisable openings in 80s rock. First-time listeners who don\'t know it always ask what it is before the first verse is finished.',why:'Duffy built the riff from a descending figure that somehow sounds both ancient and completely fresh. Ian Astbury\'s vocal arrives with total swagger. The whole thing locks into a groove that is almost impossible to resist.'},
-            {title:'Rockin\' in the Free World',artist:'Neil Young',year:1989,moment:'Guitar riff and vocal intensity',timestamp:'0:00',reaction:'Neil Young playing at full electric attack — the riff is immediately arresting and his voice has a ragged urgency that commands attention. First-time listeners who only know his acoustic work are always surprised by the sheer power.',why:'Young channels political rage into one of his heaviest guitar performances. The solo section — feedback-drenched and deliberately rough — is the moment that explains why Kurt Cobain called him the godfather of grunge.'},
+            {title:'She Sells Sanctuary',artist:'The Cult',year:1985,moment:'Opening riff',timestamp:'0:00',hiddenGem:true,reaction:'Billy Duffy\'s guitar riff is one of the most immediately recognisable openings in 80s rock. First-time listeners who don\'t know it always ask what it is before the first verse is finished.',why:'Duffy built the riff from a descending figure that somehow sounds both ancient and completely fresh. Ian Astbury\'s vocal arrives with total swagger. The whole thing locks into a groove that is almost impossible to resist.'},
+            {title:'Rockin\' in the Free World',artist:'Neil Young',year:1989,moment:'Guitar riff and vocal intensity',timestamp:'0:00',hiddenGem:true,reaction:'Neil Young playing at full electric attack — the riff is immediately arresting and his voice has a ragged urgency that commands attention. First-time listeners who only know his acoustic work are always surprised by the sheer power.',why:'Young channels political rage into one of his heaviest guitar performances. The solo section — feedback-drenched and deliberately rough — is the moment that explains why Kurt Cobain called him the godfather of grunge.'},
       {title:'Iron Man',artist:'Black Sabbath',year:1970,moment:'Riff and "I am Iron Man"',timestamp:'0:33',reaction:'Tony Iommi\'s riff — played by a man who lost the tips of two fingers in a factory accident — is the most physically heavy thing in early rock. Then Ozzy speaks the three words and it becomes mythology.',why:'Iommi invented a new guitar tuning to compensate for his finger injuries. In doing so he accidentally created the sound of heavy metal.'},
     ]
   },
@@ -322,9 +403,9 @@ const CATEGORIES = [
       {title:'Whole Lotta Love',artist:'Led Zeppelin',year:1969,moment:'Robert Plant vocal',timestamp:'0:21',reaction:'"Been a long time since I rock and rolled" — Plant delivers this with a swagger and sexuality that feels like nothing that came before it in rock.',why:'Plant had the widest vocal range in rock — from gentle folk melodies to full-throated screams. He moves between them in the same song and makes it feel natural.'},
       {title:'Hallelujah',artist:'Jeff Buckley',year:1994,moment:'Full vocal performance',timestamp:'0:00',reaction:'Buckley\'s falsetto on this track is widely considered one of the great vocal performances in recorded music. First-time listeners go very still.',why:'Leonard Cohen wrote the song. Buckley\'s cover transforms it into something entirely his own — the vocal tone, the phrasing, the restraint and then the release. He drowned at 30, leaving only one studio album.'},
       {title:'Kashmir',artist:'Led Zeppelin',year:1975,moment:'Plant\'s vocal over the orchestra',timestamp:'0:00',reaction:'Plant singing over John Paul Jones\'s orchestral arrangement is one of rock\'s most majestic moments. The scale of it is genuinely cinematic.',why:'Plant sings about an imagined landscape — he\'d never actually been to Kashmir when he wrote this. The vocal has a reaching, striving quality that perfectly matches the relentless forward motion of the music.'},
-            {title:'Plush',artist:'Stone Temple Pilots',year:1993,moment:'Scott Weiland vocal',timestamp:'0:15',reaction:'Weiland\'s voice is immediately distinctive — rich, slightly lazy and completely assured. First-time listeners who know Pearl Jam and Nirvana are always struck by how different STP sound despite emerging from the same scene.',why:'Dean DeLeo\'s guitar arrangement and Weiland\'s vocal create a mood that\'s simultaneously heavy and melodic. Plush won the Grammy for Best Hard Rock Performance in 1994 and announced STP as something genuinely distinctive within grunge.'},
+            {title:'Plush',artist:'Stone Temple Pilots',year:1993,moment:'Scott Weiland vocal',timestamp:'0:15',hiddenGem:true,reaction:'Weiland\'s voice is immediately distinctive — rich, slightly lazy and completely assured. First-time listeners who know Pearl Jam and Nirvana are always struck by how different STP sound despite emerging from the same scene.',why:'Dean DeLeo\'s guitar arrangement and Weiland\'s vocal create a mood that\'s simultaneously heavy and melodic. Plush won the Grammy for Best Hard Rock Performance in 1994 and announced STP as something genuinely distinctive within grunge.'},
       {title:'Cry Baby',artist:'Janis Joplin',year:1971,moment:'Opening vocal',timestamp:'0:00',reaction:'Joplin sounds like she\'s singing from a place of genuine pain. First-time listeners from any generation are usually stunned by the raw power.',why:'Joplin had a blues-inflected, full-throated style that came directly from her idols Big Mama Thornton and Bessie Smith. She is the blueprint for every powerful female rock vocalist who followed.'},
-      {title:'Painkiller',artist:'Judas Priest',year:1990,moment:'Rob Halford screams',timestamp:'0:00',reaction:'The opening drum pattern is followed by Halford\'s multi-octave scream. First-time listeners almost always comment on it immediately.',why:'Halford has a six-octave range. The metal scream he developed became the template — every power metal vocalist since has been trying to replicate what he does here.'},
+      {title:'Painkiller',artist:'Judas Priest',year:1990,moment:'Rob Halford screams',timestamp:'0:00',hiddenGem:true,reaction:'The opening drum pattern is followed by Halford\'s multi-octave scream. First-time listeners almost always comment on it immediately.',why:'Halford has a six-octave range. The metal scream he developed became the template — every power metal vocalist since has been trying to replicate what he does here.'},
       {title:'I\'d Do Anything for Love',artist:'Meat Loaf',year:1993,moment:'Epic vocal performance',timestamp:'0:00',reaction:'Meat Loaf performs at an intensity that seems genuinely unsustainable for twelve minutes. First-time listeners are never sure whether to laugh or be moved — the answer is both.',why:'Jim Steinman wrote the song and had a very specific emotional vision for it. Meat Loaf\'s ability to commit completely to that vision — at volume, for over ten minutes — is remarkable.'},
       {title:'Wuthering Heights',artist:'Kate Bush',year:1978,moment:'The opening vocal',timestamp:'0:00',reaction:'Kate Bush recorded this at nineteen. The falsetto opening is one of the most unusual sounds in pop music — and one of the most immediately arresting.',why:'Bush wrote this song inspired by the Brontë novel. The vocal style she developed — dramatic, literary, physically extreme — had no precedent. She is entirely her own genre.'},
             {title:'Summer of 69',artist:'Bryan Adams',year:1985,moment:'Opening riff and vocal energy',timestamp:'0:00',reaction:'The guitar riff and Bryan Adams\' ragged, committed vocal delivery hit immediately. First-time listeners who think of Adams as a ballad singer are always surprised by the raw energy of Reckless.',why:'Adams and co-writer Jim Vallance built this from pure rock and roll DNA — Chuck Berry chord changes, a riff that demands to be played loud, and a lyric about nostalgia that connects with everyone regardless of their actual age.'},
@@ -344,14 +425,14 @@ const CATEGORIES = [
             {title:'Fortunate Son',artist:'Creedence Clearwater Revival',year:1969,moment:'Opening riff and vocal attack',timestamp:'0:00',reaction:'John Fogerty\'s voice arrives with such force that first-time listeners are immediately alert. The riff is simple and the song is under two and a half minutes — but it hits like something much larger.',why:'CCR strip rock to its absolute essentials — three chords, a riff, a lyric with something to say and a vocal that means every word. Fortunate Son is one of the great performances in rock history: compact, furious and completely committed.'},
       {title:'A Day in the Life',artist:'The Beatles',year:1967,moment:'Orchestral crescendo',timestamp:'2:15 and 4:19',reaction:'The orchestra plays a random ascent from its lowest notes to its highest — twice. First-time listeners don\'t know what\'s happening and that\'s entirely the point.',why:'Paul McCartney instructed the orchestra to start from their lowest note and end at their highest in 24 bars, playing whatever they wanted. The chaos resolves into a single held E major chord played on multiple pianos.'},
       {title:'Paranoid Android',artist:'Radiohead',year:1997,moment:'Full structure',timestamp:'0:00',reaction:'A six-minute track that changes time signature, tempo and mood three times. First-time listeners often ask how many songs they just heard.',why:'The song has three distinct sections — a quiet acoustic verse, a screaming middle section, and a serene outro. Thom Yorke said it was inspired by a disturbing encounter in a bar. It is Radiohead\'s most structurally ambitious single.'},
-      {title:'2112 Overture',artist:'Rush',year:1976,moment:'Full 20-minute composition',timestamp:'0:00',reaction:'A twenty-minute rock opera with a complete narrative arc. Musicians who hear this for the first time usually go quiet in the first five minutes.',why:'Rush were told by their label that progressive rock was commercial suicide. They made 2112 anyway. It became their breakthrough record.'},
+      {title:'2112 Overture',artist:'Rush',year:1976,moment:'Full 20-minute composition',timestamp:'0:00',hiddenGem:true,reaction:'A twenty-minute rock opera with a complete narrative arc. Musicians who hear this for the first time usually go quiet in the first five minutes.',why:'Rush were told by their label that progressive rock was commercial suicide. They made 2112 anyway. It became their breakthrough record.'},
             {title:'Born to Run',artist:'Bruce Springsteen',year:1975,moment:'Full production climax',timestamp:'2:45',reaction:'Phil Spector\'s Wall of Sound production technique applied to rock and roll. When the full band locks in for the final section, first-time listeners are often visibly moved. The E Street Band at full power is one of rock\'s great sonic experiences.',why:'Springsteen spent months on this track trying to get the production right. The wall of overdubbed guitars, the glockenspiel, Clarence Clemons\' saxophone and the relentless forward momentum create something that still sounds enormous nearly fifty years later.'},
       {title:'Bat Out of Hell',artist:'Meat Loaf',year:1977,moment:'Full 9-minute arc',timestamp:'0:00',reaction:'Nine minutes of operatic rock that builds to a literal motorcycle crash. Jim Steinman\'s production creates a sense of genuine cinematic scale.',why:'Steinman wrote this as a musical piece before it was a song. The structure is deliberately filmic — establishing shot, rising action, climax, denouement. Nothing in mainstream rock sounded like this in 1977.'},
       {title:'Shine On You Crazy Diamond',artist:'Pink Floyd',year:1975,moment:'Full track',timestamp:'0:00',reaction:'Thirteen minutes split across two sides of the album. The opening guitar solo is followed by one of the most emotionally affecting vocal performances in rock.',why:'Written as a tribute to Syd Barrett, who visited the studio during the recording without being recognised by his old bandmates. The song\'s mournful beauty takes on additional weight knowing this.'},
       {title:'November Rain',artist:'Guns N\' Roses',year:1991,moment:'Nine-minute arc',timestamp:'0:00',reaction:'A power ballad that becomes an orchestral rock epic. First-time listeners are usually surprised it keeps going after the apparent ending at six minutes.',why:'Axl Rose spent years developing this song. The orchestral sections were influenced by his classical piano background. The music video, directed by Andy Moroder, cost $1.5 million.'},
-      {title:'Achilles Last Stand',artist:'Led Zeppelin',year:1976,moment:'Full 10-minute track',timestamp:'0:00',reaction:'Page plays all the guitar parts live simultaneously using an eight-track tape recorder. The result is a wall of sound that builds for ten minutes without flagging.',why:'Plant wrote the lyrics while recovering from a car accident. The song has an urgency and physical force that reflects this. It is possibly Led Zeppelin\'s most ambitious studio achievement.'},
+      {title:'Achilles Last Stand',artist:'Led Zeppelin',year:1976,moment:'Full 10-minute track',timestamp:'0:00',hiddenGem:true,reaction:'Page plays all the guitar parts live simultaneously using an eight-track tape recorder. The result is a wall of sound that builds for ten minutes without flagging.',why:'Plant wrote the lyrics while recovering from a car accident. The song has an urgency and physical force that reflects this. It is possibly Led Zeppelin\'s most ambitious studio achievement.'},
       {title:'Won\'t Get Fooled Again',artist:'The Who',year:1971,moment:'Keith Moon and the synthesiser drop',timestamp:'7:45',reaction:'After eight minutes of rock, the song drops to a synthesiser pattern — then Keith Moon\'s drum fill leads back in for the final "YEAAAH" from Roger Daltrey. One of rock\'s great climactic moments.',why:'Pete Townshend had been experimenting with synthesisers as compositional tools. The decision to strip back to just the synth before the final explosion was a stroke of genius.'},
-      {title:'The Ocean',artist:'Led Zeppelin',year:1973,moment:'Opening and time signature shift',timestamp:'0:00',reaction:'Bonham counts in with "We\'ve done four already but now we\'re steady and then they went one two three four" — audible on the record. The time signature then shifts throughout. Drummers and musicians go slightly wild.',why:'The opening count-in was an accident left on the final mix. The song shifts between 4/4 and 4/8 throughout — Bonham plays it with a looseness that makes it feel completely natural.'},
+      {title:'The Ocean',artist:'Led Zeppelin',year:1973,moment:'Opening and time signature shift',timestamp:'0:00',hiddenGem:true,reaction:'Bonham counts in with "We\'ve done four already but now we\'re steady and then they went one two three four" — audible on the record. The time signature then shifts throughout. Drummers and musicians go slightly wild.',why:'The opening count-in was an accident left on the final mix. The song shifts between 4/4 and 4/8 throughout — Bonham plays it with a looseness that makes it feel completely natural.'},
     ]
   },
   {
@@ -367,7 +448,7 @@ const CATEGORIES = [
       {title:'Paranoid Android',artist:'Radiohead',year:1997,moment:'The "Rain down" section',timestamp:'4:01',reaction:'After the furious middle section, the song suddenly becomes serene — almost heavenly. The shift is so extreme and unexpected that first-time listeners are usually disoriented.',why:'Yorke said the three sections of the song came to him separately and he didn\'t know they were the same song until he started arranging them. The transition between the screaming middle and the quiet final section is jarring by design.'},
       {title:'Mr. Brightside',artist:'The Killers',year:2003,moment:'Full track energy',timestamp:'0:00',reaction:'The song never actually has a chorus — the entire track is at the same emotional intensity from the first note. First-time listeners rarely notice until it\'s pointed out.',why:'Brandon Flowers wrote this about watching his girlfriend with another man. The relentless forward motion of the track mirrors the obsessive, spiralling emotional state of the narrator.'},
       {title:'Bat Out of Hell',artist:'Meat Loaf',year:1977,moment:'Motorcycle crash',timestamp:'7:30',reaction:'The song literally describes and enacts a motorcycle crash — sound effects, the works. First-time listeners who have been following the narrative always react to this moment.',why:'Jim Steinman was a theatre composer and brought theatrical staging principles to rock music. The idea that a song could have literal sound effects as part of its emotional arc was essentially new in mainstream rock.'},
-            {title:'Heart of Glass',artist:'Blondie',year:1979,moment:'Punk band plays disco',timestamp:'0:00',reaction:'A punk band from CBGB playing a Giorgio Moroder-influenced disco track — in 1979, this was genuinely shocking to both punk and disco audiences. First-time listeners who know Blondie from their punk context are always surprised.',why:'Debbie Harry and Chris Stein had the confidence to ignore genre boundaries entirely. The result was one of the decade\'s most distinctive singles — and proof that the best artists refuse to be categorised.'},
+            {title:'Heart of Glass',artist:'Blondie',year:1979,moment:'Punk band plays disco',timestamp:'0:00',hiddenGem:true,reaction:'A punk band from CBGB playing a Giorgio Moroder-influenced disco track — in 1979, this was genuinely shocking to both punk and disco audiences. First-time listeners who know Blondie from their punk context are always surprised.',why:'Debbie Harry and Chris Stein had the confidence to ignore genre boundaries entirely. The result was one of the decade\'s most distinctive singles — and proof that the best artists refuse to be categorised.'},
       {title:'Radio Gaga',artist:'Queen',year:1984,moment:'Crowd handclap in video and live',timestamp:'2:00',reaction:'The handclap pattern — two claps, pause, two claps — became one of rock\'s great audience participation moments. At Live Aid in 1985, the entire audience at Wembley did it perfectly without prompting.',why:'Roger Taylor wrote this as a meditation on the power of radio in an era of rising television. The song\'s Live Aid performance — where 72,000 people spontaneously followed along — is one of the great moments in rock concert history.'},
       {title:'Jump',artist:'Van Halen',year:1984,moment:'Eddie Van Halen on synthesiser',timestamp:'0:00',reaction:'The greatest rock guitarist of his generation playing a synthesiser intro. His bandmates refused it for years. It became their biggest hit.',why:'Eddie had been working on keyboard compositions in secret. The irony that his most commercially successful song was the one he played on a different instrument was not lost on him.'},
       {title:'London Calling',artist:'The Clash',year:1979,moment:'Paul Simonon smashing his bass',timestamp:'Album cover moment',reaction:'The album cover is a photograph of bassist Paul Simonon smashing his bass on stage at The Palladium. The image is so powerful that Rolling Stone named it the greatest album cover of all time.',why:'Photographer Pennie Smith said she thought she had missed the decisive moment and didn\'t want to use the image. Joe Strummer overruled her. The spontaneous destruction became a defining image of punk.'},
@@ -379,6 +460,61 @@ const CATEGORIES = [
 // State
 let activeCategory = 'all';
 let openCards = new Set();
+let gemsOnly = false;
+
+// Read initial state from URL hash or query string for shareable links
+(function restoreState(){
+  try {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('filter') === 'hidden-gems') gemsOnly = true;
+  } catch(e){}
+})();
+
+function toggleGems() {
+  gemsOnly = !gemsOnly;
+  const btn = document.getElementById('gemsSwitch');
+  const label = document.getElementById('gemsSwitchLabel');
+  btn.classList.toggle('active', gemsOnly);
+  btn.setAttribute('aria-pressed', gemsOnly ? 'true' : 'false');
+  label.textContent = gemsOnly ? 'On' : 'Off';
+  openCards.clear();
+
+  // Update URL for shareability without a page reload
+  try {
+    const url = new URL(window.location.href);
+    if (gemsOnly) url.searchParams.set('filter','hidden-gems');
+    else url.searchParams.delete('filter');
+    window.history.replaceState({}, '', url.toString());
+  } catch(e){}
+
+  // Update hero meta pill
+  updateHeroMeta();
+  render();
+}
+
+function updateHeroMeta() {
+  // Count total gems
+  const gemCount = CATEGORIES.reduce((sum, c) => sum + c.songs.filter(s => s.hiddenGem).length, 0);
+  const totalCount = CATEGORIES.reduce((sum, c) => sum + c.songs.length, 0);
+  const tracksPill = document.querySelector('.hero-meta .meta-pill:nth-child(2)');
+  if (tracksPill) {
+    if (gemsOnly) {
+      tracksPill.textContent = `💎 ${gemCount} hidden gems`;
+      tracksPill.classList.add('gems-active');
+    } else {
+      tracksPill.textContent = `🎵 ${totalCount} essential tracks`;
+      tracksPill.classList.remove('gems-active');
+    }
+  }
+
+  // Update intro-box
+  const introNums = document.querySelectorAll('.intro-box .ib-num');
+  const introLabels = document.querySelectorAll('.intro-box .ib-label');
+  if (introNums.length >= 1 && introLabels.length >= 1) {
+    introNums[0].textContent = gemsOnly ? gemCount : totalCount;
+    introLabels[0].textContent = gemsOnly ? 'Hidden gems' : 'Curated tracks';
+  }
+}
 
 function init() {
   // Build tabs
@@ -402,6 +538,15 @@ function init() {
     tabs.appendChild(tab);
   });
 
+  // Apply restored gems state to UI
+  if (gemsOnly) {
+    const btn = document.getElementById('gemsSwitch');
+    const label = document.getElementById('gemsSwitchLabel');
+    if (btn) { btn.classList.add('active'); btn.setAttribute('aria-pressed','true'); }
+    if (label) label.textContent = 'On';
+  }
+
+  updateHeroMeta();
   render();
 }
 
@@ -434,7 +579,14 @@ function render() {
 
   const catsToShow = activeCategory === 'all' ? CATEGORIES : CATEGORIES.filter(c => c.id === activeCategory);
 
+  // Track if we rendered anything in gems mode, so we can show a helpful empty state
+  let totalRendered = 0;
+
   catsToShow.forEach((cat, ci) => {
+    const songs = gemsOnly ? cat.songs.filter(s => s.hiddenGem) : cat.songs;
+    if (gemsOnly && songs.length === 0) return; // skip empty categories in gems mode
+    totalRendered += songs.length;
+
     const section = document.createElement('div');
     section.className = 'cat-section';
     section.style.animationDelay = (ci * 0.08) + 's';
@@ -443,10 +595,10 @@ function render() {
       <div class="cat-header">
         <span class="cat-icon">${cat.icon}</span>
         <div>
-          <div class="cat-title" style="color:${cat.color}">${cat.label}</div>
+          <div class="cat-title" style="color:${cat.color}">${cat.label}${gemsOnly ? ' <span style="font-size:0.7em;color:var(--purple-l);letter-spacing:1px">💎 Gems only</span>' : ''}</div>
           <div class="cat-subtitle">${cat.subtitle}</div>
         </div>
-        <div class="cat-count">${cat.songs.length}</div>
+        <div class="cat-count">${songs.length}</div>
       </div>
       <div class="song-list" id="list-${cat.id}"></div>
     `;
@@ -454,10 +606,10 @@ function render() {
     content.appendChild(section);
 
     const list = document.getElementById(`list-${cat.id}`);
-    cat.songs.forEach((song, si) => {
-      const cardId = `${cat.id}-${si}`;
+    songs.forEach((song, si) => {
+      const cardId = `${cat.id}-${si}-${gemsOnly ? 'g' : 'a'}`;
       const card = document.createElement('div');
-      card.className = 'reaction-card';
+      card.className = 'reaction-card' + (song.hiddenGem ? ' gem' : '');
       card.id = `card-${cardId}`;
       if (openCards.has(cardId)) card.classList.add('open');
 
@@ -465,7 +617,7 @@ function render() {
         <div class="rc-main">
           <div class="rc-num">${String(si+1).padStart(2,'0')}</div>
           <div class="rc-info">
-            <div class="rc-title">${song.title}</div>
+            <div class="rc-title">${song.title}${song.hiddenGem ? '<span class="gem-badge">💎 Hidden gem</span>' : ''}</div>
             <div class="rc-artist">${song.artist} · ${song.year}</div>
             <span class="rc-moment" style="background:${cat.color}22;color:${cat.color};border:1px solid ${cat.color}44">${song.moment}</span>
           </div>
@@ -493,6 +645,16 @@ function render() {
       list.appendChild(card);
     });
   });
+
+  // Empty state when no gems in a selected category
+  if (gemsOnly && totalRendered === 0) {
+    const empty = document.createElement('div');
+    empty.className = 'gems-empty';
+    empty.innerHTML = activeCategory === 'all'
+      ? '<strong>No hidden gems yet</strong>We\'re adding more deep cuts regularly — check back soon.'
+      : '<strong>No hidden gems in this category yet</strong>Try "All Categories" to see every hidden gem across the Reaction Kit, or turn off Hidden Gems Mode to see every curated track.';
+    content.appendChild(empty);
+  }
 }
 
 init();
