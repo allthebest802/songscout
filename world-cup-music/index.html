@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Cup 2026 — Music Quiz | Which Country Made This Music? | SongScout</title>
+<meta name="description" content="A music quiz with a World Cup twist — match famous musicians and bands to their World Cup 2026 nation. From ABBA to Shakira, Kraftwerk to Cesária Évora. Free, no signup.">
+<meta name="keywords" content="world cup 2026 music quiz, musicians by country, which country is shakira from, ABBA country, world cup music, famous musicians world cup nations, country music quiz">
+<link rel="canonical" href="https://songscout.uk/world-cup-music/">
+<meta property="og:title" content="World Cup 2026 Music Quiz — Which Country Made This Music?">
+<meta property="og:description" content="Match famous musicians to their World Cup 2026 nation. From ABBA to Shakira — how many do you know?">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://songscout.uk/world-cup-music/">
+<meta property="og:site_name" content="SongScout">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="World Cup 2026 Music Quiz | SongScout">
+<meta name="twitter:description" content="Match famous musicians to their World Cup 2026 nation. How many do you know?">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0A0A0A;--dark:#111318;--dark2:#1A1D24;--dark3:#242830;
+  --panel:#1E2128;--panel2:#252930;
+  --gold:#F0A830;--gold-d:#C88020;--gold-l:#F8D080;
+  --red:#E83A2A;--green:#22c55e;
+  --white:#F8F6F0;--off:#C8C0B0;--muted:#787060;
+  --border:#2E3240;--border2:#3A3E50;
+  --radius:10px;--radius-lg:16px;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--black);color:var(--white);min-height:100vh;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+/* ── HEADER ── */
+.site-header{padding:0 24px;border-bottom:1px solid var(--border);background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:16px 0}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-mark{width:42px;height:42px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',Arial,sans-serif;font-size:1.8rem;color:var(--black)}
+.logo-text{font-family:'Bebas Neue',Arial,sans-serif;font-size:1.8rem;color:var(--white);letter-spacing:2px;line-height:1}
+.nav-back{margin-left:auto;font-size:0.82rem;color:var(--muted)}
+.nav-back:hover{color:var(--white)}
+
+/* ── HERO ── */
+.hero{position:relative;overflow:hidden;padding:60px 24px 52px;background:var(--dark);border-bottom:1px solid var(--border)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 700px 500px at 70% 50%,rgba(240,168,48,0.08),transparent 65%),radial-gradient(ellipse 500px 400px at 0% 100%,rgba(232,58,42,0.06),transparent 60%);pointer-events:none}
+.hero-lines{position:absolute;inset:0;pointer-events:none;opacity:0.04;background-image:repeating-linear-gradient(0deg,transparent,transparent 40px,#F0A830 40px,#F0A830 41px)}
+.hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;text-align:center}
+.eyebrow{font-size:0.72rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before,.eyebrow::after{content:'';width:24px;height:2px;background:var(--gold);display:block}
+.hero-title{font-family:'Bebas Neue',Arial,sans-serif;font-size:clamp(2.2rem,6vw,4rem);line-height:0.95;letter-spacing:3px;color:var(--white);margin-bottom:16px}
+.hero-title .accent{color:var(--gold)}
+.hero-desc{font-size:1rem;color:var(--off);line-height:1.7;max-width:560px;font-weight:300;margin:0 auto}
+
+/* ── MODE SELECT ── */
+.mode-wrap{max-width:700px;margin:2rem auto 0;padding:0 24px}
+.mode-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin-bottom:1.5rem}
+.mode-card{background:var(--panel);border:1.5px solid var(--border);border-radius:var(--radius);padding:1rem;cursor:pointer;transition:all 0.2s;text-align:center}
+.mode-card:hover,.mode-card.selected{border-color:var(--gold);background:rgba(240,168,48,0.08)}
+.mode-icon{font-size:1.6rem;margin-bottom:0.4rem}
+.mode-name{font-size:0.82rem;font-weight:600;color:var(--white);margin-bottom:0.2rem}
+.mode-desc{font-size:0.72rem;color:var(--muted);line-height:1.3}
+.btn-start{display:block;width:100%;background:var(--gold);color:var(--black);border:none;border-radius:var(--radius);padding:0.9rem;font-family:'Bebas Neue',Arial,sans-serif;font-size:1.3rem;letter-spacing:2px;cursor:pointer;transition:background 0.2s}
+.btn-start:hover{background:var(--gold-l)}
+
+/* ── QUIZ AREA ── */
+.quiz-wrap{max-width:640px;margin:0 auto;padding:0 24px 5rem}
+
+.score-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.7rem;font-size:0.82rem;color:var(--muted)}
+.score-bar .q-num{font-weight:600;color:var(--white)}
+.score-bar .score{color:var(--gold);font-weight:600}
+
+.prog-wrap{background:var(--dark3);border-radius:100px;height:4px;margin-bottom:1.3rem;overflow:hidden}
+.prog-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--gold-d),var(--gold));transition:width 0.4s}
+
+/* Question card */
+.q-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.8rem;text-align:center;margin-bottom:1.2rem}
+.q-badge{display:inline-block;font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.2rem 0.7rem;border-radius:100px;background:rgba(240,168,48,0.15);border:1px solid rgba(240,168,48,0.25);color:var(--gold);margin-bottom:0.9rem}
+.q-artist{font-family:'Bebas Neue',Arial,sans-serif;font-size:clamp(1.6rem,5vw,2.4rem);letter-spacing:2px;color:var(--white);margin-bottom:0.3rem;line-height:1.1}
+.q-hint{font-size:0.82rem;color:var(--muted);font-style:italic}
+.q-flag{width:80px;height:auto;border-radius:4px;box-shadow:0 4px 16px rgba(0,0,0,0.5);margin:0.8rem auto 0.4rem;display:block}
+.q-text{font-size:1rem;color:var(--off);line-height:1.4}
+
+/* Answers */
+.answers-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.65rem}
+.ans-btn{background:var(--panel2);border:1.5px solid var(--border2);border-radius:var(--radius);padding:0.85rem 1rem;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:600;color:var(--off);cursor:pointer;transition:all 0.15s;text-align:left;display:flex;align-items:center;gap:0.5rem}
+.ans-btn:hover:not(:disabled){border-color:var(--gold);color:var(--white);background:rgba(240,168,48,0.08)}
+.ans-btn.correct{background:rgba(34,197,94,0.12);border-color:var(--green);color:var(--green)}
+.ans-btn.wrong{background:rgba(232,58,42,0.1);border-color:var(--red);color:var(--red)}
+.ans-btn:disabled{cursor:default}
+.ans-flag{width:24px;height:auto;border-radius:2px;flex-shrink:0}
+
+/* Feedback */
+.feedback{font-size:0.85rem;line-height:1.55;padding:0.85rem 1rem;border-radius:var(--radius);margin-top:0.8rem;display:none}
+.feedback.show{display:block}
+.feedback.correct{background:rgba(34,197,94,0.1);color:var(--green)}
+.feedback.wrong{background:rgba(232,58,42,0.08);color:#f87171}
+
+.next-btn{display:none;width:100%;background:var(--gold);color:var(--black);border:none;border-radius:var(--radius);padding:0.8rem;font-family:'Bebas Neue',Arial,sans-serif;font-size:1.1rem;letter-spacing:2px;cursor:pointer;margin-top:0.8rem;transition:background 0.2s}
+.next-btn.show{display:block}
+.next-btn:hover{background:var(--gold-l)}
+
+/* Results */
+.results-panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2.5rem;text-align:center}
+.res-emoji{font-size:3.5rem;margin-bottom:0.6rem;display:block}
+.res-score{font-family:'Bebas Neue',Arial,sans-serif;font-size:3.5rem;letter-spacing:3px;color:var(--gold);margin-bottom:0.2rem}
+.res-label{font-size:0.82rem;color:var(--muted);margin-bottom:1rem}
+.res-msg{font-size:0.95rem;color:var(--off);line-height:1.6;margin-bottom:1.5rem}
+.btn-retry{background:var(--gold);color:var(--black);border:none;border-radius:var(--radius);padding:0.8rem 2rem;font-family:'Bebas Neue',Arial,sans-serif;font-size:1.1rem;letter-spacing:2px;cursor:pointer;margin-right:0.6rem;transition:background 0.2s}
+.btn-retry:hover{background:var(--gold-l)}
+.btn-menu{background:var(--dark3);color:var(--off);border:1px solid var(--border2);border-radius:var(--radius);padding:0.8rem 2rem;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:600;cursor:pointer;transition:background 0.2s}
+.btn-menu:hover{background:var(--panel)}
+
+/* Share */
+.share-section{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border);text-align:center}
+.share-label{font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.7rem}
+.share-btns{display:flex;justify-content:center;gap:0.5rem;flex-wrap:wrap}
+.share-btn{display:inline-flex;align-items:center;gap:0.4rem;padding:0.55rem 1rem;border-radius:100px;font-size:0.78rem;font-weight:600;text-decoration:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:opacity 0.2s}
+.share-btn:hover{opacity:0.85}
+.sb-x{background:#000;color:#fff;border:1px solid #333}
+.sb-fb{background:#1877f2;color:#fff}
+.sb-wa{background:#25d366;color:#fff}
+.sb-copy{background:var(--dark3);color:var(--off);border:1px solid var(--border2)}
+.copy-confirm{font-size:0.75rem;color:var(--gold);margin-top:0.4rem;height:1rem}
+
+/* Country cards */
+.countries-section{max-width:1100px;margin:3rem auto 0;padding:0 24px}
+.section-eyebrow{font-size:0.72rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;display:flex;align-items:center;gap:10px}
+.section-eyebrow::before{content:'';width:24px;height:2px;background:var(--gold)}
+.section-title{font-family:'Bebas Neue',Arial,sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:2px;color:var(--white);margin-bottom:0.5rem}
+.section-sub{font-size:0.9rem;color:var(--muted);margin-bottom:1.8rem}
+
+.country-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-bottom:4rem}
+.country-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color 0.2s,transform 0.2s}
+.country-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.cc-header{background:var(--dark2);padding:0.9rem 1.1rem;display:flex;align-items:center;gap:0.8rem;border-bottom:1px solid var(--border)}
+.cc-flag{width:38px;height:auto;border-radius:3px;flex-shrink:0}
+.cc-country{font-family:'Bebas Neue',Arial,sans-serif;font-size:1.1rem;letter-spacing:1px;color:var(--white)}
+.cc-continent{font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em}
+.cc-body{padding:0.9rem 1.1rem}
+.cc-artist{font-size:0.88rem;font-weight:600;color:var(--gold);margin-bottom:0.2rem}
+.cc-genre{font-size:0.72rem;color:var(--muted);margin-bottom:0.6rem;text-transform:uppercase;letter-spacing:0.06em}
+.cc-fact{font-size:0.8rem;color:var(--off);line-height:1.5}
+
+/* SEO */
+.seo-section{max-width:860px;margin:0 auto;padding:0 24px 4rem}
+.seo-section h2{font-family:'Bebas Neue',Arial,sans-serif;font-size:1.6rem;letter-spacing:2px;color:var(--white);margin-bottom:0.6rem;margin-top:2rem}
+.seo-section p{color:var(--muted);font-size:0.9rem;line-height:1.75;margin-bottom:0.9rem}
+.seo-section a{color:var(--gold)}
+
+/* Footer */
+footer{background:var(--dark);border-top:1px solid var(--border);padding:24px;text-align:center;font-size:0.8rem;color:var(--muted)}
+footer a{color:var(--off)}
+footer a:hover{color:var(--gold)}
+
+.coffee-float{position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;align-items:center;gap:8px;background:#FF5E5B;color:#fff;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:700;padding:11px 18px;border-radius:100px;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,0.4);transition:transform 0.2s}
+.coffee-float:hover{transform:translateY(-2px)}
+
+@media(max-width:500px){.mode-grid{grid-template-columns:1fr}.answers-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="https://songscout.uk/">
+      <div class="logo-mark">S</div>
+      <div>
+        <div class="logo-text">SongScout</div>
+      </div>
+    </a>
+    <a class="nav-back" href="https://songscout.uk/">← Back to SongScout</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-lines"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">⚽ World Cup 2026 · Starts 11 June</div>
+    <h1 class="hero-title">WHICH COUNTRY MADE<br><span class="accent">THIS MUSIC?</span></h1>
+    <p class="hero-desc">48 nations competing. 48 musical stories. From ABBA to Shakira, Kraftwerk to Cesária Évora — how well do you know the musicians behind the flags?</p>
+  </div>
+</section>
+
+<!-- START SCREEN -->
+<div class="mode-wrap" id="startScreen" style="padding-bottom:2rem">
+  <div class="mode-grid">
+    <div class="mode-card selected" onclick="selectMode('artist')" id="modeArtist">
+      <div class="mode-icon">🎸</div>
+      <div class="mode-name">Name the Country</div>
+      <div class="mode-desc">Artist shown — which World Cup nation are they from?</div>
+    </div>
+    <div class="mode-card" onclick="selectMode('country')" id="modeCountry">
+      <div class="mode-icon">🌍</div>
+      <div class="mode-name">Name the Artist</div>
+      <div class="mode-desc">Country shown — which famous musician is from there?</div>
+    </div>
+    <div class="mode-card" onclick="selectMode('mixed')" id="modeMixed">
+      <div class="mode-icon">🎵</div>
+      <div class="mode-name">Mixed Challenge</div>
+      <div class="mode-desc">Both types mixed — the full test</div>
+    </div>
+  </div>
+  <button class="btn-start" onclick="startQuiz()">▶ START QUIZ</button>
+</div>
+
+<!-- QUIZ SCREEN -->
+<div class="quiz-wrap" id="quizScreen" style="display:none;margin-top:2rem">
+  <div class="score-bar">
+    <span class="q-num" id="qNum">Question 1 of 10</span>
+    <span class="score" id="scoreDisp">Score: 0</span>
+  </div>
+  <div class="prog-wrap">
+    <div class="prog-fill" id="progBar" style="width:0%"></div>
+  </div>
+  <div class="q-card" id="qCard"></div>
+  <div class="answers-grid" id="answersGrid"></div>
+  <div class="feedback" id="feedback"></div>
+  <button class="next-btn" id="nextBtn" onclick="nextQ()">NEXT →</button>
+</div>
+
+<!-- RESULTS SCREEN -->
+<div class="quiz-wrap" id="resultsScreen" style="display:none;margin-top:2rem">
+  <div class="results-panel">
+    <span class="res-emoji" id="resEmoji">🎸</span>
+    <div class="res-score" id="resScore">0/10</div>
+    <div class="res-label">World Cup Music Quiz</div>
+    <div class="res-msg" id="resMsg"></div>
+    <div>
+      <button class="btn-retry" onclick="retryQuiz()">↺ PLAY AGAIN</button>
+      <button class="btn-menu" onclick="backToMenu()">◀ CHOOSE MODE</button>
+    </div>
+    <div class="share-section">
+      <div class="share-label">📣 Challenge a friend</div>
+      <div class="share-btns">
+        <a class="share-btn sb-x" id="shareX" href="#" target="_blank" rel="noopener">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.736-8.859L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Post on X
+        </a>
+        <a class="share-btn sb-fb" id="shareFB" href="#" target="_blank" rel="noopener">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Facebook
+        </a>
+        <a class="share-btn sb-wa" id="shareWA" href="#" target="_blank" rel="noopener">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <button class="share-btn sb-copy" onclick="copyLink()">📋 Copy link</button>
+      </div>
+      <div class="copy-confirm" id="copyConfirm"></div>
+    </div>
+  </div>
+</div>
+
+<!-- COUNTRY CARDS -->
+<section class="countries-section">
+  <div class="section-eyebrow">48 Nations · Musical Stories</div>
+  <h2 class="section-title">THE MUSIC BEHIND THE FLAGS</h2>
+  <p class="section-sub">Every World Cup 2026 nation has a musical story. Explore them all.</p>
+  <div class="country-grid" id="countryGrid"></div>
+</section>
+
+<section class="seo-section">
+  <h2>MUSIC AND THE WORLD CUP</h2>
+  <p>Football and music have always been intertwined. The World Cup is watched by over five billion people — and the countries competing have produced some of the most important music in history. Sweden gave the world ABBA. Colombia gave us Shakira. Germany gave us Kraftwerk and the electronic music that defines club culture worldwide. Brazil produced bossa nova, samba and tropicália. Argentina gave us Astor Piazzolla and the tango.</p>
+
+  <h2>THE SURPRISING MUSICAL NATIONS</h2>
+  <p>Some World Cup nations are famous for their music. Others are surprises. Cape Verde — a tiny island archipelago making their World Cup debut in 2026 — gave the world Cesária Évora, the barefoot diva whose morna music is one of the most beautiful sounds in African music. Norway produced A-ha and their 1985 hit Take On Me, one of the most recognisable songs in pop history. Iceland, though not in the 2026 World Cup, has produced Björk and Sigur Rós — two of the most distinctive artists of the last thirty years.</p>
+
+  <h2>MUSIC AS CULTURE</h2>
+  <p>National music is a window into national character. The melancholy of Portuguese fado reflects centuries of seafaring and loss. The energy of Nigerian Afrobeats reflects a young, dynamic population. The precision of German electronic music reflects a cultural relationship with technology and structure. When you watch a World Cup match, you are watching more than football — you are watching cultures collide. The music tells you who these people are.</p>
+  <p>Explore more classic rock and music history stories at <a href="https://songscout.uk/">SongScout.uk →</a></p>
+</section>
+
+<footer>
+  <p>SongScout — classic rock and music discovery &nbsp;·&nbsp; <a href="https://songscout.uk/">Home</a> &nbsp;·&nbsp; <a href="https://songscout.uk/privacy/">Privacy</a></p>
+</footer>
+
+<a class="coffee-float" href="https://ko-fi.com/helpsetuk" target="_blank" rel="noopener">☕ Buy me a coffee</a>
+
+<script>
+const CDN = 'https://flagcdn.com/w80/';
+const CDN_SM = 'https://flagcdn.com/w40/';
+
+// ── ALL NATIONS WITH MUSIC DATA ──────────────────────────────────────────────
+const NATIONS = [
+  // HOSTS
+  {code:"us",name:"United States",continent:"Host",artist:"Jimi Hendrix / Elvis Presley",genre:"Rock & Roll",fact:"The USA is arguably the birthplace of rock and roll itself — giving the world Elvis, Jimi Hendrix, Bob Dylan, Bruce Springsteen and hundreds more defining artists."},
+  {code:"ca",name:"Canada",continent:"Host",artist:"Neil Young / Joni Mitchell",genre:"Folk Rock",fact:"Canada has produced an extraordinary number of influential artists — Neil Young, Joni Mitchell, Leonard Cohen, Rush, Drake and The Weeknd among them."},
+  {code:"mx",name:"Mexico",continent:"Host",artist:"Carlos Santana",genre:"Latin Rock",fact:"Carlos Santana fused Latin rhythms with rock guitar in a way nobody had done before. His album Abraxas is one of the greatest Latin rock records ever made."},
+  // EUROPE
+  {code:"gb-eng",name:"England",continent:"Europe",artist:"The Beatles / Led Zeppelin",genre:"Rock",fact:"England is arguably the most important country in rock history — The Beatles, Led Zeppelin, The Rolling Stones, Pink Floyd, The Who and David Bowie all came from England."},
+  {code:"fr",name:"France",continent:"Europe",artist:"Serge Gainsbourg",genre:"Chanson / Pop",fact:"Serge Gainsbourg is one of the most controversial and celebrated figures in French music — his 1969 duet Je t'aime with Jane Birkin was banned by the BBC."},
+  {code:"de",name:"Germany",continent:"Europe",artist:"Kraftwerk",genre:"Electronic",fact:"Kraftwerk essentially invented electronic music as we know it. Their 1977 album Trans-Europe Express directly influenced hip-hop, techno and virtually all modern electronic music."},
+  {code:"es",name:"Spain",continent:"Europe",artist:"Rosalía",genre:"Flamenco / Pop",fact:"Rosalía has reinvented flamenco for the modern age — blending traditional Spanish music with reggaeton and R&B in a way that has made her one of the most celebrated artists of the 2020s."},
+  {code:"pt",name:"Portugal",continent:"Europe",artist:"Amália Rodrigues",genre:"Fado",fact:"Amália Rodrigues is the undisputed queen of fado — the melancholy Portuguese genre of loss and longing. She brought fado to the world and is considered Portugal's greatest cultural ambassador."},
+  {code:"nl",name:"Netherlands",continent:"Europe",artist:"Van Halen",genre:"Hard Rock",fact:"Eddie Van Halen was born in Amsterdam before his family emigrated to America. He is widely considered one of the greatest guitarists in rock history."},
+  {code:"be",name:"Belgium",continent:"Europe",artist:"Adolphe Sax",genre:"Inventor",fact:"The saxophone was invented by Belgian Adolphe Sax in 1846 — without Belgium, jazz, blues and much of modern music would sound fundamentally different."},
+  {code:"hr",name:"Croatia",continent:"Europe",artist:"2Cellos",genre:"Classical Crossover",fact:"2Cellos — Luka Šulić and Stjepan Hauser from Croatia — became a global phenomenon by performing rock and pop classics on cello, reaching billions of YouTube views."},
+  {code:"ch",name:"Switzerland",continent:"Europe",artist:"Stephan Eicher",genre:"Pop",fact:"Switzerland may be more famous for banking and cheese, but it hosts the Montreux Jazz Festival — one of the most important music festivals in the world since 1967."},
+  {code:"at",name:"Austria",continent:"Europe",artist:"Falco",genre:"Pop / New Wave",fact:"Falco was the first German-language artist to reach number one in the USA — his 1985 hit Rock Me Amadeus topped charts worldwide and remains one of the most distinctive pop songs ever made."},
+  {code:"gb-sct",name:"Scotland",continent:"Europe",artist:"Simple Minds / Primal Scream",genre:"Rock / Post-Punk",fact:"Scotland has punched well above its weight in music — Simple Minds, Primal Scream, Travis, Frightened Rabbit and Biffy Clyro are among the most important British rock acts."},
+  {code:"no",name:"Norway",continent:"Europe",artist:"A-ha",genre:"New Wave / Pop",fact:"A-ha's Take On Me (1985) is one of the most instantly recognisable songs in pop history, famous for its revolutionary animated music video and Morten Harket's extraordinary falsetto."},
+  {code:"tr",name:"Turkey",continent:"Europe",artist:"Barış Manço",genre:"Anatolian Rock",fact:"Barış Manço fused Turkish folk music with psychedelic rock to create Anatolian rock — a uniquely Turkish genre that he pioneered throughout the 1970s."},
+  {code:"ba",name:"Bosnia and Herzegovina",continent:"Europe",artist:"Goran Bregović",genre:"Balkan / Film",fact:"Goran Bregović composed the soundtracks to Emir Kusturica's films and became one of the world's most celebrated composers of Balkan music, blending brass, folk and gypsy traditions."},
+  {code:"se",name:"Sweden",continent:"Europe",artist:"ABBA",genre:"Pop",fact:"ABBA are one of the best-selling music acts in history — their music generates more revenue for Sweden each year than any other Swedish export except Spotify and Minecraft."},
+  {code:"cz",name:"Czechia",continent:"Europe",artist:"Antonín Dvořák",genre:"Classical",fact:"Dvořák's New World Symphony, composed while he lived in America, is one of the most played classical works in history — and was taken to the moon on Apollo 11."},
+  // SOUTH AMERICA
+  {code:"ar",name:"Argentina",continent:"South America",artist:"Astor Piazzolla",genre:"Tango",fact:"Astor Piazzolla revolutionised tango, transforming it from a dance hall genre into a sophisticated concert music. His compositions are now performed by orchestras worldwide."},
+  {code:"br",name:"Brazil",continent:"South America",artist:"João Gilberto / Caetano Veloso",genre:"Bossa Nova / Tropicália",fact:"Brazil invented bossa nova — the fusion of samba and jazz that gave the world The Girl from Ipanema, one of the most recorded songs in history."},
+  {code:"co",name:"Colombia",continent:"South America",artist:"Shakira",genre:"Latin Pop / Rock",fact:"Shakira learned to play guitar at 8 and wrote her first song at 8. She is one of the best-selling music artists of all time and has won 12 Grammy Awards."},
+  {code:"uy",name:"Uruguay",continent:"South America",artist:"Jorge Drexler",genre:"Singer-Songwriter",fact:"Jorge Drexler became the first Uruguayan to win an Academy Award for Best Original Song in 2004 — for Al Otro Lado del Río from The Motorcycle Diaries."},
+  {code:"ec",name:"Ecuador",continent:"South America",artist:"Juan Fernando Velasco",genre:"Pop / Folk",fact:"Ecuador has a rich tradition of Andean music — the pan flute (quena) and charango have been part of Andean culture for thousands of years."},
+  {code:"py",name:"Paraguay",continent:"South America",artist:"Agustín Pío Barrios",genre:"Classical Guitar",fact:"Agustín Barrios Mangoré is considered by many classical guitarists to be the greatest composer for solo guitar who ever lived — ahead even of Bach in their estimation."},
+  // AFRICA
+  {code:"ma",name:"Morocco",continent:"Africa",artist:"Gnawa Musicians",genre:"Gnawa / World",fact:"Morocco's Gnawa music is one of the world's most ancient spiritual music traditions — hypnotic, trance-inducing and deeply rooted in West African musical heritage brought by enslaved peoples centuries ago."},
+  {code:"sn",name:"Senegal",continent:"Africa",artist:"Youssou N'Dour",genre:"Mbalax / World",fact:"Youssou N'Dour is one of the most celebrated African musicians in history. Peter Gabriel's 1986 collaboration with him introduced Senegalese music to a global audience."},
+  {code:"eg",name:"Egypt",continent:"Africa",artist:"Umm Kulthum",genre:"Arabic Classical",fact:"Umm Kulthum is considered the greatest Arab singer in history — her four-hour concerts were broadcast across the Arab world and she was more famous in the Middle East than The Beatles were in the West."},
+  {code:"dz",name:"Algeria",continent:"Africa",artist:"Khaled",genre:"Raï",fact:"Khaled is the King of Raï — the Algerian popular music genre that blends traditional Bedouin music with French pop and rock. His 1992 song Didi became an international hit."},
+  {code:"gh",name:"Ghana",continent:"Africa",artist:"Fela Kuti adjacent / Highlife",genre:"Highlife / Afrobeats",fact:"Ghana invented highlife — the blend of European instruments with West African rhythms that became the foundation of modern Afrobeats. Ghanaian music has influenced the world's pop charts."},
+  {code:"ci",name:"Ivory Coast",continent:"Africa",artist:"Alpha Blondy",genre:"Reggae",fact:"Alpha Blondy is West Africa's most celebrated reggae musician — performing in Dioula, French, English and Hebrew, he has been making politically charged reggae since the 1980s."},
+  {code:"za",name:"South Africa",continent:"Africa",artist:"Miriam Makeba",genre:"Afropop / World",fact:"Miriam Makeba — Mama Africa — used her music to fight apartheid. Her 1967 Pata Pata became an international hit and she was the first African woman to win a Grammy Award."},
+  {code:"tn",name:"Tunisia",continent:"Africa",artist:"Anouar Brahem",genre:"Jazz / Oud",fact:"Anouar Brahem is one of the world's foremost oud players — his ECM recordings have brought Tunisian musical sensibility to a global jazz audience."},
+  {code:"cv",name:"Cape Verde",continent:"Africa",artist:"Cesária Évora",genre:"Morna",fact:"Cesária Évora performed barefoot in solidarity with the poor of Cape Verde. Her morna music — melancholy, soulful, hauntingly beautiful — won her a Grammy and made Cape Verde known worldwide."},
+  {code:"cd",name:"DR Congo",continent:"Africa",artist:"Papa Wemba",genre:"Soukous / Congolese Rumba",fact:"DR Congo invented Congolese rumba and soukous — the electric, joyful music that became the foundation of much of African popular music. Papa Wemba was its greatest ambassador."},
+  // ASIA
+  {code:"jp",name:"Japan",continent:"Asia",artist:"Ryuichi Sakamoto",genre:"Electronic / Classical",fact:"Ryuichi Sakamoto composed the score to Merry Christmas Mr Lawrence and The Last Emperor — winning an Academy Award. Japan has also given the world city pop, J-pop and visual kei."},
+  {code:"kr",name:"South Korea",continent:"Asia",artist:"BTS / Psy",genre:"K-Pop",fact:"South Korea's K-pop industry has become a global cultural phenomenon. BTS broke streaming records previously held by The Beatles. Psy's Gangnam Style was the first YouTube video to reach one billion views."},
+  {code:"au",name:"Australia",continent:"Asia",artist:"AC/DC / Nick Cave",genre:"Hard Rock",fact:"AC/DC are one of the best-selling rock acts in history. Back in Black is the second best-selling album ever made — and Nick Cave is one of the most distinctive songwriters of his generation."},
+  {code:"ir",name:"Iran",continent:"Asia",artist:"Googoosh",genre:"Persian Pop",fact:"Googoosh was the most famous pop star in pre-revolution Iran. After the revolution she was silenced for 20 years — when she finally toured again in 2000 the concerts sold out worldwide."},
+  {code:"sa",name:"Saudi Arabia",continent:"Asia",artist:"Mohammed Abdo",genre:"Arabic Pop",fact:"Mohammed Abdo is one of the Arab world's most celebrated singers — known as the Artist of Arabs, he has been performing since the 1970s and is beloved across the Gulf."},
+  {code:"qa",name:"Qatar",continent:"Asia",artist:"Ahlam / Gulf Music",genre:"Khaleeji",fact:"Qatar and the Gulf states have a rich tradition of Khaleeji music — the folk music of the Arabian Gulf, traditionally performed at weddings and celebrations."},
+  {code:"jo",name:"Jordan",continent:"Asia",artist:"Fairouz (adjacent)",genre:"Arabic Classical",fact:"Jordan sits at the heart of the Arabic musical world — while Fairouz is Lebanese, her music is beloved throughout the Arab world including Jordan, and the region shares a rich classical tradition."},
+  {code:"uz",name:"Uzbekistan",continent:"Asia",artist:"Yulduz Usmanova",genre:"Central Asian Pop",fact:"Uzbekistan has a rich musical heritage stretching back to the Silk Road — its classical shashmaqam music is recognised by UNESCO as an Intangible Cultural Heritage."},
+  {code:"iq",name:"Iraq",continent:"Asia",artist:"Kadim Al Sahir",genre:"Arabic Pop / Poetry",fact:"Kadim Al Sahir is known as the Caesar of Arabic Song — one of the most celebrated Arab musicians alive, who sets poetry to music and has performed worldwide."},
+  // AMERICAS
+  {code:"cr",name:"Costa Rica",continent:"Americas",artist:"Chavela Vargas",genre:"Ranchera",fact:"Chavela Vargas was born in Costa Rica and became one of the most celebrated ranchera singers in Mexican music history — a close friend of Frida Kahlo and a cultural icon."},
+  {code:"pa",name:"Panama",continent:"Americas",artist:"Rubén Blades",genre:"Salsa",fact:"Rubén Blades is a giant of salsa music — a Harvard Law graduate, actor, politician and one of the most intellectually sophisticated Latin musicians in history."},
+  {code:"cw",name:"Curaçao",continent:"Americas",artist:"Curaçao Jazz",genre:"Tumba / Jazz",fact:"Curaçao has its own carnival music tradition — tumba — and a thriving jazz scene influenced by the island's position between Latin America, the Caribbean and Europe."},
+  {code:"ht",name:"Haiti",continent:"Americas",artist:"Wyclef Jean",genre:"Hip-Hop / Kompa",fact:"Wyclef Jean of The Fugees was born in Haiti. Haiti also invented kompa — the irresistible Caribbean dance music that has spread across the Haitian diaspora worldwide."},
+  {code:"hn",name:"Honduras",continent:"Americas",artist:"Guillermo Anderson",genre:"Folk / Latin",fact:"Honduras has a rich musical heritage including punta — the traditional music of the Garifuna people, an Afro-Caribbean community with a unique and UNESCO-recognised musical tradition."},
+  {code:"nz",name:"New Zealand",continent:"Americas",artist:"Lorde / Crowded House",genre:"Pop / Rock",fact:"New Zealand has produced several globally significant artists — Lorde released her debut album at 16 and became one of the most critically acclaimed pop artists of her generation."},
+];
+
+// ── STATE ────────────────────────────────────────────────────────────────────
+let selectedMode = 'artist';
+let questions = [];
+let currentQ = 0;
+let score = 0;
+let answered = false;
+
+// ── HELPERS ──────────────────────────────────────────────────────────────────
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+// ── MODE SELECT ──────────────────────────────────────────────────────────────
+function selectMode(mode) {
+  selectedMode = mode;
+  document.querySelectorAll('.mode-card').forEach(c => c.classList.remove('selected'));
+  const map = {artist:'modeArtist',country:'modeCountry',mixed:'modeMixed'};
+  document.getElementById(map[mode]).classList.add('selected');
+}
+
+// ── BUILD QUESTIONS ──────────────────────────────────────────────────────────
+function buildQuestions() {
+  const pool = shuffle(NATIONS).slice(0, 10);
+  return pool.map((n, i) => {
+    const others = shuffle(NATIONS.filter(x => x.name !== n.name)).slice(0, 3);
+    let type;
+    if (selectedMode === 'artist') type = 'artist';
+    else if (selectedMode === 'country') type = 'country';
+    else type = i % 2 === 0 ? 'artist' : 'country';
+
+    if (type === 'artist') {
+      return {
+        type: 'artist',
+        badge: '🎸 Name the Country',
+        headline: n.artist.split('/')[0].trim(),
+        sub: `Genre: ${n.genre}`,
+        question: `Which World Cup 2026 nation is ${n.artist.split('/')[0].trim()} from?`,
+        correct: n.name,
+        correctCode: n.code,
+        opts: shuffle([
+          {name: n.name, code: n.code},
+          ...others.map(x => ({name: x.name, code: x.code}))
+        ]),
+        fact: n.fact,
+      };
+    } else {
+      return {
+        type: 'country',
+        badge: '🌍 Name the Artist',
+        flagCode: n.code,
+        flagName: n.name,
+        question: `Which famous musician or band is from ${n.name}?`,
+        correct: n.artist.split('/')[0].trim(),
+        opts: shuffle([
+          n.artist.split('/')[0].trim(),
+          ...others.map(x => x.artist.split('/')[0].trim())
+        ]),
+        fact: n.fact,
+      };
+    }
+  });
+}
+
+// ── START ────────────────────────────────────────────────────────────────────
+function startQuiz() {
+  questions = buildQuestions();
+  currentQ = 0; score = 0; answered = false;
+  ['startScreen','resultsScreen'].forEach(id => document.getElementById(id).style.display = 'none');
+  document.getElementById('quizScreen').style.display = 'block';
+  renderQ();
+}
+
+// ── RENDER ───────────────────────────────────────────────────────────────────
+function renderQ() {
+  answered = false;
+  const q = questions[currentQ];
+  const total = questions.length;
+
+  document.getElementById('qNum').textContent = `Question ${currentQ + 1} of ${total}`;
+  document.getElementById('scoreDisp').textContent = `Score: ${score}`;
+  document.getElementById('progBar').style.width = `${(currentQ / total) * 100}%`;
+  document.getElementById('feedback').className = 'feedback';
+  document.getElementById('nextBtn').className = 'next-btn';
+
+  // Question card
+  let cardHTML = `<div class="q-badge">${q.badge}</div>`;
+  if (q.type === 'artist') {
+    cardHTML += `<div class="q-artist">${q.headline}</div>`;
+    if (q.sub) cardHTML += `<div class="q-hint">${q.sub}</div>`;
+  } else {
+    cardHTML += `<img class="q-flag" src="${CDN}${q.flagCode}.png" alt="${q.flagName}">`;
+    cardHTML += `<div class="q-text">${q.question}</div>`;
+  }
+  document.getElementById('qCard').innerHTML = cardHTML;
+
+  // Answers
+  const grid = document.getElementById('answersGrid');
+  if (q.type === 'artist') {
+    grid.innerHTML = q.opts.map(opt =>
+      `<button class="ans-btn" onclick="checkAnswer('${opt.name.replace(/'/g,"\\'")}','${q.correct.replace(/'/g,"\\'")}',this,'${q.correctCode}')">
+        <img class="ans-flag" src="${CDN_SM}${opt.code}.png" alt="${opt.name}">
+        ${opt.name}
+      </button>`
+    ).join('');
+  } else {
+    grid.innerHTML = q.opts.map(opt =>
+      `<button class="ans-btn" onclick="checkAnswer('${opt.replace(/'/g,"\\'")}','${q.correct.replace(/'/g,"\\'")}',this,'')">
+        ${opt}
+      </button>`
+    ).join('');
+  }
+}
+
+// ── CHECK ANSWER ─────────────────────────────────────────────────────────────
+function checkAnswer(chosen, correct, btn, correctCode) {
+  if (answered) return;
+  answered = true;
+
+  const q = questions[currentQ];
+  const isCorrect = chosen === correct;
+  document.querySelectorAll('.ans-btn').forEach(b => b.disabled = true);
+  const fb = document.getElementById('feedback');
+
+  if (isCorrect) {
+    score++;
+    btn.classList.add('correct');
+    fb.innerHTML = `✓ Correct! <br><small style="font-weight:300;opacity:0.85">${q.fact}</small>`;
+    fb.className = 'feedback correct show';
+    document.getElementById('scoreDisp').textContent = `Score: ${score}`;
+  } else {
+    btn.classList.add('wrong');
+    document.querySelectorAll('.ans-btn').forEach(b => {
+      if (b.textContent.trim().includes(correct)) b.classList.add('correct');
+    });
+    fb.innerHTML = `✗ The answer was <strong>${correct}</strong><br><small style="font-weight:300;opacity:0.85">${q.fact}</small>`;
+    fb.className = 'feedback wrong show';
+  }
+
+  document.getElementById('nextBtn').className = 'next-btn show';
+}
+
+// ── NEXT ─────────────────────────────────────────────────────────────────────
+function nextQ() {
+  currentQ++;
+  if (currentQ >= questions.length) showResults();
+  else renderQ();
+}
+
+// ── RESULTS ──────────────────────────────────────────────────────────────────
+function showResults() {
+  document.getElementById('quizScreen').style.display = 'none';
+  document.getElementById('resultsScreen').style.display = 'block';
+  const total = questions.length;
+  const pct = Math.round((score / total) * 100);
+
+  let emoji, msg;
+  if (pct === 100) { emoji = '🎸'; msg = 'Perfect score! You know your World Cup music geography better than most music journalists. Share your result!'; }
+  else if (pct >= 80) { emoji = '🎵'; msg = 'Excellent knowledge! A few slipped through — scroll down to check the country cards for the ones you missed.'; }
+  else if (pct >= 60) { emoji = '🌍'; msg = 'Good effort! More than half right — the world is musically rich and surprising. Try again to push higher.'; }
+  else if (pct >= 40) { emoji = '🎤'; msg = 'Decent start! Some of these are genuinely tricky — the country cards below have all the stories.'; }
+  else { emoji = '📻'; msg = 'Room to improve! Have a read through the country cards below and try again — you\'ll surprise yourself.'; }
+
+  document.getElementById('resEmoji').textContent = emoji;
+  document.getElementById('resScore').textContent = `${score}/${total}`;
+  document.getElementById('resMsg').textContent = msg;
+
+  const modeNames = {artist:'Name the Country',country:'Name the Artist',mixed:'Mixed Challenge'};
+  const shareText = `I scored ${score}/${total} on the SongScout World Cup 2026 Music Quiz! 🎸⚽ Can you beat me?`;
+  const shareUrl = 'https://songscout.uk/world-cup-music/';
+  const enc = encodeURIComponent(shareText);
+  const encUrl = encodeURIComponent(shareUrl);
+  document.getElementById('shareX').href = `https://twitter.com/intent/tweet?text=${enc}&url=${encUrl}`;
+  document.getElementById('shareFB').href = `https://www.facebook.com/sharer/sharer.php?u=${encUrl}&quote=${enc}`;
+  document.getElementById('shareWA').href = `https://wa.me/?text=${enc}%20${encUrl}`;
+}
+
+function retryQuiz() {
+  document.getElementById('resultsScreen').style.display = 'none';
+  startQuiz();
+}
+
+function backToMenu() {
+  document.getElementById('resultsScreen').style.display = 'none';
+  document.getElementById('quizScreen').style.display = 'none';
+  document.getElementById('startScreen').style.display = 'block';
+}
+
+function copyLink() {
+  navigator.clipboard.writeText('https://songscout.uk/world-cup-music/').then(() => {
+    const el = document.getElementById('copyConfirm');
+    el.textContent = '✓ Link copied!';
+    setTimeout(() => { el.textContent = ''; }, 2500);
+  });
+}
+
+// ── RENDER COUNTRY CARDS ─────────────────────────────────────────────────────
+function renderCards() {
+  const grid = document.getElementById('countryGrid');
+  grid.innerHTML = NATIONS.map(n => `
+    <div class="country-card">
+      <div class="cc-header">
+        <img class="cc-flag" src="${CDN_SM}${n.code}.png" alt="${n.name}">
+        <div>
+          <div class="cc-country">${n.name}</div>
+          <div class="cc-continent">${n.continent}</div>
+        </div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-artist">${n.artist}</div>
+        <div class="cc-genre">${n.genre}</div>
+        <div class="cc-fact">${n.fact}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+renderCards();
+</script>
+</body>
+</html>
