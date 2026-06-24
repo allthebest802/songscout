@@ -26,9 +26,12 @@ All design, code and content copyright © 2026 SongScout.uk
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- DM Sans: body text, swap is fine since shift impact is minimal at body text sizes -->
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap"></noscript>
+<!-- DM Sans: body text. Switched from swap to optional -- .stat-label sits
+     inside the same flex row as .stat-num (Bebas Neue) and was swapping at
+     the same time, contributing to the .hero-stats shift alongside Bebas
+     Neue. Both fonts in this row now use optional so neither swaps. -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=optional"></noscript>
 <!-- Bebas Neue: used for large display text (hero stats, titles, numbers).
      display=optional means the browser uses the fallback font permanently
      if Bebas Neue isn't ready almost immediately, rather than swapping in
