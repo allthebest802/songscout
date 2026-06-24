@@ -26,8 +26,19 @@ All design, code and content copyright © 2026 SongScout.uk
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap"></noscript>
+<!-- DM Sans: body text, swap is fine since shift impact is minimal at body text sizes -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap"></noscript>
+<!-- Bebas Neue: used for large display text (hero stats, titles, numbers).
+     display=optional means the browser uses the fallback font permanently
+     if Bebas Neue isn't ready almost immediately, rather than swapping in
+     later and causing layout shift. This trades "always show the brand
+     font eventually" for "never shift layout" -- the right trade-off here
+     since the repeated CLS culprit was specifically Bebas Neue swapping in
+     on .hero-stats, and two prior CSS-only space-reservation attempts both
+     failed to fix it. -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=optional"></noscript>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -72,7 +83,7 @@ a{text-decoration:none;color:inherit}
 .btn-secondary:hover{border-color:var(--gold-d);color:var(--gold-l)}
 .hero-stats{display:flex;gap:32px;margin-top:48px;padding-top:32px;border-top:1px solid var(--border);flex-wrap:wrap}
 .stat{display:flex;flex-direction:column;gap:3px}
-.stat-num{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:2rem;color:var(--gold);letter-spacing:2px;line-height:1.15;display:inline-block;min-height:1.15em}
+.stat-num{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:2rem;color:var(--gold);letter-spacing:2px;line-height:1}
 .stat-label{font-size:0.72rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase}
 
 /* TOOLS */
