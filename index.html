@@ -71,6 +71,10 @@ a{text-decoration:none;color:inherit}
 .btn-secondary{display:inline-flex;align-items:center;padding:14px 24px;border-radius:var(--radius-lg);background:transparent;color:var(--off);font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.1rem;letter-spacing:2px;border:1.5px solid var(--border2);transition:all 0.2s}
 .btn-secondary:hover{border-color:var(--gold-d);color:var(--gold-l)}
 .hero-stats{display:flex;gap:32px;margin-top:48px;padding-top:32px;border-top:1px solid var(--border);flex-wrap:wrap}
+/* Reserve vertical space for the Bebas Neue stat numbers before the font
+   loads, so swapping from the fallback font to Bebas Neue doesn't shift
+   layout (this was the cause of the 0.165 CLS flagged on .hero-stats). */
+.stat{min-height:52px}
 .stat{display:flex;flex-direction:column;gap:3px}
 .stat-num{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:2rem;color:var(--gold);letter-spacing:2px;line-height:1}
 .stat-label{font-size:0.72rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase}
