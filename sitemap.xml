@@ -22,5 +22,7 @@
 
   <!-- Legal -->
   <url><loc>https://songscout.uk/privacy/</loc><lastmod>2026-01-01</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://songscout.uk/terms/</loc><lastmod>2026-01-01</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://songscout.uk/contact/</loc><lastmod>2026-07-06</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
 
 </urlset>

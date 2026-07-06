@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="copyright" content="© 2026 SongScout.uk">
+<meta name="author" content="SongScout">
+<meta name="robots" content="index,follow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+<title>Contact — SongScout</title>
+<meta name="description" content="Get in touch with SongScout. Suggest an artist, report a problem, or just say hello.">
+<link rel="canonical" href="https://songscout.uk/contact/">
+<meta property="og:title" content="Contact — SongScout">
+<meta property="og:description" content="Suggest an artist, report a problem, or just say hello.">
+<meta property="og:url" content="https://songscout.uk/contact/">
+<meta property="og:site_name" content="SongScout">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,600;1,400&display=optional"></noscript>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=optional"></noscript>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0A0A0A;--dark:#111318;--dark2:#1A1D24;--dark3:#242830;
+  --panel:#1E2128;--panel2:#252930;
+  --gold:#F0A830;--gold-d:#C88020;--gold-l:#F8D080;
+  --red:#E83A2A;
+  --white:#F8F6F0;--off:#C8C0B0;--muted:#9C9484;
+  --border:#2E3240;--border2:#3A3E50;
+  --radius:10px;--radius-lg:16px;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--black);color:var(--white);min-height:100vh;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+/* HEADER */
+.site-header{padding:0 24px;border-bottom:1px solid var(--border);background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:16px 0}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{width:42px;height:42px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.8rem;color:var(--black)}
+.logo-text{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.8rem;color:var(--white);letter-spacing:2px;line-height:1}
+.logo-sub{font-size:0.65rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:1px}
+.nav{margin-left:auto;display:flex;gap:6px}
+.nav-link{padding:8px 14px;border-radius:var(--radius);font-size:0.82rem;font-weight:600;color:var(--muted);transition:all 0.15s;letter-spacing:0.3px}
+.nav-link:hover{color:var(--white);background:var(--dark3)}
+.nav-link.active{color:var(--gold)}
+
+/* PAGE */
+.page-wrap{max-width:760px;margin:0 auto;padding:60px 24px 100px}
+
+.page-eyebrow{font-size:0.72rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.page-eyebrow::before{content:'';width:32px;height:2px;background:var(--gold);display:block}
+.page-title{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:clamp(2.4rem,5vw,3.6rem);letter-spacing:2px;color:var(--white);line-height:1;margin-bottom:16px}
+.page-desc{font-size:1rem;color:var(--off);line-height:1.75;font-weight:300;max-width:520px;margin-bottom:48px;border-left:3px solid var(--gold);padding-left:18px}
+
+/* REASON CARDS */
+.reason-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:48px}
+.reason-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px}
+.reason-icon{font-size:1.4rem;margin-bottom:10px;display:block}
+.reason-title{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1rem;letter-spacing:1px;color:var(--gold);margin-bottom:6px}
+.reason-text{font-size:0.82rem;color:var(--muted);line-height:1.6;font-weight:300}
+
+/* FORM */
+.form-wrap{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px}
+.form-title{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.6rem;letter-spacing:1.5px;color:var(--white);margin-bottom:6px}
+.form-subtitle{font-size:0.85rem;color:var(--muted);margin-bottom:28px;font-weight:300}
+
+.form-group{margin-bottom:20px}
+.form-label{display:block;font-size:0.78rem;font-weight:600;letter-spacing:0.5px;color:var(--off);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}
+.form-input,
+.form-select,
+.form-textarea{
+  width:100%;
+  background:var(--dark2);
+  border:1.5px solid var(--border2);
+  border-radius:var(--radius);
+  padding:12px 16px;
+  font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  font-size:0.92rem;
+  color:var(--white);
+  transition:border-color 0.15s;
+  outline:none;
+}
+.form-input::placeholder,
+.form-textarea::placeholder{color:var(--muted)}
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus{border-color:var(--gold-d)}
+.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239C9484' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;cursor:pointer}
+.form-select option{background:var(--dark2);color:var(--white)}
+.form-textarea{resize:vertical;min-height:140px;line-height:1.6}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+.form-submit{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:var(--radius-lg);background:var(--gold);color:var(--black);font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.1rem;letter-spacing:2px;border:none;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 20px rgba(240,168,48,0.25);margin-top:8px}
+.form-submit:hover{background:var(--gold-l);transform:translateY(-2px);box-shadow:0 8px 32px rgba(240,168,48,0.35)}
+
+.form-note{font-size:0.78rem;color:var(--muted);margin-top:16px;line-height:1.6}
+.form-note a{color:var(--gold);font-weight:600}
+
+/* SUCCESS STATE */
+.success-wrap{display:none;text-align:center;padding:48px 24px}
+.success-wrap.visible{display:block}
+.success-icon{font-size:3rem;margin-bottom:16px}
+.success-title{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:2rem;letter-spacing:2px;color:var(--gold);margin-bottom:12px}
+.success-text{font-size:0.95rem;color:var(--off);line-height:1.7;font-weight:300}
+
+/* FOOTER */
+.site-footer{border-top:1px solid var(--border);background:var(--dark)}
+.footer-inner{max-width:1100px;margin:0 auto;padding:48px 24px 24px}
+.footer-top{display:flex;align-items:flex-start;gap:48px;margin-bottom:32px;flex-wrap:wrap}
+.footer-brand{max-width:260px}
+.footer-brand p{font-size:0.85rem;color:var(--muted);line-height:1.7;margin-top:14px;font-weight:300}
+.footer-links{min-width:130px}
+.footer-links h3{font-size:0.68rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.footer-links a{display:block;font-size:0.85rem;color:var(--off);margin-bottom:4px;padding:6px 0;min-height:24px;transition:color 0.15s;text-decoration:underline;text-decoration-color:rgba(200,192,176,0.35);text-underline-offset:3px}
+.footer-links a:hover{color:var(--gold);text-decoration-color:currentColor}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);font-size:0.78rem;color:var(--muted);flex-wrap:wrap;gap:8px}
+.footer-bottom a{color:var(--muted);transition:color 0.15s}
+.footer-bottom a:hover{color:var(--off)}
+
+@media(max-width:640px){
+  .reason-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .form-wrap{padding:24px}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="/">
+      <div class="logo-mark">&#9836;</div>
+      <div><div class="logo-text">SongScout</div><div class="logo-sub">Music Discovery</div></div>
+    </a>
+    <nav class="nav">
+      <a class="nav-link" href="/era-explorer/">Era Explorer</a>
+      <a class="nav-link" href="/discovery-engine/">Discovery Engine</a>
+      <a class="nav-link" href="/reaction-kit/">Reaction Kit</a>
+      <a class="nav-link" href="/world-cup-music/" style="color:var(--gold);">⚽ World Cup</a>
+      <a class="nav-link" href="/blog/">Blog</a>
+      <a class="nav-link active" href="/contact/">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="page-wrap">
+
+  <div class="page-eyebrow">Get in touch</div>
+  <h1 class="page-title">Contact SongScout</h1>
+  <p class="page-desc">Suggest an artist, flag a missing song, report a problem, or just say hello. Every message gets read — usually fairly quickly.</p>
+
+  <div class="reason-grid">
+    <div class="reason-card">
+      <span class="reason-icon">🎸</span>
+      <div class="reason-title">Suggest an artist</div>
+      <p class="reason-text">Missing someone from the Discovery Engine or Era Explorer? Let us know who and why.</p>
+    </div>
+    <div class="reason-card">
+      <span class="reason-icon">🔧</span>
+      <div class="reason-title">Report a problem</div>
+      <p class="reason-text">Something broken, a fact that's wrong, or a link that doesn't work — we want to know.</p>
+    </div>
+    <div class="reason-card">
+      <span class="reason-icon">👋</span>
+      <div class="reason-title">Say hello</div>
+      <p class="reason-text">Found something useful, have a suggestion, or just want to chat music? We're here.</p>
+    </div>
+  </div>
+
+  <div class="form-wrap" id="form-wrap">
+    <div class="form-title">Send a message</div>
+    <p class="form-subtitle">We'll get back to you via email. Usually within a couple of days.</p>
+
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/contact/?success=true" id="contact-form">
+      <input type="hidden" name="form-name" value="contact">
+      <p style="display:none"><label>Don't fill this in: <input name="bot-field"></label></p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="name">Your name</label>
+          <input class="form-input" type="text" id="name" name="name" placeholder="First name is fine" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email address</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="so we can reply" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="subject">What's it about?</label>
+        <select class="form-select" id="subject" name="subject" required>
+          <option value="" disabled selected>Choose a topic</option>
+          <option value="Artist suggestion">Artist or band suggestion</option>
+          <option value="Missing song">Missing song or track</option>
+          <option value="Something broken">Something's broken</option>
+          <option value="Wrong information">Wrong or inaccurate information</option>
+          <option value="Blog suggestion">Blog post suggestion</option>
+          <option value="General feedback">General feedback</option>
+          <option value="Just saying hello">Just saying hello</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="message">Message</label>
+        <textarea class="form-textarea" id="message" name="message" placeholder="The more detail the better — especially for artist suggestions or bug reports." required></textarea>
+      </div>
+
+      <button class="form-submit" type="submit">Send message →</button>
+
+      <p class="form-note">By sending this form you agree to our <a href="/privacy/">Privacy Policy</a>. We don't share your details with anyone and only use your email address to reply to your message.</p>
+    </form>
+
+    <div class="success-wrap" id="success-wrap">
+      <div class="success-icon">🎵</div>
+      <div class="success-title">Message sent!</div>
+      <p class="success-text">Thanks for getting in touch. We'll get back to you via email — usually within a couple of days.<br><br><a href="/" style="color:var(--gold);font-weight:600">← Back to SongScout</a></p>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="logo" href="/">
+          <div class="logo-mark">&#9836;</div>
+          <div><div class="logo-text">SongScout</div><div class="logo-sub">Music Discovery</div></div>
+        </a>
+        <p>Free music discovery tools for every generation. No login, no ads, no nonsense.</p>
+      </div>
+      <div class="footer-links">
+        <h3>Tools</h3>
+        <a href="/era-explorer/">Era Explorer</a>
+        <a href="/world-cup-music/">⚽ World Cup Music Quiz</a>
+        <a href="/discovery-engine/">Discovery Engine</a>
+        <a href="/reaction-kit/">Reaction Kit</a>
+      </div>
+      <div class="footer-links">
+        <h3>Blog</h3>
+        <a href="/blog/">All guides</a>
+        <a href="/blog/classic-rock-for-beginners/">Classic rock guide</a>
+        <a href="/blog/what-did-nirvana-influence/">Nirvana's influence</a>
+        <a href="/blog/best-reaction-video-songs/">Reaction video songs</a>
+        <a href="/blog/how-to-get-into-led-zeppelin/">Led Zeppelin guide</a>
+        <a href="/blog/best-classic-rock-albums/">Best classic rock albums</a>
+        <a href="/blog/getting-into-heavy-metal/">Heavy metal guide</a>
+        <a href="/blog/best-stairway-to-heaven-reactions/">Stairway to Heaven reactions</a>
+      </div>
+      <div class="footer-links">
+        <h3>Start here</h3>
+        <a href="/era-explorer/">1970s Classic Rock</a>
+        <a href="/era-explorer/">1980s Heavy Metal</a>
+        <a href="/era-explorer/">1990s Grunge</a>
+        <a href="/era-explorer/">1980s Classic Rock</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>SongScout — Free music discovery — No login, no ads, no nonsense</div>
+      <div>© <span id="year"></span> SongScout · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/contact/">Contact</a></div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://buymeacoffee.com/songscout" target="_blank" rel="noopener" style="position:fixed;bottom:24px;left:24px;z-index:9999;display:flex;align-items:center;gap:8px;background:#FFDD00;color:#000;font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:0.82rem;font-weight:700;padding:11px 18px;border-radius:100px;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,0.4);transition:transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">☕ Buy me a coffee</a>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Show success message if redirected back with ?success=true
+if(window.location.search.includes('success=true')){
+  document.getElementById('contact-form').style.display = 'none';
+  document.getElementById('success-wrap').classList.add('visible');
+}
+</script>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b563401ebb52429b8e6f4c3c85570868"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
