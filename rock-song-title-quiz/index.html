@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complete the Title — Rock, Metal &amp; Blues Quiz</title>
+<meta name="description" content="Finish the missing word in classic rock, metal and blues song titles. Ten questions, multiple choice, instant scoring. No signup.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;600&display=optional" rel="stylesheet">
+<style>
+  :root{
+    --tolex:#0e0c0b;
+    --tolex-2:#17120e;
+    --panel:#1c1712;
+    --plate:#e8dfca;
+    --plate-ink:#1a1512;
+    --gold:#c9a24a;
+    --gold-lit:#f2d179;
+    --led:#d8241a;
+    --led-glow:#ff5a4d;
+    --ink:#efe7d6;
+    --ink-dim:#a89e88;
+    --line:#000;
+    --ok:#e7b64a;
+    --radius:4px;
+    --display:'Anton',Impact,'Arial Narrow Bold',sans-serif;
+    --label:'Oswald','Arial Narrow',sans-serif;
+    --body:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:var(--body);
+    color:var(--ink);
+    background:
+      radial-gradient(120% 80% at 50% -10%, #241c15 0%, var(--tolex) 55%),
+      var(--tolex);
+    min-height:100vh;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding:24px 16px 64px;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* faint tolex weave */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;opacity:.5;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,.014) 0 2px, transparent 2px 4px),
+      repeating-linear-gradient(-45deg, rgba(0,0,0,.22) 0 2px, transparent 2px 4px);
+  }
+  .cab{
+    position:relative;
+    width:100%;max-width:600px;
+    background:linear-gradient(180deg, var(--tolex-2), #0b0908);
+    border:2px solid #000;
+    border-radius:10px;
+    box-shadow:
+      0 0 0 3px #2a2118,
+      0 0 0 5px #000,
+      0 30px 60px -20px rgba(0,0,0,.9),
+      inset 0 2px 0 rgba(255,255,255,.04);
+    padding:16px;
+  }
+  /* faceplate */
+  .plate{
+    position:relative;
+    background:linear-gradient(180deg,#f2ead8,var(--plate) 55%,#d8cdb2);
+    color:var(--plate-ink);
+    border-radius:var(--radius);
+    border:1px solid #b7a882;
+    box-shadow:inset 0 1px 0 #fff8ea, inset 0 -3px 8px rgba(0,0,0,.18), 0 2px 0 #000;
+    padding:18px 20px;
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+  }
+  .plate .screw{position:absolute;width:9px;height:9px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#fff,#b3a170 55%,#6f6039);
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,.35);}
+  .plate .screw::after{content:"";position:absolute;inset:2px;border-top:1px solid rgba(0,0,0,.45);transform:rotate(35deg)}
+  .screw.tl{top:7px;left:7px}.screw.tr{top:7px;right:7px}
+  .screw.bl{bottom:7px;left:7px}.screw.br{bottom:7px;right:7px}
+  .brand{font-family:var(--display);font-size:26px;line-height:.9;letter-spacing:.5px;text-transform:uppercase}
+  .brand small{display:block;font-family:var(--label);font-weight:600;font-size:10px;letter-spacing:4px;color:#7a6f57;margin-top:4px}
+  .led-wrap{display:flex;flex-direction:column;align-items:center;gap:6px}
+  .led{width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--led-glow),var(--led) 60%,#5c0e08);
+    box-shadow:0 0 10px 2px rgba(216,36,26,.7), inset 0 0 3px rgba(0,0,0,.4);}
+  .led-off{background:radial-gradient(circle at 35% 30%,#6a3a36,#3a1512);box-shadow:none}
+  .led-label{font-family:var(--label);font-size:9px;letter-spacing:2px;color:#7a6f57}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
+  .led.on{animation:pulse 2.4s ease-in-out infinite}
+
+  .stage{padding:22px 6px 4px}
+
+  /* screens */
+  .screen{display:none;animation:fade .4s ease both}
+  .screen.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  .eyebrow{font-family:var(--label);text-transform:uppercase;letter-spacing:5px;font-size:11px;color:var(--gold);margin:0 0 10px}
+  h1.title{font-family:var(--display);text-transform:uppercase;font-size:clamp(34px,9vw,52px);line-height:.92;margin:0 0 14px;letter-spacing:.5px}
+  h1.title span{color:var(--gold)}
+  .lede{color:var(--ink-dim);font-size:15px;line-height:1.55;max-width:44ch;margin:0 0 22px}
+
+  .field{margin:0 0 18px}
+  .field-label{font-family:var(--label);text-transform:uppercase;letter-spacing:3px;font-size:11px;color:var(--ink-dim);margin:0 0 10px}
+  .segmented{display:flex;gap:6px;flex-wrap:wrap}
+  .seg{flex:1 1 auto;min-width:70px;font-family:var(--label);text-transform:uppercase;letter-spacing:2px;font-size:13px;
+    background:#0c0a08;color:var(--ink-dim);border:1px solid #34291c;border-radius:var(--radius);padding:11px 8px;cursor:pointer;transition:.15s}
+  .seg[aria-pressed="true"]{background:var(--gold);color:#1a130a;border-color:var(--gold-lit);box-shadow:0 0 14px -2px rgba(201,162,74,.6)}
+  .seg:focus-visible{outline:2px solid var(--gold-lit);outline-offset:2px}
+
+  .btn{font-family:var(--display);text-transform:uppercase;letter-spacing:1px;font-size:20px;
+    background:linear-gradient(180deg,#e0b658,var(--gold));color:#1a130a;border:1px solid #7a5e22;border-radius:var(--radius);
+    padding:14px 22px;width:100%;cursor:pointer;box-shadow:0 3px 0 #6f5320,0 6px 14px -4px rgba(0,0,0,.7);transition:.12s}
+  .btn:hover{filter:brightness(1.05)}
+  .btn:active{transform:translateY(2px);box-shadow:0 1px 0 #6f5320}
+  .btn:focus-visible{outline:2px solid var(--gold-lit);outline-offset:3px}
+  .btn.ghost{background:transparent;color:var(--gold);border:1px solid var(--gold);box-shadow:none;font-size:15px;padding:12px}
+  .btn.ghost:active{transform:none}
+
+  /* quiz */
+  .qmeta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+  .qmeta .count{font-family:var(--label);letter-spacing:3px;text-transform:uppercase;font-size:12px;color:var(--ink-dim)}
+  .qmeta .score{font-family:var(--display);font-size:20px;color:var(--gold)}
+  .track{height:5px;background:#0c0a08;border:1px solid #34291c;border-radius:99px;overflow:hidden;margin-bottom:22px}
+  .track > i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-lit));width:0;transition:width .4s ease}
+
+  .tier-tag{font-family:var(--label);text-transform:uppercase;letter-spacing:3px;font-size:10px;padding:3px 8px;border-radius:99px;border:1px solid;display:inline-block;margin-bottom:14px}
+  .tier-easy{color:#7cc48a;border-color:#2f5a38}
+  .tier-mid{color:var(--gold);border-color:#5a4a22}
+  .tier-hard{color:var(--led-glow);border-color:#6a2a24}
+
+  .prompt{font-family:var(--display);text-transform:uppercase;font-size:clamp(28px,7.5vw,40px);line-height:1.02;margin:0 0 6px}
+  .prompt .blank{color:var(--gold);border-bottom:4px solid var(--gold);padding:0 .3em;margin:0 .05em}
+  .artist{font-family:var(--label);letter-spacing:2px;text-transform:uppercase;font-size:13px;color:var(--ink-dim);margin:0 0 22px}
+  .artist.hidden{visibility:hidden}
+
+  .options{display:grid;gap:10px;margin-bottom:8px}
+  .opt{position:relative;text-align:left;font-family:var(--label);font-weight:600;font-size:17px;letter-spacing:.5px;
+    background:#0c0a08;color:var(--ink);border:1px solid #34291c;border-radius:var(--radius);padding:15px 16px;cursor:pointer;transition:.14s;width:100%}
+  .opt:hover:not(:disabled){border-color:var(--gold);background:#141009}
+  .opt:focus-visible{outline:2px solid var(--gold-lit);outline-offset:2px}
+  .opt:disabled{cursor:default}
+  .opt .mark{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-family:var(--label);font-size:12px;letter-spacing:2px;text-transform:uppercase;opacity:0}
+  .opt.correct{background:linear-gradient(180deg,#3a2c10,#241a09);border-color:var(--gold-lit);color:var(--gold-lit);
+    box-shadow:0 0 18px -2px rgba(242,209,121,.55)}
+  .opt.correct .mark{opacity:1;color:var(--gold-lit)}
+  .opt.wrong{border-color:var(--led);color:var(--led-glow);background:#1c0e0c}
+  .opt.wrong .mark{opacity:1;color:var(--led-glow)}
+  @keyframes shake{10%,90%{transform:translateX(-1px)}30%,70%{transform:translateX(2px)}50%{transform:translateX(-3px)}}
+  .opt.wrong{animation:shake .35s}
+
+  .fact{border-left:3px solid var(--gold);background:#0c0a08;border-radius:0 var(--radius) var(--radius) 0;
+    padding:14px 16px;margin:16px 0 4px;font-size:14px;line-height:1.55;color:var(--ink-dim);display:none}
+  .fact.show{display:block;animation:fade .3s both}
+  .fact b{color:var(--ink)}
+  .next-wrap{margin-top:18px;min-height:56px}
+  .next-wrap .btn{display:none}
+  .next-wrap.show .btn{display:block}
+
+  /* results — VU meter */
+  .result-head{text-align:center;margin-bottom:20px}
+  .vu{background:#0c0a08;border:1px solid #34291c;border-radius:var(--radius);padding:18px 16px 20px;margin:0 0 8px}
+  .vu-label{display:flex;justify-content:space-between;font-family:var(--label);text-transform:uppercase;letter-spacing:3px;font-size:10px;color:var(--ink-dim);margin-bottom:12px}
+  .vu-bars{display:flex;gap:4px;align-items:flex-end;height:60px}
+  .vu-bars > i{flex:1;background:#241c12;border-radius:2px 2px 0 0;transition:height .5s cubic-bezier(.2,.8,.2,1),background .3s}
+  .big-score{font-family:var(--display);font-size:clamp(56px,20vw,110px);line-height:.85;text-align:center;color:var(--gold-lit);margin:14px 0 2px;text-shadow:0 0 26px rgba(242,209,121,.35)}
+  .big-score span{font-size:.4em;color:var(--ink-dim)}
+  .rank{text-align:center;font-family:var(--display);text-transform:uppercase;font-size:clamp(24px,7vw,34px);margin:0 0 6px;color:var(--gold)}
+  .rank-sub{text-align:center;color:var(--ink-dim);font-size:14px;line-height:1.5;max-width:38ch;margin:0 auto 24px}
+  .result-actions{display:grid;gap:10px}
+
+  footer{margin-top:18px;text-align:center;font-family:var(--label);letter-spacing:2px;text-transform:uppercase;font-size:10px;color:#5c5344}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important}
+  }
+</style>
+</head>
+<body>
+<main class="cab">
+  <div class="plate">
+    <span class="screw tl"></span><span class="screw tr"></span>
+    <span class="screw bl"></span><span class="screw br"></span>
+    <div class="brand">Complete<br>the Title<small>Rock · Metal · Blues</small></div>
+    <div class="led-wrap"><span class="led on" id="led"></span><span class="led-label">Power</span></div>
+  </div>
+
+  <div class="stage">
+    <!-- START -->
+    <section class="screen active" id="start">
+      <p class="eyebrow">Song Title Quiz</p>
+      <h1 class="title">Know the <span>riff?</span><br>Finish the title.</h1>
+      <p class="lede">Ten titles, one missing word each — from stadium anthems to the deep cuts and blues standards. Pick the right word. Miss one and the amp knows.</p>
+      <div class="field">
+        <p class="field-label">Choose your difficulty</p>
+        <div class="segmented" id="diffPicker" role="group" aria-label="Difficulty">
+          <button class="seg" data-diff="all" aria-pressed="true">Mixed set</button>
+          <button class="seg" data-diff="easy" aria-pressed="false">Warm-up</button>
+          <button class="seg" data-diff="mid" aria-pressed="false">Regular</button>
+          <button class="seg" data-diff="hard" aria-pressed="false">Deep cuts</button>
+        </div>
+      </div>
+      <button class="btn" id="startBtn">Plug in &amp; play</button>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="screen" id="quiz">
+      <div class="qmeta">
+        <span class="count" id="count">Track 1 / 10</span>
+        <span class="score" id="scoreLive">0</span>
+      </div>
+      <div class="track"><i id="progress"></i></div>
+
+      <span class="tier-tag" id="tierTag">Warm-up</span>
+      <h2 class="prompt" id="prompt"></h2>
+      <p class="artist" id="artist"></p>
+
+      <div class="options" id="options"></div>
+
+      <div class="fact" id="fact"></div>
+      <div class="next-wrap" id="nextWrap">
+        <button class="btn" id="nextBtn">Next track</button>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="screen" id="results">
+      <p class="eyebrow" style="text-align:center">Final reading</p>
+      <div class="vu">
+        <div class="vu-label"><span>Signal</span><span>Peak</span></div>
+        <div class="vu-bars" id="vuBars"></div>
+      </div>
+      <div class="big-score" id="bigScore">0<span>/10</span></div>
+      <p class="rank" id="rank"></p>
+      <p class="rank-sub" id="rankSub"></p>
+      <div class="result-actions">
+        <button class="btn" id="againBtn">Run it back</button>
+        <button class="btn ghost" id="shareBtn">Copy my score</button>
+      </div>
+    </section>
+  </div>
+
+  <footer>SongScout · Complete the Title</footer>
+</main>
+
+<script>
+/* ------------------------------------------------------------------
+   QUESTION BANK — add your own below.
+   answer must match one entry in options exactly (case-sensitive).
+   tier: "easy" | "mid" | "hard"
+   The word shown as ___ in the title is what the player supplies.
+------------------------------------------------------------------- */
+const BANK = [
+  // ---- EASY -------------------------------------------------------
+  {tier:"easy", before:"Highway to", after:"", answer:"Hell", artist:"AC/DC",
+   options:["Hell","Heaven","Vegas","Nowhere"],
+   fact:"AC/DC's 1979 title track — the last album with singer Bon Scott before his death."},
+  {tier:"easy", before:"Smoke on the", after:"", answer:"Water", artist:"Deep Purple",
+   options:["Water","Horizon","Mountain","River"],
+   fact:"Written about a casino fire in Montreux, Switzerland that Deep Purple watched from their hotel."},
+  {tier:"easy", before:"Sweet Child o'", after:"", answer:"Mine", artist:"Guns N' Roses",
+   options:["Mine","Time","Wine","Nine"],
+   fact:"Slash's opening riff started as a joke warm-up exercise he was noodling in the studio."},
+  {tier:"easy", before:"Paint It", after:"", answer:"Black", artist:"The Rolling Stones",
+   options:["Black","Blue","Red","Gold"],
+   fact:"The 1966 hit is famous for Brian Jones' sitar line, unusual for a rock single at the time."},
+  {tier:"easy", before:"Iron", after:"", answer:"Man", artist:"Black Sabbath",
+   options:["Man","Maiden","Fist","Will"],
+   fact:"Trap avoided: 'Iron Man' is the Sabbath song — Iron Maiden is a whole other band."},
+  {tier:"easy", before:"Back in", after:"", answer:"Black", artist:"AC/DC",
+   options:["Black","Town","Blue","Time"],
+   fact:"The 1980 album of the same name is one of the best-selling records of all time."},
+  {tier:"easy", before:"Born to Be", after:"", answer:"Wild", artist:"Steppenwolf",
+   options:["Wild","Free","Loud","Alive"],
+   fact:"Its 'heavy metal thunder' line is often credited as an early use of the phrase 'heavy metal'."},
+  {tier:"easy", before:"Welcome to the", after:"", answer:"Jungle", artist:"Guns N' Roses",
+   options:["Jungle","Party","Machine","Show"],
+   fact:"Axl Rose said the lyric was inspired by a warning he got on arriving in Los Angeles."},
+
+  // ---- MID --------------------------------------------------------
+  {tier:"mid", before:"Ace of", after:"", answer:"Spades", artist:"Motörhead",
+   options:["Spades","Hearts","Clubs","Base"],
+   fact:"Lemmy's gambling anthem became Motörhead's signature and opened nearly every live set."},
+  {tier:"mid", before:"Run to the", after:"", answer:"Hills", artist:"Iron Maiden",
+   options:["Hills","Edge","Light","Sun"],
+   fact:"The 1982 single deals with the colonisation of Native Americans, told from both sides."},
+  {tier:"mid", before:"Breaking the", after:"", answer:"Law", artist:"Judas Priest",
+   options:["Law","Chains","Silence","Ice"],
+   fact:"Barely two and a half minutes long, with one of metal's most instantly hummable riffs."},
+  {tier:"mid", before:"Master of", after:"", answer:"Puppets", artist:"Metallica",
+   options:["Puppets","Disaster","War","Chaos"],
+   fact:"The title track runs over eight minutes and is widely read as being about addiction."},
+  {tier:"mid", before:"Fear of the", after:"", answer:"Dark", artist:"Iron Maiden",
+   options:["Dark","Night","Reaper","Unknown"],
+   fact:"A live favourite — crowds singing the intro melody back is a Maiden concert ritual."},
+  {tier:"mid", before:"Whole Lotta", after:"", answer:"Love", artist:"Led Zeppelin",
+   options:["Love","Rosie","Trouble","Noise"],
+   fact:"Trap avoided: 'Whole Lotta Rosie' is AC/DC. This one's Led Zeppelin, 1969."},
+  {tier:"mid", before:"Rainbow in the", after:"", answer:"Dark", artist:"Dio",
+   options:["Dark","Sky","Rain","Storm"],
+   fact:"Ronnie James Dio nearly scrapped it — producers convinced him to keep the now-classic track."},
+  {tier:"mid", before:"For Whom the Bell", after:"", answer:"Tolls", artist:"Metallica",
+   options:["Tolls","Rings","Falls","Calls"],
+   fact:"The title nods to Hemingway's novel; the intro's bell and bass build is unmistakable."},
+
+  // ---- HARD / BLUES ----------------------------------------------
+  {tier:"hard", before:"Born Under a Bad", after:"", answer:"Sign", artist:"Albert King",
+   options:["Sign","Moon","Star","Omen"],
+   fact:"A 1967 blues cornerstone, later covered by Cream and countless others."},
+  {tier:"hard", before:"The Thrill Is", after:"", answer:"Gone", artist:"B.B. King",
+   options:["Gone","Real","Back","Mine"],
+   fact:"B.B. King's 1969 signature — his guitar 'Lucille' does half the singing."},
+  {tier:"hard", before:"Sweet Home", after:"", answer:"Alabama", artist:"Lynyrd Skynyrd",
+   options:["Alabama","Chicago","Georgia","Louisiana"],
+   fact:"Trap avoided: 'Sweet Home Chicago' is the blues standard. This one answers Neil Young."},
+  {tier:"hard", before:"Hoochie Coochie", after:"", answer:"Man", artist:"Muddy Waters",
+   options:["Man","King","Woman","Dance"],
+   fact:"Written by Willie Dixon in 1954 — a blueprint for the swaggering electric-blues persona."},
+  {tier:"hard", before:"Voodoo", after:"", answer:"Child", artist:"Jimi Hendrix",
+   options:["Child","Magic","Queen","Doll"],
+   fact:"Hendrix recorded both a long 'Voodoo Chile' and the tighter 'Voodoo Child (Slight Return)'."},
+  {tier:"hard", before:"War", after:"", answer:"Pigs", artist:"Black Sabbath",
+   options:["Pigs","Games","Machine","Cry"],
+   fact:"An anti-war epic from 1970's 'Paranoid'; its working title was 'Walpurgis'."},
+  {tier:"hard", before:"Symphony of", after:"", answer:"Destruction", artist:"Megadeth",
+   options:["Destruction","Silence","Sound","Fire"],
+   fact:"Dave Mustaine's 1992 hit about a manufactured demagogue leading the crowd."},
+  {tier:"hard", before:"Cowboys from", after:"", answer:"Hell", artist:"Pantera",
+   options:["Hell","Texas","Space","Mars"],
+   fact:"The 1990 title track marked Pantera's pivot into the groove metal they'd define."}
+];
+
+/* ------------------------------------------------------------------ */
+const QUESTIONS_PER_ROUND = 10;
+const el = id => document.getElementById(id);
+const screens = {start:el('start'), quiz:el('quiz'), results:el('results')};
+let chosenDiff = 'all';
+let round = [], idx = 0, score = 0, locked = false;
+
+/* difficulty picker */
+el('diffPicker').addEventListener('click', e=>{
+  const b = e.target.closest('.seg'); if(!b) return;
+  [...el('diffPicker').children].forEach(s=>s.setAttribute('aria-pressed', s===b));
+  chosenDiff = b.dataset.diff;
+});
+
+function show(name){
+  Object.values(screens).forEach(s=>s.classList.remove('active'));
+  screens[name].classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function shuffle(a){const x=[...a];for(let i=x.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[x[i],x[j]]=[x[j],x[i]];}return x;}
+
+function buildRound(){
+  let pool = chosenDiff==='all' ? BANK : BANK.filter(q=>q.tier===chosenDiff);
+  round = shuffle(pool).slice(0, Math.min(QUESTIONS_PER_ROUND, pool.length));
+  idx = 0; score = 0;
+}
+
+const TIERS = {easy:['Warm-up','tier-easy'], mid:['Regular','tier-mid'], hard:['Deep cut','tier-hard']};
+
+function renderQuestion(){
+  locked = false;
+  const q = round[idx];
+  el('count').textContent = `Track ${idx+1} / ${round.length}`;
+  el('scoreLive').textContent = score;
+  el('progress').style.width = `${(idx/round.length)*100}%`;
+
+  const tag = el('tierTag');
+  tag.textContent = TIERS[q.tier][0];
+  tag.className = 'tier-tag ' + TIERS[q.tier][1];
+
+  el('prompt').innerHTML =
+    `${q.before} <span class="blank">?</span>${q.after ? ' '+q.after : ''}`;
+  const artist = el('artist');
+  artist.textContent = q.artist;
+  artist.classList.add('hidden'); // reveal after answering
+
+  const wrap = el('options');
+  wrap.innerHTML = '';
+  shuffle(q.options).forEach(opt=>{
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.innerHTML = `${opt}<span class="mark"></span>`;
+    b.addEventListener('click', ()=>choose(b, opt, q));
+    wrap.appendChild(b);
+  });
+
+  el('fact').classList.remove('show');
+  el('fact').innerHTML = '';
+  el('nextWrap').classList.remove('show');
+  el('nextBtn').textContent = idx === round.length-1 ? 'See final score' : 'Next track';
+}
+
+function choose(btn, opt, q){
+  if(locked) return;
+  locked = true;
+  const correct = opt === q.answer;
+  if(correct){ score++; el('scoreLive').textContent = score; }
+  else { flashLed(); }
+
+  [...el('options').children].forEach(b=>{
+    b.disabled = true;
+    const label = b.textContent;
+    if(label === q.answer){ b.classList.add('correct'); b.querySelector('.mark').textContent='Right'; }
+    else if(b===btn){ b.classList.add('wrong'); b.querySelector('.mark').textContent='Wrong'; }
+  });
+
+  el('artist').classList.remove('hidden');
+  const fact = el('fact');
+  fact.innerHTML = `<b>${q.before} ${q.answer}${q.after?' '+q.after:''}</b> — ${q.artist}. ${q.fact}`;
+  fact.classList.add('show');
+  el('nextWrap').classList.add('show');
+  el('nextBtn').focus();
+}
+
+function flashLed(){
+  const led = el('led');
+  led.classList.remove('on'); led.classList.add('led-off');
+  setTimeout(()=>{ led.classList.remove('led-off'); led.classList.add('on'); }, 240);
+}
+
+el('nextBtn').addEventListener('click', ()=>{
+  if(idx < round.length-1){ idx++; renderQuestion(); }
+  else showResults();
+});
+
+/* results */
+const RANKS = [
+  {min:1.0, name:'Headliner', sub:'Flawless. You could soundcheck for any of these bands.'},
+  {min:0.8, name:'Encore-worthy', sub:'Serious record-collection energy. A couple of deep cuts got you.'},
+  {min:0.6, name:'Front row', sub:'You know your riffs. A few titles slipped past in the dark.'},
+  {min:0.4, name:'Roadie', sub:'Solid foundations — hit the deep cuts and you\'ll climb fast.'},
+  {min:0.0, name:'Soundcheck', sub:'Everyone starts here. Run it back and trust the riff.'}
+];
+
+function showResults(){
+  el('progress').style.width = '100%';
+  const total = round.length;
+  const pct = score/total;
+  el('bigScore').innerHTML = `${score}<span>/${total}</span>`;
+  const r = RANKS.find(x=>pct>=x.min);
+  el('rank').textContent = r.name;
+  el('rankSub').textContent = r.sub;
+
+  // VU meter: 12 bars, light up proportionally
+  const bars = el('vuBars'); bars.innerHTML='';
+  const N = 12, lit = Math.round(pct*N);
+  for(let i=0;i<N;i++){
+    const bar = document.createElement('i');
+    bars.appendChild(bar);
+    const h = 20 + (i/(N-1))*80; // rising heights
+    setTimeout(()=>{
+      bar.style.height = h+'%';
+      if(i < lit){
+        bar.style.background = i >= N-3 ? 'var(--led)'
+          : i >= N-6 ? 'var(--gold-lit)' : 'var(--gold)';
+      }
+    }, 60*i);
+  }
+  show('results');
+}
+
+/* actions */
+el('startBtn').addEventListener('click', ()=>{ buildRound(); renderQuestion(); show('quiz'); });
+el('againBtn').addEventListener('click', ()=>{ show('start'); });
+el('shareBtn').addEventListener('click', ()=>{
+  const total = round.length;
+  const txt = `I scored ${score}/${total} on the Rock, Metal & Blues title quiz 🎸 Can you beat it?`;
+  const done = ()=>{ const b=el('shareBtn'); const t=b.textContent; b.textContent='Copied!'; setTimeout(()=>b.textContent=t,1600); };
+  if(navigator.clipboard){ navigator.clipboard.writeText(txt).then(done).catch(done); }
+  else done();
+});
+</script>
+</body>
+</html>

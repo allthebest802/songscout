@@ -93,7 +93,7 @@ a{text-decoration:none;color:inherit}
 .tools-section{max-width:1100px;margin:0 auto;padding:64px 24px}
 .section-title{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:2.8rem;letter-spacing:2px;color:var(--white);margin-bottom:8px;line-height:1}
 .section-desc{font-size:0.95rem;color:var(--muted);margin-bottom:40px;max-width:500px;line-height:1.6}
-.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .tool-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;transition:all 0.2s}
 .tool-card:hover{border-color:var(--gold-d);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.5)}
 .tool-accent{height:3px;width:100%}
@@ -150,6 +150,9 @@ a{text-decoration:none;color:inherit}
 .footer-links a:hover{color:var(--gold);text-decoration-color:currentColor}
 .footer-bottom{padding-top:20px;border-top:1px solid var(--border);font-size:0.75rem;color:var(--muted)}
 
+@media(max-width:1024px){
+  .tools-grid{grid-template-columns:repeat(2,1fr)}
+}
 @media(max-width:768px){
   .tools-grid,.why-grid,.picks-grid{grid-template-columns:1fr}
   .about-inner{grid-template-columns:1fr}
@@ -265,8 +268,8 @@ a{text-decoration:none;color:inherit}
 
 <section class="tools-section" id="tools">
   <div class="eyebrow">The tools</div>
-  <h2 class="section-title">Three ways to discover</h2>
-  <p class="section-desc">Each tool takes a different angle on music discovery — pick where you want to start.</p>
+  <h2 class="section-title">Four ways to discover</h2>
+  <p class="section-desc">Three tools and a quiz, each a different angle on the music — pick where you want to start.</p>
   <div class="tools-grid">
 
     <div class="tool-card">
@@ -311,6 +314,21 @@ a{text-decoration:none;color:inherit}
           <span class="tool-tag">First listens</span>
         </div>
         <a class="tool-link" href="/reaction-kit/" aria-label="Open Reaction Kit">Open tool →</a>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-accent acc-red"></div>
+      <div class="tool-body">
+        <div class="tool-num">04</div>
+        <div class="tool-name">Song Title Quiz</div>
+        <div class="tool-desc">Finish the missing word in classic rock, metal and blues song titles. Ten questions, four choices each, instant scoring — no signup.</div>
+        <div class="tool-tags">
+          <span class="tool-tag">Rock · Metal · Blues</span>
+          <span class="tool-tag">10 questions</span>
+          <span class="tool-tag">No signup</span>
+        </div>
+        <a class="tool-link" href="/rock-song-title-quiz/" aria-label="Play the rock, metal and blues Song Title Quiz">Play quiz →</a>
       </div>
     </div>
 
@@ -584,6 +602,7 @@ Yes. Many tracks included are chosen because they create strong first-time react
         <h3>Tools</h3>
         <a href="/era-explorer/">Era Explorer</a>
         <a href="/world-cup-music/">⚽ World Cup Music Quiz</a>
+        <a href="/rock-song-title-quiz/">🎸 Song Title Quiz</a>
         <a href="/discovery-engine/">Discovery Engine</a>
         <a href="/reaction-kit/">Reaction Kit</a>
       </div>
