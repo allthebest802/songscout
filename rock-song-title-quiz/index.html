@@ -7,7 +7,7 @@
 <meta name="description" content="Finish the missing word in classic rock, metal and blues song titles. Ten questions, multiple choice, instant scoring. No signup.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;600&display=optional" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@500;600&display=optional" rel="stylesheet">
 <style>
   :root{
     --tolex:#0e0c0b;
@@ -37,12 +37,22 @@
       radial-gradient(120% 80% at 50% -10%, #241c15 0%, var(--tolex) 55%),
       var(--tolex);
     min-height:100vh;
-    display:flex;
-    align-items:flex-start;
-    justify-content:center;
-    padding:24px 16px 64px;
     -webkit-font-smoothing:antialiased;
   }
+  .page{display:flex;justify-content:center;padding:24px 16px 64px}
+
+  /* site header — matches other SongScout pages */
+  .site-header{padding:0 24px;border-bottom:1px solid #2E3240;background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);position:sticky;top:0;z-index:100}
+  .header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:16px 0}
+  .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .logo-mark{width:42px;height:42px;background:#F0A830;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.8rem;color:#0A0A0A;line-height:1}
+  .logo-text{font-family:'Bebas Neue','Arial Narrow',Arial,sans-serif;font-size:1.8rem;color:#F8F6F0;letter-spacing:2px;line-height:1}
+  .logo-sub{font-size:0.65rem;color:#9C9484;letter-spacing:2px;text-transform:uppercase;margin-top:1px}
+  .nav{margin-left:auto;display:flex;gap:6px}
+  .nav-link{padding:8px 14px;border-radius:8px;font-size:0.82rem;font-weight:600;color:#9C9484;text-decoration:none;transition:all .15s;letter-spacing:.3px}
+  .nav-link:hover{color:#F8F6F0;background:#242830}
+  .nav-link:focus-visible{outline:2px solid var(--gold-lit);outline-offset:2px}
+  @media(max-width:768px){.nav{display:none}}
   /* faint tolex weave */
   body::before{
     content:"";position:fixed;inset:0;pointer-events:none;opacity:.5;
@@ -187,6 +197,23 @@
 </style>
 </head>
 <body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="/" aria-label="SongScout home">
+      <div class="logo-mark">SS</div>
+      <div>
+        <div class="logo-text">SongScout</div>
+        <div class="logo-sub">Music Discovery</div>
+      </div>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a class="nav-link" href="/era-explorer/">Era Explorer</a>
+      <a class="nav-link" href="/discovery-engine/">Discovery Engine</a>
+      <a class="nav-link" href="/reaction-kit/">Reaction Kit</a>
+    </nav>
+  </div>
+</header>
+<div class="page">
 <main class="cab">
   <div class="plate">
     <span class="screw tl"></span><span class="screw tr"></span>
@@ -282,6 +309,7 @@
 
   <footer>SongScout · Complete the Title</footer>
 </main>
+</div>
 
 <script>
 /* ------------------------------------------------------------------
