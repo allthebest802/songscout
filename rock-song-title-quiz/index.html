@@ -189,7 +189,20 @@
   .share-btn:hover{border-color:var(--gold);color:var(--gold-lit);background:#141009;transform:translateY(-2px)}
   .share-btn:focus-visible{outline:2px solid var(--gold-lit);outline-offset:2px}
 
-  footer{margin-top:18px;text-align:center;font-family:var(--label);letter-spacing:2px;text-transform:uppercase;font-size:10px;color:#5c5344}
+  .cab > footer{margin-top:18px;text-align:center;font-family:var(--label);letter-spacing:2px;text-transform:uppercase;font-size:10px;color:#5c5344}
+
+  /* site footer — matches other SongScout pages */
+  .site-footer{background:#111318;border-top:1px solid #2E3240;padding:32px 24px 24px}
+  .footer-inner{max-width:1100px;margin:0 auto}
+  .footer-top{display:flex;align-items:flex-start;gap:48px;margin-bottom:32px;flex-wrap:wrap}
+  .footer-brand{flex:1;min-width:200px}
+  .footer-brand p{font-size:0.82rem;color:#9C9484;margin-top:10px;line-height:1.6;max-width:260px}
+  .footer-links h3{font-size:0.68rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#9C9484;margin-bottom:12px}
+  .footer-links a{display:block;font-size:0.85rem;color:#C8C0B0;margin-bottom:4px;padding:6px 0;min-height:24px;transition:color 0.15s;text-decoration:underline;text-decoration-color:rgba(200,192,176,0.35);text-underline-offset:3px}
+  .footer-links a:hover{color:#F0A830;text-decoration-color:currentColor}
+  .footer-bottom{padding-top:20px;border-top:1px solid #2E3240;font-size:0.75rem;color:#9C9484;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .footer-bottom a{color:#9C9484;text-decoration:underline;text-decoration-color:rgba(156,148,132,.4);text-underline-offset:2px}
+  .footer-bottom a:hover{color:#F0A830}
 
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important;transition:none !important}
@@ -310,6 +323,50 @@
   <footer>SongScout · Complete the Title</footer>
 </main>
 </div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark">&#9836;</div>
+          <div><div class="logo-text">SongScout</div><div class="logo-sub">Music Discovery</div></div>
+        </div>
+        <p>Free music discovery tools for every generation. No login, no ads, no nonsense.</p>
+      </div>
+      <div class="footer-links">
+        <h3>Tools</h3>
+        <a href="/era-explorer/">Era Explorer</a>
+        <a href="/world-cup-music/">⚽ World Cup Music Quiz</a>
+        <a href="/rock-song-title-quiz/">🎸 Song Title Quiz</a>
+        <a href="/discovery-engine/">Discovery Engine</a>
+        <a href="/reaction-kit/">Reaction Kit</a>
+      </div>
+      <div class="footer-links">
+        <h3>Blog</h3>
+        <a href="/blog/">All guides</a>
+        <a href="/blog/classic-rock-for-beginners/">Classic rock guide</a>
+        <a href="/blog/what-did-nirvana-influence/">Nirvana's influence</a>
+        <a href="/blog/best-reaction-video-songs/">Reaction video songs</a>
+        <a href="/blog/how-to-get-into-led-zeppelin/">Led Zeppelin guide</a>
+        <a href="/blog/best-classic-rock-albums/">Best classic rock albums</a>
+        <a href="/blog/getting-into-heavy-metal/">Heavy metal guide</a>
+        <a href="/blog/best-stairway-to-heaven-reactions/">Stairway to Heaven reactions</a>
+      </div>
+      <div class="footer-links">
+        <h3>Start here</h3>
+        <a href="/era-explorer/">1970s Classic Rock</a>
+        <a href="/era-explorer/">1980s Heavy Metal</a>
+        <a href="/era-explorer/">1990s Grunge</a>
+        <a href="/era-explorer/">1980s Classic Rock</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>SongScout — Free music discovery — No login, no ads, no nonsense</div>
+      <div>© <span id="year"></span> SongScout · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/contact/">Contact</a></div>
+    </div>
+  </div>
+</footer>
 
 <script>
 /* ------------------------------------------------------------------
@@ -582,6 +639,9 @@ el('shareCopy').addEventListener('click', ()=>{
 /* actions */
 el('startBtn').addEventListener('click', ()=>{ buildRound(); renderQuestion(); show('quiz'); });
 el('againBtn').addEventListener('click', ()=>{ show('start'); });
+
+/* footer year */
+(function(){ const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear(); })();
 </script>
 </body>
 </html>
