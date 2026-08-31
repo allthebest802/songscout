@@ -237,6 +237,95 @@ button{cursor:pointer;font-family:'DM Sans',sans-serif;border:none;background:no
 
 const ARTISTS = {
 
+  'the-darkness':{
+    name:'The Darkness', era:'2000–present', genre:'Hard Rock / Glam Rock / Classic Rock Revival',
+    bio:'Justin Hawkins and his brother Dan brought theatrical, high-register vocals and unapologetically classic hard rock back into the UK mainstream. Permission to Land turned I Believe in a Thing Called Love into a huge rock anthem and proved that humour, virtuosity and big riffs could still reach a wide audience.',
+    tags:['I Believe in a Thing Called Love','Permission to Land','British hard rock','Classic rock revival'],
+    influences:['queen','ac-dc','aerosmith','led-zeppelin','whitesnake','guns-n-roses'],
+    influencedBy:['royal-blood'],
+  },
+
+  'little-richard':{
+    name:'Little Richard', era:'1951–2020', genre:'Rock and Roll / Rhythm and Blues',
+    bio:'Little Richard was one of the founding architects of rock and roll. His explosive piano playing, shouted vocals and larger-than-life stage presence helped define the energy of the genre. Tutti Frutti, Long Tall Sally and Good Golly Miss Molly influenced generations of musicians.',
+    tags:['Rock and roll pioneer','Tutti Frutti','Piano driven','Foundational influence'],
+    influences:['gospel-tradition','rhythm-and-blues'],
+    influencedBy:['the-beatles','jimi-hendrix','the-rolling-stones','david-bowie','queen'],
+  },
+
+  'nickelback':{
+    name:'Nickelback', era:'1995–present', genre:'Post-Grunge / Hard Rock',
+    bio:'Nickelback became one of the biggest rock bands of the 2000s with a polished post-grunge sound built around Chad Kroeger’s distinctive voice. How You Remind Me, Photograph and Rockstar made them one of the era’s defining mainstream rock acts.',
+    tags:['How You Remind Me','Post-grunge','2000s rock','Chad Kroeger'],
+    influences:['nirvana','pearl-jam','foo-fighters','led-zeppelin'],
+    influencedBy:['pop-rock-tradition'],
+  },
+
+  'kiss':{
+    name:'KISS', era:'1973–present', genre:'Hard Rock / Glam Rock',
+    bio:'Gene Simmons, Paul Stanley, Ace Frehley and Peter Criss turned rock performance into spectacle. Their face paint, costumes, pyrotechnics and arena-sized songs made KISS one of the most recognisable bands in rock history.',
+    tags:['Rock spectacle','Detroit Rock City','Arena rock','Face paint'],
+    influences:['the-beatles','the-who','alice-cooper','the-rolling-stones'],
+    influencedBy:['motley-crue','guns-n-roses','def-leppard','europe'],
+  },
+
+  'placebo':{
+    name:'Placebo', era:'1994–present', genre:'Alternative Rock / Glam Rock',
+    bio:'Brian Molko and Stefan Olsdal built Placebo around androgynous image, sharp melodies and emotionally intense alternative rock. Nancy Boy and Every You Every Me made them a defining part of late-90s British alternative music.',
+    tags:['Nancy Boy','Alternative rock','Brian Molko','Late 90s'],
+    influences:['david-bowie','the-cure','nirvana','pixies'],
+    influencedBy:['indie-rock-tradition'],
+  },
+
+  'sex-pistols':{
+    name:'Sex Pistols', era:'1975–1978', genre:'Punk Rock',
+    bio:'The Sex Pistols were central to the explosion of British punk. Johnny Rotten, Steve Jones, Paul Cook and Glen Matlock, later joined by Sid Vicious, turned three-chord aggression and political provocation into a cultural shockwave. Never Mind the Bollocks remains one of punk’s defining records.',
+    tags:['Punk founders','Never Mind the Bollocks','Anarchy in the UK','British punk'],
+    influences:['the-stooges','new-york-dolls','the-ramones','glam-rock'],
+    influencedBy:['motorhead','green-day','nirvana','the-clash'],
+  },
+
+  'black-flag':{
+    name:'Black Flag', era:'1976–1986', genre:'Hardcore Punk',
+    bio:'Black Flag were one of the most important American hardcore bands, combining punishing speed with increasingly experimental and heavy ideas. Their independent touring and DIY approach helped build the infrastructure of American underground rock.',
+    tags:['Hardcore punk','DIY scene','Henry Rollins','Underground rock'],
+    influences:['the-stooges','the-ramones','sex-pistols'],
+    influencedBy:['nirvana','foo-fighters','red-hot-chili-peppers'],
+  },
+
+  'jack-white':{
+    name:'Jack White', era:'1997–present', genre:'Garage Rock / Blues Rock / Alternative Rock',
+    bio:'Jack White helped drive the garage-rock revival with The White Stripes before expanding into the Raconteurs, the Dead Weather and a prolific solo career. His stripped-back guitar style, analogue production interests and blues roots made him one of the most distinctive rock musicians of his generation.',
+    tags:['The White Stripes','Seven Nation Army','Garage rock revival','Blues rock'],
+    influences:['son-house','led-zeppelin','the-stooges','the-rolling-stones','the-white-stripes'],
+    influencedBy:['black-keys','rival-sons','alabama-shakes'],
+  },
+
+  'rival-sons':{
+    name:'Rival Sons', era:'2009–present', genre:'Hard Rock / Blues Rock',
+    bio:'Rival Sons combine heavy blues riffs, soulful vocals and classic-rock dynamics without simply recreating a 1970s band. Jay Buchanan’s voice and Scott Holiday’s guitar work made them one of the strongest modern hard rock acts to emerge from California.',
+    tags:['Modern classic rock','Blues rock','Jay Buchanan','Scott Holiday'],
+    influences:['led-zeppelin','the-black-crowes','queens-of-the-stone-age','whitesnake'],
+    influencedBy:['modern-hard-rock'],
+  },
+
+  'james-brown':{
+    name:'James Brown', era:'1956–2006', genre:'Soul / Funk / Rhythm and Blues',
+    bio:'James Brown transformed rhythm into the centre of popular music. His tightly controlled bands, explosive stage performances and emphasis on the beat laid crucial foundations for funk and later hip-hop. Papa’s Got a Brand New Bag and Sex Machine remain essential recordings.',
+    tags:['Godfather of Soul','Funk pioneer','Live performer','Sex Machine'],
+    influences:['gospel-tradition','rhythm-and-blues'],
+    influencedBy:['prince','parliament-funkadelic','red-hot-chili-peppers','living-colour'],
+  },
+
+  'van-morrison':{
+    name:'Van Morrison', era:'1964–present', genre:'Folk Rock / Soul / Celtic Rock',
+    bio:'Van Morrison moved from the raw garage rock of Them into a solo career that blended soul, folk, jazz, blues and Celtic music. Astral Weeks and Moondance are landmarks, while Brown Eyed Girl remains one of his best-known songs.',
+    tags:['Astral Weeks','Moondance','Soulful vocals','Irish rock'],
+    influences:['blues-tradition','folk-tradition','ray-charles','john-lee-hooker'],
+    influencedBy:['u2','hozier','gerry-rafferty','bruce-springsteen'],
+  },
+
+
   'nirvana':{
     name:'Nirvana', era:'1987–1994', genre:'Grunge / Alternative Rock',
     bio:'Kurt Cobain, Krist Novoselic and Dave Grohl changed rock music overnight with Nevermind in 1991. The quiet-loud dynamic, the confessional lyrics and the raw production became the template for a decade. Their influence continues to reverberate through every guitar band that followed.',
