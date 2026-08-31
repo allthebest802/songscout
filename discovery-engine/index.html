@@ -236,6 +236,86 @@ button{cursor:pointer;font-family:'DM Sans',sans-serif;border:none;background:no
 // influencedBy = artists they went on to influence (legacy)
 
 const ARTISTS = {
+  'editors':{
+    name:'Editors', era:'2002–present', genre:'Post-Punk Revival / Alternative Rock',
+    bio:'Editors emerged from the early-2000s British post-punk revival with dark, atmospheric guitar rock and the deep vocals of Tom Smith. Their sound developed from urgent guitars into more electronic and expansive arrangements.',
+    tags:['Post-punk revival','British alternative','Tom Smith','Munich'],
+    influences:['joy-division','interpol','siouxsie-and-the-banshees','the-cure'],
+    influencedBy:['white-lies','modern-indie-rock'],
+  },
+
+  'the-velvet-underground':{
+    name:'The Velvet Underground', era:'1964–1973', genre:'Experimental Rock / Proto-Punk',
+    bio:'The Velvet Underground combined avant-garde ideas, street-level storytelling and raw rock into one of the most influential catalogues in modern music. Though never major sellers in their original era, their impact on punk, alternative and art rock was enormous.',
+    tags:['Lou Reed','Andy Warhol','Experimental rock','Foundational influence'],
+    influences:['folk-tradition','experimental-music','bob-dylan'],
+    influencedBy:['the-stooges','david-bowie','wire','r-e-m'],
+  },
+
+  'wolf-alice':{
+    name:'Wolf Alice', era:'2010–present', genre:'Alternative Rock / Indie Rock',
+    bio:'Wolf Alice move between shoegaze, grunge, folk and art rock while retaining a strong sense of melody. Ellie Rowsell and Joff Oddie have made the band one of the most acclaimed British alternative acts of their generation.',
+    tags:['Modern British rock','Shoegaze','Grunge influence','Ellie Rowsell'],
+    influences:['pixies','nirvana','blur','the-smashing-pumpkins'],
+    influencedBy:['modern-alternative-rock'],
+  },
+
+  'new-york-dolls':{
+    name:'New York Dolls', era:'1971–2011', genre:'Glam Rock / Proto-Punk',
+    bio:'The New York Dolls mixed glam-rock image with loose, loud rock and roll, becoming a crucial bridge between 1970s glam and punk. Their style and attitude influenced both British and American punk scenes.',
+    tags:['Proto-punk','Glam rock','New York scene','David Johansen'],
+    influences:['the-rolling-stones','the-stooges','glam-rock'],
+    influencedBy:['sex-pistols','the-ramones','kiss'],
+  },
+
+  'journey':{
+    name:'Journey', era:'1973–present', genre:'Arena Rock / AOR',
+    bio:'Journey became one of the defining arena-rock bands of the late 1970s and 1980s, combining Neal Schon’s guitar work with Steve Perry’s soaring vocals and highly melodic songwriting.',
+    tags:['Don’t Stop Believin’','Arena rock','Steve Perry','Neal Schon'],
+    influences:['hard-rock','progressive-rock','the-beatles'],
+    influencedBy:['modern-rock','aor-revival'],
+  },
+
+  'taylor-swift':{
+    name:'Taylor Swift', era:'2006–present', genre:'Pop / Country / Singer-Songwriter',
+    bio:'Taylor Swift developed from country songwriting into one of the defining pop artists of her generation. Her work combines narrative songwriting with stylistic shifts across country, pop, folk and alternative production.',
+    tags:['Songwriter','Pop crossover','Country roots','Narrative songs'],
+    influences:['joni-mitchell','shania-twain','dolly-parton','indie-folk'],
+    influencedBy:['modern-pop-songwriting'],
+  },
+
+  'keane':{
+    name:'Keane', era:'1995–present', genre:'Alternative Rock / Piano Rock',
+    bio:'Keane built a distinctive early sound around piano, atmospheric arrangements and Tom Chaplin’s soaring vocals rather than a conventional lead-guitar approach. Hopes and Fears became one of the major British albums of the 2000s.',
+    tags:['Somewhere Only We Know','Piano rock','Hopes and Fears','Tom Chaplin'],
+    influences:['radiohead','u2','the-beatles','coldplay'],
+    influencedBy:['modern-british-pop-rock'],
+  },
+
+  'slayer':{
+    name:'Slayer', era:'1981–2019', genre:'Thrash Metal',
+    bio:'Slayer pushed thrash metal toward greater speed, aggression and intensity. Reign in Blood became a landmark of extreme metal and their uncompromising approach influenced generations of heavy bands.',
+    tags:['Thrash metal','Reign in Blood','Extreme metal','Fast riffs'],
+    influences:['black-sabbath','judas-priest','iron-maiden','punk-rock'],
+    influencedBy:['pantera','slipknot','metalcore'],
+  },
+
+  'pantera':{
+    name:'Pantera', era:'1981–2003', genre:'Groove Metal',
+    bio:'Pantera combined thrash aggression with massive grooves, helping define a heavier direction for 1990s metal. Dimebag Darrell’s guitar work and Phil Anselmo’s vocals made the band hugely influential.',
+    tags:['Groove metal','Dimebag Darrell','Vulgar Display of Power','1990s metal'],
+    influences:['slayer','black-sabbath','metallica','judas-priest'],
+    influencedBy:['lamb-of-god','slipknot','modern-metal'],
+  },
+
+  'stevie-ray-vaughan':{
+    name:'Stevie Ray Vaughan', era:'1978–1990', genre:'Blues Rock',
+    bio:'Stevie Ray Vaughan brought virtuoso electric blues back to a large mainstream audience in the 1980s. His fiery guitar technique drew deeply from Texas blues while adding the power of modern rock.',
+    tags:['Texas blues','Guitar virtuoso','Pride and Joy','Double Trouble'],
+    influences:['jimi-hendrix','albert-king','buddy-guy','johnny-winter'],
+    influencedBy:['john-mayer','gary-clark-jr','modern-blues-rock'],
+  },
+
   'the-ramones':{
     name:'The Ramones', era:'1974–1996', genre:'Punk Rock',
     bio:'The Ramones stripped rock back to fast, short songs, simple chords and huge hooks. Their debut album helped define punk rock and influenced countless punk, alternative and indie bands.',
@@ -578,7 +658,7 @@ const ARTISTS = {
     name:'The Strokes', era:'2001–present', genre:'Indie Rock / Post-Punk Revival',
     bio:'Julian Casablancas, Nick Valensi, Albert Hammond Jr, Nikolai Fraiture and Fabrizio Moretti arrived in 2001 with Is This It and announced the revival of guitar music. Their sound — compressed, fuzzy guitars, Casablancas\'s laconic vocal — became the most imitated in indie rock.',
     tags:['Indie rock revival','Is This It','New York indie','Influential debut'],
-    influences:['television','velvet-underground','iggy-pop','ramones'],
+    influences:['television','velvet-underground','iggy-pop','the-ramones'],
     influencedBy:['arctic-monkeys','the-libertines','bloc-party','foals'],
   },
 
@@ -739,7 +819,7 @@ const ARTISTS = {
     bio:'Tom Waits invented his own genre — a world of seedy bars, carnival freakshows and broken hearts, rendered in a voice that sounds like gravel and bourbon. Swordfishtrombones marked his transformation from barroom balladeer to avant-garde experimentalist. Nobody sounds like him.',
     tags:['Singular voice','Avant-garde','Rain Dogs','One of a kind'],
     influences:['howlin-wolf','harry-partch','brecht-weill','blues-tradition'],
-    influencedBy:['nick-cave','PJ-harvey','the-waifs','system-of-a-down'],
+    influencedBy:['nick-cave','pj-harvey','the-waifs','system-of-a-down'],
   },
 
   'nick-cave':{
@@ -747,7 +827,7 @@ const ARTISTS = {
     bio:'Nick Cave, Mick Harvey and Warren Ellis built one of the most distinctive voices in rock. From the confrontational fury of Birthday Party to the heartbreaking beauty of The Ship Song and Into My Arms, Cave has consistently produced music of extraordinary emotional intelligence.',
     tags:['Gothic rock','Post-punk','Extraordinary lyricist','The Bad Seeds'],
     influences:['tom-waits','the-velvet-underground','iggy-pop','blues-tradition'],
-    influencedBy:['PJ-harvey','the-national','interpol','scott-walker'],
+    influencedBy:['pj-harvey','the-national','interpol','scott-walker'],
   },
 
   'pj-harvey':{
@@ -763,7 +843,7 @@ const ARTISTS = {
     bio:'The punk poet laureate. Patti Smith fused rock and roll with Rimbaud, horses with Jesus, desire with transcendence. Horses — produced by John Cale — is one of the great debut albums in rock history. Her influence on every female artist who followed is immeasurable.',
     tags:['Punk poet laureate','Horses','CBGB pioneer','Art rock'],
     influences:['bob-dylan','velvet-underground','rimbaud','jimi-hendrix'],
-    influencedBy:['r-e-m','sonic-youth','PJ-harvey','hozier'],
+    influencedBy:['r-e-m','sonic-youth','pj-harvey','hozier'],
   },
 
   'sonic-youth':{
@@ -786,7 +866,7 @@ const ARTISTS = {
     name:'Green Day', era:'1987–present', genre:'Punk Rock / Pop Punk',
     bio:'Billie Joe Armstrong, Mike Dirnt and Tré Cool turned California punk into one of rock\'s great commercial success stories. Dookie sold 10 million copies. American Idiot — a concept album about the Bush era — proved punk could be political and popular simultaneously.',
     tags:['Pop punk','Dookie','American Idiot','Billie Joe Armstrong'],
-    influences:['the-clash','ramones','the-who','husker-du'],
+    influences:['the-clash','the-ramones','the-who','husker-du'],
     influencedBy:['paramore','fall-out-boy','blink-182','mcfly'],
   },
 
