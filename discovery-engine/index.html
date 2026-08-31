@@ -1816,6 +1816,68 @@ const ARTISTS = {
 
 };
 
+
+// Music roots and traditions. These are clickable context nodes, kept separate
+// from ARTISTS so they are not counted as artists or shown in normal artist search.
+const TRADITIONS = {
+  'blues-tradition':{
+    name:'Blues Tradition', era:'c. 1860s–present', genre:'Music Root / Blues',
+    bio:'The blues developed in African American communities in the southern United States and became one of the central roots of modern popular music. Its call-and-response vocals, expressive guitar styles, blue notes and repeating forms shaped rock and roll, soul, rhythm and blues and much more.',
+    tags:['Music root','African American music','Guitar','Rock foundation'],
+    influences:['gospel-tradition','folk-tradition'],
+    influencedBy:['charley-patton','t-bone-walker','little-richard','otis-redding','jimi-hendrix','led-zeppelin','the-rolling-stones'],
+  },
+
+  'folk-tradition':{
+    name:'Folk Tradition', era:'Traditional–present', genre:'Music Root / Folk',
+    bio:'Folk music centres on songs and styles passed between communities and generations. In modern popular music, folk traditions influenced the singer-songwriter movement, folk rock, country and contemporary acoustic music.',
+    tags:['Music root','Storytelling','Acoustic music','Singer-songwriters'],
+    influences:[],
+    influencedBy:['bob-dylan','joni-mitchell','van-morrison','bon-iver','hozier'],
+  },
+
+  'jazz-tradition':{
+    name:'Jazz Tradition', era:'c. 1900–present', genre:'Music Root / Jazz',
+    bio:'Jazz developed through African American musical traditions and placed improvisation, rhythmic complexity and harmonic exploration at the centre of the music. Its influence reaches into rock, soul, funk, progressive music and experimental pop.',
+    tags:['Music root','Improvisation','Harmony','Rhythm'],
+    influences:['blues-tradition'],
+    influencedBy:['john-coltrane','miles-davis','king-crimson','steely-dan'],
+  },
+
+  'country-tradition':{
+    name:'Country Tradition', era:'c. 1920s–present', genre:'Music Root / Country',
+    bio:'Country music grew from American folk traditions and developed around storytelling, acoustic instruments and regional styles. It later influenced rock and roll, singer-songwriter music, pop and modern Americana.',
+    tags:['Music root','Storytelling','American roots','Acoustic instruments'],
+    influences:['folk-tradition','blues-tradition'],
+    influencedBy:['elvis-presley','johnny-cash','dolly-parton','taylor-swift'],
+  },
+
+  'delta-blues-tradition':{
+    name:'Delta Blues Tradition', era:'Early 1900s–present', genre:'Music Root / Delta Blues',
+    bio:'Delta blues is one of the most influential early blues styles, associated with the Mississippi Delta. Its raw vocals, slide guitar and rhythmic intensity became a major root of electric blues, Chicago blues and rock music.',
+    tags:['Music root','Mississippi Delta','Slide guitar','Pre-war blues'],
+    influences:['blues-tradition'],
+    influencedBy:['charley-patton','son-house','robert-johnson','john-lee-hooker','t-bone-walker'],
+  },
+
+  'gospel-tradition':{
+    name:'Gospel Tradition', era:'Early 1900s–present', genre:'Music Root / Gospel',
+    bio:'Gospel music brought powerful vocals, call-and-response, spiritual intensity and improvisation into the foundations of soul, rhythm and blues and rock and roll.',
+    tags:['Music root','Call and response','Vocal power','Soul foundation'],
+    influences:['blues-tradition'],
+    influencedBy:['little-richard','james-brown','otis-redding','ray-charles','aretha-franklin'],
+  },
+
+  'glam-rock':{
+    name:'Glam Rock', era:'1970s–present', genre:'Music Movement / Rock',
+    bio:'Glam rock combined theatrical image, pop hooks and hard-rock energy in the early 1970s. Its emphasis on performance and visual identity influenced punk, heavy metal, alternative rock and later pop.',
+    tags:['Music movement','Theatrical','1970s','Visual rock'],
+    influences:['rock-and-roll','psychedelic-rock'],
+    influencedBy:['david-bowie','queen','kiss','alice-cooper','new-york-dolls','sex-pistols','marilyn-manson'],
+  },
+};
+
+
 // Quick-start artists shown as buttons
 const QUICK_STARTS = ['nirvana','led-zeppelin','queen','metallica','the-beatles','arctic-monkeys','radiohead','the-smiths','david-bowie','the-white-stripes','joy-division','the-clash'];
 
@@ -1826,11 +1888,19 @@ function getArtist(id) {
   return ARTISTS[id] || null;
 }
 
+function getNode(id) {
+  return ARTISTS[id] || TRADITIONS[id] || null;
+}
+
+function isTradition(id) {
+  return !!TRADITIONS[id];
+}
+
 function init() {
   // Quick picks
   const qp = document.getElementById('quickPicks');
   QUICK_STARTS.forEach(id => {
-    const a = getArtist(id);
+    const a = getNode(id);
     if (!a) return;
     const btn = document.createElement('button');
     btn.className = 'quick-btn';
@@ -1871,8 +1941,8 @@ function init() {
 }
 
 function navigate(id) {
-  const artist = getArtist(id);
-  if (!artist) return;
+  const node = getNode(id);
+  if (!node) return;
 
   // Add to history if not already current
   if (history[history.length - 1] !== id) {
@@ -1914,8 +1984,9 @@ function renderBreadcrumb() {
 }
 
 function renderArtist(id) {
-  const artist = getArtist(id);
+  const artist = getNode(id);
   if (!artist) return;
+  const rootNode = isTradition(id);
 
   renderBreadcrumb();
 
@@ -1924,18 +1995,20 @@ function renderArtist(id) {
   // Build influences section
   const influenceCards = artist.influences
     .map(inf => {
-      const a = getArtist(inf);
+      const a = getNode(inf);
       const name = a ? a.name : inf.split('-').map(w => w.charAt(0).toUpperCase()+w.slice(1)).join(' ');
       const era = a ? a.era : '';
       const genre = a ? a.genre : '';
       const clickable = !!a;
-      return `<div class="influence-card${clickable ? '' : ' no-data'}" ${clickable ? `onclick="navigate('${inf}')"` : ''} style="opacity:${clickable ? 1 : 0.6}">
+      const root = isTradition(inf);
+      return `<div class="influence-card${clickable ? '' : ' no-data'}${root ? ' root-node' : ''}" ${clickable ? `onclick="navigate('${inf}')"` : ''} style="opacity:${clickable ? 1 : 0.6}">
         <div class="ic-top">
           <div class="ic-name">${name}</div>
           ${era ? `<span class="ic-era">${era.split('–')[0]}s</span>` : ''}
         </div>
-        ${genre ? `<div class="ic-genre">${genre}</div>` : ''}
-        ${a ? `<div class="ic-desc">${a.bio.split('.')[0]}.</div>` : '<div class="ic-desc">Explore this artist to learn more about their music and influences.</div>'}
+        ${genre ? `<div class="ic-genre">${root ? 'Music Root · ' : ''}${genre}</div>` : ''}
+        ${root ? '<div class="ic-desc">Explore this musical tradition and the artists connected to it.</div>' : ''}
+        ${a && !root ? `<div class="ic-desc">${a.bio.split('.')[0]}.</div>` : '<div class="ic-desc">Explore this artist to learn more about their music and influences.</div>'}
         ${clickable ? '<div class="ic-explore">Explore their tree →</div>' : ''}
       </div>`;
     }).join('');
@@ -1943,25 +2016,27 @@ function renderArtist(id) {
   // Build influenced-by section
   const influencedCards = artist.influencedBy
     .map(inf => {
-      const a = getArtist(inf);
+      const a = getNode(inf);
       const name = a ? a.name : inf.split('-').map(w => w.charAt(0).toUpperCase()+w.slice(1)).join(' ');
       const era = a ? a.era : '';
       const genre = a ? a.genre : '';
       const clickable = !!a;
-      return `<div class="influence-card${clickable ? '' : ' no-data'}" ${clickable ? `onclick="navigate('${inf}')"` : ''} style="opacity:${clickable ? 1 : 0.6}">
+      const root = isTradition(inf);
+      return `<div class="influence-card${clickable ? '' : ' no-data'}${root ? ' root-node' : ''}" ${clickable ? `onclick="navigate('${inf}')"` : ''} style="opacity:${clickable ? 1 : 0.6}">
         <div class="ic-top">
           <div class="ic-name">${name}</div>
           ${era ? `<span class="ic-era">${era.split('–')[0]}s</span>` : ''}
         </div>
-        ${genre ? `<div class="ic-genre">${genre}</div>` : ''}
-        ${a ? `<div class="ic-desc">${a.bio.split('.')[0]}.</div>` : '<div class="ic-desc">This artist was shaped by ' + artist.name + '\'s sound and approach.</div>'}
+        ${genre ? `<div class="ic-genre">${root ? 'Music Root · ' : ''}${genre}</div>` : ''}
+        ${root ? '<div class="ic-desc">Explore this musical tradition and the artists connected to it.</div>' : ''}
+        ${a && !root ? `<div class="ic-desc">${a.bio.split('.')[0]}.</div>` : '<div class="ic-desc">This artist was shaped by ' + artist.name + '\'s sound and approach.</div>'}
         ${clickable ? '<div class="ic-explore">Explore their tree →</div>' : ''}
       </div>`;
     }).join('');
 
   content.innerHTML = `
     <div class="artist-spotlight">
-      <div class="spotlight-era">${artist.era}</div>
+      <div class="spotlight-era">${rootNode ? 'MUSIC ROOT' : artist.era}</div>
       <div>
         <div class="spotlight-name">${artist.name}</div>
         <div class="spotlight-genre">${artist.genre}</div>
@@ -1975,7 +2050,7 @@ function renderArtist(id) {
     <div class="tree-section">
       <div class="tree-section-header">
         <span class="tree-direction dir-up">↑ Roots</span>
-        <div class="tree-section-title">Who shaped ${artist.name}</div>
+        <div class="tree-section-title">${rootNode ? 'What shaped this tradition' : 'Who shaped ' + artist.name}</div>
         <span class="tree-section-sub">${artist.influences.length} influences</span>
       </div>
       <div class="influence-grid">${influenceCards}</div>
@@ -1984,8 +2059,8 @@ function renderArtist(id) {
     <div class="tree-section">
       <div class="tree-section-header">
         <span class="tree-direction dir-down">↓ Legacy</span>
-        <div class="tree-section-title">Who ${artist.name} shaped</div>
-        <span class="tree-section-sub">${artist.influencedBy.length} artists</span>
+        <div class="tree-section-title">${rootNode ? 'Key artists and music shaped by this tradition' : 'Who ' + artist.name + ' shaped'}</div>
+        <span class="tree-section-sub">${artist.influencedBy.length} connections</span>
       </div>
       <div class="influence-grid">${influencedCards}</div>
     </div>
