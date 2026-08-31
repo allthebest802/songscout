@@ -236,6 +236,166 @@ button{cursor:pointer;font-family:'DM Sans',sans-serif;border:none;background:no
 // influencedBy = artists they went on to influence (legacy)
 
 const ARTISTS = {
+  'the-kinks':{
+    name:'The Kinks', era:'1963–1996', genre:'Rock / British Invasion / Pop Rock',
+    bio:'The Kinks became one of the most distinctive British bands of the 1960s through Ray Davies’ sharp observational songwriting and Dave Davies’ pioneering distorted guitar sound. They influenced generations of British rock, punk and Britpop artists.',
+    tags:['British Invasion','You Really Got Me','Waterloo Sunset','Ray Davies'],
+    influences:['the-beatles','chuck-berry','british-music-hall'],
+    influencedBy:['the-who','blur','the-jam','arctic-monkeys'],
+  },
+
+  'marilyn-manson':{
+    name:'Marilyn Manson', era:'1989–present', genre:'Industrial Metal / Alternative Metal',
+    bio:'Marilyn Manson became one of the most controversial figures in 1990s alternative music, combining industrial rock, metal, theatrical imagery and confrontational performance.',
+    tags:['Industrial metal','Antichrist Superstar','Theatrical rock','1990s alternative'],
+    influences:['nine-inch-nails','alice-cooper','david-bowie','glam-rock'],
+    influencedBy:['industrial-metal','alternative-metal'],
+  },
+
+  'deftones':{
+    name:'Deftones', era:'1988–present', genre:'Alternative Metal / Nu Metal / Shoegaze',
+    bio:'Deftones developed from the 1990s heavy music scene into a distinctive blend of crushing guitars, atmospheric textures and Chino Moreno’s melodic vocals. Their later work became especially influential on alternative and modern metal.',
+    tags:['Alternative metal','White Pony','Atmospheric heavy rock','Chino Moreno'],
+    influences:['faith-no-more','tool','the-cure','the-smashing-pumpkins'],
+    influencedBy:['bring-me-the-horizon','loathe','modern-alternative-metal'],
+  },
+
+  'bring-me-the-horizon':{
+    name:'Bring Me the Horizon', era:'2004–present', genre:'Alternative Metal / Metalcore / Rock',
+    bio:'Bring Me the Horizon evolved from metalcore into one of the most stylistically adventurous modern rock bands, incorporating electronic music, pop, industrial and alternative influences.',
+    tags:['Modern rock','Metalcore roots','Oli Sykes','Genre-crossing'],
+    influences:['slipknot','deftones','nine-inch-nails','linkin-park'],
+    influencedBy:['bad-omens','modern-metalcore'],
+  },
+
+  'albert-king':{
+    name:'Albert King', era:'1953–1992', genre:'Blues / Electric Blues',
+    bio:'Albert King was one of the great electric blues guitarists, known for his powerful string bends, left-handed style and influential work with Stax Records. His playing became a major foundation for blues-rock guitar.',
+    tags:['Electric blues','Stax Records','Blues guitar','Born Under a Bad Sign'],
+    influences:['blues-tradition','delta-blues-tradition'],
+    influencedBy:['stevie-ray-vaughan','gary-clark-jr','jimi-hendrix','eric-clapton'],
+  },
+
+  'white-lies':{
+    name:'White Lies', era:'2007–present', genre:'Post-Punk Revival / Alternative Rock',
+    bio:'White Lies emerged from the late-2000s British alternative scene with dramatic post-punk guitars, synthesizers and the deep vocals of Harry McVeigh.',
+    tags:['British alternative','Post-punk revival','Death','To Lose My Life'],
+    influences:['joy-division','editors','the-cure','new-order'],
+    influencedBy:['modern-post-punk'],
+  },
+
+  'lamb-of-god':{
+    name:'Lamb of God', era:'1994–present', genre:'Groove Metal / Metalcore',
+    bio:'Lamb of God combined thrash, groove metal and hardcore intensity to become one of the leading American heavy bands of the 2000s and beyond.',
+    tags:['Groove metal','American metal','Randy Blythe','Heavy riffs'],
+    influences:['pantera','slayer','metallica','megadeth'],
+    influencedBy:['modern-metal'],
+  },
+
+  'cheap-trick':{
+    name:'Cheap Trick', era:'1973–present', genre:'Rock / Power Pop / Hard Rock',
+    bio:'Cheap Trick fused Beatles-inspired melody with hard-rock guitars and became one of the defining American power-pop bands. Their live album Cheap Trick at Budokan turned them into international stars.',
+    tags:['Power pop','Budokan','Surrender','American rock'],
+    influences:['the-beatles','the-who','the-kinks'],
+    influencedBy:['foo-fighters','nirvana','smashing-pumpkins'],
+  },
+
+  'dio':{
+    name:'Dio', era:'1957–2010', genre:'Heavy Metal / Hard Rock',
+    bio:'Ronnie James Dio was one of heavy metal’s greatest vocalists, known for his work with Rainbow, Black Sabbath and his own band Dio. His powerful voice and fantasy imagery helped define classic heavy metal.',
+    tags:['Heavy metal','Holy Diver','Ronnie James Dio','Black Sabbath'],
+    influences:['blues-tradition','hard-rock'],
+    influencedBy:['iron-maiden','dream-theater','power-metal'],
+  },
+
+  'porcupine-tree':{
+    name:'Porcupine Tree', era:'1987–present', genre:'Progressive Rock / Progressive Metal',
+    bio:'Steven Wilson’s Porcupine Tree blended progressive rock with psychedelia, metal and modern alternative production. The band became a major influence on contemporary progressive music.',
+    tags:['Progressive rock','Steven Wilson','In Absentia','Modern prog'],
+    influences:['pink-floyd','king-crimson','radiohead','tool'],
+    influencedBy:['modern-progressive-rock'],
+  },
+
+  'gary-clark-jr':{
+    name:'Gary Clark Jr.', era:'2007–present', genre:'Blues Rock / Soul / Alternative Rock',
+    bio:'Gary Clark Jr. is one of the leading modern blues-rock guitarists, combining traditional blues influences with soul, funk and contemporary rock. His explosive playing and distinctive songwriting helped bring blues guitar to a new generation.',
+    tags:['Modern blues','Guitarist','Blues rock','Texas'],
+    influences:['stevie-ray-vaughan','jimi-hendrix','albert-king','blues-tradition'],
+    influencedBy:['modern-blues-rock'],
+  },
+
+  'john-mayer':{
+    name:'John Mayer', era:'1999–present', genre:'Pop Rock / Blues Rock / Singer-Songwriter',
+    bio:'John Mayer built a career around sophisticated pop songwriting before developing into a highly regarded blues guitarist. His work moves between acoustic singer-songwriter music, blues rock and mainstream pop.',
+    tags:['Singer-songwriter','Blues guitar','Gravity','Continuum'],
+    influences:['stevie-ray-vaughan','eric-clapton','jimi-hendrix','bob-dylan'],
+    influencedBy:['modern-guitar-songwriters'],
+  },
+
+  'miles-kane':{
+    name:'Miles Kane', era:'2004–present', genre:'Indie Rock / Garage Rock',
+    bio:'Miles Kane emerged from the British indie scene through The Little Flames, The Rascals and The Last Shadow Puppets. His solo work blends sharp guitar rock with 1960s pop and glam influences.',
+    tags:['The Last Shadow Puppets','British indie','Garage rock','Solo artist'],
+    influences:['the-beatles','the-kinks','david-bowie','arctic-monkeys'],
+    influencedBy:['modern-british-indie'],
+  },
+
+  'warrant':{
+    name:'Warrant', era:'1984–present', genre:'Hard Rock / Glam Metal',
+    bio:'Warrant became one of the best-known late-1980s hard-rock and glam-metal bands, balancing big choruses and melodic ballads with a heavier guitar sound. Cherry Pie remains their most recognisable song.',
+    tags:['Glam metal','Cherry Pie','1980s hard rock','Sunset Strip'],
+    influences:['kiss','aerosmith','van-halen','mötley-crüe'],
+    influencedBy:['hard-rock-revival'],
+  },
+
+  'alice-cooper':{
+    name:'Alice Cooper', era:'1964–present', genre:'Hard Rock / Shock Rock',
+    bio:'Alice Cooper helped establish theatrical rock through dark humour, elaborate stage shows and classic hard-rock songs. His mixture of horror imagery and memorable hooks influenced glam, metal and hard rock.',
+    tags:['Shock rock','Theatrical rock','School’s Out','Stage spectacle'],
+    influences:['the-beatles','the-who','the-rolling-stones','psychedelic-rock'],
+    influencedBy:['kiss','marilyn-manson','guns-n-roses','iron-maiden'],
+  },
+
+  'elvis-presley':{
+    name:'Elvis Presley', era:'1954–1977', genre:'Rock and Roll / Rockabilly / Pop',
+    bio:'Elvis Presley became the first global superstar of rock and roll by blending rhythm and blues, country and rockabilly. His recordings and performances helped define the visual and commercial possibilities of modern popular music.',
+    tags:['Rock and roll icon','Rockabilly','Memphis','Global star'],
+    influences:['little-richard','chuck-berry','blues-tradition','country-tradition'],
+    influencedBy:['the-beatles','david-bowie','bruce-springsteen','queen'],
+  },
+
+  'otis-redding':{
+    name:'Otis Redding', era:'1955–1967', genre:'Soul / Rhythm and Blues',
+    bio:'Otis Redding was one of soul music’s most powerful singers, combining gospel intensity with blues and rhythm and blues. His Stax recordings, including Try a Little Tenderness and Sittin’ on the Dock of the Bay, became soul classics.',
+    tags:['Soul','Stax Records','Try a Little Tenderness','Dock of the Bay'],
+    influences:['little-richard','gospel-tradition','rhythm-and-blues'],
+    influencedBy:['the-rolling-stones','van-morrison','marvin-gaye','modern-soul'],
+  },
+
+  'john-coltrane':{
+    name:'John Coltrane', era:'1945–1967', genre:'Jazz / Modal Jazz / Free Jazz',
+    bio:'John Coltrane transformed jazz through harmonic exploration, spiritual intensity and relentless improvisation. Albums such as Giant Steps and A Love Supreme remain landmarks in modern music.',
+    tags:['Jazz pioneer','A Love Supreme','Saxophone','Improvisation'],
+    influences:['jazz-tradition','charlie-parker','thelonious-monk'],
+    influencedBy:['miles-davis','jazz-rock','progressive-jazz'],
+  },
+
+  'megadeth':{
+    name:'Megadeth', era:'1983–present', genre:'Thrash Metal',
+    bio:'Formed by Dave Mustaine after his departure from Metallica, Megadeth became one of thrash metal’s defining bands through complex riffs, technical guitar work and politically charged songwriting.',
+    tags:['Thrash metal','Dave Mustaine','Technical riffs','Rust in Peace'],
+    influences:['metallica','judas-priest','iron-maiden','black-sabbath'],
+    influencedBy:['modern-thrash-metal'],
+  },
+
+  'slipknot':{
+    name:'Slipknot', era:'1995–present', genre:'Alternative Metal / Nu Metal',
+    bio:'Slipknot combined extreme metal, alternative rock and percussive intensity with masks and a confrontational live identity. Their multi-member line-up and chaotic sound made them one of the defining heavy bands of their era.',
+    tags:['Masks','Iowa','Alternative metal','Extreme energy'],
+    influences:['slayer','pantera','deftones','industrial-metal'],
+    influencedBy:['bring-me-the-horizon','modern-metal'],
+  },
+
   'editors':{
     name:'Editors', era:'2002–present', genre:'Post-Punk Revival / Alternative Rock',
     bio:'Editors emerged from the early-2000s British post-punk revival with dark, atmospheric guitar rock and the deep vocals of Tom Smith. Their sound developed from urgent guitars into more electronic and expansive arrangements.',
